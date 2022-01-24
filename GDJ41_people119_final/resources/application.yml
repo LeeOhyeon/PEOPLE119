@@ -1,0 +1,27 @@
+server:
+  port: 9999
+
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: spring
+    password: spring
+  mvc: 
+    static-path-pattern: "/resources/**"
+    view:
+      suffix: .jsp
+      prefix: /WEB-INF/views/
+
+mybatis:
+  mapper-locations: /mapper/**/*.xml          
+          
+          
+logging: 
+ level:
+    root: info
+    '[com.pp.boot]': debug
+          
+          
+          
+    
