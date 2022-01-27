@@ -11,4 +11,8 @@ public class PeopleController {
 		return "index";
 	}
 	
+	@RequestMapping("/company/companyIndex.do")
+	public String companyMaining() {
+		return "company/companyIndex";
+	}
 }
