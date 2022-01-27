@@ -293,6 +293,8 @@
 
       </div>
     </section><!-- End 합격 후기 -->
+   
+   </main>
 
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
