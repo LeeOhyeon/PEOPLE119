@@ -77,7 +77,7 @@
               <li><a href="#">이력서 TIP</a></li>
             </ul>
           </li>
-          <li><a href="#">로그인</a></li>
+          <li><a href="${path}/member/memberLoginView.do">로그인</a></li>
           <li><a href="#">회원가입</a></li>
           <!-- <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
           <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
