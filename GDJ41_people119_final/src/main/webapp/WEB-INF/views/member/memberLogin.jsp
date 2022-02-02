@@ -33,12 +33,10 @@
 					<div class="loginTitle">로그인이 필요한 서비스 입니다.</div>
 					<div class="loginTitle2">개인회원</div>
 					<div>
-						<form action="${path}/memebr/memberLogin.do" method="post">
-							<input class="form-control form-control-lg" type="text"
-								placeholder="ID" aria-label=".form-control-lg example">
-							<input class="form-control form-control-lg" type="text"
-								placeholder="password" aria-label=".form-control-lg example">
-							<button type="submit" class="btn btn-primary">Login</button>
+						<form action="${path}/member/memberLogin.do" method="post">
+							<input class="form-control form-control-lg" type="text"placeholder="ID" aria-label=".form-control-lg example" name="memberId">
+							<input class="form-control form-control-lg" required="required" type="password"placeholder="password" aria-label=".form-control-lg example" name="password">
+							<button type="submit" class="btn btn-primary" onclick="">Login</button>
 						</form>
 					</div>
 					<div class="enroll">
@@ -46,11 +44,7 @@
 							찾기</a>
 					</div>
 				</div>
-
-
 			</div>
-
-
 		</div>
 	</section>
 
