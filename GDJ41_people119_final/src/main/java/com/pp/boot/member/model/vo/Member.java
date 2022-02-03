@@ -13,6 +13,7 @@ public class Member {
 
 	private String memberId;
 	private String password;
+	private String email;
 	private String memberName;
 	private String gender;
 	private String address;
