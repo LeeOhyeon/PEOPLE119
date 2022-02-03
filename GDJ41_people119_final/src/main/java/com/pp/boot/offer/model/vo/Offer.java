@@ -54,5 +54,7 @@ public class Offer {
 	
 	private Date endDate;
 	
+	private int status;
+	
 	
 }
