@@ -1,4 +1,4 @@
-package com.pp.boot.member.model.vo;
+package com.pp.boot.company.model.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
