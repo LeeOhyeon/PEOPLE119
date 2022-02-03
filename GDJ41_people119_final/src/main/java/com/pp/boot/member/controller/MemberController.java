@@ -38,7 +38,7 @@ public class MemberController {
 		Member loginMember = service.loginMember(param);
 		model.addAttribute("loginMember",loginMember);
 		
-		log.debug("{}"+loginMember);
+		
 		
 		return "redirect:/";
 	}

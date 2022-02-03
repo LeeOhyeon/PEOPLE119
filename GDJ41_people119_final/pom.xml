@@ -60,9 +60,9 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
-		</dependency>
-	</dependencies>
-
+		</dependency>		
+	</dependencies>	
+	
 	<build>
 		<plugins>
 			<plugin>
