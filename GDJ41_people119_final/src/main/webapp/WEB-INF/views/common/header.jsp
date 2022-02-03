@@ -77,8 +77,19 @@
               <li><a href="#">이력서 TIP</a></li>
             </ul>
           </li>
-          <li><a href="#">로그인</a></li>
-          <li><a href="#">회원가입</a></li>
+          <c:if test="${loginMember == null }">
+          	<li><a href="${path}/member/memberLoginView.do">로그인</a></li>
+          	<li><a href="#">회원가입</a></li>
+          </c:if>
+          <c:if test="${loginMember != null }">
+			<li class="dropdown"><a href="#"><span><c:out value="${loginMember.memberName }"/></span> <i class="bi bi-chevron-down"></i></a>
+				<ul>
+					<li><a href="#">마이페이지</a></li>
+					<li><a href="${path}/member/logout.do">로그아웃</a></li>
+				</ul>
+			</li>
+          	
+          </c:if>
           <!-- <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
           <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
         </ul>
