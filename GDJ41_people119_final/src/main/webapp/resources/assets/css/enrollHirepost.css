@@ -1,0 +1,20 @@
+section{
+	padding-left: 300px; 
+	padding-right: 300px;
+}
+
+div.content{
+	position: relative;
+	min-height: 1000px;
+	width: 1303px;
+	border: 1px solid black;
+	padding: 50px 50px 50px 50px;
+}
+
+input.input{
+	display: block;
+}
+
+input.title{
+	width: 80%;
+}

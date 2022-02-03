@@ -8,7 +8,23 @@
 <link href="/resources/assets/css/hirepost.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-<section>
+	<!-- ======= Breadcrumbs Section ======= -->
+	<section class="breadcrumbs">
+		<div class="container">
+
+			<div class="d-flex justify-content-between align-items-center">
+				<h2>채용공고</h2>
+				<ol>
+					<li><a href="index.html">Home</a></li>
+					<li>채용공고</li>
+				</ol>
+			</div>
+
+		</div>
+	</section>
+	<!-- End Breadcrumbs Section -->
+
+<section class="inner-page">
 	<br><br>	
 	<!-- ===== 포지션 탐색 버튼 ===== -->
 	 <div class="margin">
