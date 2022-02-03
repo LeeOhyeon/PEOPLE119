@@ -20,5 +20,10 @@ public class MemberDaoImpl implements MemberDao {
 		return session.insert("member.enrollMember",member);
 	}
 
+	@Override
+	public Member checkEmail(SqlSessionTemplate session, String email) {
+		return session.selectOne("member.checkEmail",email);
+	}
+
 	
 }

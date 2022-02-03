@@ -60,3 +60,11 @@ font-weight: bolder;
   margin:0px;
   color:red;
   }
+  .resultCode{
+  padding: 0px;
+	margin-bottom: 10px;
+  }
+.resultEmail{
+	padding: 0px;
+	margin-bottom: 10px;
+}

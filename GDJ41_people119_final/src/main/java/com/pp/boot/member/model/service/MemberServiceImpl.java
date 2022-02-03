@@ -29,6 +29,12 @@ public class MemberServiceImpl implements MemberService {
 		return dao.enrollMember(session,member);
 	}
 
+	@Override
+	public Member checkEmail(String email) {
+
+		return dao.checkEmail(session,email);
+	}
+
 	
 	
 	
