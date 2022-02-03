@@ -20,4 +20,9 @@ public class PeopleController {
 	public String hirepostList() {
 		return "hirepost/hirepostList";
 	}
+	
+	@RequestMapping("/hirepost/hirepostView.do")
+	public String hirepostView() {
+		return "hirepost/hirepostView";
+	}
 }

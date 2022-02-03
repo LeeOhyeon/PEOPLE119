@@ -47,7 +47,7 @@
 		<div id="hirepost">
 			<img alt="회사사진" src="">
 			<p>회사이름</p>
-			<p>채용공고 제목</p>
+			<a href="${path }/hirepost/hirepostView.do">채용공고 제목</a>
 			<p>기술스택</p>
 			<p>위치 및 경력</p>
 		</div>
@@ -69,8 +69,6 @@
 		</div>
 	</div>
 	<!-- ===== End 지금뜨는 채용공고 ===== -->
-
-  
 
 	<!-- ===== 채용공고 리스트 ===== -->
 	<div>
