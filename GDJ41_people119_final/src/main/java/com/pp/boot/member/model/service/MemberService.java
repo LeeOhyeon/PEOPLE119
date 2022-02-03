@@ -7,6 +7,6 @@ import com.pp.boot.member.model.vo.Member;
 public interface MemberService {
 
 	Member loginMember(Map param);
-	
+	int enrollMember(Member member);
 	
 }

@@ -23,6 +23,12 @@ public class MemberServiceImpl implements MemberService {
 		return dao.loginMember(session, param);
 	}
 
+	@Override
+	public int enrollMember(Member member) {
+		
+		return dao.enrollMember(session,member);
+	}
+
 	
 	
 	

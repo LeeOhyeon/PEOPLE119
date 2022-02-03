@@ -79,7 +79,7 @@
           </li>
           <c:if test="${loginMember == null }">
           	<li><a href="${path}/member/memberLoginView.do">로그인</a></li>
-          	<li><a href="#">회원가입</a></li>
+          	<li><a href="${path}/member/enrollMemberView.do">회원가입</a></li>
           </c:if>
           <c:if test="${loginMember != null }">
 			<li class="dropdown"><a href="#"><span><c:out value="${loginMember.memberName }"/></span> <i class="bi bi-chevron-down"></i></a>
