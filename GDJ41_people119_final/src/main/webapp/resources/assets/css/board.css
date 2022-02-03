@@ -1,0 +1,174 @@
+.boardCount{
+    display:inline-block;
+    margin-top:100px;
+    width:30%;
+}
+.boardSearch {
+    display:inline;
+    float:right;
+}
+.mb-3{
+    width:350px;
+    
+}
+.board-search{
+    display:inline-block;
+}
+.board-login{
+    margin-left:50px;
+    display:inline-block;
+    text-align: center;
+    padding:20px;
+    margin-top:40px;
+    
+}
+.community-image {
+    font-size:30px;
+
+}
+.login-ann {
+    display:flex;
+}
+.login {
+    font-size:14px;
+}
+.topic{
+    display:flex;
+}
+.topic-font{
+    font-size:20px;
+}
+.hot-image{
+    font-size:20px;
+    margin-left:20px;
+}
+
+.board-content {
+    margin-top:30px;
+    border:1px solid #333;
+    border-radius:10px;
+    padding:20px;
+    width:1000px;
+}
+.content{
+    margin-top:10px;
+}
+.content div {
+    margin-top:15px;
+    margin-bottom:15px;
+}
+.board-category{
+    margin-top:100px;
+}
+.category{
+    display:flex;
+}
+.category button {
+    margin-top:10px;
+    margin-right:10px;
+}
+.btn-light{
+    border:1px solid #333;
+}
+.whole-content{
+    display:inline-block;
+    width:35%;
+    height:250px;
+    border:1px solid #333;
+    border-radius: 10px;
+    padding:20px;
+    margin-right:20px;
+}
+.ready-empl{
+    display:inline-block;
+    width:35%;
+    height:250px;
+    border:1px solid #333;
+    border-radius: 10px;
+    padding:20px;
+}
+.whole-title{
+    display:inline-block;
+}
+.whole-total-view {
+    display:inline;
+    float:right;
+}
+.ready-title{
+    display:inline-block;
+}
+.ready-total-view {
+    display:inline;
+    float:right;
+}
+.board {
+    margin-top:30px;
+}
+.board-2{
+    margin-top:30px;
+}
+.board-3{
+    margin-top:30px;
+}
+.turnover-content{
+    display:inline-block;
+    width:35%;
+    height:250px;
+    border:1px solid #333;
+    border-radius: 10px;
+    padding:20px;
+    margin-right:20px;
+}
+.leave-content {
+    display:inline-block;
+    width:35%;
+    height:250px;
+    border:1px solid #333;
+    border-radius: 10px;
+    padding:20px;
+}
+.turnover-title{
+    display:inline-block;
+}
+.turnover-total-view{
+    display:inline;
+    float:right;
+}
+.leave-title{
+    display:inline-block;
+}
+.leave-total-view{
+    display:inline;
+    float:right;
+}
+.free-content{
+    display:inline-block;
+    width:35%;
+    height:250px;
+    border:1px solid #333;
+    border-radius: 10px;
+    padding:20px;
+    margin-right:20px;
+}
+.question-content {
+    display:inline-block;
+    width:35%;
+    height:250px;
+    border:1px solid #333;
+    border-radius: 10px;
+    padding:20px;
+}
+.free-title{
+    display:inline-block;
+}
+.free-total-view{
+    display:inline;
+    float:right;
+}
+.question-title{
+    display:inline-block;
+}
+.question-total-view{
+    display:inline;
+    float:right;
+}
