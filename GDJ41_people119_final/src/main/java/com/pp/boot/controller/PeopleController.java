@@ -15,4 +15,9 @@ public class PeopleController {
 	public String companyMaining() {
 		return "company/companyIndex";
 	}
+	
+	@RequestMapping("/hirepost/hirepostList.do")
+	public String hirepostList() {
+		return "hirepost/hirepostList";
+	}
 }
