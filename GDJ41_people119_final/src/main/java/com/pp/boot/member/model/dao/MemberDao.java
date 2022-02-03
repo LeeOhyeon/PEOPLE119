@@ -10,4 +10,5 @@ public interface MemberDao {
 
 	Member loginMember(SqlSessionTemplate session ,Map param);
 	int enrollMember(SqlSessionTemplate session,Member member);
+	Member checkEmail(SqlSessionTemplate session, String email);
 }
