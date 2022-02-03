@@ -101,7 +101,7 @@
     display:inline;
     float:right;
 }
-.board {
+.board-1{
     margin-top:30px;
 }
 .board-2{
@@ -171,4 +171,22 @@
 .question-total-view{
     display:inline;
     float:right;
+}
+.whole-contents>div{
+	margin-bottom:10px;
+}
+.ready-contents>div{
+	margin-bottom:10px;
+}
+.turnover-contents>div{
+	margin-bottom:10px;
+}
+.leave-contents>div {
+	margin-bottom:10px;
+}
+.free-contents>div {
+	margin-bottom:10px;
+}
+.qa-contents>div{
+	margin-bottom:10px;
 }

@@ -21,5 +21,35 @@ public class BoardDaoImpl implements BoardDao {
 		
 		return session.selectOne("board.boardListCount");
 	}
+
+	@Override
+	public List<Board> freeList(SqlSessionTemplate session) {
+		// TODO Auto-generated method stub
+		return session.selectList("board.selectfreeList");
+	}
+
+	@Override
+	public List<Board> leaveList(SqlSessionTemplate session) {
+		// TODO Auto-generated method stub
+		return session.selectList("board.selectleaveList");
+	}
+
+	@Override
+	public List<Board> qaList(SqlSessionTemplate session) {
+		// TODO Auto-generated method stub
+		return session.selectList("board.selectqaList");
+	}
+
+	@Override
+	public List<Board> readyList(SqlSessionTemplate session) {
+		// TODO Auto-generated method stub
+		return session.selectList("board.selectreadyList");
+	}
+
+	@Override
+	public List<Board> turnoverList(SqlSessionTemplate session) {
+		// TODO Auto-generated method stub
+		return session.selectList("board.selectturnoverList");
+	}
 	
 }
