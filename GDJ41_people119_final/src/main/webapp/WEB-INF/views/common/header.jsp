@@ -73,7 +73,7 @@
           </li>
           <li class="dropdown"><a href="#"><span>커뮤니티</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">면접 TIP</a></li>
+              <li><a href="${path}/board/boardList.do">면접 TIP</a></li>
               <li><a href="#">이력서 TIP</a></li>
             </ul>
           </li>

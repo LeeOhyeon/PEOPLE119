@@ -48,3 +48,15 @@ font-weight: bolder;
 	padding: 0px;
 	margin-bottom: 10px;
 }
+.checkPassword{
+	padding: 0px;
+	margin-bottom: 10px;
+}
+ .password_ck{
+ 	padding: 0px;
+	margin-bottom: 10px;
+ }
+  .password_ck span{
+  margin:0px;
+  color:red;
+  }
