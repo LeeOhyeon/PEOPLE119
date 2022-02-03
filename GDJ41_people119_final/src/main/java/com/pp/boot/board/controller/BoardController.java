@@ -23,10 +23,21 @@ public class BoardController {
 	@RequestMapping("/boardList.do")
 	public ModelAndView boardList(ModelAndView mv) {
 		
-		List<Board> list=service.boardList();
+		List<Board> list=service.boardList(); //전체리스트
+		List<Board> free=service.freeList();
+		List<Board> leave=service.leaveList();
+		List<Board> turnover=service.turnoverList();
+		List<Board> qa=service.qaList();
+		List<Board> ready=service.readyList();
+		
 		int count=service.boardListCount();
 		log.debug("{}"+list);
 		mv.addObject("list",list);
+		mv.addObject("free",free);
+		mv.addObject("leave",leave);
+		mv.addObject("turnover",turnover);
+		mv.addObject("qa",qa);
+		mv.addObject("ready",ready);
 		mv.addObject("count",count);
 		mv.setViewName("board/boardList");
 		return mv;

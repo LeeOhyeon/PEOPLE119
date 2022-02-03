@@ -97,7 +97,7 @@
                 </div>
                 <div class="whole-contents">
                   <c:if test="${not empty list}">
-            		<c:forEach var="l" items="${list}">
+            		<c:forEach var="l" items="${list}" begin="0" end="4">
                  	 <div><a href="#"><c:out value="${l.boardTitle}"/></a></div>
                   	</c:forEach>
                   </c:if>
@@ -112,12 +112,10 @@
                 <div class="ready-total-view">
                   <a href="#" class="ready-total">더보기</a>
                 </div>
-                 <div class="ready-contents">                 
-            		<c:forEach var="l" items="${list}">
-            			<c:if test="${l.category eq '취준'}">
-                 			 <div><a href="#"><c:out value="${l.boardTitle}"/></a></div>
-                  		</c:if>
-                  	</c:forEach>
+                 <div class="ready-contents">               
+            		<c:forEach var="r" items="${ready}" begin="0" end="4">        		
+         					<div><a href="#"><c:out value="${r.boardTitle}"/></a></div>
+            		</c:forEach>
              	 </div>
               </div>
             </div>
@@ -131,6 +129,11 @@
                 <div class="turnover-total-view">
                   <a href="#" class="turnover-total">더보기</a>
                 </div>
+                <div class="turnover-contents">                 
+            		<c:forEach var="t" items="${turnover}" begin="0" end="4">            			
+                 			 <div><a href="#"><c:out value="${t.boardTitle}"/></a></div>
+					</c:forEach>
+             	 </div>
               </div>
             </div>
             <div class="leave-content">
@@ -141,6 +144,13 @@
                 <div class="leave-total-view">
                   <a href="#" class="leave-total">더보기</a>
                 </div>
+                <div class="leave-contents">                 
+            		<c:forEach var="e" items="${leave}" begin="0" end="4">
+            			
+                 			 <div><a href="#"><c:out value="${e.boardTitle}"/></a></div>
+                  		
+                  	</c:forEach>
+             	 </div>
               </div>
             </div>
           </div>
@@ -148,21 +158,35 @@
             <div class="free-content">
               <div class="free">
                 <div class="free-title">
-                  <h5><strong>이직</strong></h5>  
+                  <h5><strong>잡담</strong></h5>  
                 </div>
                 <div class="free-total-view">
                   <a href="#" class="free-total">더보기</a>
                 </div>
+                <div class="free-contents">                 
+            		<c:forEach var="f" items="${free}" begin="0" end="4">
+            			
+                 			 <div><a href="#"><c:out value="${f.boardTitle}"/></a></div>
+                  		
+                  	</c:forEach>
+             	 </div>
               </div>
             </div>
             <div class="question-content">
               <div class="question">
                 <div class="question-title">
-                  <h5><strong>이직</strong></h5>  
+                  <h5><strong>Q&A</strong></h5>  
                 </div>
                 <div class="question-total-view">
                   <a href="#" class="question-total">더보기</a>
                 </div>
+                <div class="qa-contents">                 
+            		<c:forEach var="q" items="${qa}" begin="0" end="4">
+            			
+                 			 <div><a href="#"><c:out value="${q.boardTitle}"/></a></div>
+                  		
+                  	</c:forEach>
+             	 </div>
               </div>
             </div>
           </div>
@@ -173,6 +197,7 @@
 		const login=()=> {
 			location.assign("${path}/member/memberLoginView.do");
 		}
+		
     </script>
   </main><!-- End #main -->
  <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
