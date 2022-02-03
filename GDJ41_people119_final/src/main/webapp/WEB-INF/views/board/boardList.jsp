@@ -148,7 +148,7 @@
             <div class="free-content">
               <div class="free">
                 <div class="free-title">
-                  <h5><strong>이직</strong></h5>  
+                  <h5><strong>잡담</strong></h5>  
                 </div>
                 <div class="free-total-view">
                   <a href="#" class="free-total">더보기</a>
@@ -158,7 +158,7 @@
             <div class="question-content">
               <div class="question">
                 <div class="question-title">
-                  <h5><strong>이직</strong></h5>  
+                  <h5><strong>Q&A</strong></h5>  
                 </div>
                 <div class="question-total-view">
                   <a href="#" class="question-total">더보기</a>
