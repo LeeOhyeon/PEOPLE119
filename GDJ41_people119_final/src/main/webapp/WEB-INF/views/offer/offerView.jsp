@@ -6,7 +6,7 @@
 
 
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-<link href="/resources/assets/css/hirepostView.css" rel="stylesheet">
+<link href="/resources/assets/css/offerView.css" rel="stylesheet">
 
 <section style="display: flex;">
 

@@ -5,7 +5,7 @@
 <c:set var="path" value="${pageContext.request.contextPath }"/>
 
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-<link href="/resources/assets/css/hirepost.css" rel="stylesheet">
+<link href="/resources/assets/css/offer.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 	<!-- ======= Breadcrumbs Section ======= -->
@@ -63,7 +63,7 @@
 		<div id="hirepost">
 			<img alt="회사사진" src="">
 			<p>회사이름</p>
-			<a href="${path }/hirepost/hirepostView.do">채용공고 제목</a>
+			<a href="${path }/offer/offerView.do">채용공고 제목</a>
 			<p>기술스택</p>
 			<p>위치 및 경력</p>
 		</div>

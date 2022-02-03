@@ -5,7 +5,7 @@
 <c:set var="path" value="${pageContext.request.contextPath }"/>
 
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-<link href="/resources/assets/css/enrollHirepost.css" rel="stylesheet">
+<link href="/resources/assets/css/enrollOffer.css" rel="stylesheet">
 
 	<!-- ======= Breadcrumbs Section ======= -->
 	<section class="breadcrumbs">
@@ -42,51 +42,60 @@
 				</div>
 				
 				<div id="business">
-					<p class="title">주요업무</p>
-					<ul>
-						<li><input type="text"><input type="button" value="추가" onclick="add_input_business();"></li>
+					<p class="p">주요업무</p><input class="flex" type="button" value="추가" onclick="add_input_business();">
+					<ul id="businessUl">
+						<li><input type="text"></li>
 					</ul>
 				</div>
 				
 				<div id="qualification">
-					<p class="title">자격요건</p>
+					<p class="p">자격요건</p><input class="flex" type="button" value="추가" onclick="add_input_business();">
 					<ul>
-						<li>전공자</li>
+						<li><input type="text"></li>
 					</ul>
 				</div>
 				
-				<p class="title">우대사항</p>
-				<ul>
-					<li>군필우대</li>
-				</ul>
+				<div id="">
+					<p class="p">우대사항</p><input class="flex" type="button" value="추가" onclick="add_input_business();">
+					<ul>
+						<li><input type="text"></li>
+					</ul>
+				</div>
 				
-				<p class="title">복지 및 혜택</p>
-				<ul>
-					<li>워라밸 개쩜 ㅋㅋ</li>
-				</ul>
+				<div id="">
+					<p class="p">복지 및 혜택</p><input class="flex" type="button" value="추가" onclick="add_input_business();">
+					<ul>
+						<li><input type="text"></li>
+					</ul>
+				</div>
 				
-				<p class="title">기업 / 서비스 소개</p>
-				<img alt="회사사진" src="">
-				<p>무슨무슨 서비스를 제공합니다</p>
+				<div>
+					<p class="title">기업 / 서비스 소개</p>
+					<input type="file" style="display: block;">
+					<textarea placeholder="기업과 서비스에 대해 소개 해주세요."></textarea>
+				</div>
 				
 				<table>
 					<tr>
 						<td>경력</td>
-						<td></td>
+						<td><input type="text"></td>
 					</tr>
 					<tr>
 						<td>학력</td>
-						<td></td>
+						<td><input type="text"></td>
 					</tr>
 					<tr>
 						<td>마감일</td>
-						<td></td>
+						<td><input type="text"></td>
 					</tr>
 					<tr>
 						<td>근무지역</td>
-						<td></td>
+						<td><input type="text"></td>
 					</tr>
 				</table>
+			</div>
+			<div id="submit">
+				<input type="submit" value="등록">
 			</div>
 		</form>
 		
@@ -94,9 +103,16 @@
 	
 	<script>
 		const add_input_business=()=>{
-			const business = $("#business");
+			const businessUl = $("#businessUl");
 			const li = $("<li>");
-			const newInput = $("<input type='text'>")
+			const newInput = $("<input type='text'>");
+			const newInputButton = $("<input type='button' value='삭제' onclick='remove(this)'>");
+			li.append(newInput).append(newInputButton);
+			businessUl.append(li)
+		}
+		
+		const remove=(obj)=>{
+			document.getElementById('businessUl').removeChild(obj.parentNode);
 		}
 	</script>
 

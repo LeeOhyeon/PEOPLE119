@@ -51,7 +51,7 @@
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto active" href="${path}/company/companyIndex.do">기업메인</a></li>
-          <li class="dropdown"><a href="${path }/hirepost/hirepostList.do"><span>채용정보</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="${path }/offer/offerList.do"><span>채용정보</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">지역</a></li>
               <li><a href="#">포지션</a></li>
