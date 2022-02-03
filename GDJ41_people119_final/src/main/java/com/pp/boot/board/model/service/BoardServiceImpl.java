@@ -28,4 +28,29 @@ public class BoardServiceImpl implements BoardService {
 		int count=dao.boardListCount(session);
 		return count;
 	}
+	@Override
+	public List<Board> freeList() {
+		List<Board> free=dao.freeList(session);
+		return free;
+	}
+	@Override
+	public List<Board> leaveList() {
+		List<Board> leave=dao.leaveList(session);
+		return leave;
+	}
+	@Override
+	public List<Board> qaList() {
+		List<Board> qa=dao.qaList(session);
+		return qa;
+	}
+	@Override
+	public List<Board> readyList() {
+		List<Board> ready=dao.readyList(session);
+		return ready;
+	}
+	@Override
+	public List<Board> turnoverList() {
+		List<Board> turnover=dao.turnoverList(session);
+		return turnover;
+	}
 }
