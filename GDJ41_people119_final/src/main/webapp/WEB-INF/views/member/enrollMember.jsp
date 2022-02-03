@@ -28,13 +28,13 @@
 		<div class="container">
 
 			<div class="enroll-Container">
-				<form action="${path }/member/enrollMember.do" method="post">
+				<form action="${path }/member/enrollMember.do" method="post" >
 					<div class="input-info-container">
 						<div class="enroll_title">개인회원가입</div>
 						<div class="input-name">ID</div>
 						<div class="input-info">
 							<div class="input-group mb-3">
-								<input type="text" class="form-control"
+								<input type="text" class="form-control" required="required"
 									aria-label="Recipient's username"
 									aria-describedby="button-addon2" name="memberId" id="memberId">
 								<button class="btn btn-outline-secondary" type="button"
@@ -44,22 +44,29 @@
 							</div>
 							<div class="input-name">PASSWORD</div>
 							<div class="input-info">
-								<input class="form-control" type="password"
-									aria-label="default input example" name="password" id="password">
+								<input class="form-control" type="password" required="required"
+									aria-label="default input example" name="password" id="password" placeholder="영문 대/소문자+숫자+특수문자 조합 최소 8자리 이상">
 							</div>
+							<div class="password_ck">
+							</div>
+							
 							<div class="input-name">PASSWORD_CHECK</div>
 							<div class="input-info">
-								<input class="form-control" type="text"
+								<input class="form-control" type="password"
 									aria-label="default input example" id="password_">
 							</div>
+							<div class="checkPassword">
+							
+							</div>
+							
 							<div class="input-name">EMAIL</div>
 							<div class="input-info">
 								<div class="input-group mb-3">
 									<input type="text" class="form-control"
-										aria-label="Recipient's username" name="email"
-										aria-describedby="button-addon2">
+										aria-label="Recipient's username" name="email" id="email" required="required"
+										aria-describedby="sendMail">
 									<button class="btn btn-outline-secondary" type="button"
-										id="button-addon2">인증</button>
+										id="sendMail">인증</button>
 								</div>
 							</div>
 							<div class="input-name">EMAIL_CHECK</div>
@@ -101,22 +108,68 @@
 
 <script>
 	const checkId=()=>{
-		$.ajax({
-			url : "${path}/member/enrollCheckId.do",
-			data:{memberId:$("#memberId").val()},
-			success : data=>{
-				console.log(data);
-				if(data){
-					$(".checkIdResult").html("<span style='color:green;'>사용 가능한 아이디 입니다.</span>");
-					
-				}else{
-					$(".checkIdResult").html("<span style='color:red;'>이미 사용중인 아이디 입니다.</span>");
+		
+		const memberId = $("#memberId").val();
+		if(memberId.length<5 || memberId.length>13){
+			$(".checkIdResult").html("<span style='color:red;'>아이디는 5글자 이상 13글자 미만입니다.</span>");
+		}else{
+			$.ajax({
+				url : "${path}/member/enrollCheckId.do",
+				data:{memberId:$("#memberId").val()},
+				dataType:"json",
+				success : data=>{
+					console.log(data);
+					if(data){
+						$(".checkIdResult").html("<span style='color:green;'>사용 가능한 아이디 입니다.</span>");
+						
+					}else{
+						$(".checkIdResult").html("<span style='color:red;'>이미 사용중인 아이디 입니다.</span>");
+					}
 				}
-
-				
+			});	
+		}
+	}
+	
+	$("#password").change(()=>{
+		
+		const password = $("#password").val();
+		const checkPw=RegExp(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,25}$/);
+		
+		if(password.length<8 || password.length>16){
+			$(".password_ck").html("<span>비밀번호는 8글자 이상 16자 이하 입니다.</span>");
+			$("#password").val("");
+			$("#password").focus();
+		}else{
+			if(!checkPw.test(password)){
+				$(".password_ck").html("<span>비밀번호는 영문 대소문자+숫자+특수문자 조합 최소 8자리 이상으로 작성해주세요.</span>");
+				$("#password").val("");
+				$("#password").focus();
+			}else{
+				$(".password_ck").html("");
+			}
+		}
+	
+		$("#password_").change(()=>{
+			
+			const password = $("#password").val();
+			const password_ = $("#password_").val();
+			
+			if(password == password_){
+				$(".checkPassword").html("<span style='color:green;'>비밀번호가 일치합니다.</span>");
+			}else{
+				$(".checkPassword").html("<span style='color:red;'>비밀번호가 일치하지 않습니다.</span>");
+				$("#password_").val("");
+				$("#password_").focus();
 			}
 		});
-	}
+	});
+	
+	
+	//이메일 인증
+	$("#sendMail").click(()=>{
+ 		
+	})
+	
 </script>
 
 
