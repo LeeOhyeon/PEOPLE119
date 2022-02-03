@@ -6,6 +6,7 @@ section{
 #hotHirepost{
 	display: flex;	
 	justify-content: space-around;
+	border: 1px black solid;
 }
 
 .btn{
@@ -15,4 +16,8 @@ section{
 #hirepostList{
 	display: flex;	
 	justify-content: space-around;
+}
+
+div.margin{
+	margin-bottom: 80px;
 }

@@ -11,7 +11,7 @@
 <section>
 	<br><br>	
 	<!-- ===== 포지션 탐색 버튼 ===== -->
-	 <div>
+	 <div class="margin">
 	 	<h1>포지션 탐색</h1>
 	 	
 		<button class="btn btn-outline-primary">전체</button>
@@ -42,7 +42,7 @@
 	<div>
 		<h1>지금 뜨는 채용공고</h1>
 	</div>
-	<div id="hotHirepost" style="border: 1px black solid">
+	<div id="hotHirepost" class="margin">
 		<!-- TOP1 -->
 		<div id="hirepost">
 			<img alt="회사사진" src="">
@@ -71,7 +71,7 @@
 	<!-- ===== End 지금뜨는 채용공고 ===== -->
 
 	<!-- ===== 채용공고 리스트 ===== -->
-	<div>
+	<div class="margin">
 		<!-- 경력 / 지역 / 기술스택 별 select버튼 -->	
 		<div>
 			<select>
