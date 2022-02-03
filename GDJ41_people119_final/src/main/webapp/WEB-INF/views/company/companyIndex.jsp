@@ -24,7 +24,7 @@
       </div>
     </div>
 
-  </section><!-- End Hero -->
+  </section><!-- End Hero -->T
 
   <main id="main">
 
