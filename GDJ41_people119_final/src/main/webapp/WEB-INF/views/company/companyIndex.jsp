@@ -83,7 +83,7 @@
             <div class="col-lg-3 col-md-4 mt-4">
               <div class="icon-box">
                 <i class="ri-price-tag-2-line" style="color: #4233ff;"></i>
-                <h3><a href="">Pira Neve</a></h3>
+                <h3><a href="${path }/company/companyMypage.do">MyPage</a></h3>
               </div>
             </div>
           </div>
