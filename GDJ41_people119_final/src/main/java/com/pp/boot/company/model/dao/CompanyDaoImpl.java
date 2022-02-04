@@ -14,4 +14,8 @@ public class CompanyDaoImpl implements CompanyDao{
 		return session.selectOne("company.selectCompany",param);
 		
 	}
+	@Override
+	public int enrollCompany(SqlSessionTemplate session, Company company) {
+		return session.insert("company.enrollCompany",company);
+	}
 }

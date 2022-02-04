@@ -9,5 +9,6 @@ import com.pp.boot.company.model.vo.Company;
 public interface CompanyDao {
 
 	Company loginCompany(SqlSessionTemplate session, Map param);
+	int enrollCompany(SqlSessionTemplate session, Company company);
 
 }

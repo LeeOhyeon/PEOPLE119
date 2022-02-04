@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import com.pp.boot.company.model.service.CompanyService;
 import com.pp.boot.company.model.vo.Company;
+import com.pp.boot.member.model.vo.Member;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -52,6 +54,31 @@ public class CompanyController {
 		}
 		
 		return "redirect:/";
+	}
+	
+	@RequestMapping("/company/enrollCompanyView.do")
+	public String enrollMemberView() {
+		return "company/enrollCompany";
+	}
+	
+	@PostMapping("/company/enrollCompany.do")
+	public String enrollMember(Company company,Model model) {
+				
+		company.setPassword(encoder.encode(company.getPassword()));
+		int result = service.enrollCompany(company);		
+		String msg = "";
+		String loc ="";		
+		if(result>0) {
+			msg="회원가입이 완료되었습니다. 로그인 해주세요";
+			loc="/";
+		}else {
+			msg="회원가입 실패";
+			loc="enrollCompanyView.do";
+		}
+		model.addAttribute("msg",msg);
+		model.addAttribute("loc",loc);
+		
+		return "common/msg";
 	}
 	
 }

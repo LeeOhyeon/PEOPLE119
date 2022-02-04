@@ -21,4 +21,8 @@ public class CompanyServiceImpl implements CompanyService {
 	public Company loginCompany(Map param) {
 		return dao.loginCompany(session,param);
 	}
+	@Override
+	public int enrollCompany(Company company) {
+		return dao.enrollCompany(session,company);
+	}
 }
