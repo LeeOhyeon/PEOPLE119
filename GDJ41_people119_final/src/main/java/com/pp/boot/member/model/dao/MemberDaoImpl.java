@@ -25,5 +25,15 @@ public class MemberDaoImpl implements MemberDao {
 		return session.selectOne("member.checkEmail",email);
 	}
 
+	@Override
+	public Member searchId(SqlSessionTemplate session, Map param) {
+		return session.selectOne("member.searchId",param);
+	}
+
+	@Override
+	public int updatePassword(SqlSessionTemplate session, Map param) {
+		return session.update("member.updatePassword",param);
+	}
+
 	
 }
