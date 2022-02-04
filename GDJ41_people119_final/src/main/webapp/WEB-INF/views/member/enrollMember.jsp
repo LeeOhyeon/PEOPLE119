@@ -56,9 +56,7 @@
 								<input class="form-control" type="password"
 									aria-label="default input example" id="password_">
 							</div>
-							<div class="checkPassword">
-							
-							</div>
+							<div class="checkPassword"></div>
 							
 							<div class="input-name">EMAIL</div>
 							<div class="input-info">
@@ -70,9 +68,7 @@
 									 onclick="sendMail();">인증</button>
 								</div>
 							</div>
-							<div class="resultEmail">
-							
-							</div>
+							<div class="resultEmail"></div>
 							
 							
 							<div class="input-name">EMAIL_CHECK</div>
@@ -85,9 +81,7 @@
 										onclick="compareKey();">인증확인</button>
 								</div>
 							</div>
-							<div class="resultCode">
-							
-							</div>
+							<div class="resultCode"></div>
 							
 							
 							
@@ -201,11 +195,13 @@
 	});
 	
 	//이메일 인증
- 	let comparekey;
-	const sendMail=()=>{
-		
-		let email = $("#email").val();
-		
+let comparekey;
+const sendMail=()=>{
+	
+	let email = $("#email").val();
+	if(email.trim().length == 0 || email == null){
+		alert("이메일을 입력해 주세요!");
+	}else{
 		$.ajax({
 			type:"post",
 			url:"/member/sendMail.do",
@@ -218,9 +214,10 @@
 			error : e=>{
 				console.log("실패");
 			}
-			
 		});
 	}
+	
+}
 
 	
 	//인증번호 확인

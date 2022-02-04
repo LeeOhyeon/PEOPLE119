@@ -40,7 +40,7 @@
 						</form>
 					</div>
 					<div class="enroll">
-						<a href="${path}/member/enrollMemberView.do"><strong>회원가입</strong></a> | <a href="${path}/member/searchIdView.do">아이디/비밀번호
+						<a href="${path}/member/enrollMemberView.do"><strong>회원가입</strong></a> | <a href="${path}/member/searchIdpasswordView.do">아이디/비밀번호
 							찾기</a>
 					</div>
 				</div>

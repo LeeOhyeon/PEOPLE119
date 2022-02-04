@@ -35,6 +35,16 @@ public class MemberServiceImpl implements MemberService {
 		return dao.checkEmail(session,email);
 	}
 
+	@Override
+	public Member searchId(Map param) {
+		return dao.searchId(session,param);
+	}
+
+	@Override
+	public int updatePassword(Map param) {
+		return dao.updatePassword(session,param);
+	}
+
 	
 	
 	

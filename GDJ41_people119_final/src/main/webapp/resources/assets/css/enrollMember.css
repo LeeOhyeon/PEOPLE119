@@ -68,3 +68,6 @@ font-weight: bolder;
 	padding: 0px;
 	margin-bottom: 10px;
 }
+.btn{
+	 border: 1px solid lightgray;
+}
