@@ -89,7 +89,7 @@
 				<li class="dropdown"><a href="#"><span><c:out value="${loginMember.memberName }"/></span> <i class="bi bi-chevron-down"></i></a>
 			</c:if>
 				<ul>
-					<li><a href="#">마이페이지</a></li>
+					<li><a href="${path }/member/memberInfoView.do">마이페이지</a></li>
 					<li><a href="${path}/member/logout.do">로그아웃</a></li>
 				</ul>
 			</li>

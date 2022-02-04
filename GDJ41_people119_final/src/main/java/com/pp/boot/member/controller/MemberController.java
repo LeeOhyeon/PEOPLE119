@@ -222,4 +222,10 @@ public class MemberController {
 		response.setContentType("application/json; charset=utf-8");
 		return result; 
 	}
+	
+	//마이페이지로 이동
+	@RequestMapping("/memberInfoView.do")
+	public String memberInfoView() {
+		return "member/memberInfo";
+	}
 }
