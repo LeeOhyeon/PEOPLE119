@@ -177,4 +177,50 @@ public class MemberController {
 		response.setContentType("application/json; charset=utf-8");
 		response.getWriter().print(member!=null?false:true);
 	}
+	
+	
+	//아이디 비밀번호 찾기 화면 이동
+	@RequestMapping("/searchIdpasswordView.do")
+	public String searchIdpasswordView() {
+		return "member/searchIdpassword";
+	}
+	
+	
+	//아이디 찾기 화면 이동
+	@RequestMapping("/searchIdView.do")
+	public String searchIdView() {
+		return "member/membersearchId";
+	}
+	
+	//비밀번호 찾기 화면 이동
+		@RequestMapping("/searchpasswordView.do")
+		public String searchpasswordView() {
+			return "member/membersearchpassword";
+		}
+		
+	//아이디 찾기
+	@RequestMapping("/searchId.do")
+	@ResponseBody
+	public Member searchId(@RequestParam Map param,HttpServletResponse response) throws IOException{
+		Member member = service.searchId(param);
+		log.debug("{}"+member);
+		response.setContentType("application/json; charset=utf-8");
+		return member; 
+	}
+		
+	//비밀번호 변경
+	@RequestMapping("/updatePassword.do")
+	@ResponseBody
+	public int updatePassword(@RequestParam Map<String,String> param,HttpServletResponse response) throws IOException{
+
+		String password = "";
+		password = (String)param.get("password");  
+		password = encoder.encode(password);
+		param.put("password",password);
+		
+		
+		int result = service.updatePassword(param);
+		response.setContentType("application/json; charset=utf-8");
+		return result; 
+	}
 }
