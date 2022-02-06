@@ -39,7 +39,7 @@ public class CompanyController {
 		if(loginCompany != null && encoder.matches((String)param.get("password"),loginCompany.getPassword()))
 			model.addAttribute("loginCompany",loginCompany);
 		
-		return "redirect:/";
+		return "redirect:/company/companyIndex.do";
 	}
 	
 	@RequestMapping("/company/companyLogout.do")
@@ -49,7 +49,7 @@ public class CompanyController {
 			status.setComplete();
 		}
 		
-		return "redirect:/";
+		return "redirect:/company/companyIndex.do";
 	}
 	
 	@RequestMapping("/company/enrollCompanyView.do")

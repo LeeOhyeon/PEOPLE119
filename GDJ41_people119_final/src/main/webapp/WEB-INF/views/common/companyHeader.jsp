@@ -42,14 +42,14 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1><a href="/">PEOPLE119</a></h1>
+        <h1><a href="${path}/company/companyIndex.do">PEOPLE119 COMPANY</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="/resources/assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto active" href="${path}/company/companyIndex.do">Home</a></li>
           <li><a class="nav-link scrollto active" href="/">구직자메인</a></li>
           <li class="dropdown"><a href="#"><span>채용정보</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
@@ -77,16 +77,16 @@
               <li><a href="#">이력서 TIP</a></li>
             </ul>
           </li>
-          <c:if test="${loginMember == null }">
+          <c:if test="${loginCompany == null }">
           	<li><a href="${path}/company/companyLoginView.do">로그인</a></li>
           	<li><a href="${path}/company/enrollCompanyView.do">회원가입</a></li>
           </c:if>
-          <c:if test="${loginMember != null }">
-          	<c:if test="${loginMember.memberName eq null }">
-				<li class="dropdown"><a href="#"><span><c:out value="${loginMember.memberId }"/></span> <i class="bi bi-chevron-down"></i></a>
+          <c:if test="${loginCompany != null }">
+          	<c:if test="${loginCompany.getCompanyName eq null }">
+				<li class="dropdown"><a href="#"><span><c:out value="${loginCompany.getCompanyId }님"/></span> <i class="bi bi-chevron-down"></i></a>
 			</c:if>
-			<c:if test="${loginMember.memberName ne null }">
-				<li class="dropdown"><a href="#"><span><c:out value="${loginMember.memberName }"/></span> <i class="bi bi-chevron-down"></i></a>
+			<c:if test="${loginCompany.getCompanyName ne null }">
+				<li class="dropdown"><a href="#"><span><c:out value="${loginCompany.getCompanyName }님"/></span> <i class="bi bi-chevron-down"></i></a>
 			</c:if>
 				<ul>
 					<li><a href="#">마이페이지</a></li>
@@ -95,6 +95,7 @@
 			</li>
           	
           </c:if>
+          
           <!-- <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
           <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
         </ul>
@@ -103,3 +104,5 @@
 
     </div>
   </header><!-- End Header -->
+  
+  
