@@ -16,12 +16,8 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import com.pp.boot.company.model.service.CompanyService;
 import com.pp.boot.company.model.vo.Company;
-import com.pp.boot.member.model.vo.Member;
-
-import lombok.extern.slf4j.Slf4j;
 
 @Controller
-@Slf4j
 @SessionAttributes({"loginCompany"})
 public class CompanyController {
 
@@ -38,7 +34,7 @@ public class CompanyController {
 	
 	
 	@RequestMapping("/company/companyLogin.do")
-	public String companyLogin(@RequestParam Map param,Model model) {
+	public String loginCompany(@RequestParam Map param,Model model) {
 		Company loginCompany = service.loginCompany(param);
 		if(loginCompany != null && encoder.matches((String)param.get("password"),loginCompany.getPassword()))
 			model.addAttribute("loginCompany",loginCompany);
@@ -57,12 +53,12 @@ public class CompanyController {
 	}
 	
 	@RequestMapping("/company/enrollCompanyView.do")
-	public String enrollMemberView() {
+	public String enrollCompanyView() {
 		return "company/enrollCompany";
 	}
 	
 	@PostMapping("/company/enrollCompany.do")
-	public String enrollMember(Company company,Model model) {
+	public String enrollCompany(Company company,Model model) {
 				
 		company.setPassword(encoder.encode(company.getPassword()));
 		int result = service.enrollCompany(company);		

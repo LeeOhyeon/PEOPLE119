@@ -11,7 +11,7 @@ public class CompanyDaoImpl implements CompanyDao{
 	
 	@Override
 	public Company loginCompany(SqlSessionTemplate session, Map param) {
-		return session.selectOne("company.selectCompany",param);
+		return session.selectOne("company.loginCompany",param);
 		
 	}
 	@Override
