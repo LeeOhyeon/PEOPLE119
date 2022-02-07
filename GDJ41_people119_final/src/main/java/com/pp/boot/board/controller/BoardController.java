@@ -1,14 +1,20 @@
 package com.pp.boot.board.controller;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pp.boot.board.model.service.BoardService;
 import com.pp.boot.board.model.vo.Board;
+import com.pp.boot.board.model.vo.Comment;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -42,6 +48,7 @@ public class BoardController {
 		mv.addObject("qa",qa);
 		mv.addObject("ready",ready);
 		mv.addObject("count",count);
+		
 		mv.setViewName("board/boardList");
 		return mv;
 	}
@@ -50,9 +57,34 @@ public class BoardController {
 	public ModelAndView selectBoard(ModelAndView mv,int boardNo) {
 		
 		Board b=service.selectBoard(boardNo);
+		List<Comment> comment=service.commentList(boardNo);
 		log.debug("{}"+b);
 		mv.addObject("b",b);
+		mv.addObject("comment",comment);
 		mv.setViewName("board/selectBoard");
 		return mv;
+	}
+	@RequestMapping("/insertComment.do")
+	@ResponseBody
+	public List<Comment> insertComment(int boardNo,String memberId,String commentContent,int commentLevel,HttpServletResponse response) {
+		
+		Comment c=Comment.builder().boardNo(boardNo).memberId(memberId).commentContent(commentContent)
+				.commentLevel(commentLevel).build();
+		int result=service.insertComment(c);
+		List<Comment> comments=service.commentList(boardNo);
+		response.setContentType("application/json; charset=utf-8");
+		
+		return comments;
+	}
+	
+	
+	@RequestMapping("/selectComment.do")
+	@ResponseBody
+	public List<Comment> selectComment(@RequestParam int boardNo,HttpServletResponse response){
+		List<Comment> comments=service.commentList(boardNo);
+		
+		response.setContentType("application/json; charset=utf-8");
+		
+		return comments;
 	}
 }

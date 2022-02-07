@@ -82,17 +82,16 @@
           	<li><a href="${path}/company/enrollCompanyView.do">회원가입</a></li>
           </c:if>
           <c:if test="${loginCompany != null }">
-          	<c:if test="${loginCompany.getCompanyName eq null }">
-				<li class="dropdown"><a href="#"><span><c:out value="${loginCompany.getCompanyId }님"/></span> <i class="bi bi-chevron-down"></i></a>
+          	<c:if test="${loginCompany.companyName eq null }">
+				<li class="dropdown"><a href="#"><span><c:out value="${loginCompany.companyId }님"/></span> <i class="bi bi-chevron-down"></i></a>
 			</c:if>
-			<c:if test="${loginCompany.getCompanyName ne null }">
-				<li class="dropdown"><a href="#"><span><c:out value="${loginCompany.getCompanyName }님"/></span> <i class="bi bi-chevron-down"></i></a>
+			<c:if test="${loginCompany.companyName ne null }">
+				<li class="dropdown"><a href="#"><span><c:out value="${loginCompany.companyName }님"/></span> <i class="bi bi-chevron-down"></i></a>
 			</c:if>
 				<ul>
 					<li><a href="#">마이페이지</a></li>
 					<li><a href="${path}/company/logout.do">로그아웃</a></li>
 				</ul>
-			</li>
           	
           </c:if>
           

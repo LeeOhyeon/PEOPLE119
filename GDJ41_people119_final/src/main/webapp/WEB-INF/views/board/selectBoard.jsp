@@ -6,6 +6,11 @@
 
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <link href="/resources/assets/css/selectBoard.css" rel="stylesheet">
+<script>
+$(document).ready(()=>{ 
+	selectComment(); 
+});
+</script>
  <main id="main">
 
     <!-- ======= Breadcrumbs Section ======= -->
@@ -78,62 +83,97 @@
             <label for="floatingTextarea2">Comments</label>
           </div>
           <div class="submit">
-              <button type="button" class="btn btn-primary" style="width:120px">등록하기</button>
+              <button type="button" class="btn btn-primary" style="width:120px" onclick="insertComment();">등록하기</button>
           </div>
         </div>
         <div class="comment-list">
             <div class="comment-horizon">
               <h5><strong>답변</strong></h5>
             </div>
-            <div class="comment-content">
-              <div class="comment-container">
-                <div class="comment-1">
-                  자격증도 취득하는데 걸리는 시간이 존재합니다. 다만, 인턴이나 아르바이트 같은 활동이 없어서 걱정이시라면, 차라리 교육이수나 자원봉사같은 내용을 추가해보시는 건 어떨까 싶습니다. 일단은 HRM 쪽보단 HRD 쪽에 걸맞는 전공이기도 하고, 관련업무가 대략 어떤 프로세스로 돌아가는지나 사용하는 프로그램이 있다면, 그 관련 실습경험도 좋을 것 같습니다. 다만, 지금 당장으로서 일단 서류를 넣고 계시다고 하시니, 연락을 기다려보시면서 앞서 제가 말씀드린 내용을 토대로 최소 3개월 정도를 준비해보시는 건 어떨까 싶네요.
-                </div>
-                <div class="comment-delete">
-                  <span class="delete-btn"><i class="fas fa-ellipsis-v"></i></span>
-                </div>
-              </div>
-              <div class="member-container">
-                <div>
-                  <span class="member-id"><strong>kosaz123</strong></span>
-                </div>
-                <div>
-                  <p>2022-02-04</p>
-                </div>
-              </div>
-            </div>
-            <div class="comment-reply">
-              <div class="arrow">
-                <span class="arrow-image"><i class="fas fa-angle-right"></i></span>
-              </div>
-              <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="답변에 댓글을 입력해보세요" aria-label="reply" aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2" >등록하기</button>
-              </div>
-            </div>
-            <div class="comment-content2">
-              <div class="comment-container">
-                <div class="comment-1">
-                  자격증도 취득하는데 걸리는 시간이 존재합니다. 다만, 인턴이나 아르바이트 같은 활동이 없어서 걱정이시라면, 차라리 교육이수나 자원봉사같은 내용을 추가해보시는 건 어떨까 싶습니다. 일단은 HRM 쪽보단 HRD 쪽에 걸맞는 전공이기도 하고, 관련업무가 대략 어떤 프로세스로 돌아가는지나 사용하는 프로그램이 있다면, 그 관련 실습경험도 좋을 것 같습니다. 다만, 지금 당장으로서 일단 서류를 넣고 계시다고 하시니, 연락을 기다려보시면서 앞서 제가 말씀드린 내용을 토대로 최소 3개월 정도를 준비해보시는 건 어떨까 싶네요.
-                </div>
-                <div class="comment-delete">
-                  <span class="delete-btn"><i class="fas fa-ellipsis-v"></i></span>
-                </div>
-              </div>
-              <div class="member-container">
-                <div>
-                  <span class="member-id"><strong>oyeon</strong></span>
-                </div>
-                <div>
-                  <p>2022-02-04</p>
-                </div>
-              </div>
-            </div>
         </div>
       </div>
     </section>
-
+  <script>
+  	const insertComment=()=>{
+  		const commentContent=$("#floatingTextarea2").val();
+  		let memberIdVal = "${loginMember.memberId}"; 
+  		
+  		if(memberIdVal!="") {
+  			$.ajax({
+  	  			url: "${path}/board/insertComment.do",
+  	  			data: {boardNo:"${b.boardNo}","memberId":"${loginMember.memberId}","commentContent":commentContent,"commentLevel":"1"},
+  	  			dataType:"json",
+  	  			success:data=>{
+  	  				selectComment();
+  	  			}
+  	  		});	
+  		}else{
+  			alert("로그인 후 이용해주세요");
+  			location.assign("${path}/member/memberLoginView.do");
+  		}
+  	}
+  	function selectComment(){
+  		$.ajax({
+  			url : "${path}/board/selectComment.do",
+  			data : {boardNo:"${b.boardNo}"},
+  			dataType:"json",
+  			success:data=>{
+  				$(".comment-content").remove();
+  				$(".comment-reply").remove();
+  				console.log(data);
+  				if(data.length != 0){
+  					for(let i=0;i<data.length;i++){
+  	  					const commentContainer=$("<div class='comment-content'>");
+  	  					const container=$("<div class='comment-container'>");
+  	  					const content = $("<div class='comment-1'>");
+  	  					const deleteDiv=$("<div class='comment-delete'>");
+  	  					const image=$("<span class='delete-btn'>");
+  	  					const memberContainer=$("<div class='member-container'>");
+  	  					const member=$("<div class='member'>");
+  	  					const memberId=$("<span class='member-id'>");
+  	  					const j=$("<i class='fas fa-ellipsis-v'>");
+  	  					const enrollDate=$("<div class='enrolldate'>")
+  	  					const p=$("<p>");
+  	  					const reply=$("<div class='comment-reply'>");
+  	  					const arrow=$("<div class='arrow'>");
+  	  					const span=$("<span class='arrow-image'>");
+  	  					const im=$("<i class='fas fa-angle-right'>");
+  	  					const inputGroup=$("<div class='input-group mb-3'>");
+  	  					const input=$("<input type='text' class='form-control recomment' placeholder='답변에 댓글을 입력해주세요' aria-label='reply' aria-describedby='button-addon2'>")
+  	  					const button=$("<button type='button' class='btn btn-outline-secondary' id='button-addon2'>")
+  	  					
+  	  					button.text("등록하기");
+  	  					span.append(im);
+  	  					arrow.append(span);
+  	  					inputGroup.append(input).append(button);
+  	  					reply.append(arrow).append(inputGroup);
+  	  					
+  	  					
+  	  					
+  	  					image.append(j);
+  	  					deleteDiv.append(image);
+  	  					p.text(data[i]["commentDate"]);
+  	  					enrollDate.append(p);
+  	  					content.text(data[i]["commentContent"]);
+  	  					container.append(content).append(deleteDiv); 					
+  	  					memberId.text(data[i]["memberId"]);
+  	  					member.append(memberId);
+  	  					memberContainer.append(member).append(enrollDate);
+  	  					commentContainer.append(container).append(memberContainer);
+  	  					$(".comment-horizon").append(commentContainer).append(reply); 
+  	  				}
+  	  			
+  				}
+  						
+  			}
+  		})
+  	}
+  	
+  	//조회하는거
+  	//얘가 실시간처럼 보이게 하려면
+  	//일단 function selectComment(){여기에 댓글 가져오는 ajax}
+  	//$(document).ready(()=>{ selectComment();  });
+  </script>
   </main><!-- End #main -->
 
 

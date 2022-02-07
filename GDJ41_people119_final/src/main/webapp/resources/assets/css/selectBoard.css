@@ -112,11 +112,16 @@
 .mb-3{
     width:900px;
     margin-top:10px;
+    border-radius: 0.25 rem;
 }
-#button-addon2{
+.recomment{
+border-radius: 0.25 rem;	
+}
+ #button-addon2{
     margin-left:10px;
-    margin-top:2px;
-}
+    height: 38px;
+	border-radius: 5px;
+} 
 .comment-reply {
     display:flex;
     width:960px;

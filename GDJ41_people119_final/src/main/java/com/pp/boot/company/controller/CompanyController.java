@@ -17,8 +17,11 @@ import org.springframework.web.bind.support.SessionStatus;
 import com.pp.boot.company.model.service.CompanyService;
 import com.pp.boot.company.model.vo.Company;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
 @SessionAttributes({"loginCompany"})
+@Slf4j
 public class CompanyController {
 
 	@Autowired
@@ -36,6 +39,7 @@ public class CompanyController {
 	@RequestMapping("/company/companyLogin.do")
 	public String loginCompany(@RequestParam Map param,Model model) {
 		Company loginCompany = service.loginCompany(param);
+		
 		if(loginCompany != null && encoder.matches((String)param.get("password"),loginCompany.getPassword()))
 			model.addAttribute("loginCompany",loginCompany);
 		

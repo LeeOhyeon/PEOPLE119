@@ -5,7 +5,7 @@
 <c:set var="path" value="${pageContext.request.contextPath }"/>
 
 
-<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+<jsp:include page="/WEB-INF/views/common/companyHeader.jsp"/>
 <link href="/resources/assets/css/offerView.css" rel="stylesheet">
 
 <section style="display: flex;">

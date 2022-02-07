@@ -1,11 +1,13 @@
 package com.pp.boot.board.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.pp.boot.board.model.vo.Board;
+import com.pp.boot.board.model.vo.Comment;
 
 @Repository
 public class BoardDaoImpl implements BoardDao {
@@ -57,5 +59,17 @@ public class BoardDaoImpl implements BoardDao {
 		// TODO Auto-generated method stub
 		return session.selectOne("board.selectBoard",boardNo);
 	}
+	@Override
+	public List<Comment> commentList(SqlSessionTemplate session,int boardNo) {
+		// TODO Auto-generated method stub
+		return session.selectList("board.commentList",boardNo);
+	}
+	@Override
+	public int insertComment(SqlSessionTemplate session, Comment c) {
+		// TODO Auto-generated method stub
+		return session.insert("board.insertComment",c);
+	}
+
+	
 	
 }

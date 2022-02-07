@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <c:set var="path" value="${pageContext.request.contextPath }"/>
 
-<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+<jsp:include page="/WEB-INF/views/common/companyHeader.jsp"/>
 <link href="/resources/assets/css/enrollOffer.css" rel="stylesheet">
 
 	<!-- ======= Breadcrumbs Section ======= -->
@@ -30,7 +30,7 @@
 			
 				<input name="offerTitle" class="input title" type="text" placeholder="공고 제목을 입력해주세요.">
 				
-				<input name="companyNmae" class="input company" type="text" placeholder="회사명은 자동으로 들어가야지" disabled>
+				<input name="companyNmae" class="input company" type="text" value="${loginCompany.companyName }" disabled>
 				
 				<hr>
 				
