@@ -45,6 +45,36 @@ public class MemberServiceImpl implements MemberService {
 		return dao.updatePassword(session,param);
 	}
 
+	@Override
+	public int updateMemberName(Map param) {
+		return dao.updateMemberName(session,param);
+	}
+
+	@Override
+	public int updatebirth(Map param) {
+		return dao.updatebirth(session,param);
+	}
+	
+	@Override
+	public int updateGender(Map param) {
+		return dao.updateGender(session,param);
+	}
+	
+	@Override
+	public int updateAddress(Map param) {
+		return dao.updateAddress(session,param);
+	}
+
+	@Override
+	public int updateEmail(Map param) {
+		return dao.updateEmail(session,param);
+	}
+
+	@Override
+	public int updatePhone(Map param) {
+		return dao.updatePhone(session,param);
+	}
+
 	
 	
 	

@@ -13,4 +13,11 @@ public interface MemberDao {
 	Member checkEmail(SqlSessionTemplate session, String email);
 	Member searchId(SqlSessionTemplate session, Map param);
 	int updatePassword(SqlSessionTemplate session, Map param);
+	int updateMemberName(SqlSessionTemplate session, Map param);
+	int updatebirth(SqlSessionTemplate session, Map param);
+	int updateGender(SqlSessionTemplate session, Map param);
+	int updateAddress(SqlSessionTemplate session, Map param);
+	int updateEmail(SqlSessionTemplate session, Map param);
+	int updatePhone(SqlSessionTemplate session, Map param);
+	
 }
