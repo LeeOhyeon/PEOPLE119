@@ -34,7 +34,7 @@
               <li><i class="fas fa-pen"></i> 이력서 <span id="resumt-toggle"><i class="fas fa-angle-down"></i></span>
                 <ul>
                   <li class="resume-link"><a href="#">이력서 등록</a></li>
-                  <li class="resume-link"><a href="#">이력서 관리</a></li>
+                  <li class="resume-link"><a href="${path }/member/memberResumeList.do?memberId=${loginMember.memberId }">이력서 관리</a></li>
                 </ul>
               </li>
               <li class="link-tab-li"><a href="#"><i class="fas fa-star"></i> 스크랩/관심 기업</a></li>

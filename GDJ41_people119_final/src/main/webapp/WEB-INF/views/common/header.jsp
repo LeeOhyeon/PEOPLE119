@@ -90,6 +90,7 @@
 			</c:if>
 				<ul>
 					<li><a href="${path }/member/memberInfoView.do?memberId=${loginMember.memberId }">마이페이지</a></li>
+					<li><a href="${path }/member/memberResumeList.do?memberId=${loginMember.memberId }">이력서 관리</a></li>
 					<li><a href="${path}/member/logout.do">로그아웃</a></li>
 				</ul>
 			</li>
