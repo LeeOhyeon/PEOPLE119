@@ -3,6 +3,7 @@ package com.pp.boot.board.model.service;
 import java.util.List;
 
 import com.pp.boot.board.model.vo.Board;
+import com.pp.boot.board.model.vo.Comment;
 
 public interface BoardService {
 	List<Board> boardList();
@@ -20,4 +21,10 @@ public interface BoardService {
 	int boardListCount();
 	
 	Board selectBoard(int boardNo);
+
+	List<Comment> commentList(int boardNo);
+	
+	int insertComment(Comment c);
+
+	
 }

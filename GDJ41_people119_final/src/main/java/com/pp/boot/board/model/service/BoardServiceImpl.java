@@ -1,6 +1,7 @@
 package com.pp.boot.board.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.pp.boot.board.model.dao.BoardDao;
 import com.pp.boot.board.model.vo.Board;
+import com.pp.boot.board.model.vo.Comment;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -57,5 +59,15 @@ public class BoardServiceImpl implements BoardService {
 	public Board selectBoard(int boardNo) {
 		Board b=dao.selectBoard(session,boardNo);
 		return b;
+	}
+	@Override
+	public List<Comment> commentList(int boardNo) {
+		List<Comment> commentList=dao.commentList(session,boardNo);
+		return commentList;
+	}
+	@Override
+	public int insertComment(Comment c) {
+		int result=dao.insertComment(session, c);
+		return result;
 	}
 }
