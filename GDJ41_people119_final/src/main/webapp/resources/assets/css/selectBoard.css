@@ -1,0 +1,144 @@
+.btn {
+    border:1px solid grey;
+    height:35px;
+}
+.board{
+    margin-top:50px;
+}
+.boardWriter{
+    margin-bottom:-14px;
+    font-size:14px;
+}
+.enrollDate{
+    font-size:13px;
+}
+.boardContent{
+    margin-top:30px;
+}
+.like-image {
+    font-size:50px;
+}
+.boardLike{
+    justify-content: center;
+    text-align: center;
+    margin-top:50px;
+    
+}
+.writerImage{
+    display:inline-block;
+}
+.boardWriter{
+    display:inline-block;
+    margin-left:10px;
+}
+.boardInfo {
+    display:inline;
+    float:right;
+    margin-top:20px;
+    margin-right:20px;
+}
+.boardInfo-like{
+    display:inline-block;
+    margin-right:25px;
+}
+.boardInfo-comment{
+    display:inline-block;
+}
+.writer-image {
+    font-size:50px;
+}
+.boardInfo-comment-image{
+    font-size:15px;
+}
+.boardInfo-like-image{
+    font-size:15px;
+}
+.board{
+    width:960px;
+    border:1px solid #edeef0;
+    border-radius: 10px;
+    padding:25px;
+}
+.writer {
+    margin-top:20px;
+}
+.like-count-px {
+    font-size:13px;
+}
+.file-attach{
+    display:inline-block;
+}
+.submit {
+    justify-content: center;
+    margin-top:10px;
+    text-align: center;
+
+}
+.comment {
+    width:960px;
+    border:1px solid #edeef0;
+    border-radius: 10px;
+    padding:25px;
+    margin-top:50px;
+}
+.comment-content{
+    width:960px; 
+    font-size:14px;
+    border-top:1px solid #edeef0;
+    border-bottom:1px solid #edeef0;
+    margin-top:10px;
+    padding:20px;
+    padding-bottom:10px;
+    background-color: #f7fafe;;
+    
+}
+.comment-1{
+    display:inline-block;
+    width:89%;
+}
+.comment-delete{
+    display:inline;
+    float:right;
+    width:2%;
+}
+.comment-horizon {
+    margin-top:30px;
+}
+.member-container{
+    margin-top:5px;
+    justify-content: right;
+    text-align: right;
+}
+.mb-3{
+    width:900px;
+    margin-top:10px;
+}
+#button-addon2{
+    margin-left:10px;
+    margin-top:2px;
+}
+.comment-reply {
+    display:flex;
+    width:960px;
+    padding:10px;
+}
+.arrow-image{
+    font-size:30px;
+    margin-right:20px;
+    color: #edeef0;
+}
+.arrow {
+    margin-top:5px;
+}
+.comment-content2{
+    width:960px; 
+    font-size:14px;
+    border-top:1px solid #edeef0;
+    border-bottom:1px solid #edeef0;
+    margin-top:10px;
+    padding:20px;
+    padding-bottom:10px;
+    
+    
+}
+    
