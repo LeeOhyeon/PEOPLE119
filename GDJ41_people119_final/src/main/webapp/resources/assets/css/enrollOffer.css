@@ -30,3 +30,11 @@ p.p{
 div#submit{
 	text-align: center;
 }
+p.title{
+	display: inline;
+}
+p.info {
+	color: red;
+	font-size: 12px;
+	display: inline;
+}

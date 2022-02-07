@@ -71,6 +71,7 @@
 		<div id="hirepost">
 			<img alt="회사사진" src="">
 			<p>회사이름</p>
+			<c:out value="${totalData }"/>
 			<a href="#">채용공고 제목</a>
 			<p>기술스택</p>
 			<p>위치 및 경력</p>
@@ -109,31 +110,35 @@
 	
 		<!-- 채용공고 리스트 부분 -->
 		<div id="hirepostList">
-			<div id="hirepost">
-				<img alt="회사사진" src="">
-				<p>회사이름</p>
-				<p>채용공고 제목</p>
-				<p>기술스택</p>
-				<p>위치 및 경력</p>
-			</div>
-			<div id="hirepost">
-				<img alt="회사사진" src="">
-				<p>회사이름</p>
-				<p>채용공고 제목</p>
-				<p>기술스택</p>
-				<p>위치 및 경력</p>
-			</div>
-			<div id="hirepost">
-				<img alt="회사사진" src="">
-				<p>회사이름</p>
-				<p>채용공고 제목</p>
-				<p>기술스택</p>
-				<p>위치 및 경력</p>
-			</div>
+			<c:forEach var="o" items="${list }">
+				<div id="hirepost">
+					<img alt="회사사진" src="">
+					<p><c:out value="${o.companyName }"/></p>
+					<p>채용공고 제목</p>
+					<p>기술스택</p>
+					<p>위치 및 경력</p>
+				</div>
+			</c:forEach>
+				<div id="hirepost">
+					<img alt="회사사진" src="">
+					<p>회사이름</p>
+					<p>채용공고 제목</p>
+					<p>기술스택</p>
+					<p>위치 및 경력</p>
+				</div>
+				<div id="hirepost">
+					<img alt="회사사진" src="">
+					<p>회사이름</p>
+					<p>채용공고 제목</p>
+					<p>기술스택</p>
+					<p>위치 및 경력</p>
+				</div>
 		</div>
 		
 		<!-- 페이징 바 -->
-		<h5> 1 2 3 4 5 </h5>
+		<div id="pageBar">
+			${pageBar }
+		</div>
 		
 	</div>
 	<!-- End 채용공고 리스트 -->
