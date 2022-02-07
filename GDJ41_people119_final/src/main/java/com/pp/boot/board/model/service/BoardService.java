@@ -18,4 +18,6 @@ public interface BoardService {
 	List<Board> turnoverList();
 	
 	int boardListCount();
+	
+	Board selectBoard(int boardNo);
 }

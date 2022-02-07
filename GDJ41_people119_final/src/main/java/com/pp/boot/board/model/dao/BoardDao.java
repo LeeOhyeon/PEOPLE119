@@ -20,4 +20,6 @@ public interface BoardDao {
 	List<Board> readyList(SqlSessionTemplate session);
 	
 	List<Board> turnoverList(SqlSessionTemplate session);
+	
+	Board selectBoard(SqlSessionTemplate session,int boardNo);
 }

@@ -18,6 +18,9 @@ import lombok.extern.slf4j.Slf4j;
 public class BoardController {
 	
 	@Autowired
+	private Board b;
+	
+	@Autowired
 	private BoardService service;
 	
 	@RequestMapping("/boardList.do")
@@ -40,6 +43,16 @@ public class BoardController {
 		mv.addObject("ready",ready);
 		mv.addObject("count",count);
 		mv.setViewName("board/boardList");
+		return mv;
+	}
+	
+	@RequestMapping("/selectBoard.do")
+	public ModelAndView selectBoard(ModelAndView mv,int boardNo) {
+		
+		Board b=service.selectBoard(boardNo);
+		log.debug("{}"+b);
+		mv.addObject("b",b);
+		mv.setViewName("board/selectBoard");
 		return mv;
 	}
 }
