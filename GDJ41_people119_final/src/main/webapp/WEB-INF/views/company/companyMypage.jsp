@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <c:set var="path" value="${pageContext.request.contextPath }"/>
 
-<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+<jsp:include page="/WEB-INF/views/common/companyHeader.jsp"/>
 <link href="/resources/assets/css/companyMypage.css" rel="stylesheet">
 
 	<!-- ======= Breadcrumbs Section ======= -->
@@ -30,7 +30,7 @@
             <ul class="link-tab-ul">
               <li><i class="fas fa-building"></i> 기업정보 <span id="resumt-toggle"><i class="fas fa-angle-down"></i></span>
               	<ul>
-                  <li class="resume-link"><a href="#">기업정보 수정</a></li>
+                  <li class="resume-link"><a href="${path }/company/updateCompany.do">기업정보 수정</a></li>
                   <li class="resume-link"><a href="#">비밀번호 변경</a></li>
                 </ul>
               </li><br><br>
@@ -49,7 +49,7 @@
           
           <div class="update-info-container">
             <div class="info-title">
-              기업정보 수정
+              우리 기업정보 보기
             </div>
             <div class="info-update">
               <div class="info_image">
@@ -62,80 +62,50 @@
                 <div class="member_info">
                   <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="회사명" aria-label="Recipient's username"
-                      aria-describedby="button-addon2">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">수정</button>
+                      aria-describedby="button-addon2" value="${loginCompany.companyName }" disabled>
                   </div>
                 </div>
                 <div class="member_info">
                   <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="사업자번호" aria-label="Recipient's username"
-                      aria-describedby="button-addon2" disabled>
+                      aria-describedby="button-addon2" value="${loginCompany.businessNumber }" disabled>
                   </div>
                 </div>
                 <div class="member_info">
                   <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="대표" aria-label="Recipient's username"
-                      aria-describedby="button-addon2">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">수정</button>
+                      aria-describedby="button-addon2" value="${loginCompany.ceoName }" disabled>
                   </div>
                 </div>
                 <div class="member_info">
-                  <div class="select_gender">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                      <label class="form-check-label" for="flexRadioDefault1">
-                        스타트업
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                      <label class="form-check-label" for="flexRadioDefault2">
-                        중소기업
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                      <label class="form-check-label" for="flexRadioDefault2">
-                        중견기업
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                      <label class="form-check-label" for="flexRadioDefault2">
-                        대기업
-                      </label>
-                    </div>
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="기업규모" aria-label="Recipient's username"
+                      aria-describedby="button-addon2" value="${loginCompany.companySize }" disabled>
+                  </div>
                 </div>
-                <div class="gender-btn">
-                  <button type="button" class="btn btn-outline-secondary">수정</button>
-                </div>
-              </div> 
+    
                <div class="member_info">
                 <div class="input-group mb-3">
                   <input type="text" class="form-control" placeholder="주소 : API사용예정" aria-label="Recipient's username"
-                    aria-describedby="button-addon2">
-                  <button class="btn btn-outline-secondary" type="button" id="button-addon2">수정</button>
+                    aria-describedby="button-addon2" value="${loginCompany.companyAddress }" disabled>
                 </div>
               </div>
                <div class="member_info">
                 <div class="input-group mb-3">
                   <input type="date" class="form-control" placeholder="설립년도" aria-label="Recipient's username"
-                    aria-describedby="button-addon2">
-                  <button class="btn btn-outline-secondary" type="button" id="button-addon2">수정</button>
+                    aria-describedby="button-addon2" value="${loginCompany.establishment }" disabled>
                 </div>
               </div>
                <div class="member_info">
                 <div class="input-group mb-3">
                   <input type="text" class="form-control" placeholder="제공하는 서비스" aria-label="Recipient's username"
-                    aria-describedby="button-addon2">
-                  <button class="btn btn-outline-secondary" type="button" id="button-addon2">수정</button>
+                    aria-describedby="button-addon2" value="${loginCompany.service }" disabled>
                 </div>
               </div>
                <div class="member_info">
                 <div class="input-group mb-3">
                   <input type="number" class="form-control" placeholder="직원수" aria-label="Recipient's username"
-                    aria-describedby="button-addon2">
-                  <button class="btn btn-outline-secondary" type="button" id="button-addon2">수정</button>
+                    aria-describedby="button-addon2" value="${loginCompany.employeeNumber } 명" disabled>
                 </div>
               </div>
                <div class="member_info">
@@ -147,7 +117,7 @@
               </div>
                <div class="member_info">
                 <div class="input-group mb-3">
-                  <input type="file" class="form-control" placeholder="직원수" aria-label="Recipient's username"
+                  <input type="file" class="form-control" aria-label="Recipient's username"
                     aria-describedby="button-addon2">
                   <button class="btn btn-outline-secondary" type="button" id="button-addon2" disabled>기업 이미지</button>
                 </div>
@@ -155,8 +125,7 @@
                <div class="member_info">
                 <div class="input-group mb-3">
                   <input type="text" class="form-control" placeholder="기업 홈페이지 url" aria-label="Recipient's username"
-                    aria-describedby="button-addon2">
-                  <button class="btn btn-outline-secondary" type="button" id="button-addon2">수정</button>
+                    aria-describedby="button-addon2" value="${loginCompany.companyUrl }" disabled>
                 </div>
               </div>
               <div style="font-size: 20px; font-weight: bold; margin-top: 50px; margin-bottom: 20px;">
@@ -165,15 +134,13 @@
               <div class="member_info">
                 <div class="input-group mb-3">
                   <input type="text" class="form-control" placeholder="담당자 이름" aria-label="Recipient's username"
-                    aria-describedby="button-addon2">
-                  <button class="btn btn-outline-secondary" type="button" id="button-addon2">수정</button>
+                    aria-describedby="button-addon2" value="${loginCompany.managerName }" disabled>
                 </div>
               </div>
               <div class="member_info">
                 <div class="input-group mb-3">
                   <input type="text" class="form-control" placeholder="담당자 연락처" aria-label="Recipient's username"
-                    aria-describedby="button-addon2">
-                  <button class="btn btn-outline-secondary" type="button" id="button-addon2">수정</button>
+                    aria-describedby="button-addon2" value="${loginCompany.managerPhone }" disabled>
                 </div>
               </div>
 

@@ -57,3 +57,11 @@ color: gray;
     font-size: 30px;
     font-weight: bolder;
 }
+.info-subtitle{
+	font-size: 15px;
+	font-weight: bolder;
+	margin-bottom: 10px;
+}
+.center{
+	text-align: right;
+}

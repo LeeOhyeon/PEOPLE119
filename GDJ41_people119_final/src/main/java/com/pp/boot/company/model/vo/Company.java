@@ -1,5 +1,7 @@
 package com.pp.boot.company.model.vo;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,8 +26,12 @@ public class Company {
 	private String companySize;
 	private int employeeNumber;
 	private String companyUrl;
-	private String favicon;
-	private String image;
+//	private String favicon;
+//	private String image;
+	
+	private List<Attachment> files;
+	
+	
 	
 	
 }
