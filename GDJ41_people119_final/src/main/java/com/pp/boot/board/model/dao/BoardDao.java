@@ -5,6 +5,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 
 import com.pp.boot.board.model.vo.Board;
+import com.pp.boot.board.model.vo.Comment;
 
 public interface BoardDao {
 	List<Board> boardList(SqlSessionTemplate session);
@@ -22,4 +23,8 @@ public interface BoardDao {
 	List<Board> turnoverList(SqlSessionTemplate session);
 	
 	Board selectBoard(SqlSessionTemplate session,int boardNo);
+
+	int insertComment(SqlSessionTemplate session, Comment c);
+
+	List<Comment> commentList(SqlSessionTemplate session,int boardNo);
 }

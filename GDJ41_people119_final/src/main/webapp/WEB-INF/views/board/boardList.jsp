@@ -184,7 +184,7 @@
             		<c:forEach var="q" items="${qa}" begin="0" end="4">
             			
                  			 <div><a href="${path}/board/selectBoard.do?boardNo=${q.boardNo}"><c:out value="${q.boardTitle}"/></a></div>
-                  		
+                 
                   	</c:forEach>
              	 </div>
               </div>

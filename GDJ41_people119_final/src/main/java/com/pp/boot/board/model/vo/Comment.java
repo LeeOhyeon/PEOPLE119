@@ -16,13 +16,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Component
-public class Board {
+public class Comment {
+
+	private int commentNo;
 	private int boardNo;
 	private String memberId;
-	private String boardTitle;
-	private String boardContent;
-	private Date boardDate;
-	private int boardView;
-	private int boardLike;
-	private String category;
+	private int commentRef;
+	private String commentContent;
+	private Date commentDate;
+	private int commentLevel;
 }
