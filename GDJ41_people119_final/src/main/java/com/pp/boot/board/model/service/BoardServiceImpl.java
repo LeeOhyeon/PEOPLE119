@@ -53,4 +53,9 @@ public class BoardServiceImpl implements BoardService {
 		List<Board> turnover=dao.turnoverList(session);
 		return turnover;
 	}
+	@Override
+	public Board selectBoard(int boardNo) {
+		Board b=dao.selectBoard(session,boardNo);
+		return b;
+	}
 }

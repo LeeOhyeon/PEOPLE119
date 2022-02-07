@@ -13,9 +13,9 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Inner Page</h2>
+          <h2>커뮤니티</h2>
           <ol>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Home</a></li>
             <li>Inner Page</li>
           </ol>
         </div>
@@ -98,7 +98,7 @@
                 <div class="whole-contents">
                   <c:if test="${not empty list}">
             		<c:forEach var="l" items="${list}" begin="0" end="4">
-                 	 <div><a href="#"><c:out value="${l.boardTitle}"/></a></div>
+                 	 <div><a href="${path}/board/selectBoard.do?boardNo=${l.boardNo}"><c:out value="${l.boardTitle}"/></a></div>
                   	</c:forEach>
                   </c:if>
                 </div>
@@ -114,7 +114,7 @@
                 </div>
                  <div class="ready-contents">               
             		<c:forEach var="r" items="${ready}" begin="0" end="4">        		
-         					<div><a href="#"><c:out value="${r.boardTitle}"/></a></div>
+         					<div><a href="${path}/board/selectBoard.do?boardNo=${r.boardNo}"><c:out value="${r.boardTitle}"/></a></div>
             		</c:forEach>
              	 </div>
               </div>
@@ -131,7 +131,7 @@
                 </div>
                 <div class="turnover-contents">                 
             		<c:forEach var="t" items="${turnover}" begin="0" end="4">            			
-                 			 <div><a href="#"><c:out value="${t.boardTitle}"/></a></div>
+                 			 <div><a href="${path}/board/selectBoard.do?boardNo=${t.boardNo}"><c:out value="${t.boardTitle}"/></a></div>
 					</c:forEach>
              	 </div>
               </div>
@@ -147,7 +147,7 @@
                 <div class="leave-contents">                 
             		<c:forEach var="e" items="${leave}" begin="0" end="4">
             			
-                 			 <div><a href="#"><c:out value="${e.boardTitle}"/></a></div>
+                 			 <div><a href="${path}/board/selectBoard.do?boardNo=${e.boardNo}"><c:out value="${e.boardTitle}"/></a></div>
                   		
                   	</c:forEach>
              	 </div>
@@ -166,7 +166,7 @@
                 <div class="free-contents">                 
             		<c:forEach var="f" items="${free}" begin="0" end="4">
             			
-                 			 <div><a href="#"><c:out value="${f.boardTitle}"/></a></div>
+                 			 <div><a href="${path}/board/selectBoard.do?boardNo=${f.boardNo}"><c:out value="${f.boardTitle}"/></a></div>
                   		
                   	</c:forEach>
              	 </div>
@@ -183,7 +183,7 @@
                 <div class="qa-contents">                 
             		<c:forEach var="q" items="${qa}" begin="0" end="4">
             			
-                 			 <div><a href="#"><c:out value="${q.boardTitle}"/></a></div>
+                 			 <div><a href="${path}/board/selectBoard.do?boardNo=${q.boardNo}"><c:out value="${q.boardTitle}"/></a></div>
                   		
                   	</c:forEach>
              	 </div>

@@ -51,5 +51,11 @@ public class BoardDaoImpl implements BoardDao {
 		// TODO Auto-generated method stub
 		return session.selectList("board.selectturnoverList");
 	}
+
+	@Override
+	public Board selectBoard(SqlSessionTemplate session, int boardNo) {
+		// TODO Auto-generated method stub
+		return session.selectOne("board.selectBoard",boardNo);
+	}
 	
 }
