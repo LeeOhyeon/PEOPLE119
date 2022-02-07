@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,12 +54,14 @@ public class MemberController {
 		
 		Member loginMember = service.loginMember(param);
 		
+
 		log.debug("변경전 : "+(String)param.get("password"));
 		log.debug("변경후 : "+loginMember.getPassword());
 		
 		
 		if(loginMember != null && encoder.matches((String)param.get("password"),loginMember.getPassword()))
 		model.addAttribute("loginMember",loginMember);
+
 		
 		return "redirect:/";
 	}
