@@ -148,7 +148,7 @@
             </div>
           </div>
         </div>
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2">수정</button>
+        <!-- <button class="btn btn-outline-secondary" type="button" id="button-addon2">수정</button> -->
       </div>
 	</section>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

@@ -97,25 +97,25 @@
                 </div>
                   <div class="select_gender">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                      <input class="form-check-input" type="radio" name="companySize" id="flexRadioDefault1" value="1">
                       <label class="form-check-label" for="flexRadioDefault1">
                         스타트업
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                      <input class="form-check-input" type="radio" name="companySize" id="flexRadioDefault2" value="2">
                       <label class="form-check-label" for="flexRadioDefault2">
                         중소기업
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                      <input class="form-check-input" type="radio" name="companySize" id="flexRadioDefault2" value="3">
                       <label class="form-check-label" for="flexRadioDefault2">
                         중견기업
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                      <input class="form-check-input" type="radio" name="companySize" id="flexRadioDefault2" value="4">
                       <label class="form-check-label" for="flexRadioDefault2">
                         대기업
                       </label>
@@ -167,24 +167,6 @@
               </div>
                <div class="member_info">
                <div class="info-subtitle">
-                	회사 파비콘 이미지
-                </div>
-                <div class="input-group mb-3">
-                  <input type="file" class="form-control" aria-label="Recipient's username"
-                    aria-describedby="button-addon2" name="upFile" id="favicon">
-                </div>
-              </div>
-               <div class="member_info">
-               <div class="info-subtitle">
-                	회사 이미지
-                </div>
-                <div class="input-group mb-3">
-                  <input type="file" class="form-control" aria-label="Recipient's username"
-                    aria-describedby="button-addon2" name="upFile" id="image">
-                </div>
-              </div>
-               <div class="member_info">
-               <div class="info-subtitle">
                 	회사 홈페이지 URL 주소
                 </div>
                 <div class="input-group mb-3">
@@ -192,6 +174,27 @@
                     aria-describedby="button-addon2" value="${loginCompany.companyUrl }" name="companyUrl">
                   <button class="btn btn-outline-secondary" type="button" id="button-addon2">수정</button>
                 </div>
+              </div>
+              <div style="font-size: 20px; font-weight: bold; margin-top: 50px; margin-bottom: 20px;">
+                이미지 파일
+              </div>
+               <div class="member_info">
+               <div class="info-subtitle">
+                	파비콘 이미지
+                </div>
+                <div class="input-group mb-3">
+                  <input type="file" class="form-control" aria-label="Recipient's username"
+                    aria-describedby="button-addon2" name="file1" id="favicon">
+                </div>
+              </div>
+               <div class="member_info">
+               <div class="info-subtitle">
+                	회사 이미지
+                </div>
+                <!-- <div class="input-group mb-3">
+                  <input type="file" class="form-control" aria-label="Recipient's username"
+                    aria-describedby="button-addon2" name="companyImage" id="image">
+                </div> -->
               </div>
               <div style="font-size: 20px; font-weight: bold; margin-top: 50px; margin-bottom: 20px;">
                 담당자 정보
@@ -212,7 +215,7 @@
                 </div>
                 <div class="input-group mb-3">
                   <input type="text" class="form-control" placeholder="담당자 연락처" aria-label="Recipient's username"
-                    aria-describedby="button-addon2" value="${loginCompany.managerPhone }" name="mamagerPhone">
+                    aria-describedby="button-addon2" value="${loginCompany.managerPhone }" name="managerPhone">
                   <button class="btn btn-outline-secondary" type="button" id="button-addon2">수정</button>
                 </div>
               </div>
