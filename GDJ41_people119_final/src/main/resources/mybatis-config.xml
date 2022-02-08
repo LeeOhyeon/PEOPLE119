@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 <configuration>
+	
+	
 	<typeAliases>
 		<typeAlias type="com.pp.boot.company.model.vo.Company" alias="company"/>
 		<typeAlias type="com.pp.boot.member.model.vo.Member" alias="member"/>
 		<typeAlias type="com.pp.boot.board.model.vo.Board" alias="board"/>
+		<typeAlias type="com.pp.boot.offer.model.vo.Offer" alias="offer"/>
 		<typeAlias type="com.pp.boot.board.model.vo.Comment" alias="comment"/>
 	</typeAliases>
+	
 </configuration>
+
+

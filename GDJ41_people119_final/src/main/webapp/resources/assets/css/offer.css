@@ -1,0 +1,23 @@
+section{
+	padding-left: 300px; 
+	padding-right: 300px;
+}
+
+#hotHirepost{
+	display: flex;	
+	justify-content: space-around;
+	border: 1px black solid;
+}
+
+.btn{
+	margin-bottom: 10px;
+}
+
+#hirepostList{
+	display: flex;	
+	justify-content: space-around;
+}
+
+div.margin{
+	margin-bottom: 80px;
+}

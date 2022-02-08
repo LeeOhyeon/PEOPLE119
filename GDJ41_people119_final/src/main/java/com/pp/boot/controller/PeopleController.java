@@ -15,4 +15,5 @@ public class PeopleController {
 	public String companyMaining() {
 		return "company/companyIndex";
 	}
+	
 }

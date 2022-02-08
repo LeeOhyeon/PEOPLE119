@@ -51,7 +51,7 @@
         <ul>
           <li><a class="nav-link scrollto active" href="${path}/company/companyIndex.do">Home</a></li>
           <li><a class="nav-link scrollto active" href="/">구직자메인</a></li>
-          <li class="dropdown"><a href="#"><span>채용정보</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="${path }/offer/offerList.do"><span>채용정보</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">지역</a></li>
               <li><a href="#">포지션</a></li>
@@ -82,19 +82,17 @@
           	<li><a href="${path}/company/enrollCompanyView.do">회원가입</a></li>
           </c:if>
           <c:if test="${loginCompany != null }">
-          	<c:if test="${loginCompany.companyName == null }">
+          	<c:if test="${loginCompany.companyName eq null }">
 				<li class="dropdown"><a href="#"><span><c:out value="${loginCompany.companyId }님"/></span> <i class="bi bi-chevron-down"></i></a>
 			</c:if>
-			<c:if test="${loginCompany.companyName != null }">
-				<li class="dropdown"><a href="#"><span><c:out value="${loginCompany.companyName }님"/></span> <i class="bi bi-chevron-down"></i></a>
 			</c:if>
+			<c:if test="${loginCompany.companyName ne null }">
+				<li class="dropdown"><a href="#"><span><c:out value="${loginCompany.companyName }님"/></span> <i class="bi bi-chevron-down"></i></a>
 				<ul>
-					<li><a href="#">마이페이지</a></li>
-					<li><a href="${path}/company/companyLogout.do">로그아웃</a></li>
+					<li><a href="${path }/company/companyMypage.do?companyId=${loginCompany.companyId}">마이페이지</a></li>
+					<li><a href="${path}/company/logout.do">로그아웃</a></li>
 				</ul>
-			</li>
-          	
-          </c:if>
+			</c:if>
           
           <!-- <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
           <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->

@@ -6,7 +6,7 @@
 
 <jsp:include page="/WEB-INF/views/common/companyHeader.jsp"/>
 
- <!-- ======= Hero Section ======= -->
+ <!-- ======= 메인 최상단부분 ======= -->
   <section id="hero" class="d-flex align-items-center">
 
     <div class="container">
@@ -24,48 +24,48 @@
       </div>
     </div>
 
-  </section><!-- End Hero -->
+  </section><!-- 메인 최상단부분 -->
 
   <main id="main">
 
-        <!-- ======= Features Section ======= --> <!-- 이걸로 기업 기능 넘거가는거 만들면 어떨까?? 예를들면 [공고 올리기] [내 회사 공고 확인하기] 처럼? -->
+        <!-- ======= 기능 버튼 section ======= -->
         <section id="features" class="features">
         <div class="container">
 
           <div class="section-title" data-aos="fade-up">
             <h2>기능</h2>
-            <p>다양한 기능을 사용해 보세요</p>
+            <p>회사에 필요한 다양한 기능을 사용해 보세요</p>
           </div>
 
           <div class="row" data-aos="fade-up" data-aos-delay="300">
             <div class="col-lg-3 col-md-4">
               <div class="icon-box">
                 <i class="ri-store-line" style="color: #ffbb2c;"></i>
-                <h3><a href="">공고 올리기</a></h3>
+                <h3><a href="${path }/offer/enrollOffer.do">공고 올리기</a></h3>
               </div>
             </div>
             <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
               <div class="icon-box">
                 <i class="ri-bar-chart-box-line" style="color: #5578ff;"></i>
-                <h3><a href="">우리 회사 공고 확인하기</a></h3>
+                <h3><a href="#">우리 회사 공고 확인하기</a></h3>
               </div>
             </div>
             <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
               <div class="icon-box">
                 <i class="ri-calendar-todo-line" style="color: #e80368;"></i>
-                <h3><a href="">지원자 확인하기</a></h3>
+                <h3><a href="#">지원자 확인하기</a></h3>
               </div>
             </div>
             <div class="col-lg-3 col-md-4 mt-4 mt-lg-0">
               <div class="icon-box">
                 <i class="ri-paint-brush-line" style="color: #e361ff;"></i>
-                <h3><a href="">인재 찾기</a></h3>
+                <h3><a href="#">인재 찾기</a></h3>
               </div>
             </div>
             <div class="col-lg-3 col-md-4 mt-4">
               <div class="icon-box">
                 <i class="ri-database-2-line" style="color: #47aeff;"></i>
-                <h3><a href="">면접 제의하기</a></h3>
+                <h3><a href="#">면접 제의하기</a></h3>
               </div>
             </div>
             <div class="col-lg-3 col-md-4 mt-4">
@@ -83,38 +83,14 @@
             <div class="col-lg-3 col-md-4 mt-4">
               <div class="icon-box">
                 <i class="ri-price-tag-2-line" style="color: #4233ff;"></i>
-                <h3><a href="">Pira Neve</a></h3>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 mt-4">
-              <div class="icon-box">
-                <i class="ri-anchor-line" style="color: #b2904f;"></i>
-                <h3><a href="">Dirada Pack</a></h3>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 mt-4">
-              <div class="icon-box">
-                <i class="ri-disc-line" style="color: #b20969;"></i>
-                <h3><a href="">Moton Ideal</a></h3>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 mt-4">
-              <div class="icon-box">
-                <i class="ri-base-station-line" style="color: #ff5828;"></i>
-                <h3><a href="">Verdo Park</a></h3>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-4 mt-4">
-              <div class="icon-box">
-                <i class="ri-fingerprint-line" style="color: #29cc61;"></i>
-                <h3><a href="">Flavor Nivelanda</a></h3>
+                <h3><a href="${path }/company/companyMypage.do">MyPage</a></h3>
               </div>
             </div>
           </div>
 
         </div>
       </section>
-      <!-- End Features Section -->
+      <!-- End 기능버튼 section -->
 
 
 

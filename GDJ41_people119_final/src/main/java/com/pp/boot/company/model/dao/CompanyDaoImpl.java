@@ -18,4 +18,10 @@ public class CompanyDaoImpl implements CompanyDao{
 	public int enrollCompany(SqlSessionTemplate session, Company company) {
 		return session.insert("company.enrollCompany",company);
 	}
+	
+	// 기업 정보 수정 == 회원가입할때 안받았던 내용들 채우기
+	@Override
+	public int updateCompany(SqlSessionTemplate session, Company c) {
+		return session.update("company.updateCompany", c);
+	}
 }
