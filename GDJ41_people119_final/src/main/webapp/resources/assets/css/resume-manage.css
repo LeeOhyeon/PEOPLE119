@@ -1,0 +1,36 @@
+.resume-btn {
+    margin-top:50px;
+}
+.total-count {
+    margin-top:40px;
+}
+.information {
+    display:inline-block;
+}
+.hope-info {
+    display:inline-block;
+}
+.resume {
+    margin-left:30px;
+    margin-top:20px;
+}
+.resume div{
+    margin-right:150px;
+}
+.resume-title {
+    margin-left:25px;
+}
+.form-check {
+    margin-top:10px;
+    margin-left:30px;
+    display:inline-block;
+}
+.resume-del {
+    display:inline;
+    float:right;
+}
+.resume-info {
+    border-top:1px solid #333;
+    border-bottom:1px solid #333;
+    padding:30px;
+}

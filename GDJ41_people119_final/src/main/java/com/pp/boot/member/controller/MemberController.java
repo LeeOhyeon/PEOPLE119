@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.pp.boot.member.model.service.MemberService;
 import com.pp.boot.member.model.vo.Member;
@@ -52,18 +53,26 @@ public class MemberController {
 	@PostMapping("/memberLogin.do")
 	public String memberLogin(@RequestParam Map param, Model model) {
 		
+		String msg ="";
+		String loc ="";
+	
 		Member loginMember = service.loginMember(param);
 		
-
-		log.debug("변경전 : "+(String)param.get("password"));
-		log.debug("변경후 : "+loginMember.getPassword());
-		
-		
 		if(loginMember != null && encoder.matches((String)param.get("password"),loginMember.getPassword()))
-		model.addAttribute("loginMember",loginMember);
-
+			model.addAttribute("loginMember",loginMember);
 		
-		return "redirect:/";
+		if(loginMember == null) {
+			msg = "존재하지 않는 사용자 입니다. 아이디와 비밀번호를 확인해 주세요";
+			loc = "memberLoginView.do";
+		}else {
+			msg = "로그인 성공";
+			loc = "/";
+		}
+		
+		model.addAttribute("msg",msg);
+		model.addAttribute("loc",loc);
+		
+		return "common/msg";
 	}
 	
 	//로그아웃
@@ -223,4 +232,157 @@ public class MemberController {
 		response.setContentType("application/json; charset=utf-8");
 		return result; 
 	}
+	
+	//마이페이지로 이동
+	@RequestMapping("/memberInfoView.do")
+	public String memberInfoView(@RequestParam String memberId,Model model) {
+		
+		Member loginMember = service.loginMember(Map.of("memberId",memberId));
+		
+		model.addAttribute("loginMember",loginMember);
+		
+		return "member/memberInfo";
+	}
+	
+	//회원 정보 수정 (이름)
+	@RequestMapping("/updateMemberName.do")
+	@ResponseBody
+	public Member updateMemberName(@RequestParam Map param, HttpServletResponse response,Model model) throws IOException{
+		 
+		int result = service.updateMemberName(param);
+		
+		String memberId = (String)param.get("memberId");
+		
+		Member loginMember = null;
+		
+		if(result>0) {
+			loginMember = service.loginMember(Map.of("memberId",memberId));	
+		}
+		
+		response.setContentType("application/json; charset=utf-8");
+		
+		return loginMember; 
+	}
+	
+	//회원 정보 수정 (생일)
+		@RequestMapping("/updatebirth.do")
+		@ResponseBody
+		public Member updatebirth(@RequestParam Map param, HttpServletResponse response,Model model) throws IOException{
+			 
+			int result = service.updatebirth(param);
+			
+			String memberId = (String)param.get("memberId");
+			
+			Member loginMember = null;
+			
+			if(result>0) {
+				loginMember = service.loginMember(Map.of("memberId",memberId));	
+			}
+			
+			response.setContentType("application/json; charset=utf-8");
+			
+			return loginMember; 
+		}
+		
+	
+		//회원 정보 수정 (성별)
+		@RequestMapping("/updateGender.do")
+		@ResponseBody
+		public Member updateGender(@RequestParam Map param, HttpServletResponse response,Model model) throws IOException{
+			 
+			int result = service.updateGender(param);
+			
+			String memberId = (String)param.get("memberId");
+			
+			Member loginMember = null;
+			
+			if(result>0) {
+				loginMember = service.loginMember(Map.of("memberId",memberId));	
+			}
+			
+			response.setContentType("application/json; charset=utf-8");
+			
+			return loginMember; 
+		}
+			
+		//회원 정보 수정 (주소)
+		@RequestMapping("/updateAddress.do")
+		@ResponseBody
+		public Member updateAddress(@RequestParam Map param, HttpServletResponse response,Model model) throws IOException{
+			 
+			int result = service.updateAddress(param);
+			
+			String memberId = (String)param.get("memberId");
+			
+			Member loginMember = null;
+			
+			if(result>0) {
+				loginMember = service.loginMember(Map.of("memberId",memberId));	
+			}
+			
+			response.setContentType("application/json; charset=utf-8");
+			
+			return loginMember; 
+		}
+			
+	
+		//회원 정보 수정 (주소)
+		@RequestMapping("/updateEmail.do")
+		@ResponseBody
+		public Member updateEmail(@RequestParam Map param, HttpServletResponse response,Model model) throws IOException{
+			 
+			int result = service.updateEmail(param);
+			
+			String memberId = (String)param.get("memberId");
+			
+			Member loginMember = null;
+			
+			if(result>0) {
+				loginMember = service.loginMember(Map.of("memberId",memberId));	
+			}
+			
+			response.setContentType("application/json; charset=utf-8");
+			
+			return loginMember; 
+		}
+					
+		//회원 정보 수정 (핸드폰 번호)
+		@RequestMapping("/updatePhone.do")
+		@ResponseBody
+		public Member updatePhone(@RequestParam Map param, HttpServletResponse response,Model model) throws IOException{
+			 
+			int result = service.updatePhone(param);
+			
+			String memberId = (String)param.get("memberId");
+			
+			Member loginMember = null;
+			
+			if(result>0) {
+				loginMember = service.loginMember(Map.of("memberId",memberId));	
+			}
+			
+			response.setContentType("application/json; charset=utf-8");
+			
+			return loginMember; 
+		}
+							
+		//회원 이력서 관리
+		@RequestMapping("/memberResumeList.do")
+		public ModelAndView memberResumeList(@RequestParam String memberId,ModelAndView mv) {
+			
+			mv.setViewName("member/memberResumeList");
+			
+			return mv;
+		}
+		
+		@RequestMapping("/insertResumeView.do")
+		public ModelAndView insertResumeView(@RequestParam String memberId,ModelAndView mv) {
+			
+			Member loginMember = service.loginMember(Map.of("memberId",memberId));
+			mv.addObject("loginMember",loginMember);
+			mv.setViewName("member/insertResume");
+			
+			return mv;
+		}
+
 }

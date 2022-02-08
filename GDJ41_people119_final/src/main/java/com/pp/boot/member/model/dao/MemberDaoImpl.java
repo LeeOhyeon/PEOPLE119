@@ -35,5 +35,35 @@ public class MemberDaoImpl implements MemberDao {
 		return session.update("member.updatePassword",param);
 	}
 
+	@Override
+	public int updateMemberName(SqlSessionTemplate session, Map param) {
+		return session.update("member.updateMemberName",param);
+	}
+	@Override
+	public int updatebirth(SqlSessionTemplate session, Map param) {
+		return session.update("member.updatebirth",param);
+	}
+
+	@Override
+	public int updateGender(SqlSessionTemplate session, Map param) {
+		return session.update("member.updateGender",param);
+	}
+
+	@Override
+	public int updateAddress(SqlSessionTemplate session, Map param) {
+		return session.update("member.updateAddress",param);
+	}
+
+	@Override
+	public int updateEmail(SqlSessionTemplate session, Map param) {
+		return session.update("member.updateEmail",param);
+	}
+
+	@Override
+	public int updatePhone(SqlSessionTemplate session, Map param) {
+		return session.update("member.updatePhone",param);
+	}
+	
+	
 	
 }

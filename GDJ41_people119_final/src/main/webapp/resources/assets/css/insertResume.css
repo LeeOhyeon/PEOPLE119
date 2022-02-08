@@ -1,54 +1,282 @@
-.resume-container{
-    width: 100%;
-    height: auto;
-    margin: 0px;
-    padding: 50px;
+.resume-container {
+	width: 100%;
+	height: auto;
+	margin: 0px;
+	padding: 50px;
 }
-.resume-basic-info{
-    width: 100%;
-   
+
+.resume-basic-info {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
 }
-.profileImg{
-    width: 28%;
-    display: inline-block;
+
+.profileImg {
+	width: 30%;
+	height: 100%;
 }
-.basic-info-container{
-    width: 70%;
-    display: inline-block;
+
+.basic-info-container {
+	padding-top:30px;
+	width: 65%;
 }
-.resume-basic-container{
-    width: 100%;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid gray;
-   
+
+.resume-basic-container {
+	width: 100%;
+	margin-bottom: 30px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid gray;
+	
 }
-.resume-school-info{
-    width: 100%;
+
+.resume-school-info {
+	width: 100%;
 }
-.career-info{
-    width: 100%;
+
+.career-info {
+	width: 100%;
 }
-.career-info>table tr>td:first-child{
-    width: 100px;
+
+.career-info>table tr>td:first-child {
+	width: 100px;
 }
-.career-info>table tr>td:nth-child(3){
-    width: 70px;
-    text-align: center;
+
+.career-info>table tr>td:nth-child(3) {
+	width: 70px;
+	text-align: center;
 }
-.career-info>table tr>td:last-child{
-    width: 130px;
+
+.career-info>table tr>td:last-child {
+	width: 130px;
 }
-table{
-    width: 100%;
+
+table {
+	width: 100%;
 }
-table td{
-    height: 80px;
+
+table td {
+	height: 80px;
 }
-.hope-worktype>table tr>td:first-child{
-width: 100px;
+
+.hope-worktype>table tr>td:first-child {
+ width: 100px;
 }
-.certificate-container>table tr>td:first-child{
-    width: 100px;
-    }
-    
+
+.certificate-container>table tr>td:first-child {
+	width: 100px;
+}
+
+.info-name {
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.basic-info {
+	font-size: 25px;
+	font-weight: bold;
+}
+.file-label {
+  margin-top: 30px;
+  background-color: rgb(64, 194, 255);
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  width: 65%;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.file {
+  display: none;
+}
+.upload-box {
+  width: 100%;
+  box-sizing: border-box;
+  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.upload-box .drag-file {
+  position: relative;
+  width: 70%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 3px dashed #dbdbdb;
+}
+.upload-box .drag-file.highlight {
+  border: 3px dashed red;
+}
+.upload-box .drag-file .image {
+  width: 40px;
+}
+.upload-box .drag-file .message {
+  margin-bottom: 0;
+}
+.upload-box .drag-file .preview {
+  display: none;
+  position: absolute;
+  left: 0;
+  height: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.uploadBtn{
+	height: 30%;
+}
+.file-container{
+	text-align: center;
+}
+
+.school input[type='radio']{
+	  display: none;
+}
+
+.school input[type="radio"] + span {
+		border-radius:15px;
+        display: inline-block;
+        padding: 5px 5px;
+        border: 1px solid #dfdfdf;
+        text-align: center;
+        cursor: pointer;
+        width: 220px;
+        font-size: 20px;
+        font-weight: bold;
+        margin-left: 10px;
+ }
+ .school input[type="radio"]:checked + span {
+        background-color: rgb(64, 194, 255);
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: bold;
+    }   
+
+.info-span{
+	display : inline-block;
+	width: 70px;
+	font-size:18px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}	
+.info-name {
+	display : inline-block;
+}
+.basic-info{
+	display : inline-block;
+}
+.update-info{
+	margin-top: 20px;
+	float: right;
+}
+
+.school-input-container{
+	
+	width: 100%;
+	height: auto;
+	padding: 10px;
+	margin-top: 20px;
+	
+}
+.school-input-title{
+	font-size:24px;
+	font-weight: bold;
+}
+
+.elementary-container>table tr>td:first-child {
+	width: 130px;
+}
+.elementary-input{
+	width: 300px!important;
+}
+.elementary-container>table tr>td:first-child>span {
+	color:red;
+}
+
+
+
+
+.middleschool-container>table tr>td:first-child>span {
+	color:red;
+}
+
+.middleschool-container>table tr>td:first-child {
+	width: 130px;
+}
+.middleschool-input{
+	width: 300px!important;
+}
+
+
+.highschool-container>table tr>td:first-child>span {
+	color:red;
+}
+
+.highschool-container>table tr>td:first-child {
+	width: 130px;
+}
+.highschool-input{
+	width: 300px!important;
+}
+
+
+
+.university-container>table tr>td:first-child>span {
+	color:red;
+}
+
+.university-container>table tr>td:first-child {
+	width: 130px;
+}
+.university-input{
+	width: 300px!important;
+}
+.university-input-radio{
+	display: inline-block;
+}
+
+
+
+
+.elementary-container{
+	border: 1px solid lightgray;
+	width: 100%;
+	height: auto;
+	padding: 20px;
+	border-radius: 15px;
+	display: none;
+}
+.middleschool-container{
+	border: 1px solid lightgray;
+	width: 100%;
+	height: auto;
+	padding: 20px;
+	border-radius: 15px;
+	display: none;
+}
+.highschool-container{
+	border: 1px solid lightgray;
+	width: 100%;
+	height: auto;
+	padding: 20px;
+	border-radius: 15px;
+	display: none;
+}
+
+.university-container{
+	border: 1px solid lightgray;
+	width: 100%;
+	height: auto;
+	padding: 20px;
+	border-radius: 15px;
+	display: none;
+}
+
+
+
+
+
+
