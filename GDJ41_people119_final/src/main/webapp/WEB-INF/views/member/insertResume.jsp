@@ -503,13 +503,17 @@
                 <option value="Servlet">Servlet</option>
               </select>
             </div>
+              <div class="techSelect-result-container">
+                <div class="techSelect-result"></div>
+              </div>
           </div>
-
+			
 
           <div class="resume-basic-container">
             <p style="font-size: 24px; font-weight: bolder;">자기소개서</p>
             <div class="introduceself-container">
               <input class="form-control" type="text" placeholder="자소서 제목" aria-label="default input example" name="selfTitle">
+              <br>
               <div class="form-floating">
                 <textarea name="selfContent" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px;resize:none;" ></textarea>
                 <label for="floatingTextarea2">자소서 내용</label>
@@ -521,6 +525,7 @@
             <p style="font-size: 24px; font-weight: bolder;">경력기술서</p>
             <div class="introduceself-container">
               <input class="form-control" type="text" placeholder="경력기술서 제목" aria-label="default input example" name="careerTitle">
+              <br>
               <div class="form-floating">
                 <textarea name="careerContent" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px;resize:none;" ></textarea>
                 <label for="floatingTextarea2">경력기술서 내용</label>
@@ -533,18 +538,14 @@
              <button class="btn btn-outline-secondary" type="button">이력서 저장</button>
            </div>
           </div>
-
-
-
         </div>
       </div>
       
     </section>
-</form>
-  </main><!-- End #main -->
- <script type="text/javascript">
-              
- function DropFile(dropAreaId, fileListId) {
+	</form>
+
+<script type="text/javascript">
+function DropFile(dropAreaId, fileListId) {
 	  let dropArea = document.getElementById(dropAreaId);
 	  let fileList = document.getElementById(fileListId);
 
@@ -613,10 +614,10 @@
 	$("#resumeTitle").keyup(e=>{
 		const length = $(e.target).val().length;
 		if(length>100){
-            temp = $(e.target).val().substring(0,98);
-            $(e.target).val(temp);
-         }
-         $("#resumeTitle-result").text(length+"/100"); 
+          temp = $(e.target).val().substring(0,98);
+          $(e.target).val(temp);
+       }
+       $("#resumeTitle-result").text(length+"/100"); 
 	});
 	
 	//최종학력 선택
@@ -641,9 +642,9 @@
 	$(".schoolStartDate").change(e=>{
 		if($("input[name=grauationDate]").val() != ""){
 			if($("input[name=grauationDate]").val()<$("input[name=admissionDate]").val()){
-    			alert("날짜를 확인해 주세요!");
-    			$(".schoolStartDate").val("");
-    		}
+  			alert("날짜를 확인해 주세요!");
+  			$(".schoolStartDate").val("");
+  		}
 		}
 	});
 	
@@ -659,46 +660,87 @@
 	$("input[name=joinDate]").change(e=>{
 		if($("input[name=regDate]").val() != ""){
 			if($("input[name=regDate]").val()<$("input[name=joinDate]").val()){
-    			alert("날짜를 확인해 주세요!");
-    			$("input[name=joinDate]").val("");
-    		}
+  			alert("날짜를 확인해 주세요!");
+  			$("input[name=joinDate]").val("");
+  		}
 		}
 	});
 	
 	//희망 지역 선택
 	   
-            let workingAreaArr = [];
-                  $("select[name=workingArea]").change(e=>{
-                	  
-                	  if(workingAreaArr.length<8){
-                		  if(workingAreaArr.length == 0){
-                			  $(".areaSelect-result-container").css("padding-top","20px");
-                			  workingAreaArr.push($("select[name=workingArea]").val());
-                			  $(".areaSelect-result").append($("<span class='select-result-span' onclick='deletHopeArea(this);'>").text($("select[name=workingArea]").val()));
-                		  }else{
-                			  for(let i=0;i<workingAreaArr.length;i++){
-                    			  if(workingAreaArr[i] != $("select[name=workingArea]").val()){
-                    				  workingAreaArr.push($("select[name=workingArea]").val());
-                                	  $(".areaSelect-result").append($("<span class='select-result-span' onclick='deletHopeArea(this);'>").text($("select[name=workingArea]").val()));  
-                            	  		break;
-                    			  }else{
-                    			  }
-                    		  }  
-                		  }
-                	  }else{
-                		  alert("지역은 8개까지 선택 가능합니다.");
-                	  }
-                  });
-                  
-             function deletHopeArea(e){
-            	 console.log($(e).text());
-            	 for(let i=0;i<workingAreaArr.length;i++){
-            		 if(workingAreaArr[i] == $(e).text()){
-            			 workingAreaArr.splice(i,1);
-            			 $(e).remove();
-            		 }
-            	 }
-             }
-	
+          let workingAreaArr = [];
+                $("select[name=workingArea]").change(e=>{
+              	  
+              	  if(workingAreaArr.length<8){
+              		  if(workingAreaArr.length == 0){
+              			  $(".areaSelect-result-container").css("padding-top","20px");
+              			  workingAreaArr.push($("select[name=workingArea]").val());
+              			  $(".areaSelect-result").append($("<span class='select-result-span' onclick='deletHopeArea(this);'>").text($("select[name=workingArea]").val()));
+              		  }else{
+              			  for(let i=0;i<workingAreaArr.length;i++){
+                  			  if(!workingAreaArr.includes($("select[name=workingArea]").val())){
+                  				 workingAreaArr.push($("select[name=workingArea]").val());
+                            	  $(".areaSelect-result").append($("<span class='select-result-span' onclick='deletHopeArea(this);'>").text($("select[name=workingArea]").val()));	
+                  			  }                  		 
+                  		}
+              		  }
+              		 
+              	  }else{
+              		  alert("지역은 8개까지 선택 가능합니다.");
+              	  }
+                });
+                
+           function deletHopeArea(e){
+          	 console.log($(e).text());
+          	 for(let i=0;i<workingAreaArr.length;i++){
+          		 if(workingAreaArr[i] == $(e).text()){
+          			 workingAreaArr.splice(i,1);
+          			 $(e).remove();
+          		 }
+          	 }
+           }
+           
+           
+		//보유 기술 선택
+		let techArr = [];
+		
+		  
+         $("select[name=tech]").change(e=>{
+         	  
+         	  if(techArr.length<10){
+         		  if(techArr.length == 0){
+         			  $(".techSelect-result-container").css("padding-top","20px");
+         			 techArr.push($("select[name=tech]").val());
+         			  $(".techSelect-result").append($("<span class='select-result-span' onclick='deleteTech(this);'>").text($("select[name=tech]").val()));
+         		  }else{
+         			  for(let i=0;i<techArr.length;i++){
+             			  if(!techArr.includes($("select[name=tech]").val())){
+             				 techArr.push($("select[name=tech]").val());
+                       	  $(".techSelect-result").append($("<span class='select-result-span' onclick='deleteTech(this);'>").text($("select[name=tech]").val()));	
+             		 
+             		 }
+             			 
+             		}
+         		  }
+         		 
+         	  }else{
+         		  alert("보유기술은 10개까지 선택 가능합니다.");
+         	  }
+           });
+           
+      function deleteTech(e){
+     	 for(let i=0;i<techArr.length;i++){
+     		 if(techArr[i] == $(e).text()){
+     			techArr.splice(i,1);
+     			 $(e).remove();
+     		 }
+     	 }
+      }
+      
+		
+           
 </script>
+
+</main><!-- End #main -->
+
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

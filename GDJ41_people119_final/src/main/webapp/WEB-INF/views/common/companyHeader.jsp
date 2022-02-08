@@ -90,7 +90,7 @@
 				<li class="dropdown"><a href="#"><span><c:out value="${loginCompany.companyName }님"/></span> <i class="bi bi-chevron-down"></i></a>
 				<ul>
 					<li><a href="${path }/company/companyMypage.do?companyId=${loginCompany.companyId}">마이페이지</a></li>
-					<li><a href="${path}/company/logout.do">로그아웃</a></li>
+					<li><a href="${path}/company/companyLogout.do">로그아웃</a></li>
 				</ul>
 			</c:if>
           

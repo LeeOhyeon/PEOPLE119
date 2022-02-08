@@ -186,6 +186,13 @@ table td {
 	font-weight: bold;
 }
 
+.elementary-container{
+	border: 1px solid lightgray;
+	padding: 20px;
+	margin-top: 20px;
+	border-radius: 15px;
+}
+
 .elementary-container>table tr>td:first-child {
 	width: 130px;
 }
