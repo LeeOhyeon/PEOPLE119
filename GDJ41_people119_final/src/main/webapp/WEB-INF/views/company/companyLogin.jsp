@@ -141,7 +141,7 @@
     <script src="/resources/company/companylogin/resources/scripts/axure/ios.js"></script>
   </body>
 
-<div style="height:100%; width: 100%"></div>
+<div style="height:1000px; width: 100%"></div>
 
 
 
