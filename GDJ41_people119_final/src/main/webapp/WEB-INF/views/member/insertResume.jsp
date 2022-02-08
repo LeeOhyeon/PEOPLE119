@@ -23,13 +23,12 @@
       </div>
     </section><!-- End Breadcrumbs Section -->
 	
-	<form action="${path }/member/insertResume.do" method="post" enctype="multipart/form-data">
+	<form id="resumeSubmit" action="${path }/member/insertResume.do" method="post" enctype="multipart/form-data">
     <section class="inner-page">
       <div class="container">
         <div class="resume-container">
-          <p style="font-size: 24px; font-weight: bolder;">기본정보</p>
-          
           <div class="resume-basic-container">
+          <p style="font-size: 24px; font-weight: bolder;">기본정보</p>
             <div class="resume-basic-info">
               <div class="profileImg">
               	<div class="upload-box">
@@ -50,7 +49,7 @@
                <div class="info-span">H.P : </div><div class="basic-info">${loginMember.phone }</div><br>
                <div class="info-span">주소 : </div><div class="basic-info">${loginMember.address }</div><br>
                <div class="update-info">
-              	<button class="btn btn-outline-primary" type="button">정보수정</button>
+              	<a href="${path }/member/memberInfoView.do?memberId=${loginMember.memberId}"><button class="btn btn-outline-primary" type="button">정보수정</button></a>
               </div>
               </div>
             </div>
@@ -68,126 +67,37 @@
             <div class="resume-school-info">
               <label for="school1" class="school"><input type="radio" id="school1" name="academic" value="초등학교"><span>초등학교 졸업</span></label>
               <label for="school2" class="school"><input type="radio" id="school2" name="academic" value="중학교"><span>중학교 졸업</span></label>
-              <label for="school3" class="school"><input type="radio" id="school3" name="academic" value="고등학교"><span>고등학교 졸업</span></label>
-              <label for="school4" class="school"><input type="radio" id="school4" name="academic" value="대학/대학원"><span>대학/대학원 이상 졸업</span></label>
+              <label for="school3" class="school"><input type="radio" id="school3" name="academic" value="고등학교" ><span>고등학교 졸업</span></label>
+              <label for="school4" class="school"><input type="radio" id="school4" name="academic" value="대학/대학원" data-flag="돼지"><span>대학/대학원 이상 졸업</span></label>
             </div>
             <div class="school-input-container">
             	<div class="elementary-container">
-            		<div class="school-input-title">초등학교 졸업</div>
-	            		<table>
+            		<div class="school-input-title" id="container-title">대학/대학원 이상 졸업</div>
+            		<table>
 	            			<tr>
 	            				<td>학교명<span> (필수)</span></td>
 	            				<td >
-	            				<input class="form-control elementary-input" type="text" name="schoolName" aria-label="default input example">
+	            				<input class="form-control university-input" required="required" type="text" name="schoolName" aria-label="default input example">
 	            				</td>
 	            			</tr>
 	            			<tr>
 	            				<td>지역<span> (필수)</span></td>
 	            				<td>
-	            				<input class="form-control elementary-input" type="text" name="schoolArea" aria-label="default input example">
+	            				<input class="form-control university-input "  required="required" type="text" name="schoolArea" aria-label="default input example">
 	            				</td>
 	            			</tr>
-	            			<tr>
-	            				<td>입학날짜<span> (필수)</span></td>
-	            				<td> 
-	            				<input class="form-control elementary-input" type="month" placeholder="Default input" name="admissionDate" aria-label="default input example">
-	            				</td>
-	            			</tr>
-	            			<tr>
-	            				<td>졸업날짜<span> (필수)</span></td>
-	            				<td>
-	            				<input class="form-control elementary-input" type="month" placeholder="Default input" name="grauationDate" aria-label="default input example">
-	            				</td>
-	            			</tr>
-	            		</table>
-            	</div>
-            	
-            	<div class="middleschool-container">
-            		<div class="school-input-title">중학교 졸업</div>
-	            		<table>
-	            			<tr>
-	            				<td>학교명<span> (필수)</span></td>
-	            				<td >
-	            				<input class="form-control middleschool-input" type="text" name="schoolName" aria-label="default input example">
-	            				</td>
-	            			</tr>
-	            			<tr>
-	            				<td>지역<span> (필수)</span></td>
-	            				<td>
-	            				<input class="form-control middleschool-input" type="text" name="schoolArea" aria-label="default input example">
-	            				</td>
-	            			</tr>
-	            			<tr>
-	            				<td>입학날짜<span> (필수)</span></td>
-	            				<td> 
-	            				<input class="form-control middleschool-input" type="month" placeholder="Default input" name="admissionDate" aria-label="default input example">
-	            				</td>
-	            			</tr>
-	            			<tr>
-	            				<td>졸업날짜<span> (필수)</span></td>
-	            				<td>
-	            				<input class="form-control middleschool-input" type="month" placeholder="Default input" name="grauationDate" aria-label="default input example">
-	            				</td>
-	            			</tr>
-	            		</table>
-            	</div>
-            	
-            	<div class="highschool-container">
-            		<div class="school-input-title">고등학교 졸업</div>
-	            		<table>
-	            			<tr>
-	            				<td>학교명<span> (필수)</span></td>
-	            				<td >
-	            				<input class="form-control highschool-input" type="text" name="schoolName" aria-label="default input example">
-	            				</td>
-	            			</tr>
-	            			<tr>
-	            				<td>지역<span> (필수)</span></td>
-	            				<td>
-	            				<input class="form-control highschool-input" type="text" name="schoolArea" aria-label="default input example">
-	            				</td>
-	            			</tr>
-	            			<tr>
-	            				<td>입학날짜<span> (필수)</span></td>
-	            				<td> 
-	            				<input class="form-control highschool-input" type="month" placeholder="Default input" name="admissionDate" aria-label="default input example">
-	            				</td>
-	            			</tr>
-	            			<tr>
-	            				<td>졸업날짜<span> (필수)</span></td>
-	            				<td>
-	            				<input class="form-control highschool-input" type="month" placeholder="Default input" name="grauationDate" aria-label="default input example">
-	            				</td>
-	            			</tr>
-	            		</table>
-            	</div>
-            	
-            	<div class="university-container">
-            		<div class="school-input-title">대학/대학원 졸업</div>
-	            		<table>
-	            			<tr>
-	            				<td>학교명<span> (필수)</span></td>
-	            				<td >
-	            				<input class="form-control university-input" type="text" name="schoolName" aria-label="default input example">
-	            				</td>
-	            			</tr>
-	            			<tr>
-	            				<td>지역<span> (필수)</span></td>
-	            				<td>
-	            				<input class="form-control university-input " type="text" name="schoolArea" aria-label="default input example">
-	            				</td>
-	            			</tr>
-	            			<tr>
+	            			
+	            			<tr class="university-container">
 	            				<td>전공<span> (필수)</span></td>
 	            				<td>
-	            				<input class="form-control university-input" type="text" name="major" aria-label="default input example">
+	            				<input class="form-control university-input" required="required" type="text" name="major" aria-label="default input example">
 	            				</td>
 	            			</tr>
-	            			<tr>
-	            				<td>주/야간<span> (필수)</span></td>
+	            			<tr class="university-container">
+	            				<td>주/야간 </td>
 	            				<td>
 	            				<div class="form-check university-input">
-  									<input class="form-check-input" type="radio" name="dayNight" id="dayNight1" value="주간">
+  									<input class="form-check-input" type="radio" name="dayNight" id="dayNight1" value="주간" checked="checked">
 								  <label class="form-check-label" for="dayNight1">
 								    주간
 								  </label>
@@ -201,39 +111,41 @@
 	            				
 	            				</td>
 	            			</tr>
-	            			<tr>
+	            			<tr class="university-container">
 	            				<td>학점<span> (필수)</span></td>
 	            				<td>
-	            				<input class="form-control university-input" type="text" name="grades" aria-label="default input example">
+	            				<input class="form-control university-input" type="text" name="grades" aria-label="default input example" required="required">
 	            				</td>
 	            			</tr>
-	            			
+		            			
 	            			<tr>
 	            				<td>입학날짜<span> (필수)</span></td>
 	            				<td> 
-	            				<input class="form-control university-input" type="month" placeholder="Default input" name="admissionDate" aria-label="default input example">
+	            				<input class="form-control university-input schoolStartDate" type="month" placeholder="Default input" name="admissionDate" aria-label="default input example">
 	            				</td>
 	            			</tr>
 	            			<tr>
 	            				<td>졸업날짜<span> (필수)</span></td>
 	            				<td>
-	            				<input class="form-control university-input" type="month" placeholder="Default input" name="grauationDate" aria-label="default input example">
+	            				<input class="form-control university-input schoolEndDate" type="month" placeholder="Default input" name="grauationDate" aria-label="default input example">
 	            				</td>
 	            			</tr>
 	            		</table>
             	</div>
-            	
-            	
             </div>
             
+            <script type="text/javascript">
+            	
+            	
             
+			</script>
           </div>
 
           <div class="resume-basic-container">
             <p style="font-size: 24px; font-weight: bolder;">경력사항</p>
             <div class="resume-career-info">
               <div class="select-career">
-                <label for="career1"><input type="radio" id="career1" name="career">신입</label>
+                <label for="career1"><input type="radio" id="career1" name="career" checked="checked">신입</label>
                 <label for="career2"><input type="radio" id="career2" name="career">경력</label>
               </div>
               <div class="career-info">
@@ -269,6 +181,7 @@
                           <option value="학업">학업</option>
                           <option value="유학">유학</option>
                           <option value="개인사정">개인사정</option>
+                          <option value="기타">기타</option>
                       </select>
                     </td>
                 
@@ -421,8 +334,15 @@
                         <option value="금천구">금천구</option>
                         <option value="관악구">관악구</option>
                       </select>
+                      <div class="areaSelect-result-container">
+                      	<div class="areaSelect-result">
+                      		
+                      	</div>
+                      </div>
                     </td>
                   </tr>
+                  
+        
                   <tr>
                     <td>포지션</td>
                     <td>
@@ -453,6 +373,7 @@
                 </table>
 
             </div>
+
           </div>
           <div class="resume-basic-container">
             <p style="font-size: 24px; font-weight: bolder;">자격증</p>
@@ -460,16 +381,20 @@
               <table>
                 <tr>
                   <td>자격증명</td>
-                  <td><input style="width: 500px;" class="form-control" type="text" placeholder="자격증명" aria-label="default input example"></td>
+                  <td><input style="width: 500px;" class="form-control" type="text" placeholder="자격증명" aria-label="default input example"
+                  name="certificateName"
+                  ></td>
                 </tr>
                 <tr>
                   <td>발행처</td>
-                  <td><input style="width: 500px;" class="form-control" type="text" placeholder="자격증명" aria-label="default input example"></td>
+                  <td><input style="width: 500px;" class="form-control" type="text" placeholder="발행처" aria-label="default input example"
+                  name="institution"
+                  ></td>
                 </tr>
                 <tr>
                   <td>합격구분</td>
                   <td>
-                    <select class="form-select" aria-label="Default select example" style="width: 500px;">
+                    <select class="form-select" aria-label="Default select example" style="width: 500px;" name="acceptance">
                       <option selected value="1차 합격">1차 합격</option>
                       <option value="2차 합격">2차 합격</option>
                       <option value="필기 합격">필기 합격</option>
@@ -481,7 +406,7 @@
                 <tr>
                   <td>취득일</td>
                   <td>
-                    <input type="date">
+                    <input type="date" name="acquiredDate">
                   </td>
                 </tr>
               </table>
@@ -495,7 +420,7 @@
                 <tr>
                   <td>언어</td>
                   <td>
-                    <select class="form-select" aria-label="Default select example" style="width: 500px;">
+                    <select class="form-select" aria-label="Default select example" style="width: 500px;" name="language">
                       <option selected value="영어">영어</option>
                       <option value="일본어">일본어</option>
                       <option value="중국어">중국어</option>
@@ -511,19 +436,24 @@
                 </tr>
                 <tr>
                   <td>시험종류</td>
-                  <td><input style="width: 500px;" class="form-control" type="text" placeholder="시험종류 입력" aria-label="default input example"></td>
+                  <td><input style="width: 500px;" class="form-control" type="text" placeholder="시험종류 입력" aria-label="default input example"
+                  name="testType"
+                  ></td>
                 </tr>
                 <tr>
                   <tr>
                     <td>점수</td>
-                    <td><input style="width: 500px;" class="form-control" type="text" placeholder="점수" aria-label="default input example"></td>
+                    <td><input style="width: 500px;" class="form-control" type="text" placeholder="점수" aria-label="default input example"
+                    name="score"
+                    ></td>
                   </tr>
                   <tr>
                 </tr>
                 <tr>
-                  <td>합격구분</td>
+                  <td>취득여부</td>
                   <td>
-                    <select class="form-select" aria-label="Default select example" style="width: 500px;">
+                    <select class="form-select" aria-label="Default select example" style="width: 500px;"
+                    name="acqStatus">
                       <option selected value="취득">취득(PASS)</option>
                       <option value="미취득">미취득(NON PASS)</option>
                     </select>
@@ -532,7 +462,7 @@
                 <tr>
                   <td>취득일</td>
                   <td>
-                    <input type="date">
+                    <input type="date" name="aequireDate">
                   </td>
                 </tr>
               </table>
@@ -540,16 +470,9 @@
           </div>
 
           <div class="resume-basic-container">
-            <p style="font-size: 24px; font-weight: bolder;">포트폴리오 및 기타문서</p>
-            <div class="update-file">
-            </div>
-          </div>
-
-
-          <div class="resume-basic-container">
             <p style="font-size: 24px; font-weight: bolder;">보유기술</p>
             <div class="tech-container">
-              <select class="form-select" aria-label="Default select example" style="width: 200px;">
+              <select class="form-select" aria-label="Default select example" style="width: 200px;" name="tech">
                 <option value="JAVA">JAVA</option>
                 <option value="JSP">JSP</option>
                 <option value="Ajax">Ajax</option>
@@ -571,48 +494,84 @@
                 <option value="Servlet">Servlet</option>
               </select>
             </div>
+              <div class="techSelect-result-container">
+                <div class="techSelect-result"></div>
+              </div>
           </div>
-
+			
 
           <div class="resume-basic-container">
             <p style="font-size: 24px; font-weight: bolder;">자기소개서</p>
             <div class="introduceself-container">
-              <input class="form-control" type="text" placeholder="자소서 제목" aria-label="default input example">
+              <input class="form-control" type="text" placeholder="자소서 제목" aria-label="default input example" name="selfTitle">
+              <br>
               <div class="form-floating">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px;resize:none;" ></textarea>
+                <textarea name="selfContent" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px;resize:none;" ></textarea>
                 <label for="floatingTextarea2">자소서 내용</label>
               </div>
             </div>
           </div>
 
-          <div class="resume-basic-container" style="border: none;">
+          <div class="resume-basic-container">
             <p style="font-size: 24px; font-weight: bolder;">경력기술서</p>
             <div class="introduceself-container">
-              <input class="form-control" type="text" placeholder="경력기술서 제목" aria-label="default input example">
+              <input class="form-control" type="text" placeholder="경력기술서 제목" aria-label="default input example" name="careerTitle">
+              <br>
               <div class="form-floating">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px;resize:none;" ></textarea>
+                <textarea name="careerContent" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px;resize:none;" ></textarea>
                 <label for="floatingTextarea2">경력기술서 내용</label>
               </div>
             </div>
           </div>
+          
+          
+          <div class="resume-basic-container">
+            <p style="font-size: 24px; font-weight: bolder;">주소</p>
+            <div class="certificate-container">
+              <table >
+                <tr>
+                  <td>GIT 주소</td>
+                  <td>
+                   <input style="width: 500px;" class="form-control" type="text" aria-label="default input example"
+                  name="gitLink">
+                  </td>
+                </tr>
+                <tr>
+                  <td>notion 주소</td>
+                  <td>
+                   <input style="width: 500px;" class="form-control" type="text"  aria-label="default input example"
+                  name="notionLink">
+                  </td>
+                </tr>
+               <tr>
+                  <td>blog 주소</td>
+                  <td>
+                   <input style="width: 500px;" class="form-control" type="text"  aria-label="default input example"
+                  name="blogLink">
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          
+          
+          
+          
+          
 
           <div class="resume-btn-container">
            <div style="float: right;">
-             <button class="btn btn-outline-secondary">이력서 저장</button>
+             <button class="btn btn-outline-secondary" type="button">이력서 저장</button>
            </div>
           </div>
-
-
-
         </div>
       </div>
       
     </section>
-</form>
-  </main><!-- End #main -->
- <script type="text/javascript">
-              
- function DropFile(dropAreaId, fileListId) {
+	</form>
+
+<script type="text/javascript">
+function DropFile(dropAreaId, fileListId) {
 	  let dropArea = document.getElementById(dropAreaId);
 	  let fileList = document.getElementById(fileListId);
 
@@ -681,41 +640,133 @@
 	$("#resumeTitle").keyup(e=>{
 		const length = $(e.target).val().length;
 		if(length>100){
-            temp = $(e.target).val().substring(0,98);
-            $(e.target).val(temp);
-         }
-         $("#resumeTitle-result").text(length+"/100"); 
+          temp = $(e.target).val().substring(0,98);
+          $(e.target).val(temp);
+       }
+       $("#resumeTitle-result").text(length+"/100"); 
 	});
 	
-	
+	//최종학력 선택
 	$("input[name=academic]").change(e=>{
-
-		const academic = $("input[name=academic]:checked").val();
-		
-		if(academic == "초등학교"){
-			$(".elementary-container").show();
-			$(".middleschool-container").hide();
-			$(".highschool-container").hide();
-			$(".university-container").hide();
-		}else if(academic == "중학교"){
-			$(".elementary-container").hide();
-			$(".middleschool-container").show();
-			$(".highschool-container").hide();
-			$(".university-container").hide();
-		}else if(academic == "고등학교"){
-			$(".elementary-container").hide();
-			$(".middleschool-container").hide();
-			$(".highschool-container").show();
-			$(".university-container").hide();
-		}else if(academic == "대학/대학원"){
-			$(".elementary-container").hide();
-			$(".middleschool-container").hide();
-			$(".highschool-container").hide();
+		$("#container-title").html($(e.target).siblings('span').html());
+		if($($("input[name=academic]:checked")).data('flag')) {
 			$(".university-container").show();
+		} else {
+			$(".university-container").hide();
 		}
 		
 	});
 	
+	//최종 학력 날짜 
+	$(".schoolEndDate").change(e=>{
+		if($("input[name=grauationDate]").val()<$("input[name=admissionDate]").val()){
+			alert("날짜를 확인해 주세요!");
+			$(".schoolEndDate").val("");
+		}
+	});
 	
+	$(".schoolStartDate").change(e=>{
+		if($("input[name=grauationDate]").val() != ""){
+			if($("input[name=grauationDate]").val()<$("input[name=admissionDate]").val()){
+  			alert("날짜를 확인해 주세요!");
+  			$(".schoolStartDate").val("");
+  		}
+		}
+	});
+	
+	//입사일 퇴사일
+	
+	$("input[name=regDate]").change(e=>{
+		if($("input[name=regDate]").val()<$("input[name=joinDate]").val()){
+			alert("날짜를 확인해 주세요!");
+			$("input[name=regDate]").val("");
+		}
+	});
+	
+	$("input[name=joinDate]").change(e=>{
+		if($("input[name=regDate]").val() != ""){
+			if($("input[name=regDate]").val()<$("input[name=joinDate]").val()){
+  			alert("날짜를 확인해 주세요!");
+  			$("input[name=joinDate]").val("");
+  		}
+		}
+	});
+	
+	//희망 지역 선택
+	   
+          let workingAreaArr = [];
+                $("select[name=workingArea]").change(e=>{
+              	  
+              	  if(workingAreaArr.length<8){
+              		  if(workingAreaArr.length == 0){
+              			  $(".areaSelect-result-container").css("padding-top","20px");
+              			  workingAreaArr.push($("select[name=workingArea]").val());
+              			  $(".areaSelect-result").append($("<span class='select-result-span' onclick='deletHopeArea(this);'>").text($("select[name=workingArea]").val()));
+              		  }else{
+              			  for(let i=0;i<workingAreaArr.length;i++){
+                  			  if(!workingAreaArr.includes($("select[name=workingArea]").val())){
+                  				 workingAreaArr.push($("select[name=workingArea]").val());
+                            	  $(".areaSelect-result").append($("<span class='select-result-span' onclick='deletHopeArea(this);'>").text($("select[name=workingArea]").val()));	
+                  			  }                  		 
+                  		}
+              		  }
+              		 
+              	  }else{
+              		  alert("지역은 8개까지 선택 가능합니다.");
+              	  }
+                });
+                
+           function deletHopeArea(e){
+          	 console.log($(e).text());
+          	 for(let i=0;i<workingAreaArr.length;i++){
+          		 if(workingAreaArr[i] == $(e).text()){
+          			 workingAreaArr.splice(i,1);
+          			 $(e).remove();
+          		 }
+          	 }
+           }
+           
+           
+		//보유 기술 선택
+		let techArr = [];
+		
+		  
+         $("select[name=tech]").change(e=>{
+         	  
+         	  if(techArr.length<10){
+         		  if(techArr.length == 0){
+         			  $(".techSelect-result-container").css("padding-top","20px");
+         			 techArr.push($("select[name=tech]").val());
+         			  $(".techSelect-result").append($("<span class='select-result-span' onclick='deleteTech(this);'>").text($("select[name=tech]").val()));
+         		  }else{
+         			  for(let i=0;i<techArr.length;i++){
+             			  if(!techArr.includes($("select[name=tech]").val())){
+             				 techArr.push($("select[name=tech]").val());
+                       	  $(".techSelect-result").append($("<span class='select-result-span' onclick='deleteTech(this);'>").text($("select[name=tech]").val()));	
+             		 
+             		 }
+             			 
+             		}
+         		  }
+         		 
+         	  }else{
+         		  alert("보유기술은 10개까지 선택 가능합니다.");
+         	  }
+           });
+           
+      function deleteTech(e){
+     	 for(let i=0;i<techArr.length;i++){
+     		 if(techArr[i] == $(e).text()){
+     			techArr.splice(i,1);
+     			 $(e).remove();
+     		 }
+     	 }
+      }
+      
+		
+           
 </script>
+
+</main><!-- End #main -->
+
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

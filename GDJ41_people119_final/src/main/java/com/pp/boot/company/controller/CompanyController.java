@@ -71,7 +71,7 @@ public class CompanyController {
 			status.setComplete();
 		}
 		
-		return "redirect:/company/companyIndex.do";
+		return "redirect:/";
 	}
 	
 	@RequestMapping("/enrollCompanyView.do")

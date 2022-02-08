@@ -134,11 +134,11 @@ public class MemberController {
 			String key="";  //인증번호 
 
 			//SimpleMailMessage message = new SimpleMailMessage();
-			MimeMessage  message = javaMailSender.createMimeMessage();
+			MimeMessage  message = javaMailSender.createMimeMessage(); //메일 보내는 사람
 			//message.setTo(email); //스크립트에서 보낸 메일을 받을 사용자 이메일 주소
 			try {
-				message.addRecipients(RecipientType.TO, email);
-				message.setSubject("People119 이메일 인증번호 입니다.");
+				message.addRecipients(RecipientType.TO, email); //받는 사람 주소 넣어쥼
+				message.setSubject("People119 이메일 인증번호 입니다."); //메일 제목
 			} catch (MessagingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -173,7 +173,7 @@ public class MemberController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			javaMailSender.send(message);
+			javaMailSender.send(message);//최종적으로 메일 보내기
 	        return key;
 			
 		}
@@ -364,23 +364,5 @@ public class MemberController {
 			return loginMember; 
 		}
 							
-		//회원 이력서 관리
-		@RequestMapping("/memberResumeList.do")
-		public ModelAndView memberResumeList(@RequestParam String memberId,ModelAndView mv) {
-			
-			mv.setViewName("member/memberResumeList");
-			
-			return mv;
-		}
 		
-		@RequestMapping("/insertResumeView.do")
-		public ModelAndView insertResumeView(@RequestParam String memberId,ModelAndView mv) {
-			
-			Member loginMember = service.loginMember(Map.of("memberId",memberId));
-			mv.addObject("loginMember",loginMember);
-			mv.setViewName("member/insertResume");
-			
-			return mv;
-		}
-
 }

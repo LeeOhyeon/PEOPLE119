@@ -186,6 +186,12 @@ table td {
 	font-weight: bold;
 }
 
+.elementary-container{
+	padding: 20px;
+	margin-top: 20px;
+	border-radius: 15px;
+}
+
 .elementary-container>table tr>td:first-child {
 	width: 130px;
 }
@@ -237,46 +243,22 @@ table td {
 .university-input-radio{
 	display: inline-block;
 }
-
-
-
-
-.elementary-container{
+/* .areaSelect-result-container{
+	padding-top: 20px;
+} */
+.select-result-span{
+	font-size: 14px;
+	font-weight: bolder;
+	margin-right: 4px;
 	border: 1px solid lightgray;
-	width: 100%;
-	height: auto;
-	padding: 20px;
 	border-radius: 15px;
-	display: none;
-}
-.middleschool-container{
-	border: 1px solid lightgray;
-	width: 100%;
-	height: auto;
-	padding: 20px;
-	border-radius: 15px;
-	display: none;
-}
-.highschool-container{
-	border: 1px solid lightgray;
-	width: 100%;
-	height: auto;
-	padding: 20px;
-	border-radius: 15px;
-	display: none;
+	padding: 5px;
+	
 }
 
-.university-container{
+.resume-basic-container{
 	border: 1px solid lightgray;
-	width: 100%;
-	height: auto;
-	padding: 20px;
 	border-radius: 15px;
-	display: none;
+	padding: 25px;
 }
-
-
-
-
-
 
