@@ -45,12 +45,16 @@
               	</div>
               </div>
               <div class="basic-info-container">
-                <p class="info-name">${loginMember.memberName }</p>
-                <p class="basic-info">${loginMember.email }</p>
-                <p class="basic-info">${loginMember.phone }</p>
-                <p class="basic-info">${loginMember.address }</p>
+               <div class="info-span">이름 : </div><div class="info-name">${loginMember.memberName }</div><span class="info-gender"> (${loginMember.gender =='M'?"남":"여"})</span><br>
+               <div class="info-span">이메일 : </div> <div class="basic-info">${loginMember.email }</div><br>
+               <div class="info-span">H.P : </div><div class="basic-info">${loginMember.phone }</div><br>
+               <div class="info-span">주소 : </div><div class="basic-info">${loginMember.address }</div><br>
+               <div class="update-info">
+              	<button class="btn btn-outline-primary" type="button">정보수정</button>
+              </div>
               </div>
             </div>
+             
           </div>
           <div class="resume-basic-container">
             <p style="font-size: 24px; font-weight: bolder;">이력서 제목</p>
@@ -68,8 +72,158 @@
               <label for="school4" class="school"><input type="radio" id="school4" name="academic" value="대학/대학원"><span>대학/대학원 이상 졸업</span></label>
             </div>
             <div class="school-input-container">
-            	<div class="school-input-title">초등학교 졸업</div>
-            	<div class=""></div>
+            	<div class="elementary-container">
+            		<div class="school-input-title">초등학교 졸업</div>
+	            		<table>
+	            			<tr>
+	            				<td>학교명<span> (필수)</span></td>
+	            				<td >
+	            				<input class="form-control elementary-input" type="text" name="schoolName" aria-label="default input example">
+	            				</td>
+	            			</tr>
+	            			<tr>
+	            				<td>지역<span> (필수)</span></td>
+	            				<td>
+	            				<input class="form-control elementary-input" type="text" name="schoolArea" aria-label="default input example">
+	            				</td>
+	            			</tr>
+	            			<tr>
+	            				<td>입학날짜<span> (필수)</span></td>
+	            				<td> 
+	            				<input class="form-control elementary-input" type="month" placeholder="Default input" name="admissionDate" aria-label="default input example">
+	            				</td>
+	            			</tr>
+	            			<tr>
+	            				<td>졸업날짜<span> (필수)</span></td>
+	            				<td>
+	            				<input class="form-control elementary-input" type="month" placeholder="Default input" name="grauationDate" aria-label="default input example">
+	            				</td>
+	            			</tr>
+	            		</table>
+            	</div>
+            	
+            	<div class="middleschool-container">
+            		<div class="school-input-title">중학교 졸업</div>
+	            		<table>
+	            			<tr>
+	            				<td>학교명<span> (필수)</span></td>
+	            				<td >
+	            				<input class="form-control middleschool-input" type="text" name="schoolName" aria-label="default input example">
+	            				</td>
+	            			</tr>
+	            			<tr>
+	            				<td>지역<span> (필수)</span></td>
+	            				<td>
+	            				<input class="form-control middleschool-input" type="text" name="schoolArea" aria-label="default input example">
+	            				</td>
+	            			</tr>
+	            			<tr>
+	            				<td>입학날짜<span> (필수)</span></td>
+	            				<td> 
+	            				<input class="form-control middleschool-input" type="month" placeholder="Default input" name="admissionDate" aria-label="default input example">
+	            				</td>
+	            			</tr>
+	            			<tr>
+	            				<td>졸업날짜<span> (필수)</span></td>
+	            				<td>
+	            				<input class="form-control middleschool-input" type="month" placeholder="Default input" name="grauationDate" aria-label="default input example">
+	            				</td>
+	            			</tr>
+	            		</table>
+            	</div>
+            	
+            	<div class="highschool-container">
+            		<div class="school-input-title">고등학교 졸업</div>
+	            		<table>
+	            			<tr>
+	            				<td>학교명<span> (필수)</span></td>
+	            				<td >
+	            				<input class="form-control highschool-input" type="text" name="schoolName" aria-label="default input example">
+	            				</td>
+	            			</tr>
+	            			<tr>
+	            				<td>지역<span> (필수)</span></td>
+	            				<td>
+	            				<input class="form-control highschool-input" type="text" name="schoolArea" aria-label="default input example">
+	            				</td>
+	            			</tr>
+	            			<tr>
+	            				<td>입학날짜<span> (필수)</span></td>
+	            				<td> 
+	            				<input class="form-control highschool-input" type="month" placeholder="Default input" name="admissionDate" aria-label="default input example">
+	            				</td>
+	            			</tr>
+	            			<tr>
+	            				<td>졸업날짜<span> (필수)</span></td>
+	            				<td>
+	            				<input class="form-control highschool-input" type="month" placeholder="Default input" name="grauationDate" aria-label="default input example">
+	            				</td>
+	            			</tr>
+	            		</table>
+            	</div>
+            	
+            	<div class="university-container">
+            		<div class="school-input-title">대학/대학원 졸업</div>
+	            		<table>
+	            			<tr>
+	            				<td>학교명<span> (필수)</span></td>
+	            				<td >
+	            				<input class="form-control university-input" type="text" name="schoolName" aria-label="default input example">
+	            				</td>
+	            			</tr>
+	            			<tr>
+	            				<td>지역<span> (필수)</span></td>
+	            				<td>
+	            				<input class="form-control university-input " type="text" name="schoolArea" aria-label="default input example">
+	            				</td>
+	            			</tr>
+	            			<tr>
+	            				<td>전공<span> (필수)</span></td>
+	            				<td>
+	            				<input class="form-control university-input" type="text" name="major" aria-label="default input example">
+	            				</td>
+	            			</tr>
+	            			<tr>
+	            				<td>주/야간<span> (필수)</span></td>
+	            				<td>
+	            				<div class="form-check university-input">
+  									<input class="form-check-input" type="radio" name="dayNight" id="dayNight1" value="주간">
+								  <label class="form-check-label" for="dayNight1">
+								    주간
+								  </label>
+								</div>
+								<div class="form-check university-input">
+								  <input class="form-check-input" type="radio" name="dayNight" id="dayNight2"  value="야간">
+								  <label class="form-check-label" for="dayNight2">
+								   야간
+								  </label>
+								</div>
+	            				
+	            				</td>
+	            			</tr>
+	            			<tr>
+	            				<td>학점<span> (필수)</span></td>
+	            				<td>
+	            				<input class="form-control university-input" type="text" name="grades" aria-label="default input example">
+	            				</td>
+	            			</tr>
+	            			
+	            			<tr>
+	            				<td>입학날짜<span> (필수)</span></td>
+	            				<td> 
+	            				<input class="form-control university-input" type="month" placeholder="Default input" name="admissionDate" aria-label="default input example">
+	            				</td>
+	            			</tr>
+	            			<tr>
+	            				<td>졸업날짜<span> (필수)</span></td>
+	            				<td>
+	            				<input class="form-control university-input" type="month" placeholder="Default input" name="grauationDate" aria-label="default input example">
+	            				</td>
+	            			</tr>
+	            		</table>
+            	</div>
+            	
+            	
             </div>
             
             
@@ -87,17 +241,20 @@
                   <tr>
                     <td>회사명</td>
                     <td style="width: 500px"><input class="form-control" type="text" aria-label="default input example" name="companyName"></td>
+                  </tr><tr>
+                    <td>근무부서</td>
+                    <td style="width: 500px"><input class="form-control" type="text" aria-label="default input example" name="department"></td>
                   </tr>
                   <tr>
                     <td>입사일</td>
                     <td>
-                      <input type="date" style="width: 100%;">
+                      <input type="date" style="width: 100%;" name="joinDate">
                     </td>
                   </tr>
                   <tr>
                     <td>퇴사일</td>
                     <td>
-                      <input type="date" style="width: 100%;">
+                      <input type="date" style="width: 100%;" name="regDate">
                     </td>
                    
                   </tr>
@@ -119,7 +276,7 @@
                   <tr>
                     <td>직급</td>
                     <td>
-                      <select class="form-select" aria-label="Default select example">
+                      <select class="form-select" aria-label="Default select example" name="rank">
                         <option selected value="인턴/수습">인턴/수습</option>
                         <option value="사원">사원</option>
                         <option value="주임">주임</option>
@@ -147,7 +304,7 @@
                   <tr>
                    <td>직책</td>
                     <td>
-                      <select class="form-select" aria-label="Default select example">
+                      <select class="form-select" aria-label="Default select example" name="position">
                         <option selected value="팀원">팀원</option>
                         <option value="팀장">팀장</option>
                         <option value="실장">실장</option>
@@ -168,7 +325,7 @@
                   <tr>
                     <td>근무지역</td>
                     <td>
-                      <select class="form-select" aria-label="Default select example">
+                      <select class="form-select" aria-label="Default select example" name="deptLocation">
                         <option value="강남구">강남구</option>
                         <option value="강북구">강북구</option>
                         <option value="광진구">광진구</option>
@@ -203,14 +360,14 @@
                   <tr>
                     <td>연봉</td>
                     <td>
-                      <input class="form-control" type="text" placeholder="만원" aria-label="default input example">
+                      <input class="form-control" type="number" placeholder="만원" aria-label="default input example" name="annualIncome" min="1500" step="100">
                     </td>
                   
                   </tr>
                   <tr>
                     <td>담당업무</td>
                     <td>
-                      <input class="form-control" type="text" placeholder="담당업무" aria-label="default input example">
+                      <input class="form-control" type="text" placeholder="담당업무" aria-label="default input example" name="assignedTask">
                     </td>
                   
                   </tr>
@@ -225,19 +382,19 @@
                 <tr>
                   <td>근무형태</td>
                   <td>
-                    <select class="form-select" aria-label="Default select example" style="width: 500px;">
+                    <select class="form-select" aria-label="Default select example" style="width: 500px;" name="workType">
                       <option selected>정규직</option>
                       <option value="1">계약직</option>
                     </select>
                   </td>
                   <tr>
                     <td>희망연봉</td>
-                    <td><input style="width: 500px;" class="form-control" type="text" placeholder="만원" aria-label="default input example"></td>
+                    <td><input style="width: 500px;" class="form-control" type="number" min="1500" step="100" placeholder="만원" aria-label="default input example"></td>
                   </tr>
                   <tr>
                     <td>근무지역</td>
                     <td colspan="4">
-                      <select class="form-select" aria-label="Default select example" style="width: 500px;">
+                      <select class="form-select" aria-label="Default select example" style="width: 500px;" name="workingArea">
                         <option value="강남구">강남구</option>
                         <option value="강북구">강북구</option>
                         <option value="광진구">광진구</option>
@@ -269,7 +426,7 @@
                   <tr>
                     <td>포지션</td>
                     <td>
-                      <select class="form-select" aria-label="Default select example" style="width: 500px;">
+                      <select class="form-select" aria-label="Default select example" style="width: 500px;" name="hopePosition">
                         <option value="서버/백엔드 개발자" selected>서버/백엔드 개발자</option>
                         <option value="프론트엔드 개발자">프론트엔드 개발자</option>
                         <option value="웹 풀스택 개발자">웹 풀스택 개발자</option>
@@ -536,11 +693,26 @@
 		const academic = $("input[name=academic]:checked").val();
 		
 		if(academic == "초등학교"){
-			$(".school-input").append()
+			$(".elementary-container").show();
+			$(".middleschool-container").hide();
+			$(".highschool-container").hide();
+			$(".university-container").hide();
+		}else if(academic == "중학교"){
+			$(".elementary-container").hide();
+			$(".middleschool-container").show();
+			$(".highschool-container").hide();
+			$(".university-container").hide();
+		}else if(academic == "고등학교"){
+			$(".elementary-container").hide();
+			$(".middleschool-container").hide();
+			$(".highschool-container").show();
+			$(".university-container").hide();
+		}else if(academic == "대학/대학원"){
+			$(".elementary-container").hide();
+			$(".middleschool-container").hide();
+			$(".highschool-container").hide();
+			$(".university-container").show();
 		}
-		
-		
-			
 		
 	});
 	

@@ -154,36 +154,126 @@ table td {
         font-size: 20px;
         font-weight: bold;
     }   
+
+.info-span{
+	display : inline-block;
+	width: 70px;
+	font-size:18px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}	
+.info-name {
+	display : inline-block;
+}
+.basic-info{
+	display : inline-block;
+}
+.update-info{
+	margin-top: 20px;
+	float: right;
+}
+
 .school-input-container{
-	border: 1px solid black;
+	
 	width: 100%;
 	height: auto;
-	padding: 0px;
-	margin: 15px;
+	padding: 10px;
+	margin-top: 20px;
+	
 }
 .school-input-title{
 	font-size:24px;
 	font-weight: bold;
-	 
-	
 }
-	
+
+.elementary-container>table tr>td:first-child {
+	width: 130px;
+}
+.elementary-input{
+	width: 300px!important;
+}
+.elementary-container>table tr>td:first-child>span {
+	color:red;
+}
 
 
 
 
+.middleschool-container>table tr>td:first-child>span {
+	color:red;
+}
+
+.middleschool-container>table tr>td:first-child {
+	width: 130px;
+}
+.middleschool-input{
+	width: 300px!important;
+}
+
+
+.highschool-container>table tr>td:first-child>span {
+	color:red;
+}
+
+.highschool-container>table tr>td:first-child {
+	width: 130px;
+}
+.highschool-input{
+	width: 300px!important;
+}
+
+
+
+.university-container>table tr>td:first-child>span {
+	color:red;
+}
+
+.university-container>table tr>td:first-child {
+	width: 130px;
+}
+.university-input{
+	width: 300px!important;
+}
+.university-input-radio{
+	display: inline-block;
+}
 
 
 
 
+.elementary-container{
+	border: 1px solid lightgray;
+	width: 100%;
+	height: auto;
+	padding: 20px;
+	border-radius: 15px;
+	display: none;
+}
+.middleschool-container{
+	border: 1px solid lightgray;
+	width: 100%;
+	height: auto;
+	padding: 20px;
+	border-radius: 15px;
+	display: none;
+}
+.highschool-container{
+	border: 1px solid lightgray;
+	width: 100%;
+	height: auto;
+	padding: 20px;
+	border-radius: 15px;
+	display: none;
+}
 
-
-
-
-
-
-
-
+.university-container{
+	border: 1px solid lightgray;
+	width: 100%;
+	height: auto;
+	padding: 20px;
+	border-radius: 15px;
+	display: none;
+}
 
 
 
