@@ -46,7 +46,7 @@
               <h1><strong>이력서 관리</strong></h1>
             </div>
             <div class="resume-btn">
-            <a href="${path}/member/insertResumeView.do?memberId=${loginMember.memberId}">
+            <a href="${path}/resume/insertResumeView.do?memberId=${loginMember.memberId}">
               <button type="button" class="btn btn-primary" style="width:170px">
               이력서 등록하기</button></a>
             </div>

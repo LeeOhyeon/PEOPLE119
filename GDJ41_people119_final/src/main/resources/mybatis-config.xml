@@ -9,6 +9,7 @@
 		<typeAlias type="com.pp.boot.board.model.vo.Board" alias="board"/>
 		<typeAlias type="com.pp.boot.offer.model.vo.Offer" alias="offer"/>
 		<typeAlias type="com.pp.boot.board.model.vo.Comment" alias="comment"/>
+		<typeAlias type="com.pp.boot.resume.model.vo.Resume" alias="Resume"/>
 	</typeAliases>
 	
 </configuration>

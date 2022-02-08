@@ -33,8 +33,8 @@
               <li class="link-tab-li"><a href="#"><i class="fas fa-home"></i> My Info</a></li>
               <li><i class="fas fa-pen"></i> 이력서 <span id="resumt-toggle"><i class="fas fa-angle-down"></i></span>
                 <ul>
-                  <li class="resume-link"><a href="#">이력서 등록</a></li>
-                  <li class="resume-link"><a href="${path }/member/memberResumeList.do?memberId=${loginMember.memberId }">이력서 관리</a></li>
+                  <li class="resume-link"><a href="${path }/resume/insertResumeView.do?memberId=${loginMember.memberId }">이력서 등록</a></li>
+                  <li class="resume-link"><a href="${path }/resume/memberResumeList.do?memberId=${loginMember.memberId }">이력서 관리</a></li>
                 </ul>
               </li>
               <li class="link-tab-li"><a href="#"><i class="fas fa-star"></i> 스크랩/관심 기업</a></li>
@@ -146,6 +146,15 @@
                   <button class="btn btn-outline-secondary" type="button" onclick="updatePhone();">수정</button>
                 </div>
               </div>
+              
+               <div class="member_info">
+                <div class="">
+                 <button class="btn btn-outline-secondary" type="button"  id="searchpasswordBtn"
+								data-bs-toggle="modal" data-bs-target="#updatePassword"
+							>비밀번호 변경</button>
+                </div>
+              </div>
+              
               </div>
             </div>
           </div>
@@ -154,7 +163,37 @@
     </section>
 
   </main><!-- End #main -->
-  
+  <!-- Modal -->
+<div class="modal fade" id="updatePassword" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">비밀번호 변경</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body updatePw">
+      <div class="input-name">새 비밀번호</div>
+							<div class="input-info">
+								<input class="form-control" type="password" required="required"
+									aria-label="default input example" name="password" id="password" placeholder="영문 대/소문자+숫자+특수문자 조합 최소 8자리 이상">
+							</div>
+							<div class="password_ck">
+							</div>
+							
+							<div class="input-name"  style="margin-top: 20px;">비밀번호 확인</div>
+							<div class="input-info">
+								<input class="form-control" type="password"
+									aria-label="default input example" id="password_">
+							</div>
+							<div class="checkPassword"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeBtn">닫기</button>
+        <button type="button" class="btn btn-primary" id="updatePasswordBtn" onclick="updatePassword();">비밀번호 변경</button>
+      </div>
+    </div>
+  </div>
+</div>
   
   <script>
   	//회원아이디
@@ -378,7 +417,68 @@
         }
   	}
   	
+
+  	//비밀번호 변경
+  	const updatePassword=()=>{
+  		let memberId = "${loginMember.memberId}";
+  		$.ajax({
+  			url:"${path}/member/updatePassword.do",
+  			data:{memberId:memberId,password:$("#password").val()},
+  			dataType:"json",
+  			success:data=>{
+  				if(data>0){
+  					alert("비밀번호가 변경되었습니다. 로그인 하세요!");
+  					$("#closeBtn").click();
+  					loginMember();
+  					
+  				}else{
+  					alert("비밀번호 변경 실패.");
+  					$("#closeBtn").click();
+  				}
+  			},
+  			error: e=>{
+  				console.log("에러");
+  			}
+  		});
+  	}
   	
+  	function loginMember(){
+  		location.assign('${path}/member/logout.do');
+  	}
+  	
+  	$("#password").change(()=>{
+  		
+  		const password = $("#password").val();
+  		const checkPw=RegExp(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,25}$/);
+  		
+  		if(password.length<8 || password.length>16){
+  			$(".password_ck").html("<span>비밀번호는 8글자 이상 16자 이하 입니다.</span>");
+  			$("#password").val("");
+  			$("#password").focus();
+  		}else{
+  			if(!checkPw.test(password)){
+  				$(".password_ck").html("<span>비밀번호는 영문 대소문자+숫자+특수문자 조합 최소 8자리 이상으로 작성해주세요.</span>");
+  				$("#password").val("");
+  				$("#password").focus();
+  			}else{
+  				$(".password_ck").html("");
+  			}
+  		}
+
+  		$("#password_").change(()=>{
+  			
+  			const password = $("#password").val();
+  			const password_ = $("#password_").val();
+  			
+  			if(password == password_){
+  				$(".checkPassword").html("<span style='color:green;'>비밀번호가 일치합니다.</span>");
+  			}else{
+  				$(".checkPassword").html("<span style='color:red;'>비밀번호가 일치하지 않습니다.</span>");
+  				$("#password_").val("");
+  				$("#password_").focus();
+  			}
+  		});
+  	});
   	
   </script>
   	

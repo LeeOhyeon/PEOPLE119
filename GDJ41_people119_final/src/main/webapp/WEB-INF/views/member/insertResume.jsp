@@ -27,9 +27,8 @@
     <section class="inner-page">
       <div class="container">
         <div class="resume-container">
-          <p style="font-size: 24px; font-weight: bolder;">기본정보</p>
-          
           <div class="resume-basic-container">
+          <p style="font-size: 24px; font-weight: bolder;">기본정보</p>
             <div class="resume-basic-info">
               <div class="profileImg">
               	<div class="upload-box">
@@ -374,15 +373,7 @@
                 </table>
 
             </div>
-            
-            <script>
-            
-        
-                 
-                  
-            </script>
-                  
-            
+
           </div>
           <div class="resume-basic-container">
             <p style="font-size: 24px; font-weight: bolder;">자격증</p>
@@ -521,7 +512,7 @@
             </div>
           </div>
 
-          <div class="resume-basic-container" style="border: none;">
+          <div class="resume-basic-container">
             <p style="font-size: 24px; font-weight: bolder;">경력기술서</p>
             <div class="introduceself-container">
               <input class="form-control" type="text" placeholder="경력기술서 제목" aria-label="default input example" name="careerTitle">
@@ -532,6 +523,41 @@
               </div>
             </div>
           </div>
+          
+          
+          <div class="resume-basic-container">
+            <p style="font-size: 24px; font-weight: bolder;">주소</p>
+            <div class="certificate-container">
+              <table >
+                <tr>
+                  <td>GIT 주소</td>
+                  <td>
+                   <input style="width: 500px;" class="form-control" type="text" aria-label="default input example"
+                  name="gitLink">
+                  </td>
+                </tr>
+                <tr>
+                  <td>notion 주소</td>
+                  <td>
+                   <input style="width: 500px;" class="form-control" type="text"  aria-label="default input example"
+                  name="notionLink">
+                  </td>
+                </tr>
+               <tr>
+                  <td>blog 주소</td>
+                  <td>
+                   <input style="width: 500px;" class="form-control" type="text"  aria-label="default input example"
+                  name="blogLink">
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          
+          
+          
+          
+          
 
           <div class="resume-btn-container">
            <div style="float: right;">
