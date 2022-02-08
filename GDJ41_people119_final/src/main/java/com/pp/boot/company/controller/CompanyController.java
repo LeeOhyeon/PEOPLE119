@@ -36,10 +36,27 @@ public class CompanyController {
 	@RequestMapping("/company/companyLogin.do")
 	public String loginCompany(@RequestParam Map param,Model model) {
 		Company loginCompany = service.loginCompany(param);
-		if(loginCompany != null && encoder.matches((String)param.get("password"),loginCompany.getPassword()))
+		String msg = "";
+		String loc ="";	
+		if(loginCompany != null && encoder.matches((String)param.get("password"),loginCompany.getPassword())) {
 			model.addAttribute("loginCompany",loginCompany);
+			msg = "로그인 성공";
+			loc = "/company/companyIndex.do";
 		
-		return "redirect:/company/companyIndex.do";
+		}else {
+			msg = "로그인 실패. 아이디 혹은 비밀번호를 확인하세요.";
+			loc = "/company/companyLoginView.do";
+		}	
+		model.addAttribute("msg",msg);
+		model.addAttribute("loc",loc);		
+		
+		return "common/msg";
+		
+		
+		
+		
+		
+		
 	}
 	
 	@RequestMapping("/company/companyLogout.do")
