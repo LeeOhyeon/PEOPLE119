@@ -1,6 +1,5 @@
 package com.pp.boot.company.model.vo;
 
-
 import java.sql.Date;
 
 import lombok.AllArgsConstructor;
@@ -36,9 +35,6 @@ public class Company {
 	// 기업 이미지 파일
 	private String favicon;
 	private String companyImage;
-	
-	
-	
 	
 	
 }
