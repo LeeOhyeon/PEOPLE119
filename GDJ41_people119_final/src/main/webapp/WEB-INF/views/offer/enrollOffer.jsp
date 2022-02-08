@@ -24,13 +24,18 @@
 	<!-- End Breadcrumbs Section -->
 
 	<section>
-	
+	<div>${loginCompany }</div>
 		<form name="offerFrm" action="${path }/offer/enrollOfferEnd.do" method="post" enctype="multipart/form-data">
 			<div class="content">
 			
 				<input name="offerTitle" class="input title" type="text" placeholder="공고 제목을 입력해주세요.">
-				
-				<input name="companyNmae" class="input company" type="text" value="${loginCompany.companyName }" disabled>
+				<div class="favicon">
+					<img alt="등록된 favicon이 없습니다." src="/resources/upload/company/${loginCompany.favicon }">
+				</div>
+				<div class="companyName1">
+					<input name="companyName" class="input company" type="text" value="${loginCompany.companyName }" readonly>
+					<input name="companyId" hidden="hidden" type="text" value="${loginCompany.companyId }">
+				</div>
 				
 				<hr>
 				
@@ -38,7 +43,7 @@
 					<p class="title">기술스택</p><input type="button" value="추가" onclick="add_select_tech();">&nbsp;&nbsp;&nbsp;<p class="info">*기술스택은 최대 8개까지 등록이 가능합니다.</p>
 					<ul class="techUl">
 						<li>
-							<select>
+							<select name="tech">
 								<option value="java">JAVA</option>
 								<option value="jsp">JSP</option>
 								<option value="ajax">Ajax</option>
@@ -64,43 +69,47 @@
 				</div>
 				
 				<div id="business">
-					<p class="p">주요업무</p><input class="flex" type="button" value="추가" onclick="add_input_business();">&nbsp;&nbsp;&nbsp;<p class="info">*주요업무는 최대 5개까지 등록이 가능합니다.</p>
+					<p class="title">주요업무</p><input class="flex" type="button" value="추가" onclick="add_input_business();">&nbsp;&nbsp;&nbsp;<p class="info">*주요업무는 최대 5개까지 등록이 가능합니다.</p>
 					<ul id="businessUl">
 						<li><input name="business" type="text"></li>
 					</ul>
 				</div>
 				
 				<div id="qualification">
-					<p class="p">자격요건</p><input class="flex" type="button" value="추가" onclick="add_input_qualification();">&nbsp;&nbsp;&nbsp;<p class="info">*자격요건은 최대 3개까지 등록이 가능합니다.</p>
+					<p class="title">자격요건</p><input class="flex" type="button" value="추가" onclick="add_input_qualification();">&nbsp;&nbsp;&nbsp;<p class="info">*자격요건은 최대 3개까지 등록이 가능합니다.</p>
 					<ul id="qualificationUl">
 						<li><input name="qualification" type="text"></li>
 					</ul>
 				</div>
 				
 				<div id="treatment">
-					<p class="p">우대사항</p><input class="flex" type="button" value="추가" onclick="add_input_treatment();">&nbsp;&nbsp;&nbsp;<p class="info">*우대사항 최대 3개까지 등록이 가능합니다.</p>
+					<p class="title">우대사항</p><input class="flex" type="button" value="추가" onclick="add_input_treatment();">&nbsp;&nbsp;&nbsp;<p class="info">*우대사항 최대 3개까지 등록이 가능합니다.</p>
 					<ul id="treatmentUl">
 						<li><input name="treatment" type="text"></li>
 					</ul>
 				</div>
 				
 				<div id="welfare">
-					<p class="p">복지 및 혜택</p><input class="flex" type="button" value="추가" onclick="add_input_welfare();">&nbsp;&nbsp;&nbsp;<p class="info">*복지 및 혜택은 최대 5개까지 등록이 가능합니다.</p>
+					<p class="title">복지 및 혜택</p><input class="flex" type="button" value="추가" onclick="add_input_welfare();">&nbsp;&nbsp;&nbsp;<p class="info">*복지 및 혜택은 최대 5개까지 등록이 가능합니다.</p>
 					<ul id="welfareUl">
 						<li><input name="welfare" type="text"></li>
 					</ul>
 				</div>
 				
 				<div>
-					<p class="title">기업 / 서비스 소개</p>&nbsp;&nbsp;&nbsp;<p class="info">*해당 채용공고에 어울리는 사진을 등록해주세요.</p>
-					<input name="upFile" type="file" style="display: block;">
+					<p class="title">기업 / 서비스 소개</p>&nbsp;&nbsp;&nbsp;<p class="info">*기업과 기업에서 유지하는 서비스에 대해 설명해주세요.</p>
+					<div class="input-group mb-3 filebox">
+	               		<input class="upload-name" value="" placeholder="해당 채용공고에 어울리는 사진을 등록해주세요." disabled>
+					    <label for="offerImage">파일찾기</label> 
+					    <input type="file" id="offerImage" name="file1">
+                	</div>
 					<textarea name="offerContent" placeholder="기업과 서비스에 대해 소개 해주세요."></textarea>
 				</div>
 				
 				<table>
 					<tr>
 						<td>경력</td>
-						<td><input name="career" type="text"></td>
+						<td><input name="carrer" type="text"></td>
 					</tr>
 					<tr>
 						<td>학력</td>

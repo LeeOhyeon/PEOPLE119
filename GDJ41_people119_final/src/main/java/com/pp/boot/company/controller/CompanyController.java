@@ -62,12 +62,6 @@ public class CompanyController {
 		model.addAttribute("loc",loc);		
 		
 		return "common/msg";
-		
-		
-		
-		
-		
-		
 	}
 	
 	@RequestMapping("/companyLogout.do")

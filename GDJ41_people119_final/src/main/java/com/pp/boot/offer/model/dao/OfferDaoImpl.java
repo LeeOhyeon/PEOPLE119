@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.pp.boot.offer.model.vo.Offer;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Repository
 public class OfferDaoImpl implements OfferDao {
 	
@@ -23,6 +25,11 @@ public class OfferDaoImpl implements OfferDao {
 	@Override
 	public int countOfferList(SqlSessionTemplate session) {
 		return session.selectOne("offer.countOfferList");
+	}
+	
+	// 공고 등록
+	public int enrollOffer(SqlSessionTemplate session, Offer o) {
+		return session.insert("offer.enrollOffer", o);
 	}
 	
 }
