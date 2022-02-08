@@ -214,7 +214,7 @@
   </body>
 
 
-<div style="height:120%; width: 100%"></div>
+<div style="height:1100px; width: 100%"></div>
 
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
