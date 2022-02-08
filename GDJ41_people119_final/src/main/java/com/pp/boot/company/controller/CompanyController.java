@@ -90,7 +90,11 @@ public class CompanyController {
 	
 	// 기업 MyPage 이동
 	@RequestMapping("/companyMypage.do")
-	public String companyMypage() {
+	public String companyMypage(@RequestParam String companyId, Model model) {
+		Company loginCompany = service.loginCompany(Map.of("companyId", companyId));
+		
+		model.addAttribute("loginCompany", loginCompany);
+		
 		return "company/companyMypage";
 	}
 	
@@ -102,17 +106,13 @@ public class CompanyController {
 	
 	// 기업 정보 수정 완료
 	@RequestMapping(value="/updateCompanyEnd.do", method=RequestMethod.POST)
-	public ModelAndView updateCompanyEnd(Company c, ModelAndView mv, @RequestParam(value="file1", required=false) MultipartFile file1, HttpServletRequest req) {
-		
-		log.debug("{}" + c);
-		log.debug("{}" + file1);
-//		log.debug("{}" + companyImage);
+	public ModelAndView updateCompanyEnd(Company c, ModelAndView mv, @RequestParam(value="file1", required=false) MultipartFile file1, @RequestParam(value="file2", required=false) MultipartFile file2,HttpServletRequest req) {
 		
 		// 저장경로 설정
 		String path=req.getServletContext().getRealPath("/resources/upload/company/");
 		File f=new File(path);
 		if(!f.exists()) f.mkdirs();
-//		
+		
 		// 파비콘 저장
 		if(!file1.isEmpty()) {
 			try {
@@ -121,30 +121,32 @@ public class CompanyController {
 				e.printStackTrace();
 			}
 		}
-//		
-//		// 이미지파일 저장
-//		if(!companyImage.isEmpty()) {
-//			try {
-//				companyImage.transferTo(new File(path + companyImage.getOriginalFilename()));
-//			}catch(IOException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//		
+		
+		// 이미지파일 저장
+		if(!file2.isEmpty()) {
+			try {
+				file2.transferTo(new File(path + file2.getOriginalFilename()));
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		c.setFavicon(file1.getOriginalFilename());
-//		
-//		String msg = "";
-//	    String loc = "";
-//	    try {
+		c.setCompanyImage(file2.getOriginalFilename());
+		
+		String msg = "";
+	    String loc = "";
+	    try {
 	    	int result = service.updateCompany(c);
-//	    	msg = "등록성공";
-//	    	loc = "/company/companyMypage.do";
-//	    }catch(RuntimeException e) {
-//	    	msg = "등록실패 : " + e.getMessage();
-//	    	loc = "/company/updateCompany.do";
-//	    }
-//	    
-	    mv.addObject("loc","/company/companyMypage.do");
+	    	msg = "수정성공";
+	    	loc = "/company/companyMypage.do?companyId=" + c.getCompanyId();
+	    }catch(RuntimeException e) {
+	    	msg = "수정실패 : " + e.getMessage();
+	    	loc = "/company/updateCompanyEnd.do";
+	    }
+	    
+	    mv.addObject("loc", loc);
+	    mv.addObject("msg", msg);
 	    mv.setViewName("common/msg");
 	    return mv;
 		

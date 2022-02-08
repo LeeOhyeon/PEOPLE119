@@ -31,6 +31,7 @@
             <ul class="link-tab-ul">
               <li><i class="fas fa-building"></i> 기업정보 <span id="resumt-toggle"><i class="fas fa-angle-down"></i></span>
               	<ul>
+              	<li class="resume-link"><a href="${path }/company/companyMypage.do?companyId=${loginCompany.companyId}">기업정보 보기</a></li>
                   <li class="resume-link"><a href="#">기업정보 수정</a></li>
                   <li class="resume-link"><a href="#">비밀번호 변경</a></li>
                 </ul>
@@ -182,19 +183,21 @@
                <div class="info-subtitle">
                 	파비콘 이미지
                 </div>
-                <div class="input-group mb-3">
-                  <input type="file" class="form-control" aria-label="Recipient's username"
-                    aria-describedby="button-addon2" name="file1" id="favicon">
+                <div class="input-group mb-3 filebox">
+               		<input class="upload-name1" value="${loginCompany.favicon }" placeholder="파일을 등록해주세요" disabled>
+				    <label for="cFavicon">파일찾기</label> 
+				    <input type="file" id="cFavicon" name="file1">
                 </div>
               </div>
                <div class="member_info">
                <div class="info-subtitle">
                 	회사 이미지
                 </div>
-                <!-- <div class="input-group mb-3">
-                  <input type="file" class="form-control" aria-label="Recipient's username"
-                    aria-describedby="button-addon2" name="companyImage" id="image">
-                </div> -->
+                <div class="input-group mb-3 filebox">
+                	<input class="upload-name2" value="${loginCompany.companyImage }" placeholder="파일을 등록해주세요" disabled>
+				    <label for="cImage">파일찾기</label> 
+				    <input type="file" id="cImage" name="file2">
+                </div>
               </div>
               <div style="font-size: 20px; font-weight: bold; margin-top: 50px; margin-bottom: 20px;">
                 담당자 정보
@@ -230,4 +233,53 @@
       </div>
       </form>
 	</section>
+	
+<script>
+	$("#cFavicon").on('change',function(){
+	  var fileName = $("#cFavicon").val();
+	  $(".upload-name1").val(fileName);
+	});
+	$("#cImage").on('change',function(){
+	  var fileName = $("#cImage").val();
+	  $(".upload-name2").val(fileName);
+	});
+</script>
+	
+
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
