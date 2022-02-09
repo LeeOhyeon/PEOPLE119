@@ -1,6 +1,7 @@
 package com.pp.boot.applicant.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +24,12 @@ public class ApplicantController {
 	
 	// 지원하고 나서 지원내역 화면 전환
 	@RequestMapping("/apply.do")
-	public String apply(@RequestParam int offerNo, @RequestParam String memberId) {
+	public String apply(@RequestParam Map param, Model model, String memberId) {
+		int result = service.apply(param);
+		
+		List<Applicant> list = service.selectApplyList(memberId);
+		
+		model.addAttribute("applyList", list);
 		
 		return "applicant/applyList";
 	}

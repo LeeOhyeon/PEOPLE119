@@ -1,6 +1,7 @@
 package com.pp.boot.applicant.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
@@ -14,6 +15,12 @@ public class ApplicantDaoImpl implements ApplicantDao {
 	@Override
 	public List<Applicant> selectApplyList(SqlSessionTemplate session, String memberId) {
 		return session.selectList("applicant.selectApplyList", memberId);
+	}
+	
+	// 공고 지원하기
+	@Override
+	public int apply(SqlSessionTemplate session, Map param) {
+		return session.insert("applicant.apply", param);
 	}
 	
 }
