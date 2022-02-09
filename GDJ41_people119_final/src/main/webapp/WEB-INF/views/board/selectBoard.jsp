@@ -52,7 +52,7 @@ $(document).ready(()=>{
                   <span class="boardInfo-like-image"><i class="far fa-thumbs-up"></i>${b.boardLike}</span>
                 </div>
                 <div class="boardInfo-comment">
-                  <span class="boardInfo-comment-image"><i class="far fa-comment"></i>${b.boardView}</span>
+                  <span class="boardInfo-comment-image"><i class="far fa-comment"></i></span>
                 </div>
               </div>
             </div>
@@ -120,7 +120,7 @@ $(document).ready(()=>{
   			success:data=>{
   				$(".comment-content").remove();
   				$(".comment-reply").remove();
-  				console.log(data);
+  				console.log(data.length);
   				if(data.length != 0){
   					for(let i=0;i<data.length;i++){
   	  					const commentContainer=$("<div class='comment-content'>");
@@ -168,6 +168,18 @@ $(document).ready(()=>{
   			}
   		})
   	}
+  	function countComment() {
+  		$.ajax({
+  			url: "${path}/board/countComment.do",
+  			data: {boardNo:"${b.boardNo}"},
+  			dataType: "json",
+  			success:data=>{
+  				console.log(data.length);
+  			}
+  		})
+  	}
+  	
+  	
   	
   	//조회하는거
   	//얘가 실시간처럼 보이게 하려면

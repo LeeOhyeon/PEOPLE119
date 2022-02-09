@@ -27,4 +27,12 @@ public interface BoardDao {
 	int insertComment(SqlSessionTemplate session, Comment c);
 
 	List<Comment> commentList(SqlSessionTemplate session,int boardNo);
+
+	int countComment(SqlSessionTemplate session, int boardNo);
+
+	List<Board> boardCategory(SqlSessionTemplate session, String category);
+
+	int categoryListCount(SqlSessionTemplate session, String category);
+
+	int enrollBoard(SqlSessionTemplate session, Board b);
 }

@@ -1,7 +1,6 @@
 package com.pp.boot.board.model.service;
 
 import java.util.List;
-import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,4 +69,25 @@ public class BoardServiceImpl implements BoardService {
 		int result=dao.insertComment(session, c);
 		return result;
 	}
+	@Override
+	public int countComment(int boardNo) {
+		int countComment=dao.countComment(session,boardNo);
+		return countComment;
+	}
+	@Override
+	public List<Board> boardCategory(String category) {
+		List<Board> list=dao.boardCategory(session,category);
+		return list;
+	}
+	@Override
+	public int categoryListCount(String category) {
+		int count=dao.categoryListCount(session,category);
+		return count;
+	}
+	@Override
+	public int enrollBoard(Board b) {
+		int result=dao.enrollBoard(session,b);
+		return result;
+	}
+	
 }

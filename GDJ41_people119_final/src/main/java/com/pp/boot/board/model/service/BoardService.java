@@ -26,5 +26,13 @@ public interface BoardService {
 	
 	int insertComment(Comment c);
 
+	int countComment(int boardNo);
+
+	List<Board> boardCategory(String category);
+
+	int categoryListCount(String category);
+
+	int enrollBoard(Board b);
+
 	
 }

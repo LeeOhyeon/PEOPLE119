@@ -76,12 +76,12 @@
           </div>
           <div class="category">
             <div class="category-btn">
-              <button type="button" class="btn btn-primary" style="width:100px">전체글</button>
-              <button type="button" class="btn btn-light" style="width:100px">취준</button>
-              <button type="button" class="btn btn-light" style="width:100px">이직</button>
-              <button type="button" class="btn btn-light" style="width:100px">퇴사</button>
-              <button type="button" class="btn btn-light" style="width:100px">잡담</button>
-              <button type="button" class="btn btn-light" style="width:100px">Q&A</button>
+              <button type="button" class="btn btn-primary" style="width:100px" onclick="whole();">전체글</button>
+              <button type="button" class="btn btn-light" style="width:100px" onclick="ready();">취준</button>
+              <button type="button" class="btn btn-light" style="width:100px" onclick="turn();">이직</button>
+              <button type="button" class="btn btn-light" style="width:100px" onclick="leave();">퇴사</button>
+              <button type="button" class="btn btn-light" style="width:100px" onclick="free();">잡담</button>
+              <button type="button" class="btn btn-light" style="width:100px" onclick="qa();">Q&A</button>
             </div>
           </div>
         </div>
@@ -196,6 +196,24 @@
     <script>
 		const login=()=> {
 			location.assign("${path}/member/memberLoginView.do");
+		}
+		const whole=()=>{
+			location.assign("${path}/board/boardCategory.do?category=게시글전체");
+		}
+		const ready=()=>{
+			location.assign("${path}/board/boardCategory.do?category=취준");
+		}
+		const leave=()=>{
+			location.assign("${path}/board/boardCategory.do?category=퇴사");
+		}
+		const turn=()=>{
+			location.assign("${path}/board/boardCategory.do?category=이직");
+		}
+		const free=()=>{
+			location.assign("${path}/board/boardCategory.do?category=잡담");
+		}
+		const qa=()=>{
+			location.assign("${path}/board/boardCategory.do?category=질문");
 		}
 		
     </script>

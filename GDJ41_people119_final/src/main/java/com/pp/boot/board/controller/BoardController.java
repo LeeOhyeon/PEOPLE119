@@ -1,6 +1,6 @@
 package com.pp.boot.board.controller;
 
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -86,5 +86,55 @@ public class BoardController {
 		response.setContentType("application/json; charset=utf-8");
 		
 		return comments;
+	}
+	@RequestMapping("/countComment.do")
+	@ResponseBody
+	public int countComment(@RequestParam int boardNo,HttpServletResponse response) {
+		
+		int countComment=service.countComment(boardNo);
+		
+		response.setContentType("application/json; charset=utf-8");
+		
+		return countComment;
+	}
+	@RequestMapping("/boardCategory.do")
+	public ModelAndView boardCategory(String category,ModelAndView mv) {
+		
+		List<Board> list=new ArrayList();
+		int count=0;
+		
+		if(category.equals("게시글전체")) {
+			list=service.boardList();
+			count=service.boardListCount();
+		}else {
+			list=service.boardCategory(category);
+			count=service.categoryListCount(category);
+		}
+		
+		mv.addObject("count",count);
+		mv.addObject("list",list);
+		mv.addObject("category",category);
+		mv.setViewName("board/boardCategory");
+		
+		return mv;
+	}
+	@RequestMapping("/insertBoard.do")
+	public ModelAndView insertBoard(ModelAndView mv) {
+		
+		mv.setViewName("board/insertBoard");
+		
+		return mv;
+	}
+	@RequestMapping("/enrollBoard.do")
+	public ModelAndView enrollBoard(String category,String memberId,String boardTitle,String boardContent,ModelAndView mv) {
+		
+		Board b=Board.builder().memberId(memberId).boardTitle(boardTitle).boardContent(boardContent).category(category).build();
+		
+		int result=service.enrollBoard(b);
+		
+	
+		mv.setViewName("board/boardCategory");
+			
+		return mv;
 	}
 }

@@ -70,6 +70,29 @@ public class BoardDaoImpl implements BoardDao {
 		return session.insert("board.insertComment",c);
 	}
 
+	@Override
+	public int countComment(SqlSessionTemplate session, int boardNo) {
+		// TODO Auto-generated method stub
+		return session.selectOne("board.countComment",boardNo);
+	}
+	@Override
+	public List<Board> boardCategory(SqlSessionTemplate session, String category) {
+		// TODO Auto-generated method stub
+		return session.selectList("board.boardCategory",category);
+	}
+
+	@Override
+	public int categoryListCount(SqlSessionTemplate session, String category) {
+		// TODO Auto-generated method stub
+		return session.selectOne("board.categoryListCount",category);
+	}
+
+	@Override
+	public int enrollBoard(SqlSessionTemplate session, Board b) {
+		// TODO Auto-generated method stub
+		return session.insert("board.enrollBoard",b);
+	}
+
 	
 	
 }
