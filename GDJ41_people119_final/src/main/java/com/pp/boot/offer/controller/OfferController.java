@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -48,7 +49,13 @@ public class OfferController {
 	
 	// 채용공고 상세보기
 	@RequestMapping("/offerView.do")
-	public String offerView() {
+	public String offerView(@RequestParam int offerNo, Model model) {
+		Offer offer = service.selectOffer(offerNo);
+		
+		String[] tech = offer.getTech().split(",");
+		
+		model.addAttribute("offer", offer);
+		
 		return "offer/offerView";
 	}
 	

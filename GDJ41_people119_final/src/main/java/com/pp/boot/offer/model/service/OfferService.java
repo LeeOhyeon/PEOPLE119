@@ -15,4 +15,7 @@ public interface OfferService {
 	
 	// 공고 등록
 	int enrollOffer(Offer o);
+	
+	// 공고 상세보기
+	Offer selectOffer(int offerNo);
 }

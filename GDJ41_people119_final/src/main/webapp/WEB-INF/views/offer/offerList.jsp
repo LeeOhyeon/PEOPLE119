@@ -112,14 +112,14 @@
 		<div id="hirepostList">
 			<c:forEach var="o" items="${list }">
 				<div id="hirepost">
-					<img alt="회사사진" src="">
+					<img alt="등록이미지가 없습니다." src="/resources/upload/offer/${o.image }">
 					<p><c:out value="${o.companyName }"/></p>
-					<p>채용공고 제목</p>
-					<p>기술스택</p>
-					<p>위치 및 경력</p>
+					<p><a href="${path }/offer/offerView.do?offerNo=${o.offerNo}"><c:out value="${o.offerTitle }"/></a></p>
+					<p><c:out value="${o.tech }"/></p>
+					<p><c:out value="${o.location }"/> / <c:out value="${o.carrer }"/></p>
 				</div>
 			</c:forEach>
-				<div id="hirepost">
+				<!-- <div id="hirepost">
 					<img alt="회사사진" src="">
 					<p>회사이름</p>
 					<p>채용공고 제목</p>
@@ -132,7 +132,7 @@
 					<p>채용공고 제목</p>
 					<p>기술스택</p>
 					<p>위치 및 경력</p>
-				</div>
+				</div> -->
 		</div>
 		
 		<!-- 페이징 바 -->

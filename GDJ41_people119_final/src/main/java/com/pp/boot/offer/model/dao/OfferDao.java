@@ -18,4 +18,7 @@ public interface OfferDao {
 	// 공고 등록
 	int enrollOffer(SqlSessionTemplate session, Offer o);
 	
+	// 공고 상세보기
+	Offer selectOffer(SqlSessionTemplate session, int offerNo);
+	
 }

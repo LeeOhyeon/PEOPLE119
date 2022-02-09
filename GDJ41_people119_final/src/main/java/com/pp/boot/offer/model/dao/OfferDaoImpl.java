@@ -32,4 +32,9 @@ public class OfferDaoImpl implements OfferDao {
 		return session.insert("offer.enrollOffer", o);
 	}
 	
+	// 공고 상세보기
+	public Offer selectOffer(SqlSessionTemplate session, int offerNo) {
+		return session.selectOne("offer.selectOffer", offerNo);
+	}
+	
 }

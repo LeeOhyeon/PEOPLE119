@@ -24,7 +24,6 @@
 	<!-- End Breadcrumbs Section -->
 
 	<section>
-	<div>${loginCompany }</div>
 		<form name="offerFrm" action="${path }/offer/enrollOfferEnd.do" method="post" enctype="multipart/form-data">
 			<div class="content">
 			

@@ -43,4 +43,9 @@ public class OfferServiceImpl implements OfferService {
 		log.debug("{service}" + o);
 		return dao.enrollOffer(session, o);
 	}
+	
+	// 공고 상세보기
+	public Offer selectOffer(int offerNo) {
+		return dao.selectOffer(session, offerNo);
+	}
 }

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="path" value="${pageContext.request.contextPath }"/>
 
 
@@ -18,54 +19,73 @@
 	</div>
 	
 	<div class="content">
-		<p class="hirepostTitle">채용공고 제목</p>
-		<p class="companyName">회사명</p>
+		
+		<c:set var="techArr" value="${fn:split(offer.tech, ',') }"/>
+		<c:set var="businessArr" value="${fn:split(offer.business, ',') }"/>
+		<c:set var="qualificationArr" value="${fn:split(offer.qualification, ',') }"/>
+		<c:set var="treatmentArr" value="${fn:split(offer.treatment, ',') }"/>
+		<c:set var="welfareArr" value="${fn:split(offer.welfare, ',') }"/>
+		
+	
+		<p class="hirepostTitle"><c:out value="${offer.offerTitle }"/></p>
+		<img alt="파비콘" src="/resources/upload/company/"><!-- offer의 company의 파비콘이네,,, -->
+		<p class="companyName"><c:out value="${offer.companyName }"/></p>
 		<hr>
 		<p class="title">기술스택</p>
 		<ul>
-			<li>Java</li>
+			<c:forEach var="tech" items="${techArr }">
+				<li><c:out value="${tech }" /></li>
+			</c:forEach>
 		</ul>
 		
 		<p class="title">주요업무</p>
 		<ul>
-			<li>어떤어떤 일</li>
+			<c:forEach var="business" items="${businessArr }">
+				<li><c:out value="${business }"/></li>
+			</c:forEach>
 		</ul>
 		
 		<p class="title">자격요건</p>
 		<ul>
-			<li>전공자</li>
+			<c:forEach var="qualification" items="${qualificationArr }">
+				<li><c:out value="${qualification }"/></li>
+			</c:forEach>
 		</ul>
 		
 		<p class="title">우대사항</p>
 		<ul>
-			<li>군필우대</li>
+			<c:forEach var="treatment" items="${treatmentArr }">
+				<li><c:out value="${treatment }"/></li>
+			</c:forEach>
 		</ul>
 		
 		<p class="title">복지 및 혜택</p>
 		<ul>
-			<li>워라밸 개쩜 ㅋㅋ</li>
+			<c:forEach var="welfare" items="${welfareArr }">
+				<li><c:out value="${welfare }"/></li>
+			</c:forEach>
 		</ul>
 		
 		<p class="title">기업 / 서비스 소개</p>
-		<img alt="회사사진" src="">
-		<p>무슨무슨 서비스를 제공합니다</p>
+		<img alt="회사사진" src="/resources/upload/offer/${offer.image }">
+		<p><c:out value="${offer.offerContent }"/></p>
 		
 		<table>
 			<tr>
-				<td>경력</td>
-				<td></td>
+				<td class="title">경력</td>
+				<td><c:out value="${offer.carrer }"/></td>
 			</tr>
 			<tr>
-				<td>학력</td>
-				<td></td>
+				<td class="title">학력</td>
+				<td><c:out value="${offer.education }"/></td>
 			</tr>
 			<tr>
-				<td>마감일</td>
-				<td></td>
+				<td class="title">마감일</td>
+				<td><c:out value="${offer.endDate }"/></td>
 			</tr>
 			<tr>
-				<td>근무지역</td>
-				<td></td>
+				<td class="title">근무지역</td>
+				<td><c:out value="${offer.location }"/></td>
 			</tr>
 		</table>
 	</div>
