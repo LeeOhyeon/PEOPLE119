@@ -1,6 +1,7 @@
 package com.pp.boot.applicant.model.vo;
 
-import com.pp.boot.member.model.vo.Member;
+import java.util.List;
+
 import com.pp.boot.offer.model.vo.Offer;
 
 import lombok.AllArgsConstructor;
@@ -14,8 +15,10 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Applicant {
 	
-	private Offer offerNo;
-	private Member memberId;
+	private int offerNo;
+	private String memberId;
 	private String passYN; // 합격여부
+	
+	private List<Offer> offer;
 
 }
