@@ -56,17 +56,15 @@ public class MemberController {
 	
 		Member loginMember = service.loginMember(param);
 		
-		if(loginMember != null && encoder.matches((String)param.get("password"),loginMember.getPassword()))
+		if(loginMember != null && encoder.matches((String)param.get("password"),loginMember.getPassword())) {
 			model.addAttribute("loginMember",loginMember);
-		
-		if(loginMember == null) {
-			msg = "존재하지 않는 사용자 입니다. 아이디와 비밀번호를 확인해 주세요";
-			loc = "memberLoginView.do";
-		}else {
 			msg = "로그인 성공";
 			loc = "/";
+		}else {
+			msg = "아이디와 비밀번호를 확인해 주세요";
+			loc = "memberLoginView.do";
 		}
-		
+			
 		model.addAttribute("msg",msg);
 		model.addAttribute("loc",loc);
 		
