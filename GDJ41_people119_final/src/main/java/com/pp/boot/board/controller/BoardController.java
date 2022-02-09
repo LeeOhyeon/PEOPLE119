@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.pp.boot.board.model.service.BoardService;
 import com.pp.boot.board.model.vo.Board;
 import com.pp.boot.board.model.vo.Comment;
+import com.pp.boot.board.model.vo.Like;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,7 +28,15 @@ public class BoardController {
 	private Board b;
 	
 	@Autowired
+	private Comment c;
+	
+	@Autowired
+	private Like l;
+	
+	@Autowired
 	private BoardService service;
+	
+	
 	
 	@RequestMapping("/boardList.do")
 	public ModelAndView boardList(ModelAndView mv) {
@@ -39,6 +48,8 @@ public class BoardController {
 		List<Board> qa=service.qaList();
 		List<Board> ready=service.readyList();
 		
+		List<Board> hot=service.hotList();
+		
 		int count=service.boardListCount();
 		log.debug("{}"+list);
 		mv.addObject("list",list);
@@ -48,7 +59,7 @@ public class BoardController {
 		mv.addObject("qa",qa);
 		mv.addObject("ready",ready);
 		mv.addObject("count",count);
-		
+		mv.addObject("hot",hot);
 		mv.setViewName("board/boardList");
 		return mv;
 	}
@@ -133,8 +144,29 @@ public class BoardController {
 		int result=service.enrollBoard(b);
 		
 	
-		mv.setViewName("board/boardCategory");
+		mv.setViewName("redirect:/");
 			
 		return mv;
 	}
+	@RequestMapping("/boardLike.do")
+	@ResponseBody
+	public int boardLike(String memberId,int boardNo) {
+		
+		Like l=Like.builder().boardNo(boardNo).memberId(memberId).build();
+		
+		int result=service.boardLike(l);
+	
+		return result;
+	}
+	@RequestMapping("/boardLikeCount.do")
+	@ResponseBody
+	public int boardLikeCount(String memberId,int boardNo) {
+		
+		Like l=Like.builder().boardNo(boardNo).memberId(memberId).build();
+		
+		int count=service.boardLikeCount(l);
+	
+		return count;
+	}
+	
 }

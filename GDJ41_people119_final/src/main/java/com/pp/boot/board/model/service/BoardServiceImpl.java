@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.pp.boot.board.model.dao.BoardDao;
 import com.pp.boot.board.model.vo.Board;
 import com.pp.boot.board.model.vo.Comment;
+import com.pp.boot.board.model.vo.Like;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -88,6 +89,21 @@ public class BoardServiceImpl implements BoardService {
 	public int enrollBoard(Board b) {
 		int result=dao.enrollBoard(session,b);
 		return result;
+	}
+	@Override
+	public int boardLike(Like l) {
+		int result=dao.boardLike(session,l);
+		return result;
+	}
+	@Override
+	public int boardLikeCount(Like l) {
+		int count=dao.boardLikeCount(session,l);
+		return count;
+	}
+	@Override
+	public List<Board> hotList() {
+		List<Board> list=dao.hotList(session);
+		return list;
 	}
 	
 }

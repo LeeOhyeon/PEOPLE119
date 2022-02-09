@@ -9,6 +9,9 @@
 <script>
 $(document).ready(()=>{ 
 	selectComment(); 
+	likeCount();
+	countComment();
+	
 });
 </script>
  <main id="main">
@@ -31,7 +34,7 @@ $(document).ready(()=>{
     <section class="inner-page">
       <div class="container">
         <div>
-            <button type="button" class="btn btn-light" style="width:120px">전체 게시글</button>
+            <button type="button" class="btn btn-light" style="width:120px" onclick="wholeBoard();">전체 게시글</button>
         </div>
         <div class="board">
           <div class="boardTitle">
@@ -49,10 +52,12 @@ $(document).ready(()=>{
               </div>
               <div class="boardInfo">
                 <div class="boardInfo-like">
-                  <span class="boardInfo-like-image"><i class="far fa-thumbs-up"></i>${b.boardLike}</span>
+                  <span class="boardInfo-like-image"><i class="far fa-thumbs-up"></i></span>
+                  <span class="boardLikeCount"></span>
                 </div>
                 <div class="boardInfo-comment">
                   <span class="boardInfo-comment-image"><i class="far fa-comment"></i></span>
+                  <span class="boardCommentCount"></span>
                 </div>
               </div>
             </div>
@@ -62,7 +67,7 @@ $(document).ready(()=>{
                 ${b.boardContent}
               </div>
           </div>
-          <div class="boardLike">
+          <div class="boardLike" onclick="like();">
             <div class="image">
              <span class="like-image"><i class="far fa-laugh-wink"></i></span> 
             </div>
@@ -70,7 +75,7 @@ $(document).ready(()=>{
               <p>좋아요</p>
             </div>
             <div class="like-count">
-              <p class="like-count-px"><strong>${b.boardLike}개</strong></p>
+              <p class="like-count-px"><strong></strong></p>
             </div>
           </div>
         </div>
@@ -94,6 +99,7 @@ $(document).ready(()=>{
       </div>
     </section>
   <script>
+  	//댓글 db등록
   	const insertComment=()=>{
   		const commentContent=$("#floatingTextarea2").val();
   		let memberIdVal = "${loginMember.memberId}"; 
@@ -105,6 +111,7 @@ $(document).ready(()=>{
   	  			dataType:"json",
   	  			success:data=>{
   	  				selectComment();
+  	  				countComment();
   	  			}
   	  		});	
   		}else{
@@ -112,6 +119,7 @@ $(document).ready(()=>{
   			location.assign("${path}/member/memberLoginView.do");
   		}
   	}
+  	//댓글 화면출력
   	function selectComment(){
   		$.ajax({
   			url : "${path}/board/selectComment.do",
@@ -120,7 +128,6 @@ $(document).ready(()=>{
   			success:data=>{
   				$(".comment-content").remove();
   				$(".comment-reply").remove();
-  				console.log(data.length);
   				if(data.length != 0){
   					for(let i=0;i<data.length;i++){
   	  					const commentContainer=$("<div class='comment-content'>");
@@ -168,16 +175,53 @@ $(document).ready(()=>{
   			}
   		})
   	}
+  	//댓글 숫자 출력
   	function countComment() {
   		$.ajax({
   			url: "${path}/board/countComment.do",
   			data: {boardNo:"${b.boardNo}"},
   			dataType: "json",
   			success:data=>{
-  				console.log(data.length);
+  				$(".boardCommentCount").html(data);
   			}
   		})
   	}
+  	//좋아요 데이터 입력
+  	const like=()=> {
+  		let memberIdVal = "${loginMember.memberId}"; 
+  		if(memberIdVal!="") {
+  			$.ajax({
+  	  			url:"${path}/board/boardLike.do",
+  	  			data:{boardNo:"${b.boardNo}","memberId":"${loginMember.memberId}"},
+  	  			dataType:"json",
+  	  			success:data=>{
+  	  				alert("좋아요 성공!");
+  	  				likeCount();
+  	  			}
+  	  		});
+  		}else{
+  			alert("로그인 후 이용해주세요");
+  			location.assign("${path}/member/memberLoginView.do");
+  		}
+  	} 
+  	//좋아요 숫자 출력
+  	function likeCount() {
+  		$.ajax({
+  			url:"${path}/board/boardLikeCount.do",
+  			data:{boardNo:"${b.boardNo}","memberId":"${loginMember.memberId}"},
+  			dataType:"json",
+  			success:data=>{
+  				$(".like-count-px").text(data);
+  				$(".boardLikeCount").html(data);
+  				
+  			}
+  		});
+  	}
+  	
+  	const wholeBoard=()=>{
+  		location.assign("${path}/board/boardCategory.do?category=게시글전체");
+  	}
+  	
   	
   	
   	

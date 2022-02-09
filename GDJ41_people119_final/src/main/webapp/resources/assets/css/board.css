@@ -45,7 +45,7 @@
 
 .board-content {
     margin-top:30px;
-    border:1px solid #333;
+    border:1px solid #edeef0;
     border-radius:10px;
     padding:20px;
     width:1000px;
@@ -68,13 +68,13 @@
     margin-right:10px;
 }
 .btn-light{
-    border:1px solid #333;
+    border:1px solid black;
 }
 .whole-content{
     display:inline-block;
     width:35%;
     height:250px;
-    border:1px solid #333;
+    border:1px solid #edeef0;
     border-radius: 10px;
     padding:20px;
     margin-right:20px;
@@ -83,7 +83,7 @@
     display:inline-block;
     width:35%;
     height:250px;
-    border:1px solid #333;
+    border:1px solid #edeef0;
     border-radius: 10px;
     padding:20px;
 }
@@ -114,7 +114,7 @@
     display:inline-block;
     width:35%;
     height:250px;
-    border:1px solid #333;
+    border:1px solid #edeef0;
     border-radius: 10px;
     padding:20px;
     margin-right:20px;
@@ -123,7 +123,7 @@
     display:inline-block;
     width:35%;
     height:250px;
-    border:1px solid #333;
+    border:1px solid #edeef0;
     border-radius: 10px;
     padding:20px;
 }
@@ -145,7 +145,7 @@
     display:inline-block;
     width:35%;
     height:250px;
-    border:1px solid #333;
+    border:1px solid #edeef0;
     border-radius: 10px;
     padding:20px;
     margin-right:20px;
@@ -154,7 +154,7 @@
     display:inline-block;
     width:35%;
     height:250px;
-    border:1px solid #333;
+    border:1px solid #edeef0;
     border-radius: 10px;
     padding:20px;
 }
@@ -189,4 +189,42 @@
 }
 .qa-contents>div{
 	margin-bottom:10px;
+}
+.board-logout-btn {
+	display:inline-block;
+}
+.board-mypage-btn {
+	display:inline-block;
+}
+.board-confirm {
+	text-decoration:none;
+	color:black;
+	font-size:14px;
+}
+.board-btn{
+	margin-top:15px;
+}
+.hot-topic{
+	color:red;
+}
+.whole-color{
+	color:black;
+}
+.whole-total{
+	color:black;
+}
+.ready-total{
+	color:black;
+}
+.turnover-total{
+	color:black;
+}
+.leave-total{
+	color:black;
+}
+.free-total{
+	color:black;
+}
+.question-total{
+	color:black;
 }
