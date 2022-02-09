@@ -11,4 +11,6 @@ public interface ResumeDao {
 
 	int insertCareer(SqlSessionTemplate session, Career career);
 
+	int insertResume(SqlSessionTemplate session, Resume resume);
+
 }

@@ -28,5 +28,10 @@ public class ResumeServiceImpl implements ResumeService {
 		return dao.insertCareer(session,career);
 	}
 
+	@Override
+	public int insertResume(Resume resume) {
+		return dao.insertResume(session,resume);
+	}
+
 	
 }

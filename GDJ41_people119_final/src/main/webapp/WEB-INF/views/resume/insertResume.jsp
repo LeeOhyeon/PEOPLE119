@@ -298,6 +298,8 @@
           </div>
           
           <script type="text/javascript">
+          	let resumeNo = "${resumeNo}";
+          
           	$(".career-info").hide();
           	
           	$("input[name=career]").change(e=>{
@@ -317,7 +319,7 @@
           	const insertCareerform=(e)=>{
           		
           		let btn = $(e);
-          		
+				          		
           		let career =$(btn.parents('.resume-basic-container-career')).find('input[name=career]:checked').val(); 
 	          	let companyName =$(btn.parents('.resume-basic-container-career')).find('input[name=companyName]').val();
 	          	let joinDate =$(btn.parents('.resume-basic-container-career')).find('input[name=joinDate]').val(); 
@@ -334,6 +336,7 @@
           			url:"${path}/resume/insertCareer.do",
           			type:"post",
           			data:{
+          				resumeNo:resumeNo,
           				career:career,
           				companyName:companyName,
           				joinDate:joinDate,
@@ -929,7 +932,8 @@ function DropFile(dropAreaId, fileListId) {
 		//경력기술서
 		let careerTitle = $("input[name=careerTitle]").val();
 		let careerContent = $("#careerContent").val();
-		 
+		
+		formdata.append("resumeNo",resumeNo);
 		formdata.append("memberId",memberId);
 		formdata.append("resumeTitle",resumeTitle);
 		formdata.append("hopeSalary",hopeSalary);

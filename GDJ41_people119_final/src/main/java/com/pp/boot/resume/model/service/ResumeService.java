@@ -9,4 +9,6 @@ public interface ResumeService {
 
 	int insertCareer(Career career);
 
+	int insertResume(Resume resume);
+
 }

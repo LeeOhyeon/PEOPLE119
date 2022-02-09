@@ -44,11 +44,22 @@ public class ResumeController {
 		return mv;
 	}
 	
+	@Autowired
+	private Resume resume;
+	
 	//이력서 등록 페이지
 	@RequestMapping("/insertResumeView.do")
 	public ModelAndView insertResumeView(@RequestParam String memberId, ModelAndView mv) {
 
 		Member loginMember = service.loginMember(Map.of("memberId", memberId));
+		
+		//이력서 생성
+		resume.setMemberId(memberId);
+		int result = resumeService.insertResume(resume);
+
+
+		
+		mv.addObject("resumeNo",result);
 		mv.addObject("loginMember", loginMember);
 		mv.setViewName("resume/insertResume");
 
