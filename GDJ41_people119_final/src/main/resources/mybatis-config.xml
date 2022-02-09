@@ -10,6 +10,7 @@
 		<typeAlias type="com.pp.boot.offer.model.vo.Offer" alias="offer"/>
 		<typeAlias type="com.pp.boot.board.model.vo.Comment" alias="comment"/>
 		<typeAlias type="com.pp.boot.resume.model.vo.Resume" alias="Resume"/>
+		<typeAlias type="com.pp.boot.applicant.model.vo.Applicant" alias="applicant"/>
 	</typeAliases>
 	
 </configuration>
