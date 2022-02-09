@@ -11,6 +11,7 @@
 		<typeAlias type="com.pp.boot.board.model.vo.Comment" alias="comment"/>
 		<typeAlias type="com.pp.boot.resume.model.vo.Resume" alias="resume"/>
 		<typeAlias type="com.pp.boot.resume.model.vo.Career" alias="career"/>
+		<typeAlias type="com.pp.boot.board.model.vo.Like" alias="like"/>
 	</typeAliases>
 	
 </configuration>

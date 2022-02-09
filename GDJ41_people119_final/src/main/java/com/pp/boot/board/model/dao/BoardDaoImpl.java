@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.pp.boot.board.model.vo.Board;
 import com.pp.boot.board.model.vo.Comment;
+import com.pp.boot.board.model.vo.Like;
 
 @Repository
 public class BoardDaoImpl implements BoardDao {
@@ -68,6 +69,47 @@ public class BoardDaoImpl implements BoardDao {
 	public int insertComment(SqlSessionTemplate session, Comment c) {
 		// TODO Auto-generated method stub
 		return session.insert("board.insertComment",c);
+	}
+
+	@Override
+	public int countComment(SqlSessionTemplate session, int boardNo) {
+		// TODO Auto-generated method stub
+		return session.selectOne("board.countComment",boardNo);
+	}
+	@Override
+	public List<Board> boardCategory(SqlSessionTemplate session, String category) {
+		// TODO Auto-generated method stub
+		return session.selectList("board.boardCategory",category);
+	}
+
+	@Override
+	public int categoryListCount(SqlSessionTemplate session, String category) {
+		// TODO Auto-generated method stub
+		return session.selectOne("board.categoryListCount",category);
+	}
+
+	@Override
+	public int enrollBoard(SqlSessionTemplate session, Board b) {
+		// TODO Auto-generated method stub
+		return session.insert("board.enrollBoard",b);
+	}
+
+	@Override
+	public int boardLike(SqlSessionTemplate session, Like l) {
+		// TODO Auto-generated method stub
+		return session.insert("board.boardLike",l);				
+	}
+
+	@Override
+	public int boardLikeCount(SqlSessionTemplate session, Like l) {
+		// TODO Auto-generated method stub
+		return session.selectOne("board.boardLikeCount",l);
+	}
+
+	@Override
+	public List<Board> hotList(SqlSessionTemplate session) {
+		// TODO Auto-generated method stub
+		return session.selectList("board.hotList");
 	}
 
 	
