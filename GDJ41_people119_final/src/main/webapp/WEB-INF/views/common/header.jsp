@@ -51,7 +51,7 @@
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto active" href="${path}/company/companyIndex.do">기업메인</a></li>
-          <li class="dropdown"><a href="#"><span>채용정보</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="${path }/offer/offerList.do"><span>채용정보</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="#">지역</a></li>
               <li><a href="#">포지션</a></li>
@@ -89,7 +89,8 @@
 				<li class="dropdown"><a href="#"><span><c:out value="${loginMember.memberName }"/></span> <i class="bi bi-chevron-down"></i></a>
 			</c:if>
 				<ul>
-					<li><a href="#">마이페이지</a></li>
+					<li><a href="${path }/member/memberInfoView.do?memberId=${loginMember.memberId }">마이페이지</a></li>
+					<li><a href="${path }/resume/memberResumeList.do?memberId=${loginMember.memberId }">이력서 관리</a></li>
 					<li><a href="${path}/member/logout.do">로그아웃</a></li>
 				</ul>
 			</li>

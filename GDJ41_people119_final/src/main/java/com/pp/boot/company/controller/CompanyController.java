@@ -1,7 +1,10 @@
 package com.pp.boot.company.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,15 +13,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.pp.boot.company.model.service.CompanyService;
 import com.pp.boot.company.model.vo.Company;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
 @SessionAttributes({"loginCompany"})
+@Slf4j
+@RequestMapping("/company")
 public class CompanyController {
 
 	@Autowired
@@ -27,37 +37,55 @@ public class CompanyController {
 	@Autowired
 	private PasswordEncoder encoder;
 	
-	@RequestMapping("/company/companyLoginView.do")
+	@RequestMapping("/companyLoginView.do")
 	public String companyLoginView() {
 		return "company/companyLogin";
 	}
 	
 	
-	@RequestMapping("/company/companyLogin.do")
+	@RequestMapping("/companyLogin.do")
 	public String loginCompany(@RequestParam Map param,Model model) {
 		Company loginCompany = service.loginCompany(param);
-		if(loginCompany != null && encoder.matches((String)param.get("password"),loginCompany.getPassword()))
-			model.addAttribute("loginCompany",loginCompany);
 		
-		return "redirect:/company/companyIndex.do";
+		String msg = "";
+		String loc ="";	
+		if(loginCompany != null && encoder.matches((String)param.get("password"),loginCompany.getPassword())) {
+			model.addAttribute("loginCompany",loginCompany);
+			msg = "로그인 성공";
+			loc = "/company/companyIndex.do";
+		
+		}else {
+			msg = "로그인 실패. 아이디 혹은 비밀번호를 확인하세요.";
+			loc = "/company/companyLoginView.do";
+		}	
+		model.addAttribute("msg",msg);
+		model.addAttribute("loc",loc);		
+		
+		return "common/msg";
+		
+		
+		
+		
+		
+		
 	}
 	
-	@RequestMapping("/company/companyLogout.do")
+	@RequestMapping("/companyLogout.do")
 	public String logoutCompany(HttpSession session, SessionStatus status) {
 		
 		if(!status.isComplete()) {
 			status.setComplete();
 		}
 		
-		return "redirect:/company/companyIndex.do";
+		return "redirect:/";
 	}
 	
-	@RequestMapping("/company/enrollCompanyView.do")
+	@RequestMapping("/enrollCompanyView.do")
 	public String enrollCompanyView() {
 		return "company/enrollCompany";
 	}
 	
-	@PostMapping("/company/enrollCompany.do")
+	@PostMapping("/enrollCompany.do")
 	public String enrollCompany(Company company,Model model) {
 				
 		company.setPassword(encoder.encode(company.getPassword()));
@@ -77,4 +105,96 @@ public class CompanyController {
 		return "common/msg";
 	}
 	
+	// 기업 MyPage 이동
+	@RequestMapping("/companyMypage.do")
+	public String companyMypage(@RequestParam String companyId, Model model) {
+		Company loginCompany = service.loginCompany(Map.of("companyId", companyId));
+		
+		model.addAttribute("loginCompany", loginCompany);
+		
+		return "company/companyMypage";
+	}
+	
+	// 기업 정보 수정 페이지 전환
+	@RequestMapping("/updateCompany.do")
+	public String updateCompany() {
+		return "company/updateCompany";
+	}
+	
+	// 기업 정보 수정 완료
+	@RequestMapping(value="/updateCompanyEnd.do", method=RequestMethod.POST)
+	public ModelAndView updateCompanyEnd(Company c, ModelAndView mv, @RequestParam(value="file1", required=false) MultipartFile file1, @RequestParam(value="file2", required=false) MultipartFile file2,HttpServletRequest req) {
+		
+		// 저장경로 설정
+		String path=req.getServletContext().getRealPath("/resources/upload/company/");
+		File f=new File(path);
+		if(!f.exists()) f.mkdirs();
+		
+		// 파비콘 저장
+		if(!file1.isEmpty()) {
+			try {
+				file1.transferTo(new File(path + file1.getOriginalFilename()));
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// 이미지파일 저장
+		if(!file2.isEmpty()) {
+			try {
+				file2.transferTo(new File(path + file2.getOriginalFilename()));
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		c.setFavicon(file1.getOriginalFilename());
+		c.setCompanyImage(file2.getOriginalFilename());
+		
+		String msg = "";
+	    String loc = "";
+	    try {
+	    	int result = service.updateCompany(c);
+	    	msg = "수정성공";
+	    	loc = "/company/companyMypage.do?companyId=" + c.getCompanyId();
+	    }catch(RuntimeException e) {
+	    	msg = "수정실패 : " + e.getMessage();
+	    	loc = "/company/updateCompanyEnd.do";
+	    }
+	    
+	    mv.addObject("loc", loc);
+	    mv.addObject("msg", msg);
+	    mv.setViewName("common/msg");
+	    return mv;
+		
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

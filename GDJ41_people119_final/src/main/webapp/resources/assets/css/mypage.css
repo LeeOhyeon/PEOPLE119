@@ -33,7 +33,7 @@ color: gray;
     width: 20%;
 }
 .member_info_container{
-    width: 80%;
+    width: 60%;
 }
 .gender-btn{
    float: right;
@@ -53,4 +53,13 @@ color: gray;
 .info-title{
     font-size: 30px;
     font-weight: bolder;
+}
+.btn{
+	border: 1px solid lightgray;
+}
+.resultEmail{
+	margin-bottom: 10px;
+}
+.resultCode{
+	margin-bottom: 10px;
 }
