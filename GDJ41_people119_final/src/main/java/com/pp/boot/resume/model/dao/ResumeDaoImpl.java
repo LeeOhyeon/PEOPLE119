@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.pp.boot.resume.model.vo.Career;
+import com.pp.boot.resume.model.vo.Certificate;
+import com.pp.boot.resume.model.vo.Language;
 import com.pp.boot.resume.model.vo.Resume;
 
 import lombok.extern.slf4j.Slf4j;
@@ -34,6 +36,16 @@ public class ResumeDaoImpl implements ResumeDao {
 		log.debug("resume : "+resumeNo);
 
 		return resumeNo;
+	}
+
+	@Override
+	public int insertCertificate(SqlSessionTemplate session, Certificate certifi) {
+		return session.insert("resume.insertCertificate",certifi);
+	}
+
+	@Override
+	public int insertLanguage(SqlSessionTemplate session, Language lang) {
+		return session.insert("resume.insertLanguage",lang);
 	}
 		
 	

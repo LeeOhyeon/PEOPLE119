@@ -20,6 +20,8 @@ import com.pp.boot.member.model.service.MemberService;
 import com.pp.boot.member.model.vo.Member;
 import com.pp.boot.resume.model.service.ResumeService;
 import com.pp.boot.resume.model.vo.Career;
+import com.pp.boot.resume.model.vo.Certificate;
+import com.pp.boot.resume.model.vo.Language;
 import com.pp.boot.resume.model.vo.Resume;
 
 import lombok.extern.slf4j.Slf4j;
@@ -107,6 +109,19 @@ public class ResumeController {
 	@ResponseBody
 	public void insertCareer(Career career) {
 	 int result =resumeService.insertCareer(career);
+	}
+	
+	@RequestMapping("/insertCertificate.do")
+	@ResponseBody
+	public void insertCertificate(Certificate certifi) {
+	 int result =resumeService.insertCertificate(certifi);
+	}
+	
+
+	@RequestMapping("/insertLanguage.do")
+	@ResponseBody
+	public void insertLanguage(Language lang) {
+	 int result =resumeService.insertLanguage(lang);
 	}
 	
 

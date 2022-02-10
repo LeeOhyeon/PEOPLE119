@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 import com.pp.boot.resume.model.dao.ResumeDao;
 import com.pp.boot.resume.model.vo.Career;
+import com.pp.boot.resume.model.vo.Certificate;
+import com.pp.boot.resume.model.vo.Language;
 import com.pp.boot.resume.model.vo.Resume;
 
 @Service
@@ -33,5 +35,16 @@ public class ResumeServiceImpl implements ResumeService {
 		return dao.insertResume(session,resume);
 	}
 
+	@Override
+	public int insertCertificate(Certificate certifi) {
+		return dao.insertCertificate(session,certifi);
+	}
+
+	@Override
+	public int insertLanguage(Language lang) {
+		return dao.insertLanguage(session,lang);
+	}
+
+	
 	
 }

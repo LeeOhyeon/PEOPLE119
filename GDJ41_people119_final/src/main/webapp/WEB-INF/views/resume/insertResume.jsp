@@ -10,21 +10,13 @@
 
     <!-- ======= Breadcrumbs Section ======= -->
     <section class="breadcrumbs">
-      <div class="container">
-
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>이력서 등록</h2>
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li>이력서 등록</li>
-          </ol>
-        </div>
-
+      <div class="">
+          
       </div>
     </section><!-- End Breadcrumbs Section -->
-	
-	
+
     <section class="inner-page">
+       <p style="font-size: 35px; font-weight: bolder; margin-left: 600px;">이력서 등록</p>
       <div class="container">
         <div class="resume-container">
           <div class="resume-basic-container">
@@ -62,7 +54,7 @@
             aria-label="default input example" name="resumeTitle" required="required">
             <span id="resumeTitle-result"></span>
           </div>
-          <div class="resume-basic-container">
+          <div class="resume-basic-container-elementary">
             <p style="font-size: 24px; font-weight: bolder;">학력사항<span style="font-weight: normal; font-size: 16px;"> 최종
                 학력 선택 후 학력사항을 입력하세요</span><span style="color:red;font-weight: normal; font-size: 16px;"> (필수)</span></p>
             <div class="resume-school-info">
@@ -115,7 +107,7 @@
 	            			<tr class="university-container">
 	            				<td>학점<span> (필수)</span></td>
 	            				<td>
-	            				<input class="form-control university-input" type="text" name="grades" aria-label="default input example" required="required">
+	            				<input class="form-control university-input" type="text" name="grades" aria-label="default input example" required="required" placeholder="/4.5">
 	            				</td>
 	            			</tr>
 		            			
@@ -298,68 +290,7 @@
           </div>
           
           <script type="text/javascript">
-          	let resumeNo = "${resumeNo}";
-          
-          	$(".career-info").hide();
           	
-          	$("input[name=career]").change(e=>{
-          			$(".career-info").show();
-          			if($("input[name=career]:checked").val()=='신입'){
-          				$(".career-info").hide();
-          				$("#addCareerformBtn").hide();
-          			}else{
-          				$("#addCareerformBtn").show();
-          			}
-          	});
-          
-          	$("input[name=assignedTask]").change(e=>{
-          		alert("반드시 저장 버튼을 누르셔야 합니다!");
-          	});
-          
-          	const insertCareerform=(e)=>{
-          		
-          		let btn = $(e);
-				          		
-          		let career =$(btn.parents('.resume-basic-container-career')).find('input[name=career]:checked').val(); 
-	          	let companyName =$(btn.parents('.resume-basic-container-career')).find('input[name=companyName]').val();
-	          	let joinDate =$(btn.parents('.resume-basic-container-career')).find('input[name=joinDate]').val(); 
-	          	let regDate = $(btn.parents('.resume-basic-container-career')).find('input[name=regDate]').val(); 
-	          	let regReason = $(btn.parents('.resume-basic-container-career')).find('select[name=regReason]').val();
-	          	let rank = $(btn.parents('.resume-basic-container-career')).find('select[name=rank]').val();
-	          	let position = $(btn.parents('.resume-basic-container-career')).find('select[name=position]').val();
-	          	let department = $(btn.parents('.resume-basic-container-career')).find('input[name=department]').val();
-	          	let deptLocation = $(btn.parents('.resume-basic-container-career')).find('select[name=deptLocation]').val();
-	          	let annualIncome = $(btn.parents('.resume-basic-container-career')).find('input[name=annualIncome]').val();
-	          	let assignedTask = $(btn.parents('.resume-basic-container-career')).find('input[name=assignedTask]').val();
-          		
-          		$.ajax({
-          			url:"${path}/resume/insertCareer.do",
-          			type:"post",
-          			data:{
-          				resumeNo:resumeNo,
-          				career:career,
-          				companyName:companyName,
-          				joinDate:joinDate,
-          				regDate:regDate,
-          				regReason:regReason,
-          				rank:rank,
-          				position:position,
-          				department:department,
-          				deptLocation:deptLocation,
-          				annualIncome:annualIncome,
-          				assignedTask:assignedTask
-          			},
-          			success:data=>{
-          				console.log("성공잉");
-          			},error:data=>{
-          				console.log("실팽팽이");
-          			}
-          			
-          			
-          		});
-          	
-          	
-          	}
           </script>
           
           
@@ -452,7 +383,7 @@
           </div>
           <div class="resume-basic-container-certificate">
             <p style="font-size: 24px; font-weight: bolder;">자격증
-            <span style="float:right;" class="deleteAddform" id="deletecertificateAddform" onclick="deletecertificateAddform(this);"><i class="fas fa-times"></i></span>
+            <span style="float:right;" class="deleteAddformCerti" id="deletecertificateAddform" onclick="deletecertificateAddform(this);"><i class="fas fa-times"></i></span>
             </p>
             
             <div class="certificate-container">
@@ -488,9 +419,12 @@
                   </td>
                 </tr>
               </table>
+              	<div>
+              		<p style="color:red;text-align: right;">반드시 저장 버튼을 누르셔야 합니다!</p>
+              	</div>
               <div class="plusbtn-container">
                 	<div>
-                	<button class="btn btn-outline-secondary plus" type="button" onclick="insertCertificateformBtn();">저장</button>
+                	<button class="btn btn-outline-secondary plus" type="button" onclick="insertCertificateformBtn(this);">저장</button>
                 	<button class="btn btn-outline-secondary plus" type="button" onclick="addCertificateformBtn();">추가 등록</button>
                 	</div>
                 </div>
@@ -499,7 +433,7 @@
 
           <div class="resume-basic-container-language">
             <p style="font-size: 24px; font-weight: bolder;">어학시험
-             <span style="float:right;" class="deleteAddform" id="deletelanguageAddform" onclick="deletelanguageAddform(this);"><i class="fas fa-times"></i></span>
+             <span style="float:right;" class="deleteAddformLang" id="deletelanguageAddform" onclick="deletelanguageAddform(this);"><i class="fas fa-times"></i></span>
             </p>
             <div class="language-container">
               <table >
@@ -548,13 +482,16 @@
                 <tr>
                   <td>취득일</td>
                   <td>
-                    <input type="date" name="aequireDate">
+                    <input type="date" name="languageAeqDate">
                   </td>
                 </tr>
               </table>
+              	<div>
+              		<p style="color:red;text-align: right;">반드시 저장 버튼을 누르셔야 합니다!</p>
+              	</div>
                <div class="plusbtn-container">
                 	<div>
-                	<button class="btn btn-outline-secondary plus" type="button" onclick="insertLanguageformBtn();">저장</button>
+                	<button class="btn btn-outline-secondary plus" type="button" onclick="insertLanguageformBtn(this);">저장</button>
                 	<button class="btn btn-outline-secondary plus" type="button" onclick="addLanguageformBtn();">추가 등록</button>
                 	</div>
                 </div>
@@ -653,6 +590,14 @@
            </div>
           </div>
         </div>
+        	<div class="quickmenu-container">
+				<div class="quickmenu">
+					<ul>
+						<li><button type="button" class="btn btn-outline-primary quickmenuBtn" onclick="addCertificateformBtn();">+자격증</button></li>
+						<li><button type="button" class="btn btn-outline-primary quickmenuBtn" onclick="addLanguageformBtn();">+어학시험</button></li>
+					</ul>
+				</div>
+			</div>        
       </div>
       
     </section>
@@ -856,24 +801,29 @@ function DropFile(dropAreaId, fileListId) {
       }
       
       //경력사항 추가
-     const addCareerformBtn=()=>{
+      const addCareerformBtn=()=>{
         let copy = $($(".addform_")[0]).clone(false);
+        copy.find(".deleteAddform").css("display","block");
         copy.find("input").val("");
         copy.find("#career1").remove();
         copy.find(".careerTitle_").remove();
 		$($(".addform_")[0]).after(copy); 
 		
-     }
+     } 
 	          
 	 //자격증 추가
 	 const addCertificateformBtn=()=>{
         let copy = $($(".resume-basic-container-certificate")[0]).clone(true);
+        copy.css("display","block");
+        copy.find("input").val("");
 		$($(".resume-basic-container-certificate")[0]).after(copy); 
      }
      
 	 //어학시험
 	  const addLanguageformBtn=()=>{
         let copy = $($(".resume-basic-container-language")[0]).clone(true);
+        copy.css("display","block");
+        copy.find("input").val("");
 		$($(".resume-basic-container-language")[0]).after(copy); 
      }
 	  
@@ -1001,7 +951,151 @@ function DropFile(dropAreaId, fileListId) {
 			deletelanguageAddform.parent().parent().remove();
 	 }
 	
-	  
+	  //경력사항 등록
+	  let resumeNo = "${resumeNo}";
+      
+    	$(".career-info").hide();
+    	
+    	$("input[name=career]").change(e=>{
+    			$(".career-info").show();
+    			if($("input[name=career]:checked").val()=='신입'){
+    				$(".career-info").hide();
+    				$("#addCareerformBtn").hide();
+    			}else{
+    				$("#addCareerformBtn").show();
+    			}
+    	});
+    
+    	$("input[name=assignedTask]").change(e=>{
+    		alert("반드시 저장 버튼을 누르셔야 합니다!");
+    	});
+    
+    	const insertCareerform=(e)=>{
+    		
+    		let btn = $(e);
+			          		
+    		let career =$(btn.parents('.resume-basic-container-career')).find('input[name=career]:checked').val(); 
+        	let companyName =$(btn.parents('.resume-basic-container-career')).find('input[name=companyName]').val();
+        	let joinDate =$(btn.parents('.resume-basic-container-career')).find('input[name=joinDate]').val(); 
+        	let regDate = $(btn.parents('.resume-basic-container-career')).find('input[name=regDate]').val(); 
+        	let regReason = $(btn.parents('.resume-basic-container-career')).find('select[name=regReason]').val();
+        	let rank = $(btn.parents('.resume-basic-container-career')).find('select[name=rank]').val();
+        	let position = $(btn.parents('.resume-basic-container-career')).find('select[name=position]').val();
+        	let department = $(btn.parents('.resume-basic-container-career')).find('input[name=department]').val();
+        	let deptLocation = $(btn.parents('.resume-basic-container-career')).find('select[name=deptLocation]').val();
+        	let annualIncome = $(btn.parents('.resume-basic-container-career')).find('input[name=annualIncome]').val();
+        	let assignedTask = $(btn.parents('.resume-basic-container-career')).find('input[name=assignedTask]').val();
+    		
+    		$.ajax({
+    			url:"${path}/resume/insertCareer.do",
+    			type:"post",
+    			data:{
+    				resumeNo:resumeNo,
+    				career:career,
+    				companyName:companyName,
+    				joinDate:joinDate,
+    				regDate:regDate,
+    				regReason:regReason,
+    				rank:rank,
+    				position:position,
+    				department:department,
+    				deptLocation:deptLocation,
+    				annualIncome:annualIncome,
+    				assignedTask:assignedTask
+    			},
+    			success:data=>{
+    				console.log("성공잉");
+    				alert("등록 완료");
+    			},error:data=>{
+    				alert("등록 실패! 관리자에게 문의하세요 :(");
+    				console.log("실팽팽이");
+    			}
+    		});
+    	}
+    	
+    	//자격증 등록
+    	
+    	$("input[name=acquiredDate]").change(e=>{
+    		alert("반드시 저장 버튼을 누르셔야 합니다!");
+    	});
+    	
+    	const insertCertificateformBtn=(e)=>{
+    		
+    		let btn = $(e);
+    		
+    		
+    		let certificateName = $(btn.parents('.resume-basic-container-certificate')).find('input[name=certificateName]').val();
+    		let institution = $(btn.parents('.resume-basic-container-certificate')).find('input[name=institution]').val();
+    		let acceptance = $(btn.parents('.resume-basic-container-certificate')).find('select[name=acceptance]').val();
+    		let acquiredDate = $(btn.parents('.resume-basic-container-certificate')).find('input[name=acquiredDate]').val();
+			
+    		$.ajax({
+    			url : "${path}/resume/insertCertificate.do",
+    			type:"post",
+    			data:{resumeNo:resumeNo,
+    				certificateName:certificateName,
+    				institution:institution,
+    				acceptance:acceptance,
+    				acquiredDate:acquiredDate
+    			},
+    			success:data=>{
+    				console.log("성공잉");
+    				alert("등록 완료");
+    			},error:data=>{
+    				alert("등록 실패! 관리자에게 문의하세요 :(");
+    				console.log("실팽팽이");
+    			}
+    		});
+    	}
+    	
+    	//어학 시험 등록
+    		$("input[name=languageAeqDate]").change(e=>{
+    		alert("반드시 저장 버튼을 누르셔야 합니다!");
+    	});
+    	
+    	const insertLanguageformBtn=(e)=>{
+    		let btn=$(e);
+    		
+    		let language = $(btn.parents('.resume-basic-container-language')).find('select[name=language]').val();
+    		let testType = $(btn.parents('.resume-basic-container-language')).find('input[name=testType]').val();
+    		let acqStatus = $(btn.parents('.resume-basic-container-language')).find('select[name=acqStatus]').val();
+    		let score = $(btn.parents('.resume-basic-container-language')).find('input[name=score]').val();
+    		let languageAeqDate = $(btn.parents('.resume-basic-container-language')).find('input[name=languageAeqDate]').val();
+    		
+    		
+    		$.ajax({
+    			
+    			url : "${path}/resume/insertLanguage.do",
+    			type:"post",
+    			data:{resumeNo:resumeNo,
+    				language:language,
+    				testType:testType,
+    				acqStatus:acqStatus,
+    				score:score,
+    				languageAeqDate:languageAeqDate
+    			},
+    			success:data=>{
+    				console.log("성공잉");
+    				alert("등록 완료");
+    			},error:data=>{
+    				alert("등록 실패! 관리자에게 문의하세요 :(");
+    				console.log("실팽팽이");
+    			}
+    			
+    		});
+    		
+    	}
+    	
+    	//퀵메뉴
+    	$(document).ready(function(){
+    		var currentPosition = parseInt($(".quickmenu").css("top"));
+    		$(window).scroll(function() {
+    			var position = $(window).scrollTop(); 
+    			$(".quickmenu").stop().animate({"top":position+currentPosition+"px"},1000);
+    		});
+    	});
+    	
+    	
 </script>
 
 </main><!-- End #main -->
