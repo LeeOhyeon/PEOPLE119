@@ -41,5 +41,9 @@ public interface BoardService {
 
 	List<Board> hotList();
 
+	int insertReply(Comment c);
+
+	List<Comment> replyList(int boardNo);
+
 	
 }

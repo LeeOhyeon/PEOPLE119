@@ -112,6 +112,18 @@ public class BoardDaoImpl implements BoardDao {
 		return session.selectList("board.hotList");
 	}
 
+	@Override
+	public int insertReply(SqlSessionTemplate session, Comment c) {
+		// TODO Auto-generated method stub
+		return session.insert("board.insertReply",c);
+	}
+
+	@Override
+	public List<Comment> replyList(SqlSessionTemplate session, int boardNo) {
+		// TODO Auto-generated method stub
+		return session.selectList("board.replyList",boardNo);
+	}
+
 	
 	
 }

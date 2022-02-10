@@ -87,7 +87,31 @@ public class BoardController {
 		
 		return comments;
 	}
+	@RequestMapping("/commentReply.do")
+	@ResponseBody
+	public List<Comment> insertReply(int boardNo,int commentRef,String memberId,String commentContent,HttpServletResponse response) {
+		
+		Comment c=Comment.builder().boardNo(boardNo).memberId(memberId).commentContent(commentContent).commentRef(commentRef).build();
+		
+		int result=service.insertReply(c);
+		
+		List<Comment> reply=service.replyList(boardNo);
+		
+		response.setContentType("aplication/json; charset=utf-8");
+		
+		return reply;
 	
+	}
+	@RequestMapping("/selectReply.do")
+	@ResponseBody
+	public List<Comment> selectReply(int boardNo , HttpServletResponse response) {
+		
+		List<Comment> reply=service.replyList(boardNo);
+		
+		response.setContentType("aplication/json; charset=utf-8");
+		
+		return reply;
+	}
 	
 	@RequestMapping("/selectComment.do")
 	@ResponseBody
@@ -168,5 +192,6 @@ public class BoardController {
 	
 		return count;
 	}
+	
 	
 }

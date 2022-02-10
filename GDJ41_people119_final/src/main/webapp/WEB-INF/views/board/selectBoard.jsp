@@ -9,9 +9,9 @@
 <script>
 $(document).ready(()=>{ 
 	selectComment(); 
+	
 	likeCount();
 	countComment();
-	
 });
 </script>
  <main id="main">
@@ -126,11 +126,17 @@ $(document).ready(()=>{
   			data : {boardNo:"${b.boardNo}"},
   			dataType:"json",
   			success:data=>{
+  				selectReply();
+  				let commentNo;
   				$(".comment-content").remove();
   				$(".comment-reply").remove();
+  				$(".reply-container").remove();
   				if(data.length != 0){
   					for(let i=0;i<data.length;i++){
-  	  					const commentContainer=$("<div class='comment-content'>");
+  						commentNo = data[i]["commentNo"];
+  	  					if(data[i]["commentLevel"]==1) {
+  	  					const comment=$("<div class='cm'>");
+  						const commentContainer=$("<div class='comment-content'>");
   	  					const container=$("<div class='comment-container'>");
   	  					const content = $("<div class='comment-1'>");
   	  					const deleteDiv=$("<div class='comment-delete'>");
@@ -141,13 +147,14 @@ $(document).ready(()=>{
   	  					const j=$("<i class='fas fa-ellipsis-v'>");
   	  					const enrollDate=$("<div class='enrolldate'>")
   	  					const p=$("<p>");
-  	  					const reply=$("<div class='comment-reply'>");
+  	  					const reply=$("<div class='comment-reply' id='"+commentNo+"'>");
   	  					const arrow=$("<div class='arrow'>");
   	  					const span=$("<span class='arrow-image'>");
   	  					const im=$("<i class='fas fa-angle-right'>");
   	  					const inputGroup=$("<div class='input-group mb-3'>");
-  	  					const input=$("<input type='text' class='form-control recomment' placeholder='답변에 댓글을 입력해주세요' aria-label='reply' aria-describedby='button-addon2'>")
-  	  					const button=$("<button type='button' class='btn btn-outline-secondary' id='button-addon2'>")
+  	  					const input=$("<input name='commentContent' type='text' class='form-control recomment' placeholder='답변에 댓글을 입력해주세요' aria-label='reply' aria-describedby='button-addon2'>")
+  	  					const button=$("<button type='button' class='btn btn-outline-secondary' id='button-addon2' onclick='reply(this);'>")
+  	  					
   	  					
   	  					button.text("등록하기");
   	  					span.append(im);
@@ -167,9 +174,11 @@ $(document).ready(()=>{
   	  					member.append(memberId);
   	  					memberContainer.append(member).append(enrollDate);
   	  					commentContainer.append(container).append(memberContainer);
-  	  					$(".comment-horizon").append(commentContainer).append(reply); 
-  	  				}
-  	  			
+  	  					comment.append(commentContainer).append(reply);
+  	  					$(".comment-horizon").append(comment);
+  	  					}
+  	  					
+  					}
   				}
   						
   			}
@@ -217,10 +226,67 @@ $(document).ready(()=>{
   			}
   		});
   	}
-  	
+  	//게시글 전체 이동
   	const wholeBoard=()=>{
   		location.assign("${path}/board/boardCategory.do?category=게시글전체");
   	}
+  	
+  	//대댓글 ajax
+  	const reply=(e)=>{
+  		let btn = $(e);
+  		let commentContent = $(btn.parents('.comment-reply')).find('input[name=commentContent]').val();
+  		let commentNo=$(btn.parents('.comment-reply')).attr("id");
+  		console.log(commentNo);
+  		$.ajax({
+  			url:"${path}/board/commentReply.do",
+  			data:{boardNo:"${b.boardNo}",commentRef:commentNo,"memberId":"${loginMember.memberId}",commentContent:commentContent},
+  			dataType:"json",
+  			success:data=>{	
+  				alert("대댓글 등록성공!");
+  				selectReply();
+  			}
+  		})
+  	
+  	}
+  	function selectReply() {
+  		$.ajax({
+  	 		url:"${path}/board/selectReply.do",
+  			data:{boardNo:"${b.boardNo}"},
+  			dataType:"json",
+  			success:data=>{	
+  				$(".reply-container").remove();
+  				for(let i=0; i<data.length; i++) {
+  					
+  					const reply=$("<div class='reply-container'>");
+  					const content=$("<div class='reply-content'>");
+  					const replyinfo=$("<div class='reply-info'>");
+  					const imgDiv=$("<div class='imgDiv'>");
+  					const span=$("<span class='reply-image'>");
+  					const image=$("<i class='fas fa-ellipsis-h'></i>");
+  					const replydiv=$("<div class='"+data[i]["commentRef"]+"'style='display:inline-block;'>");	
+  					const id=$("<div class='memberId'>");
+  					const date=$("<div class='enrolldate'>");
+  					const info=$("<div class='info'>");
+  					
+  					
+  				
+  					if($("#"+data[i]["commentRef"]).attr("id")==replydiv.attr("class")) {
+  						span.append(image);
+  						imgDiv.append(span);
+  						id.html(data[i]["memberId"]);
+  						date.html(data[i]["commentDate"]);	
+  						replydiv.html(data[i]["commentContent"]); //얘는 내용 출력
+  						info.append(id).append(date);
+  						replyinfo.append(replydiv).append(info); //대댓 하나 통 틀어
+  						content.append(imgDiv).append(replyinfo);
+  						$("#"+data[i]["commentRef"]).after(content);
+  					}
+  				}  
+  				
+  			}
+  	 	})
+  	}
+  	
   	
   	
   	

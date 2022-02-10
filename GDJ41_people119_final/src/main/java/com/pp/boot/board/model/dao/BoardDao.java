@@ -42,4 +42,8 @@ public interface BoardDao {
 	int boardLikeCount(SqlSessionTemplate session, Like l);
 
 	List<Board> hotList(SqlSessionTemplate session);
+
+	int insertReply(SqlSessionTemplate session, Comment c);
+
+	List<Comment> replyList(SqlSessionTemplate session, int boardNo);
 }
