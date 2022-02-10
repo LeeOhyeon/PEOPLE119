@@ -168,6 +168,10 @@ public class CompanyController {
 		public String companyList(Model model) {
 			List<Company> list = service.selectCompanyList();
 			
+			for(int i = 0; i < list.size(); i++) {
+				log.debug("{}" + list.get(i).getCompanyId());
+			}
+			
 			model.addAttribute("companyList", list);
 			
 			return "review/companyList";
