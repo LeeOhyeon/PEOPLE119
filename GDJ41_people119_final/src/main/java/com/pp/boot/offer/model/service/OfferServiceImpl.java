@@ -12,6 +12,7 @@ import com.pp.boot.offer.model.vo.Offer;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 public class OfferServiceImpl implements OfferService {
 	
 	@Autowired
@@ -30,9 +31,21 @@ public class OfferServiceImpl implements OfferService {
 		return dao.selectOfferList(session);
 	}
 	
+	// 공고 전체 개수 확인하기
 	@Override
 	public int countOfferList() {
 		return dao.countOfferList(session);
 	}
-
+	
+	// 공고 등록
+	@Override
+	public int enrollOffer(Offer o) {
+		log.debug("{service}" + o);
+		return dao.enrollOffer(session, o);
+	}
+	
+	// 공고 상세보기
+	public Offer selectOffer(int offerNo) {
+		return dao.selectOffer(session, offerNo);
+	}
 }

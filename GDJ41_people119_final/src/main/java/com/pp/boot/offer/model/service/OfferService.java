@@ -12,4 +12,10 @@ public interface OfferService {
 	
 	// 공고 전체 개수 확인하기
 	int countOfferList();
+	
+	// 공고 등록
+	int enrollOffer(Offer o);
+	
+	// 공고 상세보기
+	Offer selectOffer(int offerNo);
 }

@@ -184,7 +184,7 @@
                 	파비콘 이미지
                 </div>
                 <div class="input-group mb-3 filebox">
-               		<input class="upload-name1" value="${loginCompany.favicon }" placeholder="파일을 등록해주세요" disabled>
+               		<input class="upload-name1" value="${loginCompany.favicon }" placeholder="파일을 등록해주세요" readonly>
 				    <label for="cFavicon">파일찾기</label> 
 				    <input type="file" id="cFavicon" name="file1">
                 </div>
@@ -194,7 +194,7 @@
                 	회사 이미지
                 </div>
                 <div class="input-group mb-3 filebox">
-                	<input class="upload-name2" value="${loginCompany.companyImage }" placeholder="파일을 등록해주세요" disabled>
+                	<input class="upload-name2" value="${loginCompany.companyImage }" placeholder="파일을 등록해주세요" readonly>
 				    <label for="cImage">파일찾기</label> 
 				    <input type="file" id="cImage" name="file2">
                 </div>

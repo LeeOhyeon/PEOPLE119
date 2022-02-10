@@ -1,5 +1,6 @@
 package com.pp.boot.company.model.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -23,5 +24,11 @@ public class CompanyDaoImpl implements CompanyDao{
 	@Override
 	public int updateCompany(SqlSessionTemplate session, Company c) {
 		return session.update("company.updateCompany", c);
+	}
+	
+	// 전체 기업 리스트
+	@Override
+	public List<Company> selectCompanyList(SqlSessionTemplate session) {
+		return session.selectList("company.selectCompanyList");
 	}
 }

@@ -53,28 +53,33 @@
               </select>
             </div>
           </div>
-          <div class="total-review-info">
-            <div class="company-image">
-              <span><i class="fas fa-image"></i></span>
-            </div>
-            <div class="company-name">
-              <h5><strong>기업명</strong></h5>
-              <p>현재 채용중 1건</p>
-            </div>
-            <div class="review-info">
-              노력하지 않고 무언가를 잘 해낼 수 있는 사람이 천재라고 한다면, 저는 절대 천재가 아닙니다.
-              하지만 피나는 노력 끝에 뭔가를 이루는 사람이 천재라고 한다면, 저는 천재가 맞습니다.
-              천재의 손끝에는 노력이라는 핏방울이 묻어 있기 마련입니다.
-              제가 대한민국 최고의 취준생이 될 수 있었던 이유는, 저보다 많이 노력한 사람이 한 명도 없었기 때문입니다.
-              저는 단 한 번도 저 자신과 맺은 약속을 어긴 적이 없습니다.
-            </div>
-            <div class="review-view-count">
-              <p><strong>조회수</strong></p>
-            </div>
-            <div class="interest">
-              <button type="button" class="btn btn-light" style="width:100px">관심기업</button>
-            </div>
-          </div>
+          
+          <c:forEach var="cl" items="${companyList }">
+	          <div class="total-review-info">
+	            <div class="company-image">
+	              <img alt="" src="/resources/upload/company/${cl.companyImage }" style="width: 100px; height: 100px;">
+	              <!-- <span><i class="fas fa-image"></i></span> -->
+	            </div>
+	            <div class="company-name">
+	              <h5><strong><c:out value="${cl.companyName }"/></strong></h5>
+	              <p>현재 채용중 00건 -> 이거 없다 추가해야할듯</p>
+	            </div>
+	            <div class="review-info">
+	              노력하지 않고 무언가를 잘 해낼 수 있는 사람이 천재라고 한다면, 저는 절대 천재가 아닙니다.
+	              하지만 피나는 노력 끝에 뭔가를 이루는 사람이 천재라고 한다면, 저는 천재가 맞습니다.
+	              천재의 손끝에는 노력이라는 핏방울이 묻어 있기 마련입니다.
+	              제가 대한민국 최고의 취준생이 될 수 있었던 이유는, 저보다 많이 노력한 사람이 한 명도 없었기 때문입니다.
+	              저는 단 한 번도 저 자신과 맺은 약속을 어긴 적이 없습니다.
+	            </div>
+	            <div class="review-view-count">
+	              <p><strong>조회수</strong></p>
+	            </div>
+	            <div class="interest">
+	              <button type="button" class="btn btn-light" style="width:100px">관심기업</button>
+	            </div>
+	          </div>
+          </c:forEach>
+	          
         </div>
       </div>
     </section>

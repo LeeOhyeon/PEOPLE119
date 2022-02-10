@@ -17,7 +17,8 @@ public class Offer {
 
 	private int offerNo; // 공고 등록번호
 	private String offerTitle; // 공고 제목
-	private Company companyName; // 공고 등록 회사명 => 기업 로그인 정보에서 가져올것
+//	private Company companyName; // 공고 등록 회사명 => 기업 로그인 정보에서 가져올것
+	private String companyName;
 	private String companyId;
 	
 	// 기술스택 최대 8개
@@ -42,11 +43,12 @@ public class Offer {
 	private String image; // 기업 및 서비스 소개 사진
 	private String offerContent; // 기업 및 서비스 소개
 	
+	private Date enrollDate; // 등록일
 	private Date endDate; // 마감일
 	
 	private int offerReadCount; // 조회수
 	
-	private int status;
+	private int status; // 0:비승인 1:승인
 	
 	
 }

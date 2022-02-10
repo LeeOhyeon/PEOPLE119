@@ -92,8 +92,24 @@
                 	회사규모
                 </div>
                   <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="기업규모" aria-label="Recipient's username"
-                      aria-describedby="button-addon2" value="${loginCompany.companySize }" disabled>
+                  	<c:choose>
+                  		<c:when test="${loginCompany.companySize eq 1 }">
+                  			<input type="text" class="form-control" placeholder="기업규모" aria-label="Recipient's username"
+								aria-describedby="button-addon2" value="스타트업" disabled>
+                  		</c:when>
+                  		<c:when test="${loginCompany.companySize eq 2 }">
+                  			<input type="text" class="form-control" placeholder="기업규모" aria-label="Recipient's username"
+								aria-describedby="button-addon2" value="중소기업" disabled>
+                  		</c:when>
+                  		<c:when test="${loginCompany.companySize eq 3 }">
+                  			<input type="text" class="form-control" placeholder="기업규모" aria-label="Recipient's username"
+								aria-describedby="button-addon2" value="중견기업" disabled>
+                  		</c:when>
+                  		<c:when test="${loginCompany.companySize eq 4 }">
+                  			<input type="text" class="form-control" placeholder="기업규모" aria-label="Recipient's username"
+								aria-describedby="button-addon2" value="대기업" disabled>
+                  		</c:when>
+                  	</c:choose>
                   </div>
                 </div>
     
