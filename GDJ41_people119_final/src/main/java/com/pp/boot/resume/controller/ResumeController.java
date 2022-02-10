@@ -3,19 +3,22 @@ package com.pp.boot.resume.controller;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pp.boot.common.PageFactoryMember;
 import com.pp.boot.member.model.service.MemberService;
 import com.pp.boot.member.model.vo.Member;
 import com.pp.boot.resume.model.service.ResumeService;
@@ -39,10 +42,24 @@ public class ResumeController {
 
 	// 회원 이력서 목록
 	@RequestMapping("/memberResumeList.do")
-	public ModelAndView memberResumeList(@RequestParam String memberId, ModelAndView mv) {
+	public ModelAndView memberResumeList(@RequestParam String memberId, ModelAndView mv,@RequestParam(value = "cPage", defaultValue = "1") int cPage,
+		@RequestParam(value = "numPerPage", defaultValue = "5") int numPerPage) {
 
+		
+		Map<String, Object> param = new HashMap<>();
+		param.put("memberId", memberId);
+		param.put("cPage", cPage);
+		param.put("numPerPage", numPerPage);
+		
+		List<Resume> rList = resumeService.selectResumeList(param);
+		int countList = resumeService.selectResumeListCount(memberId);
+		
+		log.debug("rList : "+rList);
+		
+		mv.addObject("resumeList",rList);
+		mv.addObject("countList",countList);
 		mv.setViewName("resume/memberResumeList");
-
+		mv.addObject("pageBar", PageFactoryMember.getPageBar(countList, cPage, numPerPage, 5, "/resume/memberResumeList.do?memberId="+memberId+"&&"));
 		return mv;
 	}
 	
@@ -104,25 +121,58 @@ public class ResumeController {
 		}
 		resumeService.insertBasicResume(resume);
 	}
-	
+	//경력 사항 등록
 	@RequestMapping("/insertCareer.do")
 	@ResponseBody
 	public void insertCareer(Career career) {
 	 int result =resumeService.insertCareer(career);
 	}
-	
+	//자격증 등록
 	@RequestMapping("/insertCertificate.do")
 	@ResponseBody
 	public void insertCertificate(Certificate certifi) {
 	 int result =resumeService.insertCertificate(certifi);
 	}
 	
-
+	//외국어 시험 등록
 	@RequestMapping("/insertLanguage.do")
 	@ResponseBody
 	public void insertLanguage(Language lang) {
 	 int result =resumeService.insertLanguage(lang);
 	}
+	//이력서 삭제
+	@RequestMapping("/deleteResume.do")
+	public String deleteResume(@RequestParam int resumeNo,@RequestParam String memberId,Model model) {
+		int result = resumeService.deleteResume(resumeNo);
+	 
+		String msg ="";
+		String loc ="";
+		
+	 	if(result>0) {
+	 		msg ="이력서 삭제가 완료되었습니다.";
+	 		loc = "memberResumeList.do?memberId="+memberId;
+	 	}else {
+	 		msg ="이력서 삭제 실패.";
+	 		loc = "memberResumeList.do?memberId="+memberId;
+	 	}
+	 
+	 	model.addAttribute("msg",msg);
+	 	model.addAttribute("loc",loc);
+	 	
+	 return "common/msg";
+	}
 	
-
+	//이력서 상세보기
+	@RequestMapping("/resumeDetailView.do")
+	public ModelAndView resumeDetailView(@RequestParam int resumeNo,ModelAndView mv) {
+		
+		
+		
+		mv.setViewName("resume/resumeDetailView");
+		
+		
+		
+		return mv;
+		
+	}
 }

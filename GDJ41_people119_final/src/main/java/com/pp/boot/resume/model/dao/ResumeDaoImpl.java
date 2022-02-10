@@ -1,5 +1,9 @@
 package com.pp.boot.resume.model.dao;
 
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -47,6 +51,28 @@ public class ResumeDaoImpl implements ResumeDao {
 	public int insertLanguage(SqlSessionTemplate session, Language lang) {
 		return session.insert("resume.insertLanguage",lang);
 	}
+
+	@Override
+	public List<Resume> selectResumeList(SqlSessionTemplate session, Map<String, Object> param) {
 		
+		int cPage = (Integer)param.get("cPage");
+		int numPerPage =(Integer)param.get("numPerPage");
+		
+		RowBounds rb = new RowBounds((cPage-1)*numPerPage,numPerPage); 
+		
+		return session.selectList("resume.selectResumeList",param,rb);
+	}
+
+	@Override
+	public int selectResumeListCount(SqlSessionTemplate session, String memberId) {
+		return session.selectOne("resume.selectResumeListCount",memberId);
+	}
+
+	@Override
+	public int deleteResume(SqlSessionTemplate session, int resumeNo) {
+		return session.delete("resume.deleteResume",resumeNo);
+	}
+
+	
 	
 }

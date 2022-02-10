@@ -1,5 +1,8 @@
 package com.pp.boot.resume.model.service;
 
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,6 +46,21 @@ public class ResumeServiceImpl implements ResumeService {
 	@Override
 	public int insertLanguage(Language lang) {
 		return dao.insertLanguage(session,lang);
+	}
+
+	@Override
+	public List<Resume> selectResumeList(Map<String, Object> param) {
+		return dao.selectResumeList(session,param);
+	}
+
+	@Override
+	public int selectResumeListCount(String memberId) {
+		return dao.selectResumeListCount(session,memberId);
+	}
+
+	@Override
+	public int deleteResume(int resumeNo) {
+		return dao.deleteResume(session,resumeNo);
 	}
 
 	

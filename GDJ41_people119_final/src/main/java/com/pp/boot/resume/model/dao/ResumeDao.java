@@ -1,5 +1,8 @@
 package com.pp.boot.resume.model.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 
 import com.pp.boot.resume.model.vo.Career;
@@ -19,4 +22,11 @@ public interface ResumeDao {
 
 	int insertLanguage(SqlSessionTemplate session, Language lang);
 
+	List<Resume> selectResumeList(SqlSessionTemplate session, Map<String, Object> param);
+
+	int selectResumeListCount(SqlSessionTemplate session, String memberId);
+
+	int deleteResume(SqlSessionTemplate session, int resumeNo);
+	
+	
 }

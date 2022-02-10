@@ -1,5 +1,8 @@
 package com.pp.boot.resume.model.service;
 
+import java.util.List;
+import java.util.Map;
+
 import com.pp.boot.resume.model.vo.Career;
 import com.pp.boot.resume.model.vo.Certificate;
 import com.pp.boot.resume.model.vo.Language;
@@ -16,5 +19,11 @@ public interface ResumeService {
 	int insertCertificate(Certificate certifi);
 
 	int insertLanguage(Language lang);
+
+	List<Resume> selectResumeList(Map<String, Object> param);
+
+	int selectResumeListCount(String memberId);
+
+	int deleteResume(int resumeNo);
 
 }
