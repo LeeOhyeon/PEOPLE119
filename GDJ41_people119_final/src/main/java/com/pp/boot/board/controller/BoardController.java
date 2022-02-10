@@ -1,6 +1,6 @@
 package com.pp.boot.board.controller;
 
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.pp.boot.board.model.service.BoardService;
 import com.pp.boot.board.model.vo.Board;
 import com.pp.boot.board.model.vo.Comment;
+import com.pp.boot.board.model.vo.Like;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,7 +28,15 @@ public class BoardController {
 	private Board b;
 	
 	@Autowired
+	private Comment c;
+	
+	@Autowired
+	private Like l;
+	
+	@Autowired
 	private BoardService service;
+	
+	
 	
 	@RequestMapping("/boardList.do")
 	public ModelAndView boardList(ModelAndView mv) {
@@ -39,6 +48,8 @@ public class BoardController {
 		List<Board> qa=service.qaList();
 		List<Board> ready=service.readyList();
 		
+		List<Board> hot=service.hotList();
+		
 		int count=service.boardListCount();
 		log.debug("{}"+list);
 		mv.addObject("list",list);
@@ -48,7 +59,7 @@ public class BoardController {
 		mv.addObject("qa",qa);
 		mv.addObject("ready",ready);
 		mv.addObject("count",count);
-		
+		mv.addObject("hot",hot);
 		mv.setViewName("board/boardList");
 		return mv;
 	}
@@ -87,4 +98,75 @@ public class BoardController {
 		
 		return comments;
 	}
+	@RequestMapping("/countComment.do")
+	@ResponseBody
+	public int countComment(@RequestParam int boardNo,HttpServletResponse response) {
+		
+		int countComment=service.countComment(boardNo);
+		
+		response.setContentType("application/json; charset=utf-8");
+		
+		return countComment;
+	}
+	@RequestMapping("/boardCategory.do")
+	public ModelAndView boardCategory(String category,ModelAndView mv) {
+		
+		List<Board> list=new ArrayList();
+		int count=0;
+		
+		if(category.equals("게시글전체")) {
+			list=service.boardList();
+			count=service.boardListCount();
+		}else {
+			list=service.boardCategory(category);
+			count=service.categoryListCount(category);
+		}
+		
+		mv.addObject("count",count);
+		mv.addObject("list",list);
+		mv.addObject("category",category);
+		mv.setViewName("board/boardCategory");
+		
+		return mv;
+	}
+	@RequestMapping("/insertBoard.do")
+	public ModelAndView insertBoard(ModelAndView mv) {
+		
+		mv.setViewName("board/insertBoard");
+		
+		return mv;
+	}
+	@RequestMapping("/enrollBoard.do")
+	public ModelAndView enrollBoard(String category,String memberId,String boardTitle,String boardContent,ModelAndView mv) {
+		
+		Board b=Board.builder().memberId(memberId).boardTitle(boardTitle).boardContent(boardContent).category(category).build();
+		
+		int result=service.enrollBoard(b);
+		
+	
+		mv.setViewName("redirect:/");
+			
+		return mv;
+	}
+	@RequestMapping("/boardLike.do")
+	@ResponseBody
+	public int boardLike(String memberId,int boardNo) {
+		
+		Like l=Like.builder().boardNo(boardNo).memberId(memberId).build();
+		
+		int result=service.boardLike(l);
+	
+		return result;
+	}
+	@RequestMapping("/boardLikeCount.do")
+	@ResponseBody
+	public int boardLikeCount(String memberId,int boardNo) {
+		
+		Like l=Like.builder().boardNo(boardNo).memberId(memberId).build();
+		
+		int count=service.boardLikeCount(l);
+	
+		return count;
+	}
+	
 }

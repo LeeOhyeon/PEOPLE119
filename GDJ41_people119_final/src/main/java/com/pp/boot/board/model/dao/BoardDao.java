@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 
 import com.pp.boot.board.model.vo.Board;
 import com.pp.boot.board.model.vo.Comment;
+import com.pp.boot.board.model.vo.Like;
 
 public interface BoardDao {
 	List<Board> boardList(SqlSessionTemplate session);
@@ -27,4 +28,18 @@ public interface BoardDao {
 	int insertComment(SqlSessionTemplate session, Comment c);
 
 	List<Comment> commentList(SqlSessionTemplate session,int boardNo);
+
+	int countComment(SqlSessionTemplate session, int boardNo);
+
+	List<Board> boardCategory(SqlSessionTemplate session, String category);
+
+	int categoryListCount(SqlSessionTemplate session, String category);
+
+	int enrollBoard(SqlSessionTemplate session, Board b);
+
+	int boardLike(SqlSessionTemplate session, Like l);
+
+	int boardLikeCount(SqlSessionTemplate session, Like l);
+
+	List<Board> hotList(SqlSessionTemplate session);
 }

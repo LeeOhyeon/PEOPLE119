@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 <configuration>
-	
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
 	
 	<typeAliases>
 		<typeAlias type="com.pp.boot.company.model.vo.Company" alias="company"/>
@@ -9,11 +11,15 @@
 		<typeAlias type="com.pp.boot.board.model.vo.Board" alias="board"/>
 		<typeAlias type="com.pp.boot.offer.model.vo.Offer" alias="offer"/>
 		<typeAlias type="com.pp.boot.board.model.vo.Comment" alias="comment"/>
-		<typeAlias type="com.pp.boot.resume.model.vo.Resume" alias="Resume"/>
 		<typeAlias type="com.pp.boot.applicant.model.vo.Applicant" alias="applicant"/>
 		<typeAlias type="com.pp.boot.review.model.vo.CompanyReview" alias="companyReview"/>
+		<typeAlias type="com.pp.boot.resume.model.vo.Resume" alias="resume"/>
+		<typeAlias type="com.pp.boot.resume.model.vo.Career" alias="career"/>
+		<typeAlias type="com.pp.boot.board.model.vo.Like" alias="like"/>
 	</typeAliases>
 	
+	
+
 </configuration>
 
 

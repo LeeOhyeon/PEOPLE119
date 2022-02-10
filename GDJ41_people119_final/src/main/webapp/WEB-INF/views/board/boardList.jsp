@@ -48,6 +48,24 @@
 	                </div>
 	              </div>
               </c:if>
+              <c:if test="${loginMember!=null}">
+              	<div class="board-login">
+	                <div>
+	                  <p class="login">환영합니다. <strong>${loginMember.memberId}님</strong></p>
+	                </div>
+	                <div>
+	                  <a href="" class="board-confirm">내 글 확인하기</a>
+	                </div>
+	                <div class="board-btn">
+	               		<div class="board-logout-btn">
+	                  		<button type="button" onclick="logout();" class="btn btn-primary" style="width:100px">로그아웃</button>
+	                	</div> 
+	                	<div class="board-mypage-btn">
+	                		<button type="button" onclick="myPage();" class="btn btn-primary" style="width:120px">마이페이지</button>
+	                	</div>
+	                </div>
+	            </div>
+              </c:if>
             </div>
           </div>
         </div>
@@ -62,9 +80,9 @@
           </div>
           <div class="content">
             <c:if test="${not empty list}">
-            	<c:forEach var="l" items="${list}">
+            	<c:forEach var="h" items="${hot}" begin="0" end="4">
 		            <div>
-		              <a href="#"><c:out value="${l.boardTitle}"/></a>
+		              <a href="${path}/board/selectBoard.do?boardNo=${h.boardNo}" class="whole-color"><c:out value="${h.boardTitle}"/></a>
 		            </div>
             	</c:forEach>
             </c:if>
@@ -76,12 +94,12 @@
           </div>
           <div class="category">
             <div class="category-btn">
-              <button type="button" class="btn btn-primary" style="width:100px">전체글</button>
-              <button type="button" class="btn btn-light" style="width:100px">취준</button>
-              <button type="button" class="btn btn-light" style="width:100px">이직</button>
-              <button type="button" class="btn btn-light" style="width:100px">퇴사</button>
-              <button type="button" class="btn btn-light" style="width:100px">잡담</button>
-              <button type="button" class="btn btn-light" style="width:100px">Q&A</button>
+              <button type="button" class="btn btn-primary" style="width:100px" onclick="whole();">전체글</button>
+              <button type="button" class="btn btn-light" style="width:100px" onclick="ready();">취준</button>
+              <button type="button" class="btn btn-light" style="width:100px" onclick="turn();">이직</button>
+              <button type="button" class="btn btn-light" style="width:100px" onclick="leave();">퇴사</button>
+              <button type="button" class="btn btn-light" style="width:100px" onclick="free();">잡담</button>
+              <button type="button" class="btn btn-light" style="width:100px" onclick="qa();">Q&A</button>
             </div>
           </div>
         </div>
@@ -93,12 +111,12 @@
                   <h5><strong>전체글</strong></h5>  
                 </div>
                 <div class="whole-total-view">
-                  <a href="#" class="whole-total">더보기</a>
+                  <a href="${path}/board/boardCategory.do?category=게시글전체" class="whole-total">더보기</a>
                 </div>
                 <div class="whole-contents">
                   <c:if test="${not empty list}">
             		<c:forEach var="l" items="${list}" begin="0" end="4">
-                 	 <div><a href="${path}/board/selectBoard.do?boardNo=${l.boardNo}"><c:out value="${l.boardTitle}"/></a></div>
+                 	 <div><a href="${path}/board/selectBoard.do?boardNo=${l.boardNo}" class="whole-color"><c:out value="${l.boardTitle}"/></a></div>
                   	</c:forEach>
                   </c:if>
                 </div>
@@ -110,11 +128,11 @@
                   <h5><strong>취준</strong></h5>  
                 </div>
                 <div class="ready-total-view">
-                  <a href="#" class="ready-total">더보기</a>
+                  <a href="${path}/board/boardCategory.do?category=취준" class="ready-total">더보기</a>
                 </div>
                  <div class="ready-contents">               
             		<c:forEach var="r" items="${ready}" begin="0" end="4">        		
-         					<div><a href="${path}/board/selectBoard.do?boardNo=${r.boardNo}"><c:out value="${r.boardTitle}"/></a></div>
+         					<div><a href="${path}/board/selectBoard.do?boardNo=${r.boardNo}" class="whole-color"><c:out value="${r.boardTitle}"/></a></div>
             		</c:forEach>
              	 </div>
               </div>
@@ -127,11 +145,11 @@
                   <h5><strong>이직</strong></h5>  
                 </div>
                 <div class="turnover-total-view">
-                  <a href="#" class="turnover-total">더보기</a>
+                  <a href="${path}/board/boardCategory.do?category=이직" class="turnover-total">더보기</a>
                 </div>
                 <div class="turnover-contents">                 
             		<c:forEach var="t" items="${turnover}" begin="0" end="4">            			
-                 			 <div><a href="${path}/board/selectBoard.do?boardNo=${t.boardNo}"><c:out value="${t.boardTitle}"/></a></div>
+                 			 <div><a href="${path}/board/selectBoard.do?boardNo=${t.boardNo}"  class="whole-color"><c:out value="${t.boardTitle}"/></a></div>
 					</c:forEach>
              	 </div>
               </div>
@@ -142,12 +160,12 @@
                   <h5><strong>퇴사</strong></h5>  
                 </div>
                 <div class="leave-total-view">
-                  <a href="#" class="leave-total">더보기</a>
+                  <a href="${path}/board/boardCategory.do?category=퇴사" class="leave-total">더보기</a>
                 </div>
                 <div class="leave-contents">                 
             		<c:forEach var="e" items="${leave}" begin="0" end="4">
             			
-                 			 <div><a href="${path}/board/selectBoard.do?boardNo=${e.boardNo}"><c:out value="${e.boardTitle}"/></a></div>
+                 			 <div><a href="${path}/board/selectBoard.do?boardNo=${e.boardNo}"  class="whole-color"><c:out value="${e.boardTitle}"/></a></div>
                   		
                   	</c:forEach>
              	 </div>
@@ -161,12 +179,12 @@
                   <h5><strong>잡담</strong></h5>  
                 </div>
                 <div class="free-total-view">
-                  <a href="#" class="free-total">더보기</a>
+                  <a href="${path}/board/boardCategory.do?category=잡담" class="free-total">더보기</a>
                 </div>
                 <div class="free-contents">                 
             		<c:forEach var="f" items="${free}" begin="0" end="4">
             			
-                 			 <div><a href="${path}/board/selectBoard.do?boardNo=${f.boardNo}"><c:out value="${f.boardTitle}"/></a></div>
+                 			 <div><a href="${path}/board/selectBoard.do?boardNo=${f.boardNo}" class="whole-color"><c:out value="${f.boardTitle}"/></a></div>
                   		
                   	</c:forEach>
              	 </div>
@@ -178,12 +196,12 @@
                   <h5><strong>Q&A</strong></h5>  
                 </div>
                 <div class="question-total-view">
-                  <a href="#" class="question-total">더보기</a>
+                  <a href="${path}/board/boardCategory.do?category=질문" class="question-total">더보기</a>
                 </div>
                 <div class="qa-contents">                 
             		<c:forEach var="q" items="${qa}" begin="0" end="4">
             			
-                 			 <div><a href="${path}/board/selectBoard.do?boardNo=${q.boardNo}"><c:out value="${q.boardTitle}"/></a></div>
+                 			 <div><a href="${path}/board/selectBoard.do?boardNo=${q.boardNo}" class="whole-color"><c:out value="${q.boardTitle}"/></a></div>
                  
                   	</c:forEach>
              	 </div>
@@ -196,6 +214,24 @@
     <script>
 		const login=()=> {
 			location.assign("${path}/member/memberLoginView.do");
+		}
+		const whole=()=>{
+			location.assign("${path}/board/boardCategory.do?category=게시글전체");
+		}
+		const ready=()=>{
+			location.assign("${path}/board/boardCategory.do?category=취준");
+		}
+		const leave=()=>{
+			location.assign("${path}/board/boardCategory.do?category=퇴사");
+		}
+		const turn=()=>{
+			location.assign("${path}/board/boardCategory.do?category=이직");
+		}
+		const free=()=>{
+			location.assign("${path}/board/boardCategory.do?category=잡담");
+		}
+		const qa=()=>{
+			location.assign("${path}/board/boardCategory.do?category=질문");
 		}
 		
     </script>

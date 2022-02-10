@@ -260,5 +260,65 @@ table td {
 	border: 1px solid lightgray;
 	border-radius: 15px;
 	padding: 25px;
+	width: 100%;
+	margin-bottom: 30px;
+	padding-bottom: 20px;
+	
 }
 
+.resume-basic-container-career{
+	border: 1px solid lightgray;
+	border-radius: 15px;
+	padding: 25px;
+	width: 100%;
+	margin-bottom: 30px;
+	padding-bottom: 60px;
+	
+}
+.plusbtn-container{
+	width: 100%;
+
+}
+.plus{
+	float: right;
+	margin-right: 5px;
+}
+.resume-basic-container-certificate{
+	border: 1px solid lightgray;
+	border-radius: 15px;
+	padding: 25px;
+	width: 100%;
+	margin-bottom: 30px;
+	padding-bottom: 60px;
+	
+}
+
+.resume-basic-container-language{
+	border: 1px solid lightgray;
+	border-radius: 15px;
+	padding: 25px;
+	width: 100%;
+	margin-bottom: 30px;
+	padding-bottom: 60px;
+	
+}
+
+.resume-basic-container-self{
+	border: 1px solid lightgray;
+	border-radius: 15px;
+	padding: 25px;
+	width: 100%;
+	margin-bottom: 30px;
+	padding-bottom: 60px;
+}
+.resume-basic-container-introcareer{
+	border: 1px solid lightgray;
+	border-radius: 15px;
+	padding: 25px;
+	width: 100%;
+	margin-bottom: 30px;
+	padding-bottom: 60px;
+}
+.deleteAddform{
+	cursor: pointer;
+}
