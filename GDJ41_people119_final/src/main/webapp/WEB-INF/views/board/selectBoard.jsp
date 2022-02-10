@@ -255,6 +255,7 @@ $(document).ready(()=>{
   			dataType:"json",
   			success:data=>{	
   				$(".reply-container").remove();
+  				$(".reply-content").remove();
   				for(let i=0; i<data.length; i++) {
   					
   					const reply=$("<div class='reply-container'>");
