@@ -126,9 +126,11 @@ border-radius: 0.25 rem;
     display:flex;
     width:960px;
     padding:10px;
+    border-bottom:1px solid #edeef0;
 }
 .arrow-image{
     font-size:30px;
+    margin-top:10px;
     margin-right:20px;
     color: #edeef0;
 }
@@ -148,4 +150,31 @@ border-radius: 0.25 rem;
 .boardLike{
 	cursor:pointer;
 }
+.reply-image{
+	font-size:25px;
+	color:#edeef0;
+	margin-left:20px;
+	margin-right:20px;
+}
+.imgDiv{
+	display:inline-block;
+}
+.reply-info{
+	display:inline-block;
+	width:800px;
+}
+.info {
+	display:inline;
+	float:right;
+	text-align:right;
+	align-items:right;
+}
+.reply-content {
+	border-bottom:1px solid #edeef0;
+	padding:20px;
+	width:960px;
+}
+
+
+
     

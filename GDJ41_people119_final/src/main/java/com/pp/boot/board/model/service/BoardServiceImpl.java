@@ -105,5 +105,16 @@ public class BoardServiceImpl implements BoardService {
 		List<Board> list=dao.hotList(session);
 		return list;
 	}
+	@Override
+	public int insertReply(Comment c) {
+		int result=dao.insertReply(session,c);
+		
+		return result;
+	}
+	@Override
+	public List<Comment> replyList(int boardNo) {
+		List<Comment> list=dao.replyList(session,boardNo);
+		return list;
+	}
 	
 }
