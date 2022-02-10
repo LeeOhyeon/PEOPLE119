@@ -60,7 +60,7 @@
           </li>
           <li class="dropdown"><a href="#"><span>기업 정보</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">기업리뷰</a></li>
+              <li><a href="${path }/company/companyList.do">기업리뷰</a></li>
               <li><a href="#">면접후기</a></li>
             </ul>
           </li>

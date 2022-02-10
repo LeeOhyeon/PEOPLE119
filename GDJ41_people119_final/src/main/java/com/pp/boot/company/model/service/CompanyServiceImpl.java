@@ -1,5 +1,6 @@
 package com.pp.boot.company.model.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -30,5 +31,11 @@ public class CompanyServiceImpl implements CompanyService {
 	@Override
 	public int updateCompany(Company c) {
 		return dao.updateCompany(session, c);
+	}
+	
+	// 전체 기업 리스트
+	@Override
+	public List<Company> selectCompanyList() {
+		return dao.selectCompanyList(session);
 	}
 }

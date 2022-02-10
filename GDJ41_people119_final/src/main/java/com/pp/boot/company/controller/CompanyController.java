@@ -2,6 +2,7 @@ package com.pp.boot.company.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -160,8 +161,17 @@ public class CompanyController {
 	    mv.addObject("msg", msg);
 	    mv.setViewName("common/msg");
 	    return mv;
-		
 	}
+	
+		// 전체 기업 리스트
+		@RequestMapping("/companyList.do")
+		public String companyList(Model model) {
+			List<Company> list = service.selectCompanyList();
+			
+			model.addAttribute("companyList", list);
+			
+			return "review/companyList";
+		}
 	
 }
 

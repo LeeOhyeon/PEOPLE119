@@ -34,4 +34,10 @@ public class ApplicantServiceImpl implements ApplicantService {
 		return dao.apply(session, param);
 	}
 	
+	// 지원 공고 개수 확인
+	@Override
+	public int countApply(String memberId) {
+		return dao.countApply(session, memberId);
+	}
+	
 }

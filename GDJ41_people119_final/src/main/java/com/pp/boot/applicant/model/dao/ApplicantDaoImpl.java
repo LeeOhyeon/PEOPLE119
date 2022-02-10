@@ -23,4 +23,10 @@ public class ApplicantDaoImpl implements ApplicantDao {
 		return session.insert("applicant.apply", param);
 	}
 	
+	// 지원 공고 개수 확인
+	@Override
+	public int countApply(SqlSessionTemplate session, String memberId) {
+		return session.selectOne("applicant.countApply", memberId);
+	}
+	
 }

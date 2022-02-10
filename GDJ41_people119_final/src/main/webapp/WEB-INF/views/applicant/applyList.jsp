@@ -31,7 +31,7 @@
         </div>
         <div class="apply-parse">
           <div class="apply-count">
-            <p><strong>전체 3건</strong></p>
+            <p><strong><c:out value="전체 ${total }건"/></strong></p>
           </div>
           <div class="apply-group">
             <div class="apply-yn">
@@ -50,35 +50,44 @@
             </div>
           </div>
         </div>
-       
-        <c:forEach var="al" items="${applyList }">
-	        <div class="apply-info">
-	          <div class="apply-info-title">
-	              <c:forEach var="o" items="${al.offer }">
-		            <div>
-		              <h2><strong><c:out value="${o.offerTitle }"/></strong></h2>
-		            </div>
-		            <div>
-		              <c:set var="techArr" value="${fn:split(o.tech, ',') }"/>
-		              <c:forEach var="t" items="${techArr }">
-		              	<span><c:out value="${t } "/></span>
-	              	  </c:forEach>
-		            </div>
-		            <div>
-		              <p class="condition"><c:out value="${o.location } / ${o.carrer }"/></p>
-		            </div>
-	              </c:forEach>
-	          </div>
-	          <div class="apply-info-yn">
-	            <div class="alram-yn">
-	              <h4><strong>알람여부</strong></h4>
-	            </div>
-	            <div class="apply-btn">
-	              <button type="button" class="btn btn-light" style="width:170px">지원취소</button>
-	            </div>
-	          </div>
+        <c:if test="${empty applyList }">
+        	<div class="apply-info">
+		          <div class="apply-info-title">
+		          	<h2><strong>지원한 공고가 없습니다.</strong></h2>
+		          </div>
 	        </div>
-        </c:forEach>
+        </c:if>
+        
+       	<c:if test="${not empty applyList }">
+	        <c:forEach var="al" items="${applyList }">
+		        <div class="apply-info">
+		          <div class="apply-info-title">
+		              <c:forEach var="o" items="${al.offer }">
+			            <div>
+			              <h2><strong><c:out value="${o.offerTitle }"/></strong></h2>
+			            </div>
+			            <div>
+			              <c:set var="techArr" value="${fn:split(o.tech, ',') }"/>
+			              <c:forEach var="t" items="${techArr }">
+			              	<span><c:out value="${t } "/></span>
+		              	  </c:forEach>
+			            </div>
+			            <div>
+			              <p class="condition"><c:out value="${o.location } / ${o.carrer }"/></p>
+			            </div>
+		              </c:forEach>
+		          </div>
+		          <div class="apply-info-yn">
+		            <div class="alram-yn">
+		              <h4><strong>알람여부</strong></h4>
+		            </div>
+		            <div class="apply-btn">
+		              <button type="button" class="btn btn-light" style="width:170px">지원취소</button>
+		            </div>
+		          </div>
+		        </div>
+	        </c:forEach>
+        </c:if>
       </div>
     </section>
     

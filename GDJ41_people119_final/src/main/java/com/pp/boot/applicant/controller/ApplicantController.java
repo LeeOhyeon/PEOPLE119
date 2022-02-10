@@ -27,9 +27,12 @@ public class ApplicantController {
 	public String apply(@RequestParam Map param, Model model, String memberId) {
 		int result = service.apply(param);
 		
+		int total = service.countApply(memberId);
+		
 		List<Applicant> list = service.selectApplyList(memberId);
 		
 		model.addAttribute("applyList", list);
+		model.addAttribute("total", total);
 		
 		return "applicant/applyList";
 	}
@@ -39,7 +42,10 @@ public class ApplicantController {
 	public String applyList(@RequestParam String memberId, Model model) {
 		List<Applicant> list = service.selectApplyList(memberId);
 		
+		int total = service.countApply(memberId);
+		
 		model.addAttribute("applyList", list);
+		model.addAttribute("total", total);
 		
 		return "applicant/applyList";
 	}

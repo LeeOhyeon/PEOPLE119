@@ -14,5 +14,8 @@ public interface ApplicantDao {
 	
 	// 공고 지원하기
 	int apply(SqlSessionTemplate session, Map param);
+	
+	// 지원 공고 개수 확인
+	int countApply(SqlSessionTemplate session, String memberId);
 
 }
