@@ -72,7 +72,7 @@
                 </div>
                 <div class="hope-info">
                   <div>
-                    <h5><strong>희망 직무/직업 : <c:out value="${rList.hopePosition }"/></strong></h5>
+                    <h5><strong>희망 직무 : <c:out value="${rList.hopePosition }"/></strong></h5>
                   </div>
                   <div>
                     <h5><strong>희망지역 : <c:out value="${rList.workingArea }"/></strong></h5>
