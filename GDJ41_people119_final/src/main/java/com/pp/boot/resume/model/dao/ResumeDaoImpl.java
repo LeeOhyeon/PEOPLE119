@@ -73,6 +73,11 @@ public class ResumeDaoImpl implements ResumeDao {
 		return session.delete("resume.deleteResume",resumeNo);
 	}
 
+	@Override
+	public List<Resume> selectResumeDetail(SqlSessionTemplate session, int resumeNo) {
+		return session.selectList("resume.selectResumeDetail",resumeNo);
+	}
+
 	
 	
 }

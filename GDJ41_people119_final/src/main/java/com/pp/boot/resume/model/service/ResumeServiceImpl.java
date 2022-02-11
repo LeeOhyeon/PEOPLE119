@@ -63,6 +63,11 @@ public class ResumeServiceImpl implements ResumeService {
 		return dao.deleteResume(session,resumeNo);
 	}
 
+	@Override
+	public List<Resume> selectResumeDetail(int resumeNo) {
+		return dao.selectResumeDetail(session,resumeNo);
+	}
+
 	
 	
 }

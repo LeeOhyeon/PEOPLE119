@@ -89,7 +89,6 @@ public class ResumeController {
 	@RequestMapping("/insertBasicResume.do")
 	@ResponseBody
 	public void insertBasicResume(Resume resume, @RequestParam(value="upfile", required = false)MultipartFile upfile,HttpServletRequest request ) {
-		log.debug("{}"+resume);
 		
 		String path = request.getServletContext().getRealPath("/resources/upload/resume/");
 		
@@ -166,11 +165,10 @@ public class ResumeController {
 	@RequestMapping("/resumeDetailView.do")
 	public ModelAndView resumeDetailView(@RequestParam int resumeNo,ModelAndView mv) {
 		
-		
-		
+		List<Resume> rList = resumeService.selectResumeDetail(resumeNo);
+			
+		mv.addObject("resume",rList);
 		mv.setViewName("resume/resumeDetailView");
-		
-		
 		
 		return mv;
 		

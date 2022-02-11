@@ -27,6 +27,8 @@ public interface ResumeDao {
 	int selectResumeListCount(SqlSessionTemplate session, String memberId);
 
 	int deleteResume(SqlSessionTemplate session, int resumeNo);
+
+	List<Resume> selectResumeDetail(SqlSessionTemplate session, int resumeNo);
 	
 	
 }

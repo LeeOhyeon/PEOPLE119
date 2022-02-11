@@ -23,7 +23,6 @@
 
       </div>
     </section><!-- End Breadcrumbs Section -->
-
     <section class="inner-page">
       <div class="container">
         <div class="mypage-container">
@@ -55,6 +54,7 @@
             </div>
             
             <c:forEach var="rList" items="${resumeList }">
+            <c:if test="${rList.resumeTitle ne null }">
             <div class="resume-info">
               <div class="resume-title">
               	<a href="${path }/resume/resumeDetailView.do?resumeNo=${rList.resumeNo}">  
@@ -93,6 +93,7 @@
                 </div>
               </div>
             </div>
+            </c:if>
    		 </c:forEach>
           </div>
         </div>

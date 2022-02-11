@@ -11,14 +11,15 @@
     <!-- ======= Breadcrumbs Section ======= -->
     <section class="breadcrumbs">
       <div class="">
-          
       </div>
     </section><!-- End Breadcrumbs Section -->
 
     <section class="inner-page">
        <p style="font-size: 35px; font-weight: bolder; margin-left: 600px;">이력서 등록</p>
       <div class="container">
+      
         <div class="resume-container">
+        <c:forEach var="r" items="${resume}">
           <div class="resume-basic-container">
           <p style="font-size: 24px; font-weight: bolder;">기본정보</p>
             <div class="resume-basic-info">
@@ -45,63 +46,67 @@
             </div>
              
           </div>
+         
           <div class="resume-basic-container">
-            <p style="font-size: 24px; font-weight: bolder;">이력서 제목</p>
-           
-			
+            <p style="font-size: 24px; font-weight: bolder;">
+				<c:out value="${r.resumeTitle }"/>
+			</p>
           </div>
           <div class="resume-basic-container-elementary">
             <p style="font-size: 24px; font-weight: bolder;">학력사항
             <div class="resume-school-info">
-            
+            	<c:out value="${r.academic }"/>
             </div>
             <div class="school-input-container">
             	<div class="elementary-container">
             		<div class="school-input-title" id="container-title"></div>
-            		<table>
+            		<table>	
+            				<tr>
+            					<td>최종 학력</td>
+            					<td><c:out value="${r.academic }"/></td>
+            				</tr>
 	            			<tr>
 	            				<td>학교명</td>
 	            				<td>
-	            				
+	            				<c:out value="${r.schoolName }"/>
 	            				</td>
 	            			</tr>
 	            			<tr>
 	            				<td>지역</td>
 	            				<td>
-	            				
+	            				<c:out value="${r.schoolArea }"/>
 	            				</td>
 	            			</tr>
 	            			
 	            			<tr class="university-container">
 	            				<td>전공</td>
 	            				<td>
-	            				
+	            				<c:out value="${r.major }"/>
 	            				</td>
 	            			</tr>
 	            			<tr class="university-container">
 	            				<td>주/야간</td>
 	            				<td>
-	            				
-	            				
+	            				<c:out value="${r.dayNight }"/>
 	            				</td>
 	            			</tr>
 	            			<tr class="university-container">
 	            				<td>학점</td>
 	            				<td>
-	            				
+	            				<c:out value="${r.grades }"/>
 	            				</td>
 	            			</tr>
 		            			
 	            			<tr>
 	            				<td>입학날짜</td>
 	            				<td> 
-	            				
+	            				<c:out value="${r.admissionDate }"/>
 	            				</td>
 	            			</tr>
 	            			<tr>
 	            				<td>졸업날짜</td>
 	            				<td>
-	            				
+	            				<c:out value="${r.graduationDate }"/>
 	            				</td>
 	            			</tr>
 	            		</table>
@@ -116,82 +121,79 @@
             	<span style="float:right;" class="deleteAddform" id="deleteCareerAddform" onclick="deleteCareerAddform(this);"><i class="fas fa-times"></i></span>
             </p>
             
+            <c:forEach var="c" items="${r.career }">
             <div class="resume-career-info">
               <div class="select-career">
-              
+              		<c:out value="${c.career }"/>
               </div>
               <div class="career-info">
                 <table>
                   <tr>
                     <td>회사명</td>
                     <td style="width: 500px">
-                    
+                   	 <c:out value="${c.companyName }"/>
                     </td>
                   </tr><tr>
                     <td>근무부서</td>
                     <td style="width: 500px">
-                    
+                    <c:out value="${c.department }"/>
                     </td>
                   </tr>
                   <tr>
                     <td>입사일</td>
                     <td>
-                     
+                     <c:out value="${c.joinDate }"/>
                     </td>
                   </tr>
                   <tr>
                     <td>퇴사일</td>
                     <td>
-                      
+                      <c:out value="${c.regDate }"/>
                     </td>
                    
                   </tr>
                   <tr>
                     <td>퇴사사유</td>
                     <td>
-                     
+                       <c:out value="${c.regReason }"/>
                     </td>
                 
                   </tr>
                   <tr>
                     <td>직급</td>
                     <td>
-                     
+                      <c:out value="${c.rank }"/>
                     </td>
                   </tr>
                   <tr>
                    <td>직책</td>
                     <td>
-                     
+                     <c:out value="${c.position }"/>
                     </td>
                   </tr>
                   <tr>
                     <td>근무지역</td>
                     <td>
-                    
+                    <c:out value="${c.deptLocation }"/>
                     </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
                   </tr>
                   <tr>
                     <td>연봉</td>
                     <td>
-                      
+                      <c:out value="${c.annualIncome }"/>
                     </td>
                   
                   </tr>
                   <tr>
                     <td>담당업무</td>
                     <td>
-                      
+                      <c:out value="${c.assignedTask }"/>
                     </td>
                   </tr>
                 </table>
               </div>
-              	
-               
             </div>
+            </c:forEach>
           </div>
          
           
@@ -360,7 +362,7 @@
               </table>
             </div>
           </div>
-         
+         </c:forEach>
         </div>
         	<div class="quickmenu-container">
 				<div class="quickmenu">

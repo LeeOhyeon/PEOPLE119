@@ -26,4 +26,6 @@ public interface ResumeService {
 
 	int deleteResume(int resumeNo);
 
+	List<Resume> selectResumeDetail(int resumeNo);
+
 }
