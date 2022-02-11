@@ -53,10 +53,10 @@
         </div>
         <div class="sort">
           <div class="radio-sort">
-            <input type="radio" name="chk_info" value="최신">최신순
-            <input type="radio" name="chk_info" value="조회">조회순
-            <input type="radio" name="chk_info" value="댓글">댓글 많은순
-            <input type="radio" name="chk_info" value="좋아요">좋아요 순
+            <input type="radio" id="newsort" name="chk_info" value="최신" onclick="newsort();" checked="checked">최신순
+            <input type="radio" id="viewsort" name="chk_info" value="조회" onclick="viewsort();">조회순
+            <input type="radio" id="commentsort" name="chk_info" value="댓글" onclick="commentsort();">댓글 많은순
+            <input type="radio" id="likesort" name="chk_info" value="좋아요" onclick="likersort();">좋아요 순
           </div>
           <div class="insert">
             <div class="insert-btn">
@@ -114,6 +114,49 @@
 		const qa=()=>{
 			location.assign("${path}/board/boardCategory.do?category=질문");
 		} 
+		
+		//최신순 파싱
+		const newsort=()=>{
+			$.ajax({
+				url:"${path}/board/newSort.do",
+				data:{category:"${category}"},
+				dataType:"json",
+				success:data=>{
+					
+				}
+			});
+		}
+		const viewsort=()=>{
+			$.ajax({
+				url:"${path}/board/viewSort.do",
+				data:{category:"${category}"},
+				dataType:"json",
+				success:data=>{
+					
+				}
+			});
+		}
+		const likersort=()=>{
+			$.ajax({
+				url:"${path}/board/likeSort.do",
+				data:{category:"${category}"},
+				dataType:"json",
+				success:data=>{
+					
+				}
+			});
+		}
+		const commentsort=()=>{
+			$.ajax({
+				url:"${path}/board/commentSort.do",
+				data:{category:"${category}"},
+				dataType:"json",
+				success:data=>{
+					
+				}
+			});
+		}
+		
     </script>
   </main><!-- End #main -->
 	

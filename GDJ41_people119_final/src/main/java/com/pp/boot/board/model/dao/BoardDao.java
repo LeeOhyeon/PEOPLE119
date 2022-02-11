@@ -48,4 +48,20 @@ public interface BoardDao {
 	List<Comment> replyList(SqlSessionTemplate session, int boardNo);
 
 	int commentDelete(SqlSessionTemplate session, int commentNo);
+
+	int boardDelete(SqlSessionTemplate session, int boardNo);
+
+	Board updateBoardView(SqlSessionTemplate session, int boardNo);
+
+	int updateBoard(SqlSessionTemplate session, Board b);
+
+	List<Board> newSort(SqlSessionTemplate session, String category);
+
+	List<Board> viewSort(SqlSessionTemplate session, String category);
+
+	void updateViewCount(SqlSessionTemplate session, int boardNo);
+
+	List<Board> likeSort(SqlSessionTemplate session, String category);
+
+	List<Board> commentSort(SqlSessionTemplate session, String category);
 }

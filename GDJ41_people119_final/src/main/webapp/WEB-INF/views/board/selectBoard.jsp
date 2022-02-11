@@ -37,8 +37,16 @@ $(document).ready(()=>{
             <button type="button" class="btn btn-light" style="width:120px" onclick="wholeBoard();">전체 게시글</button>
         </div>
         <div class="board">
-          <div class="boardTitle">
-              <h5><strong>${b.boardTitle}</strong></h5>
+          <div>
+	          <div class="boardTitle">
+	              <h5><strong>${b.boardTitle}</strong></h5>
+	          </div>
+	          <c:if test="${b.memberId eq loginMember.memberId}">
+	          	<div class="updateboard">
+	          	  <span class="boardupdate" onclick="location.assign('${path}/board/updateBoardView.do?boardNo=${b.boardNo}');">수정</span>
+	          	  <span class="boarddelete" onclick="boardDelete();">삭제</span>
+	          </div>
+	          </c:if>
           </div>
           <div class="writer">
             <div class="writerInfo">
@@ -330,6 +338,20 @@ $(document).ready(()=>{
   			return;
   		} 
   	}
+  	const boardDelete=()=>{
+  		if(confirm("게시글을 삭제하시겠습니까??")==true) {
+  			$.ajax({
+  				url:"${path}/board/deleteBoard.do",
+  				data:{boardNo:"${b.boardNo}"},
+  				dataType:"json",
+  				success:data=>{
+  					location.assign("${path}/board/boardList.do");
+  					alert("게시글 삭제가 완료되었습니다");
+  				}
+  			})
+  		}
+  	}
+  	
   	
   	
   	

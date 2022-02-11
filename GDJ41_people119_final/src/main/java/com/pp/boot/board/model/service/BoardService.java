@@ -47,5 +47,21 @@ public interface BoardService {
 
 	int commentDelete(int commentNo);
 
+	int boardDelete(int boardNo);
+
+	Board updateBoardView(int boardNo);
+
+	int updateBoard(Board b);
+
+	List<Board> newSort(String category);
+
+	List<Board> viewSort(String category);
+
+	void updateViewCount(int boardNo);
+
+	List<Board> likeSort(String category);
+
+	List<Board> commentSort(String category);
+
 	
 }

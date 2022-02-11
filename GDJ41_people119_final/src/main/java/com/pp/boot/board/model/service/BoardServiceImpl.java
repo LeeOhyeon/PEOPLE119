@@ -121,5 +121,49 @@ public class BoardServiceImpl implements BoardService {
 		int count=dao.commentDelete(session,commentNo);
 		return count;
 	}
+	@Override
+	public int boardDelete(int boardNo) {
+		int count=dao.boardDelete(session,boardNo);
+		return count;
+	}
+	@Override
+	public Board updateBoardView(int boardNo) {
+		Board b=dao.updateBoardView(session,boardNo);
+		return b;
+	}
+	@Override
+	public int updateBoard(Board b) {
+		int count=dao.updateBoard(session,b);
+		return count;
+	}
+	@Override
+	public List<Board> newSort(String category) {
+		List<Board> list=dao.newSort(session,category);
+		
+		return list;
+	}
+	@Override
+	public List<Board> viewSort(String category) {
+		List<Board> list=dao.viewSort(session,category);
+		
+		return list;
+	}
+	@Override
+	public void updateViewCount(int boardNo) {
+		dao.updateViewCount(session,boardNo);
+	}
+	@Override
+	public List<Board> likeSort(String category) {
+		// TODO Auto-generated method stub
+		List<Board> list=dao.likeSort(session,category);
+		
+		return list;
+	}
+	@Override
+	public List<Board> commentSort(String category) {
+		List<Board> list=dao.commentSort(session,category);
+		
+		return list;
+	}
 	
 }

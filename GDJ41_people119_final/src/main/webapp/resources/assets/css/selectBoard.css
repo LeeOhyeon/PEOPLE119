@@ -191,6 +191,22 @@ border-radius: 0.25 rem;
 	font-size:12px;
 	cursor:pointer;
 }
+.updateboard{
+	display:inline;
+	float:right;
+	margin-right:20px;
+}
+.boardTitle{
+	display:inline-block;
+}
+.boardupdate{
+	font-size:13px;
+	cursor:pointer;
+}
+.boarddelete{
+	font-size:13px;
+	cursor:pointer;
+}
 
 
 
