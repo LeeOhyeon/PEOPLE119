@@ -68,6 +68,8 @@ public class BoardController {
 	public ModelAndView selectBoard(ModelAndView mv,int boardNo) {
 		
 		Board b=service.selectBoard(boardNo);
+		service.updateViewCount(boardNo);
+		
 		List<Comment> comment=service.commentList(boardNo);
 		log.debug("{}"+b);
 		mv.addObject("b",b);
@@ -174,24 +176,100 @@ public class BoardController {
 	}
 	@RequestMapping("/boardLike.do")
 	@ResponseBody
-	public int boardLike(String memberId,int boardNo) {
+	public int boardLike(String memberId,int boardNo,HttpServletResponse response) {
 		
 		Like l=Like.builder().boardNo(boardNo).memberId(memberId).build();
 		
 		int result=service.boardLike(l);
-	
+		response.setContentType("application/json; charset=utf-8");
 		return result;
 	}
 	@RequestMapping("/boardLikeCount.do")
 	@ResponseBody
-	public int boardLikeCount(String memberId,int boardNo) {
+	public int boardLikeCount(String memberId,int boardNo,HttpServletResponse response) {
 		
 		Like l=Like.builder().boardNo(boardNo).memberId(memberId).build();
 		
 		int count=service.boardLikeCount(l);
-	
+		response.setContentType("application/json; charset=utf-8");
 		return count;
 	}
+	
+	@RequestMapping("/deleteComment.do")
+	@ResponseBody
+	public int commentDelete(int commentNo,HttpServletResponse response) {
+		
+		int count=service.commentDelete(commentNo);
+		response.setContentType("application/json; charset=utf-8");
+		return count;
+	}
+	@RequestMapping("/deleteBoard.do")
+	@ResponseBody
+	public int boardDelete(int boardNo,HttpServletResponse response) {
+		
+		System.out.println(boardNo);
+		
+		int count=service.boardDelete(boardNo);
+		response.setContentType("application/json; charset=utf-8");
+		return count;
+	}
+	@RequestMapping("/updateBoardView.do")
+	public ModelAndView updateBoardView(ModelAndView mv, @RequestParam int boardNo) {
+		
+		log.debug("{}"+boardNo);
+		Board b=service.updateBoardView(boardNo);
+		
+		log.debug("{}"+b);
+		
+		mv.addObject("b",b);
+		mv.setViewName("board/updateBoard");
+		return mv;
+	}
+	@RequestMapping("/updateBoard.do")
+	@ResponseBody
+	public int updateBoard(Board b,HttpServletResponse response) {
+		
+		int result=service.updateBoard(b);
+		response.setContentType("application/json; charset=utf-8");
+		return result;
+	}
+	@RequestMapping("/newSort.do")
+	@ResponseBody
+	public List<Board> newSort(@RequestParam String category,HttpServletResponse response) {
+		
+		List<Board> list=service.newSort(category);
+		response.setContentType("application/json; charset=utf-8");
+		
+		return list;
+	}
+	@RequestMapping("/viewSort.do")
+	@ResponseBody
+	public List<Board> viewSort(@RequestParam String category,HttpServletResponse response) {
+		
+		List<Board> list=service.viewSort(category);
+		response.setContentType("application/json; charset=utf-8");
+		
+		return list;
+	}
+	@RequestMapping("/likeSort.do")
+	@ResponseBody
+	public List<Board> likeSort(@RequestParam String category,HttpServletResponse response) {
+		
+		List<Board> list=service.likeSort(category);
+		response.setContentType("application/json; charset=utf-8");
+		
+		return list;
+	}
+	@RequestMapping("/commentSort.do")
+	@ResponseBody
+	public List<Board> commentSort(@RequestParam String category,HttpServletResponse response) {
+		
+		List<Board> list=service.commentSort(category);
+		response.setContentType("application/json; charset=utf-8");
+		
+		return list;
+	}
+	
 	
 	
 }

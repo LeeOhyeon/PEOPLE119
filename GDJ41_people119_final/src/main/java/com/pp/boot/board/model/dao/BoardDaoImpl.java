@@ -124,6 +124,60 @@ public class BoardDaoImpl implements BoardDao {
 		return session.selectList("board.replyList",boardNo);
 	}
 
+	@Override
+	public int commentDelete(SqlSessionTemplate session, int commentNo) {
+		// TODO Auto-generated method stub
+		return session.delete("board.commentDelete",commentNo);
+	}
+
+	@Override
+	public int boardDelete(SqlSessionTemplate session, int boardNo) {
+		// TODO Auto-generated method stub
+		return session.delete("board.boardDelete",boardNo);
+	}
+
+	@Override
+	public Board updateBoardView(SqlSessionTemplate session, int boardNo) {
+		// TODO Auto-generated method stub
+		return session.selectOne("board.updateBoardView",boardNo);
+	}
+
+	@Override
+	public int updateBoard(SqlSessionTemplate session, Board b) {
+		// TODO Auto-generated method stub
+		return session.update("board.updateBoard",b);
+	}
+
+	@Override
+	public List<Board> newSort(SqlSessionTemplate session, String category) {
+		// TODO Auto-generated method stub
+		return session.selectList("board.newSort",category);
+	}
+
+	@Override
+	public List<Board> viewSort(SqlSessionTemplate session, String category) {
+		// TODO Auto-generated method stub
+		return session.selectList("board.viewSort",category);
+	}
+
+	@Override
+	public void updateViewCount(SqlSessionTemplate session, int boardNo) {
+		session.update("board.updateViewCount",boardNo);
+	}
+
+	@Override
+	public List<Board> likeSort(SqlSessionTemplate session, String category) {
+		// TODO Auto-generated method stub
+		return session.selectList("board.likeSort",category);
+	}
+
+	@Override
+	public List<Board> commentSort(SqlSessionTemplate session, String category) {
+		// TODO Auto-generated method stub
+		return session.selectList("board.commentSort",category);
+	}
+	
+	
 	
 	
 }
