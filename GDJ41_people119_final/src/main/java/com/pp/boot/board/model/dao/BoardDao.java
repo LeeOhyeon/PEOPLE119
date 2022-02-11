@@ -46,4 +46,6 @@ public interface BoardDao {
 	int insertReply(SqlSessionTemplate session, Comment c);
 
 	List<Comment> replyList(SqlSessionTemplate session, int boardNo);
+
+	int commentDelete(SqlSessionTemplate session, int commentNo);
 }

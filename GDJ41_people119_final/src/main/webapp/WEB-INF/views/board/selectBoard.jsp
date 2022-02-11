@@ -102,6 +102,7 @@ $(document).ready(()=>{
   	//댓글 db등록
   	const insertComment=()=>{
   		const commentContent=$("#floatingTextarea2").val();
+  		const comment=document.getElementById("floatingTextarea2");
   		let memberIdVal = "${loginMember.memberId}"; 
   		
   		if(memberIdVal!="") {
@@ -112,6 +113,7 @@ $(document).ready(()=>{
   	  			success:data=>{
   	  				selectComment();
   	  				countComment();
+  	  				comment.value=null;
   	  			}
   	  		});	
   		}else{
@@ -119,8 +121,11 @@ $(document).ready(()=>{
   			location.assign("${path}/member/memberLoginView.do");
   		}
   	}
+  	
+  	
   	//댓글 화면출력
   	function selectComment(){
+  		let memberIdVal = "${loginMember.memberId}"; 
   		$.ajax({
   			url : "${path}/board/selectComment.do",
   			data : {boardNo:"${b.boardNo}"},
@@ -140,11 +145,18 @@ $(document).ready(()=>{
   	  					const container=$("<div class='comment-container'>");
   	  					const content = $("<div class='comment-1'>");
   	  					const deleteDiv=$("<div class='comment-delete'>");
-  	  					const image=$("<span class='delete-btn'>");
+  	  					
+  	  					
+	  					const image=$("<span class='delete-btn' onclick='deleteComment(this);'>");
+  	  					const j=$("<i class='fas fa-ellipsis-v'>");
+  	  					
+  	  					
+  	  					
+  	  					
   	  					const memberContainer=$("<div class='member-container'>");
   	  					const member=$("<div class='member'>");
   	  					const memberId=$("<span class='member-id'>");
-  	  					const j=$("<i class='fas fa-ellipsis-v'>");
+  	  					
   	  					const enrollDate=$("<div class='enrolldate'>")
   	  					const p=$("<p>");
   	  					const reply=$("<div class='comment-reply' id='"+commentNo+"'>");
@@ -162,10 +174,9 @@ $(document).ready(()=>{
   	  					inputGroup.append(input).append(button);
   	  					reply.append(arrow).append(inputGroup);
   	  					
-  	  					
-  	  					
-  	  					image.append(j);
+  	  					image.html("삭제");
   	  					deleteDiv.append(image);
+  	  					
   	  					p.text(data[i]["commentDate"]);
   	  					enrollDate.append(p);
   	  					content.text(data[i]["commentContent"]);
@@ -176,6 +187,10 @@ $(document).ready(()=>{
   	  					commentContainer.append(container).append(memberContainer);
   	  					comment.append(commentContainer).append(reply);
   	  					$(".comment-horizon").append(comment);
+  	  					
+	  	  					if(data[i]["memberId"]!=memberIdVal) {
+	  	  						deleteDiv.css({"display":"none"});
+	  	  					}
   	  					}
   	  					
   					}
@@ -184,6 +199,8 @@ $(document).ready(()=>{
   			}
   		})
   	}
+  	
+  	
   	//댓글 숫자 출력
   	function countComment() {
   		$.ajax({
@@ -195,6 +212,8 @@ $(document).ready(()=>{
   			}
   		})
   	}
+  	
+  	
   	//좋아요 데이터 입력
   	const like=()=> {
   		let memberIdVal = "${loginMember.memberId}"; 
@@ -213,6 +232,7 @@ $(document).ready(()=>{
   			location.assign("${path}/member/memberLoginView.do");
   		}
   	} 
+  
   	//좋아요 숫자 출력
   	function likeCount() {
   		$.ajax({
@@ -226,10 +246,12 @@ $(document).ready(()=>{
   			}
   		});
   	}
+  	
   	//게시글 전체 이동
   	const wholeBoard=()=>{
   		location.assign("${path}/board/boardCategory.do?category=게시글전체");
   	}
+  	
   	
   	//대댓글 ajax
   	const reply=(e)=>{
@@ -248,6 +270,8 @@ $(document).ready(()=>{
   		})
   	
   	}
+  	
+  	//대댓글 화면출력
   	function selectReply() {
   		$.ajax({
   	 		url:"${path}/board/selectReply.do",
@@ -288,6 +312,24 @@ $(document).ready(()=>{
   	 	})
   	}
   	
+  	//댓글삭제
+  	const deleteComment=(e)=>{
+  		let span = $(e);
+  		let del = $(span.parents('.cm')).find('.comment-reply').attr("id");
+  		if(confirm("댓글을 삭제하시겠습니까??")==true) {
+  			$.ajax({
+  				url:"${path}/board/deleteComment.do",
+  				data:{commentNo:del},
+  				dataType:"json",
+  				success:data=>{
+  					alert("댓글이 삭제되었습니다!");
+  					$(span.parents('.cm')).remove();
+  				}
+  			});		
+  		}else{
+  			return;
+  		} 
+  	}
   	
   	
   	

@@ -45,5 +45,7 @@ public interface BoardService {
 
 	List<Comment> replyList(int boardNo);
 
+	int commentDelete(int commentNo);
+
 	
 }

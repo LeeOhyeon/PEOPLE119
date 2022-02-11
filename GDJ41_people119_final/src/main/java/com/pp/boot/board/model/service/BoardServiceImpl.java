@@ -116,5 +116,10 @@ public class BoardServiceImpl implements BoardService {
 		List<Comment> list=dao.replyList(session,boardNo);
 		return list;
 	}
+	@Override
+	public int commentDelete(int commentNo) {
+		int count=dao.commentDelete(session,commentNo);
+		return count;
+	}
 	
 }

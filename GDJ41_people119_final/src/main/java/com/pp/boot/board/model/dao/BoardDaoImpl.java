@@ -124,6 +124,12 @@ public class BoardDaoImpl implements BoardDao {
 		return session.selectList("board.replyList",boardNo);
 	}
 
+	@Override
+	public int commentDelete(SqlSessionTemplate session, int commentNo) {
+		// TODO Auto-generated method stub
+		return session.delete("board.commentDelete",commentNo);
+	}
+
 	
 	
 }

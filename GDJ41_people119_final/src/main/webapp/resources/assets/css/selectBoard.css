@@ -30,6 +30,7 @@
 .boardWriter{
     display:inline-block;
     margin-left:10px;
+    font-weight:bold;
 }
 .boardInfo {
     display:inline;
@@ -94,12 +95,12 @@
 }
 .comment-1{
     display:inline-block;
-    width:89%;
+    width:97%;
 }
 .comment-delete{
     display:inline;
     float:right;
-    width:2%;
+    width:2w%;
 }
 .comment-horizon {
     margin-top:30px;
@@ -173,6 +174,22 @@ border-radius: 0.25 rem;
 	border-bottom:1px solid #edeef0;
 	padding:20px;
 	width:960px;
+}
+.reply-info{
+	font-size:14px;
+}
+.memberId{
+	font-weight:bold;
+}
+.member-id{
+	font-weight:bold;
+}
+.enrolldate{
+	font-weight:bold;
+}
+.delete-btn{
+	font-size:12px;
+	cursor:pointer;
 }
 
 

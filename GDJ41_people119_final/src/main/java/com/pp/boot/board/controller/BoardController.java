@@ -193,5 +193,13 @@ public class BoardController {
 		return count;
 	}
 	
+	@RequestMapping("/deleteComment.do")
+	@ResponseBody
+	public int commentDelete(int commentNo) {
+		
+		int count=service.commentDelete(commentNo);
+		
+		return count;
+	}
 	
 }
