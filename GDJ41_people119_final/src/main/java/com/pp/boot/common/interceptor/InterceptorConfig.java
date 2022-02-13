@@ -13,7 +13,9 @@ public class InterceptorConfig implements WebMvcConfigurer {
 	  registry.addInterceptor(new LoginInterceptor()) //인터셉터 등록 .addPathPatterns()
 	  .addPathPatterns("/member/memberInfoView.do")
 	  .addPathPatterns("/resume/memberResumeList.do")
-	  .addPathPatterns("/resume/insertResumeView.do");
+	  .addPathPatterns("/resume/insertResumeView.do")
+	  .addPathPatterns("/resume/memberResumeList.do")
+	  .addPathPatterns("/applicant/applyList.do");
 	  
 	  WebMvcConfigurer.super.addInterceptors(registry); }
 	 

@@ -245,7 +245,7 @@
              
           </div>
           
-          
+          <c:if test="${r.careerTitle ne null}">
  		  <p style="font-size: 30px; font-weight: bolder;" >경력기술서</p>
           <div class="resume-basic-container-introcareer">
             <div class="introduceself-container">
@@ -256,18 +256,18 @@
                 	<c:out value="${r.careerContent }"/>
               	</div>
             </div>
-           
           </div>
+		</c:if>          
           
-          
-         
+         <c:set var="resumeNo" value="${r.resumeNo }"/>
          </c:forEach>
          </c:if>
+          
         </div>
         	<div class="quickmenu-container">
 				<div class="quickmenu">
 					<ul>
-						<li><button type="button" class="btn btn-outline-primary quickmenuBtn" onclick="updateResume();">이력서 수정</button></li>
+						<li><button type="button" class="btn btn-outline-primary quickmenuBtn" onclick="location.assign('${path }/resume/updateResumeView.do?resumeNo=${resumeNo}');">이력서 수정</button></li>
 						<li><button type="button" class="btn btn-outline-primary quickmenuBtn" onclick="location.assign('${path }/member/memberInfoView.do?memberId=${loginMember.memberId}');">기본정보 수정</button></li>
 					</ul>
 				</div>

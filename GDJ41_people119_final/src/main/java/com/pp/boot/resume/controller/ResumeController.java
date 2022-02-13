@@ -173,4 +173,17 @@ public class ResumeController {
 		return mv;
 		
 	}
+	
+	//이력서 수정 페이지
+	@RequestMapping("/updateResumeView.do")
+	public ModelAndView updateResumeView(@RequestParam int resumeNo,ModelAndView mv) {
+		
+		List<Resume> rList = resumeService.selectResumeDetail(resumeNo);
+			
+		mv.addObject("resume",rList);
+		mv.setViewName("resume/updateResume");
+		
+		return mv;
+		
+	}
 }
