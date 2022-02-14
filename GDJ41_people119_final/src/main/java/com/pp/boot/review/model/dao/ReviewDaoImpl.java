@@ -1,6 +1,7 @@
 package com.pp.boot.review.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
@@ -29,4 +30,9 @@ public class ReviewDaoImpl implements ReviewDao {
 		return session.insert("companyReview.insertCompanyReview", cr);
 	}
 	
+	// countMeetingCount
+	@Override
+	public Map countPercent(SqlSessionTemplate session, String companyName) {
+		return session.selectOne("companyReview.countPercent", companyName);
+	}
 }

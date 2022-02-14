@@ -1,6 +1,7 @@
 package com.pp.boot.review.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
@@ -18,5 +19,7 @@ public interface ReviewDao {
 	// 기업 리뷰 등록
 	int insertCompanyReview(SqlSessionTemplate session, CompanyReview cr);
 	
+	// countMeetingCount
+	Map countPercent(SqlSessionTemplate session, String companyName);
 	
 }

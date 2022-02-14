@@ -1,6 +1,7 @@
 package com.pp.boot.review.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.pp.boot.company.model.vo.Company;
 import com.pp.boot.review.model.vo.CompanyReview;
@@ -16,4 +17,6 @@ public interface ReviewService {
 	// 기업 리뷰 등록
 	int insertCompanyReview(CompanyReview cr);
 
+	// meetingCount
+	Map countPercent(String companyName);
 }

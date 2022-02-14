@@ -61,7 +61,7 @@
 	              <!-- <span><i class="fas fa-image"></i></span> -->
 	            </div>
 	            <div class="company-name">
-	              <h5><strong><c:out value="${cl.companyName }"/></strong></h5>
+	              <h5><strong><a href="${path }/review/companyReview.do?companyName=${cl.companyName}"><c:out value="${cl.companyName }"/></a></strong></h5>
 	              <p>현재 채용중 00건 -> 이거 없다 추가해야할듯</p>
 	            </div>
 	            <div class="review-info">

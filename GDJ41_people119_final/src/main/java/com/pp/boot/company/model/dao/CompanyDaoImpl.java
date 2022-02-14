@@ -31,4 +31,17 @@ public class CompanyDaoImpl implements CompanyDao{
 	public List<Company> selectCompanyList(SqlSessionTemplate session) {
 		return session.selectList("company.selectCompanyList");
 	}
+	
+	// 한개 기업 정보 가져오기
+	@Override
+	public Company selectCompany(SqlSessionTemplate session, String companyName) {
+		return session.selectOne("company.selectCompany", companyName);
+	}
+	
+	// 해당 기업의 리뷰 전체 개수 가져오기
+	@Override
+	public int countCompany(SqlSessionTemplate session, String companyName) {
+		return session.selectOne("company.countCompany", companyName);
+	}
+	
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.pp.boot.company.model.dao.CompanyDao;
 import com.pp.boot.company.model.vo.Company;
+import com.pp.boot.review.model.vo.CompanyReview;
 @Service
 public class CompanyServiceImpl implements CompanyService {
 	
@@ -38,4 +39,18 @@ public class CompanyServiceImpl implements CompanyService {
 	public List<Company> selectCompanyList() {
 		return dao.selectCompanyList(session);
 	}
+	
+	// 한개 기업 정보 가져오기
+	@Override
+	public Company selectCompany(String companyName) {
+		return dao.selectCompany(session, companyName);
+	}
+	
+	// 해당 기업의 리뷰 전체 개수 가져오기
+	@Override
+	public int countCompany(String companyName) {
+		return dao.countCompany(session, companyName);
+	}
+	
+	
 }
