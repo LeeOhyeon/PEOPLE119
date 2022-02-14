@@ -78,6 +78,36 @@ public class ResumeDaoImpl implements ResumeDao {
 		return session.selectList("resume.selectResumeDetail",resumeNo);
 	}
 
+	@Override
+	public int updateCareer(SqlSessionTemplate session, Career career) {
+		return session.update("resume.updateCareer", career);
+	}
+
+	@Override
+	public int deleteCareer(SqlSessionTemplate session, int careerNo) {
+		return session.delete("resume.deleteCareer",careerNo);
+	}
+
+	@Override
+	public int updateCertificate(SqlSessionTemplate session, Certificate certifi) {
+		return session.update("resume.updateCertificate",certifi);
+	}
+
+	@Override
+	public int deleteCertificate(SqlSessionTemplate session, int certificateNo) {
+		return session.delete("resume.deleteCertificate",certificateNo);
+	}
+
+	@Override
+	public int updateLanguage(SqlSessionTemplate session, Language lang) {
+		return session.update("resume.updateLanguage",lang);
+	}
+
+	@Override
+	public int deletelanguage(SqlSessionTemplate session, int languageTestNo) {
+		return session.delete("resume.deletelanguage",languageTestNo);
+	}
+	
 	
 	
 }

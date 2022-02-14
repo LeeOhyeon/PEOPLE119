@@ -28,4 +28,16 @@ public interface ResumeService {
 
 	List<Resume> selectResumeDetail(int resumeNo);
 
+	int updateCareer(Career career);
+
+	int deleteCareer(int careerNo);
+
+	int updateCertificate(Certificate certifi);
+
+	int deleteCertificate(int certificateNo);
+
+	int updateLanguage(Language lang);
+
+	int deletelanguage(int languageTestNo);
+
 }

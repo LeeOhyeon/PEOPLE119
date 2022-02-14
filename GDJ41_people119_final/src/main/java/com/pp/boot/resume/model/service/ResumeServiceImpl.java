@@ -68,6 +68,36 @@ public class ResumeServiceImpl implements ResumeService {
 		return dao.selectResumeDetail(session,resumeNo);
 	}
 
+	@Override
+	public int updateCareer(Career career) {
+		return dao.updateCareer(session,career);
+	}
+
+	@Override
+	public int deleteCareer(int careerNo) {
+		return dao.deleteCareer(session,careerNo);
+	}
+
+	@Override
+	public int updateCertificate(Certificate certifi) {
+		return dao.updateCertificate(session,certifi);
+	}
+
+	@Override
+	public int deleteCertificate(int certificateNo) {
+		return dao.deleteCertificate(session,certificateNo);
+	}
+
+	@Override
+	public int updateLanguage(Language lang) {
+		return dao.updateLanguage(session,lang);
+	}
+
+	@Override
+	public int deletelanguage(int languageTestNo) {
+		return dao.deletelanguage(session,languageTestNo);
+	}
+
 	
 	
 }

@@ -29,6 +29,19 @@ public interface ResumeDao {
 	int deleteResume(SqlSessionTemplate session, int resumeNo);
 
 	List<Resume> selectResumeDetail(SqlSessionTemplate session, int resumeNo);
+
+	int updateCareer(SqlSessionTemplate session, Career career);
+
+	int deleteCareer(SqlSessionTemplate session, int careerNo);
+
+	int updateCertificate(SqlSessionTemplate session, Certificate certifi);
+
+	int deleteCertificate(SqlSessionTemplate session, int certificateNo);
+
+	int updateLanguage(SqlSessionTemplate session, Language lang);
+
+	int deletelanguage(SqlSessionTemplate session, int languageTestNo);
+	
 	
 	
 }
