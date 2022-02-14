@@ -7,6 +7,7 @@
 <c:set var="path" value="${pageContext.request.contextPath }"/>
 
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+<link href="/resources/assets/css/companyReview.css" rel="stylesheet">
 
 	<!-- ======= Breadcrumbs Section ======= -->
 	<section class="breadcrumbs">
@@ -24,7 +25,7 @@
 	</section>
 	<!-- End Breadcrumbs Section -->
 
-	<section>
+	<section class="inner-page">
 		<div class="content">
 			<div class="layout">
 				<div class="inner">
@@ -34,7 +35,7 @@
 							<p>사진옆에 총합 별점</p>
 						</div>
 						<div class="title">
-							<a href=""><c:out value="${company.companyName }"/></a>
+							<a class="companyName" href=""><c:out value="${company.companyName }"/></a>
 							<a href="">채용중 몇개</a>
 							<a href="">인터뷰 몇개</a>
 						</div>
@@ -170,6 +171,7 @@
 									<div>
 										<c:out value="${percentCounts.WAYOFDRINKING3 }% 문화 회식을 즐겨요"/>
 									</div>
+								</div>
 								<div class="card">
 									<strong class="title">Q<span>연차는 어떻게 사용하나요?</span></strong>
 									<div class="progress">
@@ -200,6 +202,7 @@
 										<c:out value="${percentCounts.WAYOFVACATION3 }% 잘 사용하지 못해요"/>
 									</div>
 								</div>
+								
 								<div class="card">
 									<strong class="title">Q<span>연차를 몇일 정도 사용하나요? (1년기준)</span></strong>
 									<div class="progress">
@@ -239,7 +242,7 @@
 										<c:out value="${percentCounts.NUMBEROFAVGVACATION4 }% 0~4일"/>
 									</div>
 								</div>
-								</div>
+								
 								<div class="card">
 									<strong class="title">Q<span>직원 성비가 어떻게 되나요?</span></strong>
 									<div class="progress">
@@ -361,6 +364,7 @@
 									<div>
 										<c:out value="${percentCounts.CLOTHES3 }% 캐주얼 복장"/>
 									</div>
+								</div>
 								
 								<div class="card">
 									<strong class="title">Q<span>워라밸이 잘 지켜지나요?</span></strong>
@@ -422,7 +426,6 @@
 									<div>
 										<c:out value="${percentCounts.NIGHTSHIFT3 }% 주 3~4회"/>
 									</div>
-								</div>
 									<div class="progress">
 									  	<div class="progress-bar" role="progressbar" aria-valuenow="70"
 									 		 aria-valuemin="0" aria-valuemax="100" style="width:${percentCounts.NIGHTSHIFT4 }%">
@@ -433,6 +436,7 @@
 										<c:out value="${percentCounts.NIGHTSHIFT4 }% 거의 매일"/>
 									</div>
 								</div>
+								
 								
 								<div class="card">
 									<strong class="title">Q<span>최근 연봉 인상률은 어땠나요?</span></strong>

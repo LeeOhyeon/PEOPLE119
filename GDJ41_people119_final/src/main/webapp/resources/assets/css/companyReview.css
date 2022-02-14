@@ -1,0 +1,25 @@
+section.inner-page{
+	padding-left: 400px;
+	padding-right: 400px;
+}
+
+.card{
+	margin-bottom: 20px;
+	padding: 20px 80px 20px 80px;
+	width: 50%;
+	display: inline-block;
+}
+
+div.progress{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.companyName {
+	font-size: 50px;
+	font-weight: bolder;
+}
+
+.company_info {
+	margin-bottom: 50px;
+}
