@@ -23,4 +23,10 @@ public class ReviewDaoImpl implements ReviewDao {
 		return session.selectList("companyReview.selectCompanyReviewList");
 	}
 	
+	// 기업 리뷰 등록
+	@Override
+	public int insertCompanyReview(SqlSessionTemplate session, CompanyReview cr) {
+		return session.insert("companyReview.insertCompanyReview", cr);
+	}
+	
 }

@@ -30,5 +30,11 @@ public class ReviewServiceImpl implements ReviewService {
 	public List<CompanyReview> selectCompanyReviewList() {
 		return dao.selectCompanyReviewList(session);
 	}
+	
+	// 기업 리뷰 등록
+	@Override
+	public int insertCompanyReview(CompanyReview cr) {
+		return dao.insertCompanyReview(session, cr);
+	}
 
 }

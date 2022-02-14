@@ -12,5 +12,8 @@ public interface ReviewService {
 	
 	// 전체 기업리뷰 리스트
 	List<CompanyReview> selectCompanyReviewList();
+	
+	// 기업 리뷰 등록
+	int insertCompanyReview(CompanyReview cr);
 
 }

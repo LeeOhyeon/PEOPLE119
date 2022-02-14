@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.pp.boot.company.model.vo.Company;
 import com.pp.boot.review.model.service.ReviewService;
@@ -32,9 +33,22 @@ public class ReviewController {
 		return "review/companyReviewList";
 	}
 	
-	@RequestMapping("/companyReview.do")
-	public String companyReview() {
-		return "review/companyReview";
+	// 기업 리뷰 작성하기 화면 전환
+	@RequestMapping("/enrollCompanyReview.do")
+	public String enrollCompanyReview(Model m) {
+		List<Company> list = service.selectCompanyList();
+		
+		m.addAttribute("companyList", list);
+		
+		return "review/enrollCompanyReview";
+	}
+	
+	// 기업 리뷰 등록
+	@RequestMapping("enrollCompanyReviewEnd.do")
+	public String enrollCompanyReviewEnd(CompanyReview cr) {
+		int result = service.insertCompanyReview(cr);
+		
+		return ""; 
 	}
 	
 	
