@@ -6,7 +6,8 @@ section.inner-page{
 .card{
 	margin-bottom: 20px;
 	padding: 20px 80px 20px 80px;
-	width: 50%;
+	width: 40%;
+	height: 300px;
 	display: inline-block;
 }
 
