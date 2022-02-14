@@ -1,6 +1,7 @@
 package com.pp.boot.board.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
@@ -9,7 +10,7 @@ import com.pp.boot.board.model.vo.Comment;
 import com.pp.boot.board.model.vo.Like;
 
 public interface BoardDao {
-	List<Board> boardList(SqlSessionTemplate session);
+	List<Board> boardList(SqlSessionTemplate session,Map<String, Object> param);
 	
 	int boardListCount(SqlSessionTemplate session);
 	
@@ -55,13 +56,23 @@ public interface BoardDao {
 
 	int updateBoard(SqlSessionTemplate session, Board b);
 
-	List<Board> newSort(SqlSessionTemplate session, String category);
+	List<Board> newSort(SqlSessionTemplate session, Map<String, Object> param);
 
-	List<Board> viewSort(SqlSessionTemplate session, String category);
+	List<Board> viewSort(SqlSessionTemplate session, Map<String, Object> param);
 
 	void updateViewCount(SqlSessionTemplate session, int boardNo);
 
-	List<Board> likeSort(SqlSessionTemplate session, String category);
+	List<Board> likeSort(SqlSessionTemplate session, Map<String, Object> param);
 
-	List<Board> commentSort(SqlSessionTemplate session, String category);
+	List<Board> commentSort(SqlSessionTemplate session, Map<String, Object> param);
+
+	int replyDelete(SqlSessionTemplate session, int commentNo);
+
+	List<Board> totalviewSort(SqlSessionTemplate session, Map<String, Object> param);
+
+	List<Board> totalLikeSort(SqlSessionTemplate session, Map<String, Object> param);
+
+	List<Board> totalCommentSort(SqlSessionTemplate session, Map<String, Object> param);
+
+	List<Board> newboardList(SqlSessionTemplate session);
 }

@@ -100,7 +100,7 @@
 .comment-delete{
     display:inline;
     float:right;
-    width:2w%;
+    
 }
 .comment-horizon {
     margin-top:30px;
@@ -168,7 +168,8 @@ border-radius: 0.25 rem;
 	display:inline;
 	float:right;
 	text-align:right;
-	align-items:right;
+	
+	
 }
 .reply-content {
 	border-bottom:1px solid #edeef0;
@@ -206,6 +207,10 @@ border-radius: 0.25 rem;
 .boarddelete{
 	font-size:13px;
 	cursor:pointer;
+}
+.reply-delete{
+	font-size: 12px;
+	cursor: pointer;	
 }
 
 

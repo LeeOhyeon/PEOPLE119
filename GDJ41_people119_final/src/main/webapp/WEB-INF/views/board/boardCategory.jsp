@@ -6,6 +6,7 @@
 
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <link href="/resources/assets/css/category.css" rel="stylesheet">
+
  <main id="main">
 
     <!-- ======= Breadcrumbs Section ======= -->
@@ -56,7 +57,7 @@
             <input type="radio" id="newsort" name="chk_info" value="최신" onclick="newsort();" checked="checked">최신순
             <input type="radio" id="viewsort" name="chk_info" value="조회" onclick="viewsort();">조회순
             <input type="radio" id="commentsort" name="chk_info" value="댓글" onclick="commentsort();">댓글 많은순
-            <input type="radio" id="likesort" name="chk_info" value="좋아요" onclick="likersort();">좋아요 순
+            <input type="radio" id="likesort" name="chk_info" value="좋아요" onclick="likesort();">좋아요 순
           </div>
           <div class="insert">
             <div class="insert-btn">
@@ -65,36 +66,13 @@
           </div>
         </div>
         <div class="boardContainer">
-          <c:forEach var="l" items="${list}">
-          	<div class="board">
-             <div class="boardTitle" id="${l.boardNo}">
-               <a href="${path}/board/selectBoard.do?boardNo=${l.boardNo}" id="board-Title"><strong>${l.boardTitle}</strong></a>
-             </div>
-             <div class="boardContent">
-              ${l.boardContent}
-             </div>
-             <div class="boardSort">
-               <div class="boardLike">
-                <span class="board-like"><i class="fas fa-thumbs-up"></i></span>
-               </div>
-               <div class="boardComment">
-                <span class="board-comment"><i class="fas fa-comment"></i></span>
-               </div>
-               <div class="boardView">
-                <span class="board-view"><i class="fas fa-eye"></i></span>
-               </div>
-               <div class="boardWriter">
-               	<strong>${l.memberId}</strong>
-               </div>
-             </div>
-          </div>   
-          </c:forEach>        
+         
         </div>
       </div>
     </section>
     <script>
       const insertBoard=()=>{
-        location.assign("${path}/board/insertBoard.do");
+        	location.assign("${path}/board/insertBoard.do");
       }
       const whole=()=>{
 			location.assign("${path}/board/boardCategory.do?category=게시글전체");
@@ -115,47 +93,322 @@
 			location.assign("${path}/board/boardCategory.do?category=질문");
 		} 
 		
-		//최신순 파싱
-		const newsort=()=>{
+		//온로드시 최신순 정렬
+		$(document).ready(()=>{
+			newSort();
+		});
+		function newSort(cPage){
 			$.ajax({
 				url:"${path}/board/newSort.do",
-				data:{category:"${category}"},
+				data:{category:"${category}",cPage:cPage},
 				dataType:"json",
 				success:data=>{
+					$(".board").remove();
+					$(".pagebar").remove();
+					const pagebar=$("<div class='pagebar'>");
+					pagebar.html(data["pageBar"]);
 					
+					for(let i=0; i<data["list"].length; i++) {
+						
+						const board=$("<div class='board'>");
+						const boardTitle=$("<div class='boardTitle' id='"+data["list"][i]["boardNo"]+"'>");
+						const boardNo=$("<a href='${path}/board/selectBoard.do?boardNo="+data["list"][i]["boardNo"]+"' id='board-Title'><strong>"+data["list"][i]["boardTitle"]+"</strong></a>");
+						const boardContent=$("<div class='boardContent'>"+data["list"][i]["boardContent"]+"</div>");
+
+						const boardSort=$("<div class='boardSort'>");
+						
+						const boardLikeContainer=$("<div class='boardLike'>");
+						const boardLike=$("<span class='board-like'>");
+						const thumbs=$("<i class='fas fa-thumbs-up'>");
+
+						const commentContainer=$("<div class='boardComment'>");
+						const comment=$("<span class='board-comment'>");
+						const com=$("<i class='fas fa-comment'>");
+
+						const viewContainer=$("<div class='boardView'>");
+						const view=$("<span class='board-view'>");
+						const eye=$("<i class='fas fa-eye'>");
+
+						const enrolldate=$("<div class='enrollDate'>");
+						enrolldate.text(data["list"][i]["boardDate"]);
+						
+						
+						const boardWriter=$("<div class='boardWriter'><strong>"+data["list"][i]["memberId"]+"</strong></div>");
+						
+
+						boardLike.append(thumbs);
+						boardLikeContainer.append(boardLike);
+
+						comment.append(com);
+						commentContainer.append(comment);
+
+						view.append(eye);
+						viewContainer.append(view);
+
+
+						boardSort.append(boardLikeContainer).append(commentContainer)
+						.append(viewContainer).append(enrolldate).append(boardWriter);
+						
+						boardTitle.append(boardNo);
+						board.append(boardTitle).append(boardContent).append(boardSort);
+
+						$(".boardContainer").append(board); 
+					}
+					$(".boardContainer").after(pagebar);
 				}
 			});
 		}
-		const viewsort=()=>{
+		
+		
+		//라디오버튼 클릭시 최신순 정렬
+		const newsort=(cPage)=>{
+			$.ajax({
+				url:"${path}/board/newSort.do",
+				data:{category:"${category}",cPage:cPage},
+				dataType:"json",
+				success:data=>{
+					$(".board").remove();
+					$(".pagebar").remove();
+					const pagebar=$("<div class='pagebar'>");
+					pagebar.html(data["pageBar"]);
+					
+					for(let i=0; i<data["list"].length; i++) {
+						
+						const board=$("<div class='board'>");
+						const boardTitle=$("<div class='boardTitle' id='"+data["list"][i]["boardNo"]+"'>");
+						const boardNo=$("<a href='${path}/board/selectBoard.do?boardNo="+data["list"][i]["boardNo"]+"' id='board-Title'><strong>"+data["list"][i]["boardTitle"]+"</strong></a>");
+						const boardContent=$("<div class='boardContent'>"+data["list"][i]["boardContent"]+"</div>");
+
+						const boardSort=$("<div class='boardSort'>");
+						
+						const boardLikeContainer=$("<div class='boardLike'>");
+						const boardLike=$("<span class='board-like'>");
+						const thumbs=$("<i class='fas fa-thumbs-up'>");
+
+						const commentContainer=$("<div class='boardComment'>");
+						const comment=$("<span class='board-comment'>");
+						const com=$("<i class='fas fa-comment'>");
+
+						const viewContainer=$("<div class='boardView'>");
+						const view=$("<span class='board-view'>");
+						const eye=$("<i class='fas fa-eye'>");
+
+						const enrolldate=$("<div class='enrollDate'>");
+						enrolldate.text(data["list"][i]["boardDate"]);
+						
+						
+						const boardWriter=$("<div class='boardWriter'><strong>"+data["list"][i]["memberId"]+"</strong></div>");
+						
+
+						boardLike.append(thumbs);
+						boardLikeContainer.append(boardLike);
+
+						comment.append(com);
+						commentContainer.append(comment);
+
+						view.append(eye);
+						viewContainer.append(view);
+
+
+						boardSort.append(boardLikeContainer).append(commentContainer)
+						.append(viewContainer).append(enrolldate).append(boardWriter);
+						
+						boardTitle.append(boardNo);
+						board.append(boardTitle).append(boardContent).append(boardSort);
+
+						$(".boardContainer").append(board); 
+					}
+					$(".boardContainer").after(pagebar);
+				}
+			});
+		}
+		
+		//조회순 정렬
+		const viewsort=(cPage)=>{
 			$.ajax({
 				url:"${path}/board/viewSort.do",
-				data:{category:"${category}"},
+				data:{category:"${category}",cPage:cPage},
 				dataType:"json",
 				success:data=>{
+					$(".board").remove();
+					$(".pagebar").remove();
+					const pagebar=$("<div class='pagebar'>");
+					pagebar.html(data["pageBar"]);
 					
+					for(let i=0; i<data["list"].length; i++) {
+						
+						const board=$("<div class='board'>");
+						const boardTitle=$("<div class='boardTitle' id='"+data["list"][i]["boardNo"]+"'>");
+						const boardNo=$("<a href='${path}/board/selectBoard.do?boardNo="+data["list"][i]["boardNo"]+"' id='board-Title'><strong>"+data["list"][i]["boardTitle"]+"</strong></a>");
+						const boardContent=$("<div class='boardContent'>"+data["list"][i]["boardContent"]+"</div>");
+
+						const boardSort=$("<div class='boardSort'>");
+						
+						const boardLikeContainer=$("<div class='boardLike'>");
+						const boardLike=$("<span class='board-like'>");
+						const thumbs=$("<i class='fas fa-thumbs-up'>");
+
+						const commentContainer=$("<div class='boardComment'>");
+						const comment=$("<span class='board-comment'>");
+						const com=$("<i class='fas fa-comment'>");
+
+						const viewContainer=$("<div class='boardView'>");
+						const view=$("<span class='board-view'>");
+						const eye=$("<i class='fas fa-eye'>");
+
+						const enrolldate=$("<div class='enrollDate'>");
+						enrolldate.text(data["list"][i]["boardDate"]);
+						
+						
+						const boardWriter=$("<div class='boardWriter'><strong>"+data["list"][i]["memberId"]+"</strong></div>");
+						
+
+						boardLike.append(thumbs);
+						boardLikeContainer.append(boardLike);
+
+						comment.append(com);
+						commentContainer.append(comment);
+
+						view.append(eye);
+						viewContainer.append(view);
+
+
+						boardSort.append(boardLikeContainer).append(commentContainer)
+						.append(viewContainer).append(enrolldate).append(boardWriter);
+						
+						boardTitle.append(boardNo);
+						board.append(boardTitle).append(boardContent).append(boardSort);
+
+						$(".boardContainer").append(board); 
+					}
+					$(".boardContainer").after(pagebar);
 				}
 			});
 		}
-		const likersort=()=>{
+		//좋아요순 정렬
+		const likesort=(cPage)=>{
 			$.ajax({
 				url:"${path}/board/likeSort.do",
-				data:{category:"${category}"},
+				data:{category:"${category}",cPage:cPage},
 				dataType:"json",
 				success:data=>{
+					$(".board").remove();
+					$(".pagebar").remove();
+					const pagebar=$("<div class='pagebar'>");
+					pagebar.html(data["pageBar"]);
 					
+					for(let i=0; i<data["list"].length; i++) {
+						
+						const board=$("<div class='board'>");
+						const boardTitle=$("<div class='boardTitle' id='"+data["list"][i]["boardNo"]+"'>");
+						const boardNo=$("<a href='${path}/board/selectBoard.do?boardNo="+data["list"][i]["boardNo"]+"' id='board-Title'><strong>"+data["list"][i]["boardTitle"]+"</strong></a>");
+						const boardContent=$("<div class='boardContent'>"+data["list"][i]["boardContent"]+"</div>");
+
+						const boardSort=$("<div class='boardSort'>");
+						
+						const boardLikeContainer=$("<div class='boardLike'>");
+						const boardLike=$("<span class='board-like'>");
+						const thumbs=$("<i class='fas fa-thumbs-up'>");
+
+						const commentContainer=$("<div class='boardComment'>");
+						const comment=$("<span class='board-comment'>");
+						const com=$("<i class='fas fa-comment'>");
+
+						const viewContainer=$("<div class='boardView'>");
+						const view=$("<span class='board-view'>");
+						const eye=$("<i class='fas fa-eye'>");
+
+						const enrolldate=$("<div class='enrollDate'>");
+						enrolldate.text(data["list"][i]["boardDate"]);
+						
+						
+						const boardWriter=$("<div class='boardWriter'><strong>"+data["list"][i]["memberId"]+"</strong></div>");
+						
+
+						boardLike.append(thumbs);
+						boardLikeContainer.append(boardLike);
+
+						comment.append(com);
+						commentContainer.append(comment);
+
+						view.append(eye);
+						viewContainer.append(view);
+
+
+						boardSort.append(boardLikeContainer).append(commentContainer)
+						.append(viewContainer).append(enrolldate).append(boardWriter);
+						
+						boardTitle.append(boardNo);
+						board.append(boardTitle).append(boardContent).append(boardSort);
+
+						$(".boardContainer").append(board); 
+					}
+					$(".boardContainer").after(pagebar);
 				}
 			});
 		}
+		//댓글 많은 순 정렬
 		const commentsort=()=>{
 			$.ajax({
 				url:"${path}/board/commentSort.do",
 				data:{category:"${category}"},
 				dataType:"json",
 				success:data=>{
+					$(".board").remove();
+					$(".pagebar").remove();
+					const pagebar=$("<div class='pagebar'>");
+					pagebar.html(data["pageBar"]);
 					
+					for(let i=0; i<data["list"].length; i++) {
+						
+						const board=$("<div class='board'>");
+						const boardTitle=$("<div class='boardTitle' id='"+data["list"][i]["boardNo"]+"'>");
+						const boardNo=$("<a href='${path}/board/selectBoard.do?boardNo="+data["list"][i]["boardNo"]+"' id='board-Title'><strong>"+data["list"][i]["boardTitle"]+"</strong></a>");
+						const boardContent=$("<div class='boardContent'>"+data["list"][i]["boardContent"]+"</div>");
+
+						const boardSort=$("<div class='boardSort'>");
+						
+						const boardLikeContainer=$("<div class='boardLike'>");
+						const boardLike=$("<span class='board-like'>");
+						const thumbs=$("<i class='fas fa-thumbs-up'>");
+
+						const commentContainer=$("<div class='boardComment'>");
+						const comment=$("<span class='board-comment'>");
+						const com=$("<i class='fas fa-comment'>");
+
+						const viewContainer=$("<div class='boardView'>");
+						const view=$("<span class='board-view'>");
+						const eye=$("<i class='fas fa-eye'>");
+
+						const enrolldate=$("<div class='enrollDate'>");
+						enrolldate.text(data["list"][i]["boardDate"]);
+						
+						
+						const boardWriter=$("<div class='boardWriter'><strong>"+data["list"][i]["memberId"]+"</strong></div>");
+						
+
+						boardLike.append(thumbs);
+						boardLikeContainer.append(boardLike);
+
+						comment.append(com);
+						commentContainer.append(comment);
+
+						view.append(eye);
+						viewContainer.append(view);
+
+
+						boardSort.append(boardLikeContainer).append(commentContainer)
+						.append(viewContainer).append(enrolldate).append(boardWriter);
+						
+						boardTitle.append(boardNo);
+						board.append(boardTitle).append(boardContent).append(boardSort);
+
+						$(".boardContainer").append(board); 
+					}
+					$(".boardContainer").after(pagebar);
 				}
 			});
-		}
+		} 
 		
     </script>
   </main><!-- End #main -->
