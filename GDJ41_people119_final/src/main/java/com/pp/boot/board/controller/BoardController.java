@@ -1,7 +1,9 @@
 package com.pp.boot.board.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,6 +18,10 @@ import com.pp.boot.board.model.service.BoardService;
 import com.pp.boot.board.model.vo.Board;
 import com.pp.boot.board.model.vo.Comment;
 import com.pp.boot.board.model.vo.Like;
+import com.pp.boot.common.PageFactoryBoard;
+import com.pp.boot.common.PageFactoryBoardComment;
+import com.pp.boot.common.PageFactoryBoardLike;
+import com.pp.boot.common.PageFactoryBoardView;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -41,7 +47,9 @@ public class BoardController {
 	@RequestMapping("/boardList.do")
 	public ModelAndView boardList(ModelAndView mv) {
 		
-		List<Board> list=service.boardList(); //전체리스트
+		
+		
+		List<Board> list=service.newboardList(); //전체리스트
 		List<Board> free=service.freeList();
 		List<Board> leave=service.leaveList();
 		List<Board> turnover=service.turnoverList();
@@ -51,7 +59,7 @@ public class BoardController {
 		List<Board> hot=service.hotList();
 		
 		int count=service.boardListCount();
-		log.debug("{}"+list);
+//		log.debug("{}"+list);
 		mv.addObject("list",list);
 		mv.addObject("free",free);
 		mv.addObject("leave",leave);
@@ -141,7 +149,7 @@ public class BoardController {
 		int count=0;
 		
 		if(category.equals("게시글전체")) {
-			list=service.boardList();
+			list=service.newboardList();
 			count=service.boardListCount();
 		}else {
 			list=service.boardCategory(category);
@@ -203,6 +211,15 @@ public class BoardController {
 		response.setContentType("application/json; charset=utf-8");
 		return count;
 	}
+	@RequestMapping("/deleteReply.do")
+	@ResponseBody
+	public int replyDelete(int commentNo,HttpServletResponse response) {
+		int count=service.replyDelete(commentNo);
+		response.setContentType("application/json; charset=utf-8");
+		return count;
+	}
+	
+	
 	@RequestMapping("/deleteBoard.do")
 	@ResponseBody
 	public int boardDelete(int boardNo,HttpServletResponse response) {
@@ -235,39 +252,153 @@ public class BoardController {
 	}
 	@RequestMapping("/newSort.do")
 	@ResponseBody
-	public List<Board> newSort(@RequestParam String category,HttpServletResponse response) {
+	public Map<String,Object> newSort(@RequestParam String category,@RequestParam(value="cPage",defaultValue = "1") int cPage,
+			@RequestParam(value="numPerPage" , defaultValue = "10") int numPerPage,
+			HttpServletResponse response) {
 		
-		List<Board> list=service.newSort(category);
+		List<Board> list=new ArrayList<>();
+		
+		Map<String,Object> param = new HashMap<>();
+		Map<String,Object> paramPage = new HashMap<>();
+		
+		int count=0;
+		String pageBar = "";
+		
+		if(category.equals("게시글전체")) {
+			param.put("cPage", cPage);
+			param.put("numPerPage", numPerPage);
+			count=service.boardListCount();
+			list=service.boardList(param);
+			pageBar= PageFactoryBoard.getPageBar(count, cPage, numPerPage, 5);
+			paramPage.put("list", list);
+			paramPage.put("pageBar", pageBar);
+		}else {
+			param.put("cPage", cPage);
+			param.put("numPerPage", numPerPage);
+			param.put("category",category);
+			count=service.categoryListCount(category);
+			list=service.newSort(param);
+			pageBar= PageFactoryBoard.getPageBar(count, cPage, numPerPage, 5);
+			paramPage.put("list", list);
+			paramPage.put("pageBar", pageBar);
+		}
+		
 		response.setContentType("application/json; charset=utf-8");
 		
-		return list;
+		return paramPage;
 	}
 	@RequestMapping("/viewSort.do")
 	@ResponseBody
-	public List<Board> viewSort(@RequestParam String category,HttpServletResponse response) {
+	public Map<String,Object> viewSort(@RequestParam String category,@RequestParam(value="cPage",defaultValue = "1") int cPage,
+			@RequestParam(value="numPerPage" , defaultValue = "10") int numPerPage,HttpServletResponse response) {
 		
-		List<Board> list=service.viewSort(category);
+		List<Board> list=new ArrayList<>();
+		
+		Map<String,Object> param = new HashMap<>();
+		Map<String,Object> paramPage = new HashMap<>();
+		
+		int count=0;
+		String pageBar = "";
+		
+		if(category.equals("게시글전체")) {
+			param.put("cPage", cPage);
+			param.put("numPerPage", numPerPage);
+			count=service.boardListCount();
+			list=service.totalviewSort(param);
+			pageBar= PageFactoryBoardView.getPageBar(count, cPage, numPerPage, 5);
+			paramPage.put("list", list);
+			paramPage.put("pageBar", pageBar);
+			
+		}else {
+			param.put("cPage", cPage);
+			param.put("numPerPage", numPerPage);
+			param.put("category",category);
+			list=service.viewSort(param);
+			count=service.categoryListCount(category);
+			pageBar= PageFactoryBoardView.getPageBar(count, cPage, numPerPage, 5);
+			paramPage.put("list", list);
+			paramPage.put("pageBar", pageBar);
+		}
+	
 		response.setContentType("application/json; charset=utf-8");
 		
-		return list;
+		return paramPage;
 	}
 	@RequestMapping("/likeSort.do")
 	@ResponseBody
-	public List<Board> likeSort(@RequestParam String category,HttpServletResponse response) {
+	public Map<String,Object> likeSort(@RequestParam String category,@RequestParam(value="cPage",defaultValue = "1") int cPage,
+			@RequestParam(value="numPerPage" , defaultValue = "10") int numPerPage,HttpServletResponse response) {
 		
-		List<Board> list=service.likeSort(category);
+		List<Board> list=new ArrayList<>();
+		
+		Map<String,Object> param = new HashMap<>();
+		Map<String,Object> paramPage = new HashMap<>();
+		
+		int count=0;
+		String pageBar = "";
+		
+		if(category.equals("게시글전체")) {
+			param.put("cPage", cPage);
+			param.put("numPerPage", numPerPage);
+			count=service.boardListCount();
+			list=service.totalLikeSort(param);
+			pageBar=PageFactoryBoardLike.getPageBar(count, cPage, numPerPage, 5);
+			paramPage.put("list", list);
+			paramPage.put("pageBar", pageBar);
+		}else {
+			param.put("cPage", cPage);
+			param.put("numPerPage", numPerPage);
+			param.put("category",category);	
+			list=service.likeSort(param);
+			count=service.categoryListCount(category);
+			pageBar= PageFactoryBoardLike.getPageBar(count, cPage, numPerPage, 5);
+			paramPage.put("list", list);
+			paramPage.put("pageBar", pageBar);
+			
+		}
+		
 		response.setContentType("application/json; charset=utf-8");
 		
-		return list;
+		return paramPage;
 	}
 	@RequestMapping("/commentSort.do")
 	@ResponseBody
-	public List<Board> commentSort(@RequestParam String category,HttpServletResponse response) {
+	public Map<String,Object> commentSort(@RequestParam String category,@RequestParam(value="cPage",defaultValue = "1") int cPage,
+			@RequestParam(value="numPerPage" , defaultValue = "10") int numPerPage,HttpServletResponse response) {
 		
-		List<Board> list=service.commentSort(category);
+
+		List<Board> list=new ArrayList<>();
+		
+		Map<String,Object> param = new HashMap<>();
+		Map<String,Object> paramPage = new HashMap<>();
+		
+		int count=0;
+		String pageBar = "";
+		
+		if(category.equals("게시글전체")) {
+			param.put("cPage", cPage);
+			param.put("numPerPage", numPerPage);
+			count=service.boardListCount();
+			list=service.totalCommentSort(param);
+			pageBar=PageFactoryBoardComment.getPageBar(count, cPage, numPerPage, 5);
+			paramPage.put("list", list);
+			paramPage.put("pageBar", pageBar);
+			
+		}else {
+			param.put("cPage", cPage);
+			param.put("numPerPage", numPerPage);
+			param.put("category",category);	
+			list=service.commentSort(param);
+			count=service.categoryListCount(category);
+			pageBar= PageFactoryBoardComment.getPageBar(count, cPage, numPerPage, 5);
+			paramPage.put("list", list);
+			paramPage.put("pageBar", pageBar);
+			
+		}
+
 		response.setContentType("application/json; charset=utf-8");
 		
-		return list;
+		return paramPage;
 	}
 	
 	

@@ -3,6 +3,7 @@ package com.pp.boot.board.model.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -14,9 +15,13 @@ import com.pp.boot.board.model.vo.Like;
 public class BoardDaoImpl implements BoardDao {
 	
 	@Override
-	public List<Board> boardList(SqlSessionTemplate session) {
+	public List<Board> boardList(SqlSessionTemplate session,Map<String,Object> param) {
+		int cPage = (Integer)param.get("cPage");
+		int numPerPage =(Integer)param.get("numPerPage");
 		
-		return session.selectList("board.selectBoardList"); 
+		RowBounds rb = new RowBounds((cPage-1)*numPerPage,numPerPage); 
+		
+		return session.selectList("board.selectBoardList",null,rb); 
 	}
 
 	@Override
@@ -149,15 +154,23 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	@Override
-	public List<Board> newSort(SqlSessionTemplate session, String category) {
-		// TODO Auto-generated method stub
-		return session.selectList("board.newSort",category);
+	public List<Board> newSort(SqlSessionTemplate session, Map<String, Object> param) {
+		int cPage = (Integer)param.get("cPage");
+		int numPerPage =(Integer)param.get("numPerPage");
+		
+		RowBounds rb = new RowBounds((cPage-1)*numPerPage,numPerPage); 
+		
+		return session.selectList("board.newSort",param,rb);
 	}
 
 	@Override
-	public List<Board> viewSort(SqlSessionTemplate session, String category) {
-		// TODO Auto-generated method stub
-		return session.selectList("board.viewSort",category);
+	public List<Board> viewSort(SqlSessionTemplate session, Map<String, Object> param) {
+		int cPage = (Integer)param.get("cPage");
+		int numPerPage =(Integer)param.get("numPerPage");
+		
+		RowBounds rb = new RowBounds((cPage-1)*numPerPage,numPerPage); 
+		
+		return session.selectList("board.viewSort",param,rb);
 	}
 
 	@Override
@@ -166,15 +179,63 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	@Override
-	public List<Board> likeSort(SqlSessionTemplate session, String category) {
-		// TODO Auto-generated method stub
-		return session.selectList("board.likeSort",category);
+	public List<Board> likeSort(SqlSessionTemplate session, Map<String, Object> param) {
+		int cPage = (Integer)param.get("cPage");
+		int numPerPage =(Integer)param.get("numPerPage");
+		
+		RowBounds rb = new RowBounds((cPage-1)*numPerPage,numPerPage);		
+		
+		return session.selectList("board.likeSort",param,rb);
 	}
 
 	@Override
-	public List<Board> commentSort(SqlSessionTemplate session, String category) {
+	public List<Board> commentSort(SqlSessionTemplate session, Map<String, Object> param) {
+		int cPage = (Integer)param.get("cPage");
+		int numPerPage =(Integer)param.get("numPerPage");
+		
+		RowBounds rb = new RowBounds((cPage-1)*numPerPage,numPerPage);		
+		
+		return session.selectList("board.commentSort",param,rb);
+	}
+
+	@Override
+	public int replyDelete(SqlSessionTemplate session, int commentNo) {
 		// TODO Auto-generated method stub
-		return session.selectList("board.commentSort",category);
+		return session.delete("board.replyDelete",commentNo);
+	}
+
+	@Override
+	public List<Board> totalviewSort(SqlSessionTemplate session,Map<String, Object> param) {
+		int cPage = (Integer)param.get("cPage");
+		int numPerPage =(Integer)param.get("numPerPage");
+		
+		RowBounds rb = new RowBounds((cPage-1)*numPerPage,numPerPage); 
+		return session.selectList("board.totalviewSort",null,rb);
+	}
+
+	@Override
+	public List<Board> totalLikeSort(SqlSessionTemplate session,Map<String, Object> param) {
+		int cPage = (Integer)param.get("cPage");
+		int numPerPage =(Integer)param.get("numPerPage");
+		
+		RowBounds rb = new RowBounds((cPage-1)*numPerPage,numPerPage); 
+		
+		return session.selectList("board.totalLikeSort",null,rb);
+	}
+
+	@Override
+	public List<Board> totalCommentSort(SqlSessionTemplate session,Map<String, Object> param) {
+		int cPage = (Integer)param.get("cPage");
+		int numPerPage =(Integer)param.get("numPerPage");
+		
+		RowBounds rb = new RowBounds((cPage-1)*numPerPage,numPerPage); 
+		
+		return session.selectList("board.totalCommentSort",null,rb);
+	}
+
+	@Override
+	public List<Board> newboardList(SqlSessionTemplate session) {
+		return session.selectList("board.newboardList");
 	}
 	
 	

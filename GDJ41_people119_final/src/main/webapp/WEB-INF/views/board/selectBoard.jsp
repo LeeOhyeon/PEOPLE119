@@ -231,8 +231,12 @@ $(document).ready(()=>{
   	  			data:{boardNo:"${b.boardNo}","memberId":"${loginMember.memberId}"},
   	  			dataType:"json",
   	  			success:data=>{
-  	  				alert("좋아요 성공!");
-  	  				likeCount();
+  	  				if(data>0) {
+  	  					alert("좋아요 성공!");
+  	  					likeCount();	
+  	  				}else{
+  	  					alert("이미 좋아요한 게시글입니다.")
+  	  				}
   	  			}
   	  		});
   		}else{
@@ -281,6 +285,7 @@ $(document).ready(()=>{
   	
   	//대댓글 화면출력
   	function selectReply() {
+  		let memberIdVal = "${loginMember.memberId}"; 
   		$.ajax({
   	 		url:"${path}/board/selectReply.do",
   			data:{boardNo:"${b.boardNo}"},
@@ -291,12 +296,13 @@ $(document).ready(()=>{
   				for(let i=0; i<data.length; i++) {
   					
   					const reply=$("<div class='reply-container'>");
-  					const content=$("<div class='reply-content'>");
+  					const content=$("<div class='reply-content' id='"+data[i]["commentNo"]+"'>");
   					const replyinfo=$("<div class='reply-info'>");
   					const imgDiv=$("<div class='imgDiv'>");
   					const span=$("<span class='reply-image'>");
   					const image=$("<i class='fas fa-ellipsis-h'></i>");
   					const replydiv=$("<div class='"+data[i]["commentRef"]+"'style='display:inline-block;'>");	
+  					const replydelete=$("<span class='reply-delete' onclick='replyDelete(this);'>")
   					const id=$("<div class='memberId'>");
   					const date=$("<div class='enrolldate'>");
   					const info=$("<div class='info'>");
@@ -309,10 +315,14 @@ $(document).ready(()=>{
   						id.html(data[i]["memberId"]);
   						date.html(data[i]["commentDate"]);	
   						replydiv.html(data[i]["commentContent"]); //얘는 내용 출력
-  						info.append(id).append(date);
+  						replydelete.text("삭제");
+  						info.append(replydelete).append(id).append(date);
   						replyinfo.append(replydiv).append(info); //대댓 하나 통 틀어
   						content.append(imgDiv).append(replyinfo);
   						$("#"+data[i]["commentRef"]).after(content);
+  						if(data[i]["memberId"]!=memberIdVal) {
+  	  						replydelete.css({"display":"none"});
+  	  					}
   					}
   				}  
   				
@@ -338,6 +348,26 @@ $(document).ready(()=>{
   			return;
   		} 
   	}
+  	
+  	//대댓글 삭제
+  	const replyDelete=(e)=>{
+  		let span = $(e);
+  		let del = $(span.parents('.reply-content')).attr("id");
+  		if(confirm("댓글을 삭제하시겠습니까??")==true) {
+  			$.ajax({
+  				url:"${path}/board/deleteReply.do",
+  				data:{commentNo:del},
+  				dataType:"json",
+  				success:data=>{
+  					alert("댓글이 삭제되었습니다!");
+  					$(span.parents('.reply-content')).remove();
+  				}
+  			});		
+  		}else{
+  			return;
+  		}
+  	}
+  	
   	const boardDelete=()=>{
   		if(confirm("게시글을 삭제하시겠습니까??")==true) {
   			$.ajax({
