@@ -6,6 +6,7 @@
 
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <link href="/resources/assets/css/insertboard.css" rel="stylesheet">
+<script type="text/javascript" src="${path}/ckeditor/ckeditor.js"></script>
   <main id="main">
     <!-- ======= Breadcrumbs Section ======= -->
     <section class="breadcrumbs">
@@ -70,9 +71,24 @@
       </div>
     </section>
 	<script>
+	  $(function() {
+			 
+		  CKEDITOR.replace('boardContent',{
+			filebrowserUploadUrl:'${path}/board/fileupload.do', 
+			width:800,
+			height:600
+		 });
+		 $("#cancelbtn").click(function(){
+			 history.back();
+		 });
+	  });
+	CKEDITOR.config.resize_enabled=false;
+	 
+	
+	  
 	const updateBoard=()=>{
   		const boardTitle=$("#boardTitle").val();
-  		const boardContent=$("#boardContent").val();
+  		const boardContent=CKEDITOR.instances.boardContent.getData();
   		const memberId="${loginMember.memberId}";
   		const category=$(".form-select").val();
   		
