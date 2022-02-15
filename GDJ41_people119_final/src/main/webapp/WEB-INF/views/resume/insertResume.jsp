@@ -45,7 +45,7 @@
              
           </div>
           <div class="resume-basic-container">
-            <p style="font-size: 24px; font-weight: bolder;">이력서 제목 <span style="color:red">(필수)</span></p>
+            <p style="font-size: 24px; font-weight: bolder;">이력서 제목 <span style="color:red; font-size: 18px;">(필수)</span></p>
             <input class="form-control" type="text" placeholder="이력서 제목을 입력하세요(100자까지 입력가능)" id="resumeTitle"
             aria-label="default input example" name="resumeTitle" required="required">
             <span id="resumeTitle-result"></span>
@@ -274,7 +274,7 @@
                 </table>
               </div>
               	<div>
-              		<p style="color:red;text-align: right;">반드시 저장 버튼을 누르셔야 합니다!</p>
+              		<p style="color:red;text-align: right;" class="career_p">반드시 저장 버튼을 누르셔야 합니다!</p>
               	</div>
                 <div class="plusbtn-container">
                 	<div>
@@ -285,14 +285,8 @@
             </div>
           </div>
           
-          <script type="text/javascript">
-          	
-          </script>
-          
-          
-          
           <div class="resume-basic-container">
-            <p style="font-size: 24px; font-weight: bolder;">희망 근무조건 선택</p>
+            <p style="font-size: 24px; font-weight: bolder;">희망 근무조건 선택 <span style="color:red; font-weight: bold; font-size: 18px;"> (필수)</span></p>
             <div class="hope-worktype">
               <table>
                 <tr>
@@ -308,7 +302,7 @@
                     <td><input name="hopeSalary" style="width: 500px;" class="form-control" placeholder="만원(숫자만 입력 하세요)" aria-label="default input example"></td>
                   </tr>
                   <tr>
-                    <td>근무지역</td>
+                    <td>근무지역<br>(2개 이상)</td>
                     <td colspan="4">
                       <select class="form-select" aria-label="Default select example" style="width: 500px;" name="workingArea">
                         <option value="강남구" selected="selected">강남구</option>
@@ -337,11 +331,13 @@
                         <option value="금천구">금천구</option>
                         <option value="관악구">관악구</option>
                       </select>
+                      
                       <div class="areaSelect-result-container">
                       	<div class="areaSelect-result">
                       </div>
                       </div>
                     </td>
+                  
                   </tr>
                   
         
@@ -416,7 +412,7 @@
                 </tr>
               </table>
               	<div>
-              		<p style="color:red;text-align: right;">반드시 저장 버튼을 누르셔야 합니다!</p>
+              		<p style="color:red;text-align: right;" class="career_c">반드시 저장 버튼을 누르셔야 합니다!</p>
               	</div>
               <div class="plusbtn-container">
                 	<div>
@@ -483,7 +479,7 @@
                 </tr>
               </table>
               	<div>
-              		<p style="color:red;text-align: right;">반드시 저장 버튼을 누르셔야 합니다!</p>
+              		<p style="color:red;text-align: right;" class="career_l">반드시 저장 버튼을 누르셔야 합니다!</p>
               	</div>
                <div class="plusbtn-container">
                 	<div>
@@ -495,7 +491,7 @@
           </div>
 
           <div class="resume-basic-container">
-            <p style="font-size: 24px; font-weight: bolder;">보유기술</p>
+            <p style="font-size: 24px; font-weight: bolder;">보유기술<span style="color:red; font-weight: bold; font-size: 18px;"> (필수/2개이상)</span></p>
             <div class="tech-container">
               <select class="form-select" aria-label="Default select example" style="width: 200px;" name="tech">
                 <option value="JAVA" selected="selected">JAVA</option>
@@ -526,7 +522,7 @@
 			
 
           <div class="resume-basic-container-self">
-            <p style="font-size: 24px; font-weight: bolder;">자기소개서</p>
+            <p style="font-size: 24px; font-weight: bolder;">자기소개서  <span style="color:red; font-weight: bold; font-size: 18px;"> (필수)</span></p>
             <div class="introduceself-container">
               <input class="form-control" type="text" placeholder="자소서 제목" aria-label="default input example" name="selfTitle" required="required">
               <br>
@@ -801,7 +797,7 @@ function DropFile(dropAreaId, fileListId) {
         copy.find("input").val("");
         copy.find("#career1").remove();
         copy.find(".careerTitle_").remove();
-		$($(".addform_")[0]).after(copy); 
+		$($(".addform_").last()).after(copy); 
 		
      } 
 	          
@@ -810,7 +806,7 @@ function DropFile(dropAreaId, fileListId) {
         let copy = $($(".resume-basic-container-certificate")[0]).clone(true);
         copy.css("display","block");
         copy.find("input").val("");
-		$($(".resume-basic-container-certificate")[0]).after(copy); 
+		$($(".resume-basic-container-certificate").last()).after(copy); 
      }
      
 	 //어학시험
@@ -818,7 +814,7 @@ function DropFile(dropAreaId, fileListId) {
         let copy = $($(".resume-basic-container-language")[0]).clone(true);
         copy.css("display","block");
         copy.find("input").val("");
-		$($(".resume-basic-container-language")[0]).after(copy); 
+		$($(".resume-basic-container-language").last()).after(copy); 
      }
 	  
 	 /* //자기소개서
@@ -839,7 +835,6 @@ function DropFile(dropAreaId, fileListId) {
 		let formdata = new FormData();
 		//사진
 		let upfile = $("input[name=upfile]")[0].files[0];
-		 
 		//학교 정보
 		let academic = $("input[name=academic]:checked").val();
 		let schoolName = $("input[name=schoolName]").val();
@@ -849,7 +844,7 @@ function DropFile(dropAreaId, fileListId) {
 		let grades = $("input[name=grades]").val();
 		let admissionDate = $("input[name=admissionDate]").val();
 		let graduationDate = $("input[name=graduationDate]").val();
-		 
+		
 		 //이력서 제목
 		 let resumeTitle = $("input[name=resumeTitle]").val();
 		 
@@ -861,64 +856,67 @@ function DropFile(dropAreaId, fileListId) {
 		 
 		 //보유기술
 		 let tech = techArr;
-		 
 		 //주소
-		let gitLink = $("input[name=gitLink]").val();
-		let notionLink = $("input[name=notionLink]").val();
-		let blogLink = $("input[name=blogLink]").val();
+		 let gitLink = $("input[name=gitLink]").val();
+		 let notionLink = $("input[name=notionLink]").val();
+		 let blogLink = $("input[name=blogLink]").val();
 		
-		//자기소개서
-		let selfTitle = $("input[name=selfTitle]").val();
-		let selfContent = $("#selfContent").val();
+		 //자기소개서
+		 let selfTitle = $("input[name=selfTitle]").val();
+		 let selfContent = $("#selfContent").val();
 		
+		 //경력기술서
+		 let careerTitle = $("input[name=careerTitle]").val();
+		 let careerContent = $("#careerContent").val();
 		
-		//경력기술서
-		let careerTitle = $("input[name=careerTitle]").val();
-		let careerContent = $("#careerContent").val();
+		if(upfile == null){
+			alert("이력서 사진은 반드시 등록해야 합니다.");
+		}else{
+
+			formdata.append("resumeNo",resumeNo);
+			formdata.append("memberId",memberId);
+			formdata.append("resumeTitle",resumeTitle);
+			formdata.append("hopeSalary",hopeSalary);
+			formdata.append("workingArea",workingArea);
+			formdata.append("hopePosition",hopePosition);
+			formdata.append("workType",workType);
+			formdata.append("tech",tech);
+			formdata.append("gitLink",gitLink);
+			formdata.append("blogLink",blogLink);
+			formdata.append("notionLink",notionLink);
+			formdata.append("selfTitle",selfTitle);
+			formdata.append("selfContent",selfContent);
+			formdata.append("careerTitle",careerTitle);
+			formdata.append("careerContent",careerContent);
+			formdata.append("upfile",upfile);
+			formdata.append("academic",academic); 
+			formdata.append("schoolName",schoolName); 
+			formdata.append("schoolArea",schoolArea); 
+			formdata.append("major",major); 
+			formdata.append("dayNight",dayNight); 
+			formdata.append("grades",grades); 
+			formdata.append("admissionDate",admissionDate); 
+			formdata.append("graduationDate",graduationDate); 
+			
+			
+			 $.ajax({
+				 url :"${path }/resume/insertBasicResume.do",
+				 enctype:'multipart/form-data',
+			     type:"post",
+			     processData: false,
+		         contentType: false,
+				 data : formdata,
+				 success:data=>{
+					 alert("이력서 등록이 완료되었습니다.");
+					 memberResumeList();
+				 },error:e=>{
+					 alert("데이터를 정확히 입력해 주세요.");
+					 console.log("에러발생삐용삐용");
+				 }
+				 
+			 }); 
+		}
 		
-		formdata.append("resumeNo",resumeNo);
-		formdata.append("memberId",memberId);
-		formdata.append("resumeTitle",resumeTitle);
-		formdata.append("hopeSalary",hopeSalary);
-		formdata.append("workingArea",workingArea);
-		formdata.append("hopePosition",hopePosition);
-		formdata.append("workType",workType);
-		formdata.append("tech",tech);
-		formdata.append("gitLink",gitLink);
-		formdata.append("blogLink",blogLink);
-		formdata.append("notionLink",notionLink);
-		formdata.append("selfTitle",selfTitle);
-		formdata.append("selfContent",selfContent);
-		formdata.append("careerTitle",careerTitle);
-		formdata.append("careerContent",careerContent);
-		formdata.append("upfile",upfile);
-		formdata.append("academic",academic); 
-		formdata.append("schoolName",schoolName); 
-		formdata.append("schoolArea",schoolArea); 
-		formdata.append("major",major); 
-		formdata.append("dayNight",dayNight); 
-		formdata.append("grades",grades); 
-		formdata.append("admissionDate",admissionDate); 
-		formdata.append("graduationDate",graduationDate); 
-		
-		
-		 $.ajax({
-			 url :"${path }/resume/insertBasicResume.do",
-			 enctype:'multipart/form-data',
-		     type:"post",
-		     processData: false,
-	         contentType: false,
-			 data : formdata,
-			 success:data=>{
-				 alert("이력서 등록이 완료되었습니다.");
-				 memberResumeList();
-			 },error:e=>{
-				 alert("데이터를 정확히 입력해 주세요.");
-				 console.log("에러발생삐용삐용");
-			 }
-			 
-		 }); 
-		 
 	 }
 	 
 	 function memberResumeList(){
@@ -998,6 +996,8 @@ function DropFile(dropAreaId, fileListId) {
     			success:data=>{
     				console.log("성공잉");
     				alert("등록 완료");
+    				$(btn.parents('.resume-basic-container-career')).find('.career_p').html("등록완료");
+    				$(btn.parents('.resume-basic-container-career')).find('.career_p').css("color","green");
     			},error:data=>{
     				alert("등록 실패! 관리자에게 문의하세요 :(");
     				console.log("실팽팽이");
@@ -1033,6 +1033,8 @@ function DropFile(dropAreaId, fileListId) {
     			success:data=>{
     				console.log("성공잉");
     				alert("등록 완료");
+    				$(btn.parents('.resume-basic-container-certificate')).find('.career_c').html("등록완료");
+    				$(btn.parents('.resume-basic-container-certificate')).find('.career_c').css("color","green");
     			},error:data=>{
     				alert("등록 실패! 관리자에게 문의하세요 :(");
     				console.log("실팽팽이");
@@ -1069,6 +1071,8 @@ function DropFile(dropAreaId, fileListId) {
     			success:data=>{
     				console.log("성공잉");
     				alert("등록 완료");
+    				$(btn.parents('.resume-basic-container-language')).find('.career_l').html("등록완료");
+    				$(btn.parents('.resume-basic-container-language')).find('.career_l').css("color","green");
     			},error:data=>{
     				alert("등록 실패! 관리자에게 문의하세요 :(");
     				console.log("실팽팽이");
