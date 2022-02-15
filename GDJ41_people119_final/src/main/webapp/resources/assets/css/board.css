@@ -1,6 +1,6 @@
 .boardCount{
     display:inline-block;
-    margin-top:100px;
+    margin-top:10px;
     width:30%;
 }
 .boardSearch {
@@ -11,15 +11,19 @@
     width:350px;
     
 }
+.boardSearch-container{
+	margin-bottom:50px;
+}
 .board-search{
     display:inline-block;
+    
 }
 .board-login{
     margin-left:50px;
     display:inline-block;
     text-align: center;
     padding:20px;
-    margin-top:40px;
+    margin-top:50px;
     
 }
 .community-image {
@@ -58,7 +62,7 @@
     margin-bottom:15px;
 }
 .board-category{
-    margin-top:100px;
+    margin-top:50px;
 }
 .category{
     display:flex;
@@ -100,6 +104,9 @@
 .ready-total-view {
     display:inline;
     float:right;
+}
+.board{
+	padding-bottom:100px;
 }
 .board-1{
     margin-top:30px;

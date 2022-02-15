@@ -5,6 +5,7 @@
 <c:set var="path" value="${pageContext.request.contextPath }"/>
 
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+<script type="text/javascript" src="${path}/ckeditor/ckeditor.js"></script>
 <link href="/resources/assets/css/insertboard.css" rel="stylesheet">
   <main id="main">
     <!-- ======= Breadcrumbs Section ======= -->
@@ -28,7 +29,7 @@
           <h4>게시글 등록</h4>
         </div>
         <div>
-          <form class="row g-3" action="${path}/board/enrollBoard.do">
+          <form class="row g-3" action="${path}/board/enrollBoard.do" onsubmit="return submitCheck();">
           <div>
             <div class="category">  
               <div class="col-md-4">
@@ -61,7 +62,8 @@
         </div>
           <div class="insert-btn">
             <div class="col-12">
-              <button type="submit" class="btn btn-primary">게시글 등록</button>
+              <button type="submit" class="btn btn-primary" id="edit-form">게시글 등록</button>
+              <button type="button" class="btn btn-primary" id="cancelbtn">취소</button>
             </div>
           </div> 
         </form>
@@ -70,4 +72,51 @@
     </section>
 
   </main><!-- End #main -->
+  <script type="text/javascript">
+  $(function() {
+	 
+	  CKEDITOR.replace('boardContent',{
+		filebrowserUploadUrl:'${path}/board/fileupload.do', 
+		width:800,
+		height:600
+	 });
+	 $("#cancelbtn").click(function(){
+		 history.back();
+	 });
+  });
+  
+  CKEDITOR.config.resize_enabled=false;
+  
+  function submitCheck() {
+	  //에디터 내용 변수 저장
+		 var content=CKEDITOR.instances.boardContent.getData();
+	  	 console.log(content);
+		 //에디터 내용 길이 저장
+		 var content_len=CKEDITOR.instances.boardContent.getData().length;
+		 var title=$("#boardTitle").val();
+		 var title_len=$("#boardTitle").val().length;
+		 
+		 
+		 //제목 입력 안할경우
+		 if(title=="") {
+			 alert("제목을 입력하세요");
+			 return false;
+		 }
+		 if(title_len<3) {
+			 alert("제목을 3자 이상 입력하세요");
+			 return false;
+		 }
+		 //내용이 없는 경우
+		 if(content=="") {
+			 alert("내용을 입력하세요");
+			 return false;
+		 }
+		 //내용이 18자 미만인 경우
+		 if(content_len<18) {
+			 alert("내용을 10자 이상 입력하세요");
+			 return false;
+		 }
+  }
+  
+  </script>
  <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

@@ -30,6 +30,7 @@
 .boardWriter{
     display:inline-block;
     margin-left:10px;
+    font-weight:bold;
 }
 .boardInfo {
     display:inline;
@@ -94,12 +95,12 @@
 }
 .comment-1{
     display:inline-block;
-    width:89%;
+    width:97%;
 }
 .comment-delete{
     display:inline;
     float:right;
-    width:2%;
+    
 }
 .comment-horizon {
     margin-top:30px;
@@ -126,9 +127,11 @@ border-radius: 0.25 rem;
     display:flex;
     width:960px;
     padding:10px;
+    border-bottom:1px solid #edeef0;
 }
 .arrow-image{
     font-size:30px;
+    margin-top:10px;
     margin-right:20px;
     color: #edeef0;
 }
@@ -148,4 +151,68 @@ border-radius: 0.25 rem;
 .boardLike{
 	cursor:pointer;
 }
+.reply-image{
+	font-size:25px;
+	color:#edeef0;
+	margin-left:20px;
+	margin-right:20px;
+}
+.imgDiv{
+	display:inline-block;
+}
+.reply-info{
+	display:inline-block;
+	width:800px;
+}
+.info {
+	display:inline;
+	float:right;
+	text-align:right;
+	
+	
+}
+.reply-content {
+	border-bottom:1px solid #edeef0;
+	padding:20px;
+	width:960px;
+}
+.reply-info{
+	font-size:14px;
+}
+.memberId{
+	font-weight:bold;
+}
+.member-id{
+	font-weight:bold;
+}
+.enrolldate{
+	font-weight:bold;
+}
+.delete-btn{
+	font-size:12px;
+	cursor:pointer;
+}
+.updateboard{
+	display:inline;
+	float:right;
+	margin-right:20px;
+}
+.boardTitle{
+	display:inline-block;
+}
+.boardupdate{
+	font-size:13px;
+	cursor:pointer;
+}
+.boarddelete{
+	font-size:13px;
+	cursor:pointer;
+}
+.reply-delete{
+	font-size: 12px;
+	cursor: pointer;	
+}
+
+
+
     

@@ -23,7 +23,6 @@
 
       </div>
     </section><!-- End Breadcrumbs Section -->
-
     <section class="inner-page">
       <div class="container">
         <div class="mypage-container">
@@ -32,12 +31,12 @@
               <li class="link-tab-li"><a href="#"><i class="fas fa-home"></i> My Info</a></li>
               <li><i class="fas fa-pen"></i> 이력서 <span id="resumt-toggle"><i class="fas fa-angle-down"></i></span>
                 <ul>
-                  <li class="resume-link"><a href="#">이력서 등록</a></li>
-                  <li class="resume-link"><a href="#">이력서 관리</a></li>
+                  <li class="resume-link"><a href="${path}/resume/insertResumeView.do?memberId=${loginMember.memberId}">이력서 등록</a></li>
+                  <li class="resume-link"><a href="${path}/resume/memberResumeList.do?memberId=${loginMember.memberId}">이력서 관리</a></li>
                 </ul>
               </li>
               <li class="link-tab-li"><a href="#"><i class="fas fa-star"></i> 스크랩/관심 기업</a></li>
-              <li class="link-tab-li"><a href="#"><i class="fas fa-location-arrow"></i> 지원 내역</a></li>
+              <li class="link-tab-li"><a href="${path }/applicant/applyList.do?memberId=${loginMember.memberId}"><i class="fas fa-location-arrow"></i> 지원 내역</a></li>
               <li class="link-tab-li"><a href="#"><i class="far fa-calendar-alt"></i> 면접 현황</a></li>
             </ul>
           </div>
@@ -51,45 +50,63 @@
               이력서 등록하기</button></a>
             </div>
             <div class="total-count">
-              <p><strong>총 0건</strong></p>
+              <p><strong>총 <c:out value="${countList }"/>건</strong></p>
             </div>
+            
+            <c:forEach var="rList" items="${resumeList }">
+            <c:if test="${rList.resumeTitle ne null }">
             <div class="resume-info">
               <div class="resume-title">
-                <h3><strong>이력서 제목</strong></h3>
+              	<a href="${path }/resume/resumeDetailView.do?resumeNo=${rList.resumeNo}">  
+                <h3><strong><c:out value="${rList.resumeTitle }"/></strong></h3>
+              	</a>
               </div>
               <div class="resume">
                 <div class="information">
                   <div>
-                    <h5><strong>경력</strong></h5>
+                    <h5><strong>근무조건 : <c:out value="${rList.workType }"/></strong></h5>
                   </div>
                   <div>
-                    <h5><strong>희망연봉</strong></h5>
+                    <h5><strong>희망연봉 : <c:out value="${rList.hopeSalary }"/></strong></h5>
                   </div>
                 </div>
                 <div class="hope-info">
                   <div>
-                    <h5><strong>희망 직무/직업:</strong></h5>
+                    <h5><strong>희망 직무 : <c:out value="${rList.hopePosition }"/></strong></h5>
                   </div>
                   <div>
-                    <h5><strong>희망지역:</strong></h5>
+                    <h5><strong>희망지역 : <c:out value="${rList.workingArea }"/></strong></h5>
                   </div>
                 </div>
               </div>
               <div class="check-resume">
                 <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" 
+					${rList.openYn=='Y'?"checked":"" }>
                   <label class="form-check-label" for="flexSwitchCheckChecked">이력서공개</label>
                 </div>
                 <div class="resume-del">
-                  <button type="button" class="btn btn-light" style="width:100px">삭제</button>
+                  <button type="button" class="btn btn-light" style="width:100px"
+                  onclick="if(confirm('정말 삭제하시겠습니까?'))
+                  location.assign('${path}/resume/deleteResume.do?resumeNo=${rList.resumeNo }&&memberId=${rList.memberId }');"
+                  >삭제</button>
                 </div>
               </div>
             </div>
-    
+            </c:if>
+   		 </c:forEach>
           </div>
+        </div>
+        <div>
+        	<div style="margin-top: 30px;">${pageBar }</div>
         </div>
       </div>
     </section>
+
+	<script type="text/javascript">
+		
+		
+	</script>
 
   </main><!-- End #main -->
 

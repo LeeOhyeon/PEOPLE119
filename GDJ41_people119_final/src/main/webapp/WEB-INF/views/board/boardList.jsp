@@ -31,13 +31,6 @@
           </div>
           <div class="boardSearch">
             <div class="boardSearch-container">
-              <div class="board-search">
-                <div class="input-group mb-3">
-                  <input type="text" class="form-control" placeholder="다른 사람들은 어떤 이야기를 할까?"
-                    aria-label="Recipient's username" aria-describedby="basic-addon2">
-                  <span class="input-group-text" id="basic-addon2"><i class="fas fa-search"></i></span>
-                </div>
-              </div>
               <c:if test="${loginMember==null}">
 	              <div class="board-login">
 	                <div>

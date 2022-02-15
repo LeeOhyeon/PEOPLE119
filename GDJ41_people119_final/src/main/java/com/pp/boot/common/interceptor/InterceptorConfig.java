@@ -5,19 +5,20 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class InterceptorConfig implements WebMvcConfigurer{
-
-	/*
-	 * @Override public void addInterceptors(InterceptorRegistry registry) {
-	 * 
-	 * registry.addInterceptor(new LoginInterceptor()) //인터셉터 등록 .addPathPatterns()
-	 * .excludePathPatterns("/*");
-	 * 
-	 * WebMvcConfigurer.super.addInterceptors(registry); }
-	 */
+public class InterceptorConfig implements WebMvcConfigurer {
 
 	
-	
-	
-	
+	  @Override public void addInterceptors(InterceptorRegistry registry) {
+	  
+	  registry.addInterceptor(new LoginInterceptor()) //인터셉터 등록 .addPathPatterns()
+	  .addPathPatterns("/member/memberInfoView.do")
+	  .addPathPatterns("/resume/memberResumeList.do")
+	  .addPathPatterns("/resume/insertResumeView.do")
+	  .addPathPatterns("/resume/memberResumeList.do")
+	  .addPathPatterns("/applicant/applyList.do");
+	  
+	  WebMvcConfigurer.super.addInterceptors(registry); }
+	 
+	 
+
 }

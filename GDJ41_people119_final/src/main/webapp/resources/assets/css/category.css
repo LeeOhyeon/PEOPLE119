@@ -75,3 +75,7 @@
 	display:inline;
 	float:right;
 }
+.enrollDate{
+	display:inline-block;
+	font-size:12px;
+}

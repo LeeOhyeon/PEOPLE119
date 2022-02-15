@@ -9,6 +9,7 @@
 		<typeAlias type="com.pp.boot.company.model.vo.Company" alias="company"/>
 		<typeAlias type="com.pp.boot.member.model.vo.Member" alias="member"/>
 		<typeAlias type="com.pp.boot.board.model.vo.Board" alias="board"/>
+		<typeAlias type="com.pp.boot.board.model.vo.BoardTotal" alias="boardTotal"/>
 		<typeAlias type="com.pp.boot.offer.model.vo.Offer" alias="offer"/>
 		<typeAlias type="com.pp.boot.board.model.vo.Comment" alias="comment"/>
 		<typeAlias type="com.pp.boot.applicant.model.vo.Applicant" alias="applicant"/>
@@ -16,6 +17,9 @@
 		<typeAlias type="com.pp.boot.resume.model.vo.Resume" alias="resume"/>
 		<typeAlias type="com.pp.boot.resume.model.vo.Career" alias="career"/>
 		<typeAlias type="com.pp.boot.board.model.vo.Like" alias="like"/>
+		<typeAlias type="com.pp.boot.resume.model.vo.Certificate" alias="certificate"/>
+		<typeAlias type="com.pp.boot.resume.model.vo.Language" alias="lang"/>
+		<typeAlias type="com.pp.boot.resume.model.vo.SelectResume" alias="selectResume"/>
 	</typeAliases>
 	
 	
