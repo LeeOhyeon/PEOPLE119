@@ -38,7 +38,7 @@
             </div>
           </div>
           <div class="company-review-image">
-            ㅎㅇㅎㅇ
+          
           </div>
         </div>
         <div class="total-review">
