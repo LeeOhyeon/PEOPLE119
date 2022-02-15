@@ -435,6 +435,12 @@ table td {
 	font-size: 20px;
 }
 
-.hiddenAddForm{
+.hiddenCareer{
+	display:none;
+}
+.hiddenCertificate{
+	display:none;
+}
+.hiddenLangDiv{
 	display:none;
 }
