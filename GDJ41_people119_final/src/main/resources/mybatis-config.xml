@@ -9,6 +9,7 @@
 		<typeAlias type="com.pp.boot.company.model.vo.Company" alias="company"/>
 		<typeAlias type="com.pp.boot.member.model.vo.Member" alias="member"/>
 		<typeAlias type="com.pp.boot.board.model.vo.Board" alias="board"/>
+		<typeAlias type="com.pp.boot.board.model.vo.BoardTotal" alias="boardTotal"/>
 		<typeAlias type="com.pp.boot.offer.model.vo.Offer" alias="offer"/>
 		<typeAlias type="com.pp.boot.board.model.vo.Comment" alias="comment"/>
 		<typeAlias type="com.pp.boot.applicant.model.vo.Applicant" alias="applicant"/>

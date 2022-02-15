@@ -118,14 +118,17 @@
 						const boardSort=$("<div class='boardSort'>");
 						
 						const boardLikeContainer=$("<div class='boardLike'>");
+						boardLikeContainer.html(data["list"][i]["likeCount"]);
 						const boardLike=$("<span class='board-like'>");
 						const thumbs=$("<i class='fas fa-thumbs-up'>");
 
 						const commentContainer=$("<div class='boardComment'>");
+						commentContainer.html(data["list"][i]["commentCount"]);
 						const comment=$("<span class='board-comment'>");
 						const com=$("<i class='fas fa-comment'>");
 
 						const viewContainer=$("<div class='boardView'>");
+						viewContainer.html(data["list"][i]["boardView"]);
 						const view=$("<span class='board-view'>");
 						const eye=$("<i class='fas fa-eye'>");
 
@@ -182,14 +185,17 @@
 						const boardSort=$("<div class='boardSort'>");
 						
 						const boardLikeContainer=$("<div class='boardLike'>");
+						boardLikeContainer.html(data["list"][i]["likeCount"]);
 						const boardLike=$("<span class='board-like'>");
 						const thumbs=$("<i class='fas fa-thumbs-up'>");
 
 						const commentContainer=$("<div class='boardComment'>");
+						commentContainer.html(data["list"][i]["commentCount"]);
 						const comment=$("<span class='board-comment'>");
 						const com=$("<i class='fas fa-comment'>");
 
 						const viewContainer=$("<div class='boardView'>");
+						viewContainer.html(data["list"][i]["boardView"]);
 						const view=$("<span class='board-view'>");
 						const eye=$("<i class='fas fa-eye'>");
 
@@ -245,14 +251,17 @@
 						const boardSort=$("<div class='boardSort'>");
 						
 						const boardLikeContainer=$("<div class='boardLike'>");
+						boardLikeContainer.html(data["list"][i]["likeCount"]);
 						const boardLike=$("<span class='board-like'>");
 						const thumbs=$("<i class='fas fa-thumbs-up'>");
 
 						const commentContainer=$("<div class='boardComment'>");
+						commentContainer.html(data["list"][i]["commentCount"]);
 						const comment=$("<span class='board-comment'>");
 						const com=$("<i class='fas fa-comment'>");
 
 						const viewContainer=$("<div class='boardView'>");
+						viewContainer.html(data["list"][i]["boardView"]);
 						const view=$("<span class='board-view'>");
 						const eye=$("<i class='fas fa-eye'>");
 
@@ -307,14 +316,17 @@
 						const boardSort=$("<div class='boardSort'>");
 						
 						const boardLikeContainer=$("<div class='boardLike'>");
+						boardLikeContainer.html(data["list"][i]["likeCount"]);
 						const boardLike=$("<span class='board-like'>");
 						const thumbs=$("<i class='fas fa-thumbs-up'>");
 
 						const commentContainer=$("<div class='boardComment'>");
+						commentContainer.html(data["list"][i]["commentCount"]);
 						const comment=$("<span class='board-comment'>");
 						const com=$("<i class='fas fa-comment'>");
 
 						const viewContainer=$("<div class='boardView'>");
+						viewContainer.html(data["list"][i]["boardView"]);
 						const view=$("<span class='board-view'>");
 						const eye=$("<i class='fas fa-eye'>");
 
@@ -369,14 +381,17 @@
 						const boardSort=$("<div class='boardSort'>");
 						
 						const boardLikeContainer=$("<div class='boardLike'>");
+						boardLikeContainer.html(data["list"][i]["likeCount"]);
 						const boardLike=$("<span class='board-like'>");
 						const thumbs=$("<i class='fas fa-thumbs-up'>");
 
 						const commentContainer=$("<div class='boardComment'>");
+						commentContainer.html(data["list"][i]["commentCount"]);
 						const comment=$("<span class='board-comment'>");
 						const com=$("<i class='fas fa-comment'>");
 
 						const viewContainer=$("<div class='boardView'>");
+						viewContainer.html(data["list"][i]["boardView"]);
 						const view=$("<span class='board-view'>");
 						const eye=$("<i class='fas fa-eye'>");
 

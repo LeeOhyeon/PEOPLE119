@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.pp.boot.board.model.dao.BoardDao;
 import com.pp.boot.board.model.vo.Board;
+import com.pp.boot.board.model.vo.BoardTotal;
 import com.pp.boot.board.model.vo.Comment;
 import com.pp.boot.board.model.vo.Like;
 
@@ -22,8 +23,8 @@ public class BoardServiceImpl implements BoardService {
 	SqlSessionTemplate session;
 	
 	@Override
-	public List<Board> boardList(Map<String, Object> param) {
-		List<Board> list=dao.boardList(session,param);
+	public List<BoardTotal> boardList(Map<String, Object> param) {
+		List<BoardTotal> list=dao.boardList(session,param);
 		return list;
 	}
 	@Override
@@ -138,14 +139,14 @@ public class BoardServiceImpl implements BoardService {
 		return count;
 	}
 	@Override
-	public List<Board> newSort(Map<String, Object> param) {
-		List<Board> list=dao.newSort(session,param);
+	public List<BoardTotal> newSort(Map<String, Object> param) {
+		List<BoardTotal> list=dao.newSort(session,param);
 		
 		return list;
 	}
 	@Override
-	public List<Board> viewSort(Map<String, Object> param) {
-		List<Board> list=dao.viewSort(session,param);
+	public List<BoardTotal> viewSort(Map<String, Object> param) {
+		List<BoardTotal> list=dao.viewSort(session,param);
 		
 		return list;
 	}
@@ -154,15 +155,15 @@ public class BoardServiceImpl implements BoardService {
 		dao.updateViewCount(session,boardNo);
 	}
 	@Override
-	public List<Board> likeSort(Map<String, Object> param) {
+	public List<BoardTotal> likeSort(Map<String, Object> param) {
 		// TODO Auto-generated method stub
-		List<Board> list=dao.likeSort(session,param);
+		List<BoardTotal> list=dao.likeSort(session,param);
 		
 		return list;
 	}
 	@Override
-	public List<Board> commentSort(Map<String, Object> param) {
-		List<Board> list=dao.commentSort(session,param);
+	public List<BoardTotal> commentSort(Map<String, Object> param) {
+		List<BoardTotal> list=dao.commentSort(session,param);
 		
 		return list;
 	}
@@ -172,18 +173,18 @@ public class BoardServiceImpl implements BoardService {
 		return count;
 	}
 	@Override
-	public List<Board> totalviewSort(Map<String, Object> param) {
-		List<Board> list=dao.totalviewSort(session,param);
+	public List<BoardTotal> totalviewSort(Map<String, Object> param) {
+		List<BoardTotal> list=dao.totalviewSort(session,param);
 		return list;
 	}
 	@Override
-	public List<Board> totalLikeSort(Map<String, Object> param) {
-		List<Board> list=dao.totalLikeSort(session,param);
+	public List<BoardTotal> totalLikeSort(Map<String, Object> param) {
+		List<BoardTotal> list=dao.totalLikeSort(session,param);
 		return list;
 	}
 	@Override
-	public List<Board> totalCommentSort(Map<String, Object> param) {
-		List<Board> list=dao.totalCommentSort(session,param);
+	public List<BoardTotal> totalCommentSort(Map<String, Object> param) {
+		List<BoardTotal> list=dao.totalCommentSort(session,param);
 		return list;
 	}
 	@Override
