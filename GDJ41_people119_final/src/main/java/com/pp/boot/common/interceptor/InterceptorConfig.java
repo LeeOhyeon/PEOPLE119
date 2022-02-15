@@ -15,7 +15,11 @@ public class InterceptorConfig implements WebMvcConfigurer {
 	  .addPathPatterns("/resume/memberResumeList.do")
 	  .addPathPatterns("/resume/insertResumeView.do")
 	  .addPathPatterns("/resume/memberResumeList.do")
-	  .addPathPatterns("/applicant/applyList.do");
+	  .addPathPatterns("/applicant/applyList.do")
+	  .addPathPatterns("/applicant/apply.do")
+	  .addPathPatterns("/board/insertBoard.do")
+	  .addPathPatterns("/board/updateBoardView.do")
+	  .addPathPatterns("/resume/updateResumeView.do");
 	  
 	  WebMvcConfigurer.super.addInterceptors(registry); }
 	 

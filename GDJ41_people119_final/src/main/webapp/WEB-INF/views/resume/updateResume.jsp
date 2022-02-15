@@ -373,6 +373,7 @@
                         <option value="금천구">금천구</option>
                         <option value="관악구">관악구</option>
                       </select>
+                      <input type="hidden" value="${r.workingArea }" name="workingAreaOri"/>
                       <div class="areaSelect-result-container">
                      	 <div class="areaSelect-result"></div>
                       </div>
@@ -684,6 +685,7 @@
                 <option value="Bootstrap">Bootstrap</option>
                 <option value="Servlet">Servlet</option>
               </select>
+              <input type="hidden" value="${r.tech }" name="techOri"/>
             </div>
               <div class="techSelect-result-container">
                 <div class="techSelect-result"></div>
@@ -1093,10 +1095,19 @@ function DropFile(dropAreaId, fileListId) {
 		 let workType = $("select[name=workType]").val();
 		 let hopeSalary = $("input[name=hopeSalary]").val();
 		 let workingArea = workingAreaArr;
+		 
+		 if(workingArea.length==0){
+			 workingArea = $("input[name=workingAreaOri]").val();
+		 }
+		 
 		 let hopePosition = $("select[name=hopePosition]").val();
 		 
 		 //보유기술
 		 let tech = techArr;
+		 if(tech.length == 0){
+			 tech = $("input[name=techOri]").val();
+		 }
+		 
 		 
 		 //주소
 		let gitLink = $("input[name=gitLink]").val();

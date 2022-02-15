@@ -49,14 +49,9 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto active" href="/">Home</a></li>
           <li><a class="nav-link scrollto active" href="${path}/company/companyIndex.do">기업메인</a></li>
-          <li class="dropdown"><a href="${path }/offer/offerList.do"><span>채용정보</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">지역</a></li>
-              <li><a href="#">포지션</a></li>
-              <li><a href="#">기술</a></li>
-            </ul>
+          <li class="dropdown"><a href="${path }/offer/offerList.do"><span>채용정보</span></a>
           </li>
           <li class="dropdown"><a href="#"><span>기업 정보</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
@@ -64,18 +59,9 @@
               <li><a href="#">면접후기</a></li>
             </ul>
           </li>
-          <li class="dropdown"><a href="#"><span>구직자 정보</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">경력/신입</a></li>
-              <li><a href="#">포지션</a></li>
-              <li><a href="#">기술</a></li>
-            </ul>
-          </li>
-          <li class="dropdown"><a href="#"><span>커뮤니티</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="${path}/board/boardList.do">면접 TIP</a></li>
-              <li><a href="#">이력서 TIP</a></li>
-            </ul>
+          
+          <li class="dropdown"><a href="${path}/board/boardList.do"><span>커뮤니티</span></a>
+            
           </li>
           <c:if test="${loginMember == null }">
           	<li><a href="${path}/member/memberLoginView.do">로그인</a></li>
