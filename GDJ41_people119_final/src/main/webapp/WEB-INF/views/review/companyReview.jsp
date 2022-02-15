@@ -46,7 +46,7 @@
 						</div>
 						<div class="title">
 							<a class="companyName" href=""><c:out value="${company.companyName }"/></a>
-							<a href="">채용중 몇개</a>
+							<a href=""><span>채용중</span><span><c:out value=""/></span></a>
 							<a href="">인터뷰 몇개</a>
 						</div>
 						<div class="subTitle">
@@ -191,7 +191,7 @@
 									    <span class="sr-only"></span>
 									  </div>
 									</div>
-									<div class="card_answer">
+									<div class="card_answer3">
 										<c:out value="${percentCounts.WAYOFVACATION1 }% 자유롭게 사용"/>
 									</div>
 									<div class="progress">
@@ -200,7 +200,7 @@
 									    <span class="sr-only"></span>
 									  </div>
 									</div>
-									<div class="card_answer">
+									<div class="card_answer3">
 										<c:out value="${percentCounts.WAYOFVACATION2 }% 눈치보며 사용"/>
 									</div>
 									<div class="progress">
@@ -209,7 +209,7 @@
 									    <span class="sr-only"></span>
 									  </div>
 									</div>
-									<div class="card_answer">
+									<div class="card_answer3">
 										<c:out value="${percentCounts.WAYOFVACATION3 }% 잘 사용하지 못해요"/>
 									</div>
 								</div>
@@ -262,7 +262,7 @@
 									    <span class="sr-only"></span>
 									  </div>
 									</div>
-									<div class="card_answer">
+									<div class="card_answer3">
 										<c:out value="${percentCounts.GENDERRATIO1 }% 남자가 많아요"/>
 									</div>
 									<div class="progress">
@@ -271,7 +271,7 @@
 									    <span class="sr-only"></span>
 									  </div>
 									</div>
-									<div class="card_answer">
+									<div class="card_answer3">
 										<c:out value="${percentCounts.GENDERRATIO2 }% 여자가 많아요"/>
 									</div>
 									<div class="progress">
@@ -280,7 +280,7 @@
 									    <span class="sr-only"></span>
 									  </div>
 									</div>
-									<div class="card_answer">
+									<div class="card_answer3">
 										<c:out value="${percentCounts.GENDERRATIO3 }% 비슷해요!"/>
 									</div>
 								</div>
@@ -293,7 +293,7 @@
 									    <span class="sr-only"></span>
 									  </div>
 									</div>
-									<div class="card_answer">
+									<div class="card_answer3">
 										<c:out value="${percentCounts.FREEATTENDANCE1 }% 유연근무제 시행중!"/>
 									</div>
 									<div class="progress">
@@ -302,7 +302,7 @@
 									    <span class="sr-only"></span>
 									  </div>
 									</div>
-									<div class="card_answer">
+									<div class="card_answer3">
 										<c:out value="${percentCounts.FREEATTENDANCE2 }% 정해진 시간에만 출근"/>
 									</div>
 									<div class="progress">
@@ -311,7 +311,7 @@
 									    <span class="sr-only"></span>
 									  </div>
 									</div>
-									<div class="card_answer">
+									<div class="card_answer3">
 										<c:out value="${percentCounts.FREEATTENDANCE3 }% 재택근무 진행"/>
 									</div>
 								</div>
@@ -355,7 +355,7 @@
 									    <span class="sr-only"></span>
 									  </div>
 									</div>
-									<div class="card_answer">
+									<div class="card_answer3">
 										<c:out value="${percentCounts.CLOTHES1 }% 칼정장"/>
 									</div>
 									<div class="progress">
@@ -364,7 +364,7 @@
 									    <span class="sr-only"></span>
 									  </div>
 									</div>
-									<div class="card_answer">
+									<div class="card_answer3">
 										<c:out value="${percentCounts.CLOTHES2 }% 세미정장"/>
 									</div>
 									<div class="progress">
@@ -373,7 +373,7 @@
 									    <span class="sr-only"></span>
 									  </div>
 									</div>
-									<div class="card_answer">
+									<div class="card_answer3">
 										<c:out value="${percentCounts.CLOTHES3 }% 캐주얼 복장"/>
 									</div>
 								</div>
@@ -386,7 +386,7 @@
 									    <span class="sr-only"></span>
 									  </div>
 									</div>
-									<div class="card_answer">
+									<div class="card_answer3">
 										<c:out value="${percentCounts.WORKLIFEBALANCE1 }% 그럼요! 항상 칼퇴합니다 :)"/>
 									</div>
 									<div class="progress">
@@ -395,7 +395,7 @@
 									    <span class="sr-only"></span>
 									  </div>
 									</div>
-									<div class="card_answer">
+									<div class="card_answer3">
 										<c:out value="${percentCounts.WORKLIFEBALANCE2 }%  어느 정도 지켜지기는 합니다"/>
 									</div>
 									<div class="progress">
@@ -404,7 +404,7 @@
 									    <span class="sr-only"></span>
 									  </div>
 									</div>
-									<div class="card_answer">
+									<div class="card_answer3">
 										<c:out value="${percentCounts.WORKLIFEBALANCE3 }% 아니요, 지켜지지 않습니다 :("/>
 									</div>
 								</div>
@@ -537,7 +537,7 @@
 									    <span class="sr-only"></span>
 									  </div>
 									</div>
-									<div class="card_answer">
+									<div class="card_answer3">
 										<c:out value="${percentCounts.BABYVACATION1 }%"/><span> 자유롭게 사용</span>
 									</div>
 									<div class="progress">
@@ -546,7 +546,7 @@
 									    <span class="sr-only"></span>
 									  </div>
 									</div>
-									<div class="card_answer">
+									<div class="card_answer3">
 										<c:out value="${percentCounts.BABYVACATION2 }%"/><span> 눈치보며 사용</span>
 									</div>
 									<div class="progress">
@@ -555,7 +555,7 @@
 									    <span class="sr-only"></span>
 									  </div>
 									</div>
-									<div class="card_answer">
+									<div class="card_answer3">
 										<c:out value="${percentCounts.BABYVACATION3 }%"/><span> 육아휴직 없어요</span>
 									</div>
 								</div>
@@ -568,7 +568,7 @@
 									    <span class="sr-only"></span>
 									  </div>
 									</div>
-									<div class="card_answer">
+									<div class="card_answer3">
 										<c:out value="${percentCounts.GROWUP1 }%"/><span> 네, 성장하고 있어요</span>
 									</div>
 									<div class="progress">
@@ -577,7 +577,7 @@
 									    <span class="sr-only"></span>
 									  </div>
 									</div>
-									<div class="card_answer">
+									<div class="card_answer3">
 										<c:out value="${percentCounts.GROWUP2 }%"/><span> 정체되고 있는것 같아요</span>
 									</div>
 									<div class="progress">
@@ -586,7 +586,7 @@
 									    <span class="sr-only"></span>
 									  </div>
 									</div>
-									<div class="card_answer">
+									<div class="card_answer3">
 										<c:out value="${percentCounts.GROWUP3 }%"/><span> 아니요, 뒤쳐지는 느낌입니다.</span>
 									</div>
 								</div>
@@ -599,7 +599,7 @@
 									    <span class="sr-only"></span>
 									  </div>
 									</div>
-									<div class="card_answer">
+									<div class="card_answer3">
 										<c:out value="${percentCounts.CARRER1 }%"/><span>도움이 돼요</span>
 									</div>
 									<div class="progress">
@@ -608,7 +608,7 @@
 									    <span class="sr-only"></span>
 									  </div>
 									</div>
-									<div class="card_answer">
+									<div class="card_answer3">
 										<c:out value="${percentCounts.CARRER2 }%"/><span>도움이 되지 않아요</span>
 									</div>
 								</div>
@@ -621,7 +621,7 @@
 									    <span class="sr-only"></span>
 									  </div>
 									</div>
-									<div class="card_answer">
+									<div class="card_answer3">
 										<c:out value="${percentCounts.SELFDEV1 }%"/><span>네</span>
 									</div>
 									<div class="progress">
@@ -630,7 +630,7 @@
 									    <span class="sr-only"></span>
 									  </div>
 									</div>
-									<div class="card_answer">
+									<div class="card_answer3">
 										<c:out value="${percentCounts.SELFDEV2 }%"/><span>아니요</span>
 									</div>
 								</div>

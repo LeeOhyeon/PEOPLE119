@@ -1,6 +1,7 @@
 package com.pp.boot.offer.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
@@ -20,5 +21,8 @@ public interface OfferDao {
 	
 	// 공고 상세보기
 	Offer selectOffer(SqlSessionTemplate session, int offerNo);
+	
+	// 회사명 별 공고 개수 가져오기
+	List<Offer> countOffer(SqlSessionTemplate session);
 	
 }

@@ -1,6 +1,7 @@
 package com.pp.boot.offer.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.pp.boot.offer.model.vo.Offer;
 
@@ -18,4 +19,7 @@ public interface OfferService {
 	
 	// 공고 상세보기
 	Offer selectOffer(int offerNo);
+	
+	// 회사명 별 공고 개수 가져오기
+	List<Offer> countOffer();
 }
