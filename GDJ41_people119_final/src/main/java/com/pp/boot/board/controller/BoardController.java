@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.pp.boot.board.model.service.BoardService;
 import com.pp.boot.board.model.vo.Board;
+import com.pp.boot.board.model.vo.BoardTotal;
 import com.pp.boot.board.model.vo.Comment;
 import com.pp.boot.board.model.vo.Like;
 import com.pp.boot.common.PageFactoryBoard;
@@ -38,6 +39,9 @@ public class BoardController {
 	
 	@Autowired
 	private Like l;
+	
+	@Autowired
+	private BoardTotal bt;
 	
 	@Autowired
 	private BoardService service;
@@ -256,7 +260,7 @@ public class BoardController {
 			@RequestParam(value="numPerPage" , defaultValue = "10") int numPerPage,
 			HttpServletResponse response) {
 		
-		List<Board> list=new ArrayList<>();
+		List<BoardTotal> list=new ArrayList<>();
 		
 		Map<String,Object> param = new HashMap<>();
 		Map<String,Object> paramPage = new HashMap<>();
@@ -292,7 +296,7 @@ public class BoardController {
 	public Map<String,Object> viewSort(@RequestParam String category,@RequestParam(value="cPage",defaultValue = "1") int cPage,
 			@RequestParam(value="numPerPage" , defaultValue = "10") int numPerPage,HttpServletResponse response) {
 		
-		List<Board> list=new ArrayList<>();
+		List<BoardTotal> list=new ArrayList<>();
 		
 		Map<String,Object> param = new HashMap<>();
 		Map<String,Object> paramPage = new HashMap<>();
@@ -329,7 +333,7 @@ public class BoardController {
 	public Map<String,Object> likeSort(@RequestParam String category,@RequestParam(value="cPage",defaultValue = "1") int cPage,
 			@RequestParam(value="numPerPage" , defaultValue = "10") int numPerPage,HttpServletResponse response) {
 		
-		List<Board> list=new ArrayList<>();
+		List<BoardTotal> list=new ArrayList<>();
 		
 		Map<String,Object> param = new HashMap<>();
 		Map<String,Object> paramPage = new HashMap<>();
@@ -367,7 +371,7 @@ public class BoardController {
 			@RequestParam(value="numPerPage" , defaultValue = "10") int numPerPage,HttpServletResponse response) {
 		
 
-		List<Board> list=new ArrayList<>();
+		List<BoardTotal> list=new ArrayList<>();
 		
 		Map<String,Object> param = new HashMap<>();
 		Map<String,Object> paramPage = new HashMap<>();

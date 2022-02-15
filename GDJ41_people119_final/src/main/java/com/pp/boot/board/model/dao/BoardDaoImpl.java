@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.pp.boot.board.model.vo.Board;
+import com.pp.boot.board.model.vo.BoardTotal;
 import com.pp.boot.board.model.vo.Comment;
 import com.pp.boot.board.model.vo.Like;
 
@@ -15,7 +16,7 @@ import com.pp.boot.board.model.vo.Like;
 public class BoardDaoImpl implements BoardDao {
 	
 	@Override
-	public List<Board> boardList(SqlSessionTemplate session,Map<String,Object> param) {
+	public List<BoardTotal> boardList(SqlSessionTemplate session,Map<String,Object> param) {
 		int cPage = (Integer)param.get("cPage");
 		int numPerPage =(Integer)param.get("numPerPage");
 		
@@ -154,7 +155,7 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	@Override
-	public List<Board> newSort(SqlSessionTemplate session, Map<String, Object> param) {
+	public List<BoardTotal> newSort(SqlSessionTemplate session, Map<String, Object> param) {
 		int cPage = (Integer)param.get("cPage");
 		int numPerPage =(Integer)param.get("numPerPage");
 		
@@ -164,7 +165,7 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	@Override
-	public List<Board> viewSort(SqlSessionTemplate session, Map<String, Object> param) {
+	public List<BoardTotal> viewSort(SqlSessionTemplate session, Map<String, Object> param) {
 		int cPage = (Integer)param.get("cPage");
 		int numPerPage =(Integer)param.get("numPerPage");
 		
@@ -179,7 +180,7 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	@Override
-	public List<Board> likeSort(SqlSessionTemplate session, Map<String, Object> param) {
+	public List<BoardTotal> likeSort(SqlSessionTemplate session, Map<String, Object> param) {
 		int cPage = (Integer)param.get("cPage");
 		int numPerPage =(Integer)param.get("numPerPage");
 		
@@ -189,7 +190,7 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	@Override
-	public List<Board> commentSort(SqlSessionTemplate session, Map<String, Object> param) {
+	public List<BoardTotal> commentSort(SqlSessionTemplate session, Map<String, Object> param) {
 		int cPage = (Integer)param.get("cPage");
 		int numPerPage =(Integer)param.get("numPerPage");
 		
@@ -205,7 +206,7 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	@Override
-	public List<Board> totalviewSort(SqlSessionTemplate session,Map<String, Object> param) {
+	public List<BoardTotal> totalviewSort(SqlSessionTemplate session,Map<String, Object> param) {
 		int cPage = (Integer)param.get("cPage");
 		int numPerPage =(Integer)param.get("numPerPage");
 		
@@ -214,7 +215,7 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	@Override
-	public List<Board> totalLikeSort(SqlSessionTemplate session,Map<String, Object> param) {
+	public List<BoardTotal> totalLikeSort(SqlSessionTemplate session,Map<String, Object> param) {
 		int cPage = (Integer)param.get("cPage");
 		int numPerPage =(Integer)param.get("numPerPage");
 		
@@ -224,7 +225,7 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	@Override
-	public List<Board> totalCommentSort(SqlSessionTemplate session,Map<String, Object> param) {
+	public List<BoardTotal> totalCommentSort(SqlSessionTemplate session,Map<String, Object> param) {
 		int cPage = (Integer)param.get("cPage");
 		int numPerPage =(Integer)param.get("numPerPage");
 		

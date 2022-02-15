@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 import com.pp.boot.board.model.vo.Board;
+import com.pp.boot.board.model.vo.BoardTotal;
 import com.pp.boot.board.model.vo.Comment;
 import com.pp.boot.board.model.vo.Like;
 
 public interface BoardService {
-	List<Board> boardList(Map<String,Object>param);
+	List<BoardTotal> boardList(Map<String,Object>param);
 	
 	List<Board> freeList();
 	
@@ -54,23 +55,23 @@ public interface BoardService {
 
 	int updateBoard(Board b);
 
-	List<Board> newSort(Map<String, Object> param);
+	List<BoardTotal> newSort(Map<String, Object> param);
 
-	List<Board> viewSort(Map<String, Object> param);
+	List<BoardTotal> viewSort(Map<String, Object> param);
 
 	void updateViewCount(int boardNo);
 
-	List<Board> likeSort(Map<String, Object> param);
+	List<BoardTotal> likeSort(Map<String, Object> param);
 
-	List<Board> commentSort(Map<String, Object> param);
+	List<BoardTotal> commentSort(Map<String, Object> param);
 
 	int replyDelete(int commentNo);
 
-	List<Board> totalviewSort(Map<String, Object> param);
+	List<BoardTotal> totalviewSort(Map<String, Object> param);
 
-	List<Board> totalLikeSort(Map<String, Object> param);
+	List<BoardTotal> totalLikeSort(Map<String, Object> param);
 
-	List<Board> totalCommentSort(Map<String, Object> param);
+	List<BoardTotal> totalCommentSort(Map<String, Object> param);
 
 	List<Board> newboardList();
 
