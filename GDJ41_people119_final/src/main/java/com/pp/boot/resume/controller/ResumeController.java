@@ -186,4 +186,47 @@ public class ResumeController {
 		return mv;
 		
 	}
+	
+	//경력사항 수정
+		@RequestMapping("/updateCareer.do")
+		@ResponseBody
+		public void updateCareer(Career career) {
+		 int result =resumeService.updateCareer(career);
+		}
+		
+	//경력사항 삭제
+		@RequestMapping("/deleteCareer.do")
+		@ResponseBody
+		public void deleteCareer(@RequestParam int careerNo) {
+		 int result =resumeService.deleteCareer(careerNo);
+		}	
+		
+		
+	//자격증 수정
+		@RequestMapping("/updateCertificate.do")
+		@ResponseBody
+		public void updateCertificate(Certificate certifi) {
+		 int result =resumeService.updateCertificate(certifi);
+		}
+	//자격증 삭제
+		@RequestMapping("/deleteCertificate.do")
+		@ResponseBody
+		public void deleteCertificate(@RequestParam int certificateNo) {
+		 int result =resumeService.deleteCertificate(certificateNo); 
+		}
+		
+	//어학시험 수정
+		@RequestMapping("/updateLanguage.do")
+		@ResponseBody
+		public void updateLanguage(Language lang) {
+		 int result =resumeService.updateLanguage(lang);
+		}
+	//어학시험 삭제
+		@RequestMapping("/deletelanguage.do")
+		@ResponseBody
+		public void deletelanguage(@RequestParam int languageTestNo) {
+		 int result =resumeService.deletelanguage(languageTestNo); 
+		}	
+	
+		
 }

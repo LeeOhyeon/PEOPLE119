@@ -8,7 +8,6 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
 <main id="main">
-
     <!-- ======= Breadcrumbs Section ======= -->
     <section class="breadcrumbs">
       <div class="">
@@ -63,11 +62,11 @@
             					<th scope="col">최종 학력</th>
             					<th scope="col">학교명</th>
             					<th scope="col">지역</th>
-            					<c:if test="${r.major ne null }"><th scope="col">전공</th></c:if>
             					<c:if test="${r.academic eq '대학/대학원' }">
+            					<c:if test="${r.major ne null }"><th scope="col">전공</th></c:if>
 	            				<c:if test="${r.dayNight ne null }"><th scope="col">주/야간</th></c:if>
-	            				</c:if>
 	            				<c:if test="${r.grades ne null }"><th scope="col">학점</th></c:if>
+	            				</c:if>
             					<th scope="col">입학날짜</th>
             					<th scope="col">졸업날짜</th>
             				</tr>
@@ -75,11 +74,11 @@
 	            				<td><c:out value="${r.academic }"/></td>
 	            				<td><c:out value="${r.schoolName }"/></td>
 	            				<td><c:out value="${r.schoolArea }"/></td>
-	            				<c:if test="${r.major ne null }"><td><c:out value="${r.major }"/></td></c:if>
 	            				<c:if test="${r.academic eq '대학/대학원' }">
+	            				<c:if test="${r.major ne null }"><td><c:out value="${r.major }"/></td></c:if>
 	            				<c:if test="${r.dayNight ne null }"><td><c:out value="${r.dayNight }"/></td></c:if>
-	            				</c:if>
 	            				<c:if test="${r.grades ne null }"><td><c:out value="${r.grades }"/>/4.5</td></c:if>
+	            				</c:if>
 	            				<td><c:out value="${r.admissionDate }"/></td>
 	            				<td><c:out value="${r.graduationDate }"/></td>
 	            			</tr>
@@ -90,14 +89,18 @@
            
           </div>
 	
-	<c:forEach var="c" items="${r.career }">
-		  <c:if test="${c.career eq '경력' }">
+	<c:if test="${r.career ne null}">
+		<c:forEach var="c" items="${r.career }" begin="0" end="0">
+			<c:if test="${c.career eq '신입' }">
+				
+			</c:if>
+			<c:if test="${c.career ne '신입' }">
           <div class="resume-basic-container-career addform_">
-            <p style="font-size: 30px; font-weight: bolder;">경력
+            <div class="resume-career-info">
+             <p style="font-size: 30px; font-weight: bolder;">경력
             	<span style="float:right;" class="deleteAddform" id="deleteCareerAddform" onclick="deleteCareerAddform(this);"><i class="fas fa-times"></i></span>
             </p>
-             
-            <div class="resume-career-info">
+            
               <div class="career-info">
                 <table  class="table table-bordered align-middle">
                 		<tr class="table-light align-middle" style="border-top: 3px solid black">
@@ -107,7 +110,9 @@
                 			<th scope="col">지역</th>
                 			<th scope="col">연봉</th>
                 		</tr>
+         
                 	<c:forEach var="c" items="${r.career }">
+                	 <c:if test="${c.career eq '경력' }">
                 		<tr>
                 			<td rowspan="2"><c:out value="${c.joinDate }"/> ~ <c:out value="${c.regDate }"/></td>
                 			<td><c:out value="${c.companyName }"/></td>
@@ -121,15 +126,17 @@
                 			<span class="assignedTaskSpan">퇴사사유</span> <c:out value="${c.regReason }"/>
                 			</td>
                 		</tr>
+                		</c:if>
                 	 </c:forEach>
                 </table>
               </div>
             </div>
           </div>
-         </c:if>
-         </c:forEach>
-         
-         
+          </c:if>
+          </c:forEach>
+           </c:if>
+           
+           
           <div class="resume-basic-container-hope">
             <p style="font-size: 30px; font-weight: bolder;">희망 근무조건</p>
             <div class="hope-worktype">
@@ -150,7 +157,8 @@
             </div>
           </div>
           
-           <c:forEach var="certi" items="${r.certificate }">
+          <c:if test="${r.certificate ne null }">
+           <c:forEach var="certi" items="${r.certificate }" begin="0" end="0">
           	<c:if test="${certi.certificateName ne null }">
 	          <div class="resume-basic-container-certificate">
 	            <p style="font-size: 30px; font-weight: bolder;">자격증</p>
@@ -175,8 +183,10 @@
 	          </div>
 	          </c:if>
 	          </c:forEach>
+	          </c:if>
 	          
-	   <c:forEach var="l" items="${r.lang }"> 
+	    <c:if test="${r.lang ne null }">      
+	   <c:forEach var="l" items="${r.lang }" begin="0" end="0"> 
 	     <c:if test="${l.language ne null }">     
           <div class="resume-basic-container-language">
            	 <p style="font-size: 30px; font-weight: bolder;">어학시험</p>
@@ -203,6 +213,9 @@
           </div>
 		</c:if>
 		</c:forEach>
+		</c:if>
+		
+	
           <div class="resume-basic-container">
             <p style="font-size: 30px; font-weight: bolder;border-bottom: 3px solid black">보유기술</p>
             <div class="tech-container" >
@@ -231,7 +244,7 @@
             </div>
           </div>	
 			
-			
+		<c:if test="${r.selfTitle ne null}">	
 		  <p style="font-size: 30px; font-weight: bolder;">자기소개서</p>
           <div class="resume-basic-container-self">
             <div class="introduceself-container">
@@ -242,8 +255,8 @@
                 <c:out value="${r.selfContent }"/>
               </div>
             </div>
-             
           </div>
+          </c:if>
           
           <c:if test="${r.careerTitle ne null}">
  		  <p style="font-size: 30px; font-weight: bolder;" >경력기술서</p>

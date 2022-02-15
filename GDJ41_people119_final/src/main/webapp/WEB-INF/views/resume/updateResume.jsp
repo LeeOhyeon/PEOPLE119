@@ -7,8 +7,188 @@
 <link href="/resources/assets/css/updateResume.css" rel="stylesheet">
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
-<main id="main">
 
+<main id="main">
+<div class="resume-basic-container-career addform_ hiddenAddForm">
+            <p style="font-size: 24px; font-weight: bolder;">경력사항
+            	<span style="float:right;" class="deleteAddform" id="deleteCareerAddform" onclick="deleteCareerAddform(this);"><i class="fas fa-times"></i></span>
+            </p>
+            
+            <div class="resume-career-info">
+              <div class="select-career">
+               <label for="career1"><input type="radio" id="career1" name="career" checked="checked" value="신입"><span class="careerTitle_">신입</span></label>
+                <label for="career2"><input type="radio" id="career2" name="career" value="경력">경력</label>
+              </div>
+              <div class="career-info">
+                <table>
+                  <tr>
+                    <td>회사명</td>
+                    <td style="width: 500px"><input class="form-control companyName_"  type="text" aria-label="default input example" name="companyName"></td>
+                  </tr><tr>
+                    <td>근무부서</td>
+                    <td style="width: 500px"><input class="form-control" type="text" aria-label="default input example" name="department"></td>
+                  </tr>
+                  <tr>
+                    <td>입사일</td>
+                    <td>
+                      <input type="date" style="width: 100%;" name="joinDate" value='2022-01-01'>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>퇴사일</td>
+                    <td>
+                      <input type="date" style="width: 100%;" name="regDate" value='2022-12-31'>
+                    </td>
+                   
+                  </tr>
+                  <tr>
+                    <td>퇴사사유</td>
+                    <td>
+                      <select class="form-select" aria-label="Default select example" name="regReason">
+                          <option value="업직종 전환" selected="selected">업직종 전환</option>
+                          <option value="근무조건">근무조건</option>
+                          <option value="경영악화">경영악화</option>
+                          <option value="계약만료">계약만료</option>
+                          <option value="학업">학업</option>
+                          <option value="유학">유학</option>
+                          <option value="개인사정">개인사정</option>
+                          <option value="기타">기타</option>
+                      </select>
+                    </td>
+                
+                  </tr>
+                  <tr>
+                    <td>직급</td>
+                    <td>
+                      <select class="form-select" aria-label="Default select example" name="rank">
+                        <option selected="selected" value="인턴/수습">인턴/수습</option>
+                        <option value="사원">사원</option>
+                        <option value="주임">주임</option>
+                        <option value="계장">계장</option>
+                        <option value="대리">대리</option>
+                        <option value="과장">과장</option>
+                        <option value="차장">차장</option>
+                        <option value="부장">부장</option>
+                        <option value="감사">감사</option>
+                        <option value="이사">이사</option>
+                        <option value="상무">상무</option>
+                        <option value="전무">전무</option>
+                        <option value="부사">부사장</option>
+                        <option value="사장">사장</option>
+                        <option value="임원">임원</option>
+                        <option value="연구원">연구원</option>
+                        <option value="주임연구원">주임연구원</option>
+                        <option value="선임연구원">선임연구원</option>
+                        <option value="책임연구원">책임연구원</option>
+                        <option value="수석연구원">수석연구원</option>
+                        <option value="연구소장">연구소장</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                   <td>직책</td>
+                    <td>
+                      <select class="form-select" aria-label="Default select example" name="position">
+                        <option selected="selected" value="팀원">팀원</option>
+                        <option value="팀장">팀장</option>
+                        <option value="실장">실장</option>
+                        <option value="총무">총무</option>
+                        <option value="지점장">지점장</option>
+                        <option value="지사장">지사장</option>
+                        <option value="파트장">파트장</option>
+                        <option value="그룹장">그룹장</option>
+                        <option value="센터장">센터장</option>
+                        <option value="매니저">매니저</option>
+                        <option value="본부장">본부장</option>
+                        <option value="사업부장">사업부장</option>
+                        <option value="원장">원장</option>
+                        <option value="국장">국장</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>근무지역</td>
+                    <td>
+                      <select class="form-select" aria-label="Default select example" name="deptLocation">
+                        <option value="강남구" selected="selected">강남구</option>
+                        <option value="강북구">강북구</option>
+                        <option value="광진구">광진구</option>
+                        <option value="노원구">노원구</option>
+                        <option value="동작구">동작구</option>
+                        <option value="구로구">구로구</option>
+                        <option value="도봉구">도봉구</option>
+                        <option value="마포구">마포구</option>
+                        <option value="성동구">성동구</option>
+                        <option value="양천구">양천구</option>
+                        <option value="은평구">은평구</option>
+                        <option value="중랑구">중랑구</option>
+                        <option value="강동구">강동구</option>
+                        <option value="서대문구">서대문구</option>
+                        <option value="성북구">성북구</option>
+                        <option value="영등포구">영등포구</option>
+                        <option value="종로구">종로구</option>
+                        <option value="강서구">강서구</option>
+                        <option value="서초구">서초구</option>
+                        <option value="송파구">송파구</option>
+                        <option value="용산구">용산구</option>
+                        <option value="중구">중구</option>
+                        <option value="동대문구">동대문구</option>
+                        <option value="금천구">금천구</option>
+                        <option value="관악구">관악구</option>
+                      </select>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>연봉</td>
+                    <td>
+                      <input class="form-control" type="number" placeholder="만원" aria-label="default input example" name="annualIncome" min="1500" step="100" value="2000">
+                    </td>
+                  
+                  </tr>
+                  <tr>
+                    <td>담당업무</td>
+                    <td>
+                      <input class="form-control" type="text" placeholder="담당업무" aria-label="default input example" name="assignedTask">
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              	<div>
+              		<p style="color:red;text-align: right;">반드시 저장 버튼을 누르셔야 합니다!</p>
+              	</div>
+                <div class="plusbtn-container">
+                	<div>
+                	<button class="btn btn-outline-secondary plus" type="button" onclick="insertCareerform(this);">저장</button>
+                	<button class="btn btn-outline-secondary plus" type="button" id="addCareerformBtn" onclick="addCareerformBtn();">추가 등록</button>
+                	</div>
+                </div>
+            </div>
+          </div>
+
+	<script type="text/javascript">
+	
+	function copyCareerDiv(){
+		$(".hiddenAddForm").show();
+		$(".resume-basic-container-elementary").after($(".hiddenAddForm"));
+	}
+	 //경력사항 등록
+	$("input[name=career]").change(e=>{
+			$(".career-info").show();
+			if($("input[name=career]:checked").val()=='신입'){
+				$(".career-info").hide();
+				$("#addCareerformBtn").hide();
+			}else{
+				$("#addCareerformBtn").show();
+			}
+	});
+	
+	</script>
+	
+	
+	
     <!-- ======= Breadcrumbs Section ======= -->
     <section class="breadcrumbs">
       <div class="">
@@ -18,6 +198,10 @@
     <section class="inner-page">
     <c:if test="${resume ne null }">
         <c:forEach var="r" items="${resume}">
+        <script type="text/javascript">
+        	let resumeNo = "${r.resumeNo}";
+        	console.log(resumeNo);
+        </script>
       <div class="container">
         <div class="resume-container">
           <div class="resume-basic-container">
@@ -53,7 +237,7 @@
           <div class="resume-basic-container">
             <p style="font-size: 24px; font-weight: bolder;">이력서 제목 <span style="color:red">(필수)</span></p>
             <input class="form-control" type="text" placeholder="이력서 제목을 입력하세요(100자까지 입력가능)" id="resumeTitle" value="${r.resumeTitle }"
-            aria-label="default input example" name="resumeTitle" required="required">
+            aria-label="default input example" name="resumeTitle">
             <span id="resumeTitle-result"></span>
           </div>
           <div class="resume-basic-container-elementary">
@@ -72,20 +256,21 @@
 	            			<tr>
 	            				<td>학교명<span> (필수)</span></td>
 	            				<td >
-	            				<input value="${r.schoolName}" class="form-control university-input" required="required" type="text" name="schoolName" aria-label="default input example">
+	            				<input value="${r.schoolName}" class="form-control university-input" type="text" name="schoolName" aria-label="default input example">
 	            				</td>
 	            			</tr>
 	            			<tr>
 	            				<td>지역<span> (필수)</span></td>
 	            				<td>
-	            				<input value="${r.schoolArea}" class="form-control university-input "  required="required" type="text" name="schoolArea" aria-label="default input example">
+	            				<input value="${r.schoolArea}" class="form-control university-input"   type="text" name="schoolArea" aria-label="default input example">
 	            				</td>
 	            			</tr>
-	            			
+	            			<c:choose >
+	            				<c:when test="${r.academic eq '대학/대학원' }">
 	            			<tr class="university-container">
 	            				<td>전공<span> (필수)</span></td>
 	            				<td>
-	            				<input value="${r.major}" class="form-control university-input" required="required" type="text" name="major" aria-label="default input example">
+	            				<input value="${r.major}" class="form-control university-input"  type="text" name="major" aria-label="default input example">
 	            				</td>
 	            			</tr>
 	            			<tr class="university-container">
@@ -109,10 +294,45 @@
 	            			<tr class="university-container">
 	            				<td>학점<span> (필수)</span></td>
 	            				<td>
-	            				<input value="${r.grades }" class="form-control university-input" type="text" name="grades" aria-label="default input example" required="required" placeholder="/4.5">
+	            				<input value="${r.grades }" class="form-control university-input" type="text" name="grades" aria-label="default input example"placeholder="/4.5">
 	            				</td>
 	            			</tr>
-		            			
+	            			</c:when>
+	            			
+	            			<c:otherwise>
+	            			<tr class="university-container">
+	            				<td>전공<span> (필수)</span></td>
+	            				<td>
+	            				<input class="form-control university-input"  type="text" name="major" aria-label="default input example">
+	            				</td>
+	            			</tr>
+	            			<tr class="university-container">
+	            				<td>주/야간 </td>
+	            				<td>
+	            				<div class="form-check university-input">
+  									<input class="form-check-input" type="radio" name="dayNight" id="dayNight1" value="주간" >
+								  <label class="form-check-label" for="dayNight1">
+								    주간
+								  </label>
+								</div>
+								<div class="form-check university-input">
+								  <input class="form-check-input" type="radio" name="dayNight" id="dayNight2"  value="야간" >
+								  <label class="form-check-label" for="dayNight2">
+								   야간
+								  </label>
+								</div>
+	            				
+	            				</td>
+	            			</tr>
+	            			<tr class="university-container">
+	            				<td>학점<span> (필수)</span></td>
+	            				<td>
+	            				<input class="form-control university-input" type="text" name="grades" aria-label="default input example"placeholder="/4.5">
+	            				</td>
+	            			</tr>
+	            			
+	            			</c:otherwise>
+	            			</c:choose>
 	            			<tr>
 	            				<td>입학날짜<span> (필수)</span></td>
 	            				<td> 
@@ -134,12 +354,11 @@
 		
 		
 		<c:forEach var="c" items="${r.career }">
-		  <c:if test="${c.career eq '경력' }">
           <div class="resume-basic-container-career addform_">
             <p style="font-size: 24px; font-weight: bolder;">경력
-            	<span style="float:right;" class="deleteAddform" id="deleteCareerAddform" onclick="deleteCareerAddform(this);"><i class="fas fa-times"></i></span>
+            	<span style="float:right;" class="deleteAddform" id="deleteCareerAddform" onclick="deleteCareer(this);"><i class="fas fa-times"></i></span>
             </p>
-            
+            <input type="hidden" name="careerNo" value="${c.careerNo }"/>
             <div class="resume-career-info">
               <div class="select-career">
                <label for="career1"><input type="radio" id="career1" name="career" value="신입" ${c.career=='신입'?'checked':''}>
@@ -289,15 +508,14 @@
               	</div>
                 <div class="plusbtn-container">
                 	<div>
-                	<button class="btn btn-outline-secondary plus" type="button" onclick="insertCareerform(this);">저장</button>
+                	<button class="btn btn-outline-secondary plus" type="button" id="careerUpdateBtn" onclick="updateCareerform(this);">수정</button>
                 	<button class="btn btn-outline-secondary plus" type="button" id="addCareerformBtn" onclick="addCareerformBtn();">추가 등록</button>
                 	</div>
                 </div>
             </div>
           </div>
-          </c:if>
           </c:forEach>
-                    
+          
           
           
           <div class="resume-basic-container">
@@ -397,9 +615,9 @@
           	<c:if test="${certi.certificateName ne null }">
           <div class="resume-basic-container-certificate">
             <p style="font-size: 24px; font-weight: bolder;">자격증
-            <span style="float:right;" class="deleteAddformCerti" id="deletecertificateAddform" onclick="deletecertificateAddform(this);"><i class="fas fa-times"></i></span>
+            <span style="float:right;" class="deleteAddformCerti" id="deletecertificateAddform" onclick="deletecertificate(this);"><i class="fas fa-times"></i></span>
             </p>
-            
+            <input type="hidden" name="certificateNo" value="${certi.certificateNo }"/>
             <div class="certificate-container">
               <table>
                 <tr>
@@ -438,7 +656,7 @@
               	</div>
               <div class="plusbtn-container">
                 	<div>
-                	<button class="btn btn-outline-secondary plus" type="button" onclick="insertCertificateformBtn(this);">저장</button>
+                	<button class="btn btn-outline-secondary plus" id="updateCertifiBtn" type="button" onclick="updateCertificate(this);">수정</button>
                 	<button class="btn btn-outline-secondary plus" type="button" onclick="addCertificateformBtn();">추가 등록</button>
                 	</div>
                 </div>
@@ -452,8 +670,9 @@
 	     <c:if test="${l.language ne null }">     
           <div class="resume-basic-container-language">
             <p style="font-size: 24px; font-weight: bolder;">어학시험
-             <span style="float:right;" class="deleteAddformLang" id="deletelanguageAddform" onclick="deletelanguageAddform(this);"><i class="fas fa-times"></i></span>
+             <span style="float:right;" class="deleteAddformLang" id="deletelanguageAddform" onclick="deletelanguage(this);"><i class="fas fa-times"></i></span>
             </p>
+            <input type="hidden" name="languagetestNo" value="${l.languageTestNo }"/>
             <div class="language-container">
               <table >
                 <tr>
@@ -510,7 +729,7 @@
               	</div>
                <div class="plusbtn-container">
                 	<div>
-                	<button class="btn btn-outline-secondary plus" type="button" onclick="insertLanguageformBtn(this);">저장</button>
+                	<button class="btn btn-outline-secondary plus" id="updateLanguageformBtn" type="button" onclick="updateLanguageformBtn(this);">수정</button>
                 	<button class="btn btn-outline-secondary plus" type="button" onclick="addLanguageformBtn();">추가 등록</button>
                 	</div>
                 </div>
@@ -622,9 +841,10 @@
 				<div class="quickmenu">
 					<ul>
 						<li><button type="button" class="btn btn-outline-primary quickmenuBtn" onclick="location.assign('${path }/member/memberInfoView.do?memberId=${loginMember.memberId}')">기본정보 수정</button></li>
+						<li><button type="button" class="btn btn-outline-primary quickmenuBtn" onclick="copyCareerDiv();">+경력사항</button></li>
 						<li><button type="button" class="btn btn-outline-primary quickmenuBtn" onclick="addCertificateformBtn();">+자격증</button></li>
 						<li><button type="button" class="btn btn-outline-primary quickmenuBtn" onclick="addLanguageformBtn();">+어학시험</button></li>
-						<li><button type="button" class="btn btn-outline-primary quickmenuBtn" onclick="insertResume();">이력서 수정</button></li>
+						<li><button type="button" class="btn btn-outline-primary quickmenuBtn" onclick="insertResume();">이력서 저장</button></li>
 					</ul>
 				</div>
 			</div>        
@@ -633,9 +853,7 @@
      </c:if>
     </section>
        
-
 <script type="text/javascript">
-
 let memberId = "${loginMember.memberId}";
 
 function DropFile(dropAreaId, fileListId) {
@@ -833,28 +1051,41 @@ function DropFile(dropAreaId, fileListId) {
       //경력사항 추가
       const addCareerformBtn=()=>{
         let copy = $($(".addform_")[0]).clone(true);
-        copy.find(".deleteAddform").css("display","block");
+        copy.find(".deleteAddform").attr("onclick","deleteCareerAddform(this)");
         copy.find("input").val("");
         copy.find("#career1").remove();
         copy.find(".careerTitle_").remove();
-		$($(".addform_")[0]).after(copy); 
+        copy.find("#careerUpdateBtn").attr("onclick","insertCareerform(this);");
+        copy.find("#careerUpdateBtn").html("등록");
+		$($(".addform_").last()).after(copy); 
 		
      } 
 	          
 	 //자격증 추가
 	 const addCertificateformBtn=()=>{
         let copy = $($(".resume-basic-container-certificate")[0]).clone(true);
+        copy.find("#updateCertifiBtn").attr("onclick","insertCertificateformBtn(this);");
+        copy.find("#updateCertifiBtn").html("등록");
         copy.css("display","block");
         copy.find("input").val("");
-		$($(".resume-basic-container-certificate")[0]).after(copy); 
+        //자격증 새로 추가했을때 항목 삭제 함수로 변경해주기
+        copy.find("#deletecertificateAddform").attr("onclick","deletecertificateAddform(this);");
+        
+		$($(".resume-basic-container-certificate").last()).after(copy); 
      }
+	 
      
 	 //어학시험
 	  const addLanguageformBtn=()=>{
         let copy = $($(".resume-basic-container-language")[0]).clone(true);
+        copy.find("#updateLanguageformBtn").attr("onclick","insertLanguageformBtn(this);");
+        copy.find("#updateLanguageformBtn").html("등록");
         copy.css("display","block");
         copy.find("input").val("");
-		$($(".resume-basic-container-language")[0]).after(copy); 
+        
+        //어학시험 새로 추가했을때 항목 삭제 함수로 변경해주기
+        copy.find("#deletelanguageAddform").attr("onclick","deletelanguageAddform(this);");
+		$($(".resume-basic-container-language").last()).after(copy); 
      }
 	  
 	 /* //자기소개서
@@ -946,7 +1177,7 @@ function DropFile(dropAreaId, fileListId) {
 	         contentType: false,
 			 data : formdata,
 			 success:data=>{
-				 alert("이력서 등록이 완료되었습니다.");
+				 alert("이력서 수정이 완료되었습니다.");
 				 memberResumeList();
 			 },error:e=>{
 				 alert("데이터를 정확히 입력해 주세요.");
@@ -979,18 +1210,7 @@ function DropFile(dropAreaId, fileListId) {
 			deletelanguageAddform.parent().parent().remove();
 	 }
 	
-	  //경력사항 등록
-	  let resumeNo = "${resumeNo}";
-    	
-    	$("input[name=career]").change(e=>{
-    			$(".career-info").show();
-    			if($("input[name=career]:checked").val()=='신입'){
-    				$(".career-info").hide();
-    				$("#addCareerformBtn").hide();
-    			}else{
-    				$("#addCareerformBtn").show();
-    			}
-    	});
+	 
     
     	$("input[name=assignedTask]").change(e=>{
     		alert("반드시 저장 버튼을 누르셔야 합니다!");
@@ -1000,7 +1220,8 @@ function DropFile(dropAreaId, fileListId) {
     		
     		let btn = $(e);
 			          		
-    		let career =$(btn.parents('.resume-basic-container-career')).find('input[name=career]:checked').val(); 
+    		let career = $(btn.parents('.resume-basic-container-career')).find('input[name=career]').val();
+    		console.log(career);
         	let companyName =$(btn.parents('.resume-basic-container-career')).find('input[name=companyName]').val();
         	let joinDate =$(btn.parents('.resume-basic-container-career')).find('input[name=joinDate]').val(); 
         	let regDate = $(btn.parents('.resume-basic-container-career')).find('input[name=regDate]').val(); 
@@ -1032,11 +1253,85 @@ function DropFile(dropAreaId, fileListId) {
     			success:data=>{
     				console.log("성공잉");
     				alert("등록 완료");
+    				location.reload();
     			},error:data=>{
     				alert("등록 실패! 관리자에게 문의하세요 :(");
     				console.log("실팽팽이");
     			}
     		});
+    	}
+    	
+    	//경력사항 수정
+    	const updateCareerform=(e)=>{
+    		let btn = $(e);
+			console.log(btn.parents('.resume-basic-container-career').find('.select-career').find('input:radio[name=career]:checked').val());
+
+    		if($(btn.parents('.resume-basic-container-career')).find('input:radio[name=career]:checked').val() == '경력'
+    				||$(btn.parents('.resume-basic-container-career')).find('input:radio[name=career]:checked').val() == '신입'){
+    			let careerNo = $(btn.parents('.resume-basic-container-career')).find('input[name=careerNo]').val();
+        		let career = $(btn.parents('.resume-basic-container-career')).find('input[name=career]:checked').val(); 
+            	let companyName =$(btn.parents('.resume-basic-container-career')).find('input[name=companyName]').val();
+            	let joinDate =$(btn.parents('.resume-basic-container-career')).find('input[name=joinDate]').val(); 
+            	let regDate = $(btn.parents('.resume-basic-container-career')).find('input[name=regDate]').val(); 
+            	let regReason = $(btn.parents('.resume-basic-container-career')).find('select[name=regReason]').val();
+            	let rank = $(btn.parents('.resume-basic-container-career')).find('select[name=rank]').val();
+            	let position = $(btn.parents('.resume-basic-container-career')).find('select[name=position]').val();
+            	let department = $(btn.parents('.resume-basic-container-career')).find('input[name=department]').val();
+            	let deptLocation = $(btn.parents('.resume-basic-container-career')).find('select[name=deptLocation]').val();
+            	let annualIncome = $(btn.parents('.resume-basic-container-career')).find('input[name=annualIncome]').val();
+            	let assignedTask = $(btn.parents('.resume-basic-container-career')).find('input[name=assignedTask]').val();
+        		
+        		$.ajax({
+        			url:"${path}/resume/updateCareer.do",
+        			type:"post",
+        			data:{
+        				resumeNo:resumeNo,
+        				careerNo:careerNo,
+        				career:career,
+        				companyName:companyName,
+        				joinDate:joinDate,
+        				regDate:regDate,
+        				regReason:regReason,
+        				rank:rank,
+        				position:position,
+        				department:department,
+        				deptLocation:deptLocation,
+        				annualIncome:annualIncome,
+        				assignedTask:assignedTask
+        			},
+        			success:data=>{
+        				console.log("성공잉");
+        				alert("수정 완료");
+        				location.reload();
+        			},error:data=>{
+        				alert("수정 실패! 관리자에게 문의하세요 :(");
+        				console.log("실팽팽이");
+        			}
+        		});
+    		}else{
+    			alert("신입/경력 사항을 체크해 주세요!");
+    		}
+    	}
+    	
+    	//경력사항 삭제
+    	const deleteCareer =(e)=>{
+    		let btn = $(e);
+    		let careerNo = $(btn.parents('.resume-basic-container-career')).find('input[name=careerNo]').val();
+    		
+    		$.ajax({
+    			url:"${path}/resume/deleteCareer.do",
+    			type:"post",
+    			data:{
+    				careerNo:careerNo,
+    			},
+    			success:data=>{
+    				alert("삭제 성공");
+    				$(btn.parents('.resume-basic-container-career')).remove();
+    			},error:data=>{
+    				alert("삭제 실패! 관리자에게 문의하세요 :(");
+    			}
+    		});
+    		
     	}
     	
     	//자격증 등록
@@ -1074,6 +1369,64 @@ function DropFile(dropAreaId, fileListId) {
     		});
     	}
     	
+    	//자격증 수정
+    	
+    		const updateCertificate=(e)=>{
+    		
+    		let btn = $(e);
+    		
+    		let certificateNo =$(btn.parents('.resume-basic-container-certificate')).find('input[name=certificateNo]').val();
+    		let certificateName = $(btn.parents('.resume-basic-container-certificate')).find('input[name=certificateName]').val();
+    		let institution = $(btn.parents('.resume-basic-container-certificate')).find('input[name=institution]').val();
+    		let acceptance = $(btn.parents('.resume-basic-container-certificate')).find('select[name=acceptance]').val();
+    		let acquiredDate = $(btn.parents('.resume-basic-container-certificate')).find('input[name=acquiredDate]').val();
+			
+    		$.ajax({
+    			url : "${path}/resume/updateCertificate.do",
+    			type:"post",
+    			data:{
+    				certificateNo:certificateNo,
+    				resumeNo:resumeNo,
+    				certificateName:certificateName,
+    				institution:institution,
+    				acceptance:acceptance,
+    				acquiredDate:acquiredDate
+    			},
+    			success:data=>{
+    				console.log("성공잉");
+    				alert("수정 완료");
+    				location.reload();
+    			},error:data=>{
+    				alert("수정 실패! 관리자에게 문의하세요 :(");
+    				console.log("실팽팽이");
+    			}
+    		});
+    	}
+    	
+    	//자격증 삭제
+    	const deletecertificate=(e)=>{
+    		
+    		let btn = $(e);
+    		let certificateNo =$(btn.parents('.resume-basic-container-certificate')).find('input[name=certificateNo]').val();
+    		
+    		$.ajax({
+    			url:"${path}/resume/deleteCertificate.do",
+    			type:"post",
+    			data:{
+    				certificateNo:certificateNo,
+    			},
+    			success:data=>{
+    				alert("삭제 성공");
+    				$(btn.parents('.resume-basic-container-certificate')).remove();
+    			},error:data=>{
+    				alert("삭제 실패! 관리자에게 문의하세요 :(");
+    			}
+    		});
+    		
+    	}
+    	
+    	
+    	
     	//어학 시험 등록
     		$("input[name=languageAeqDate]").change(e=>{
     		alert("반드시 저장 버튼을 누르셔야 합니다!");
@@ -1103,6 +1456,7 @@ function DropFile(dropAreaId, fileListId) {
     			success:data=>{
     				console.log("성공잉");
     				alert("등록 완료");
+    				location.reload();
     			},error:data=>{
     				alert("등록 실패! 관리자에게 문의하세요 :(");
     				console.log("실팽팽이");
@@ -1111,6 +1465,70 @@ function DropFile(dropAreaId, fileListId) {
     		});
     		
     	}
+    	
+    	//어학 시험 수정
+    	const updateLanguageformBtn=(e)=>{
+    		let btn=$(e);
+    		
+    		let languageTestNo = $(btn.parents('.resume-basic-container-language')).find('input[name=languagetestNo]').val();
+    		let language = $(btn.parents('.resume-basic-container-language')).find('select[name=language]').val();
+    		let testType = $(btn.parents('.resume-basic-container-language')).find('input[name=testType]').val();
+    		let acqStatus = $(btn.parents('.resume-basic-container-language')).find('select[name=acqStatus]').val();
+    		let score = $(btn.parents('.resume-basic-container-language')).find('input[name=score]').val();
+    		let languageAeqDate = $(btn.parents('.resume-basic-container-language')).find('input[name=languageAeqDate]').val();
+    		
+    		
+    		$.ajax({
+    			
+    			url : "${path}/resume/updateLanguage.do",
+    			type:"post",
+    			data:{
+    				languageTestNo:languageTestNo,
+    				resumeNo:resumeNo,
+    				language:language,
+    				testType:testType,
+    				acqStatus:acqStatus,
+    				score:score,
+    				languageAeqDate:languageAeqDate
+    			},
+    			success:data=>{
+    				alert("수정 완료");
+    				location.reload();
+    			},error:data=>{
+    				alert("수정 실패! 관리자에게 문의하세요 :(");
+    			}
+    			
+    		});
+    		
+    	}
+    	
+    	
+    	//어학 시험 삭제
+    	const deletelanguage=(e)=>{
+    		let btn=$(e);
+    		let languageTestNo = $(btn.parents('.resume-basic-container-language')).find('input[name=languagetestNo]').val();
+    		$.ajax({
+    			
+    			url : "${path}/resume/deletelanguage.do",
+    			type:"post",
+    			data:{
+    				languageTestNo:languageTestNo,
+    			},
+    			success:data=>{
+    				alert("삭제 완료");
+    				$(btn.parents('.resume-basic-container-language')).remove();
+    			},error:data=>{
+    				alert("삭제 실패! 관리자에게 문의하세요 :(");
+    			}
+    			
+    		});
+    		
+    	}
+    	
+    	
+    	
+    	
+    	
     	
     	//퀵메뉴
     	$(document).ready(function(){
@@ -1123,7 +1541,8 @@ function DropFile(dropAreaId, fileListId) {
     	
     	
 </script>
-
+  
+          
 </main><!-- End #main -->
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
