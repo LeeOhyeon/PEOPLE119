@@ -44,7 +44,11 @@
                 <p>기업명</p>
               </div>
               <div>
-                <input type="text" class="form-control" id="" style="width:300px">
+                <select class="form-select" aria-label="Default select example" style="width:100px">
+              		<c:forEach var="l" items="${list}">
+              			<option value="${l.companyName}">${l.companyName}</option>
+              		</c:forEach>
+            	</select>
               </div>
             </div>
             <div class="duty">

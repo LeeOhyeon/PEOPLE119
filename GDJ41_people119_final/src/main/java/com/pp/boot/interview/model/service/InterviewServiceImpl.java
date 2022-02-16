@@ -19,9 +19,9 @@ public class InterviewServiceImpl implements InterviewService {
 	private SqlSessionTemplate session;
 	
 	@Override
-	public List<InterviewCareer> careerList() {
-		List<InterviewCareer> list=dao.careerList(session);
-		return null;
+	public List<InterviewCareer> careerList(String memberId) {
+		List<InterviewCareer> list=dao.careerList(session,memberId);
+		return list;
 	}
 
 }

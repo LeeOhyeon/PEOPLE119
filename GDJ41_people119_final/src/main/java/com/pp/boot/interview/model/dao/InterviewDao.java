@@ -9,6 +9,6 @@ import com.pp.boot.interview.model.vo.InterviewCareer;
 public interface InterviewDao {
 	
 
-	List<InterviewCareer> careerList(SqlSessionTemplate session);
+	List<InterviewCareer> careerList(SqlSessionTemplate session,String memberId);
 
 }

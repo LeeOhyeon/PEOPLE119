@@ -12,9 +12,9 @@ public class InterviewDaoImpl implements InterviewDao {
 	
 	
 	@Override
-	public List<InterviewCareer> careerList(SqlSessionTemplate session) {
+	public List<InterviewCareer> careerList(SqlSessionTemplate session,String memberId) {
 		// TODO Auto-generated method stub
-		return session.selectList("interview.careerList");
+		return session.selectList("interview.careerList",memberId);
 	}
 	
 }
