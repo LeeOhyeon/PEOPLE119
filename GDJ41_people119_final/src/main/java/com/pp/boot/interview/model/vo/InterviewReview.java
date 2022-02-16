@@ -14,12 +14,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Component
-public class Interview {
+public class InterviewReview {
+	
 	private int interviewReviewNo;
 	private String memberId;
 	private String companyName;
 	private String workType;
-	private String carrer;
+	private String career;
 	private Date interviewDate;
 	private String evaluation;
 	private String difficulty;
@@ -29,5 +30,6 @@ public class Interview {
 	private String interviewQuestion;
 	private String interviewTip;
 	private String passOrNot;
+	private String dept;
 	
 }

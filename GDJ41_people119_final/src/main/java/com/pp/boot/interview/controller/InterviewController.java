@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pp.boot.interview.model.service.InterviewService;
-import com.pp.boot.interview.model.vo.Interview;
+import com.pp.boot.interview.model.vo.InterviewReview;
 import com.pp.boot.interview.model.vo.InterviewCareer;
 
 import lombok.extern.slf4j.Slf4j;
@@ -23,26 +23,35 @@ public class InterviewController {
 	private InterviewCareer ic;
 	
 	@Autowired 
-	private Interview i;
+	private InterviewReview i;
 	
 	@Autowired
 	private InterviewService service;
 	@RequestMapping("/interviewList.do")
 	public ModelAndView InterviewList(ModelAndView mv) {
 		
-		mv.addObject("interview/interviewList");
+		mv.setViewName("interview/interviewList");
 		return mv;
 	}
-
-	@RequestMapping("/interviewEnroll.do")
-	public ModelAndView EnrollInterView(ModelAndView mv,@RequestParam String memberId) {
+	@RequestMapping("/interviewEnrollView.do")
+	public ModelAndView interviewEnrollView(ModelAndView mv,@RequestParam String memberId) {
 		
 		
 		List<InterviewCareer> list=service.careerList(memberId);
 		
 		System.out.println(list);
 		mv.addObject("list",list);
-		mv.addObject("interview/interviewEnroll");
+		mv.setViewName("interview/interviewEnroll");
 		return mv;
 	}
+	
+	 @RequestMapping("/interviewEnroll.do") 
+	 public ModelAndView interviewEnroll(ModelAndView mv,InterviewReview i) {
+		 System.out.println(i);
+		 int result=service.interviewEnroll(i);
+	 
+		 return mv; 
+	 }
+	 
+	
 }

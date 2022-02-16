@@ -21,6 +21,7 @@
 		<typeAlias type="com.pp.boot.resume.model.vo.Language" alias="lang"/>
 		<typeAlias type="com.pp.boot.resume.model.vo.SelectResume" alias="selectResume"/>
 		<typeAlias type="com.pp.boot.interview.model.vo.InterviewCareer" alias="interviewCareer"/>
+		<typeAlias type="com.pp.boot.interview.model.vo.InterviewReview" alias="interviewReview"/>
 	</typeAliases>
 	
 	

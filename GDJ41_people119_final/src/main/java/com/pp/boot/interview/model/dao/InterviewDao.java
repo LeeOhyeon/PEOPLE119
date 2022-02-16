@@ -4,11 +4,16 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import com.pp.boot.interview.model.vo.InterviewReview;
 import com.pp.boot.interview.model.vo.InterviewCareer;
 
 public interface InterviewDao {
 	
 
 	List<InterviewCareer> careerList(SqlSessionTemplate session,String memberId);
+
+	int interviewEnroll(SqlSessionTemplate session, InterviewReview i);
+
+	
 
 }
