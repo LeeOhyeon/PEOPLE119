@@ -46,43 +46,100 @@
             </div>
            
             <div class="total-count">
-              <p><strong>총 <c:out value=""/>건</strong></p>
+              <p><strong>총 <c:out value="${scrapCount }"/>건</strong></p>
             </div>
             
               
           <div class="scrap-container">
                 <div class="scrap-searchContainer">
+                 <button type="button" onclick="location.reload();">전체보기</button>
                   <div class="scrap-search">
-                    <div class="input-group mb-3" >
-                      <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="search-scrap">
-                      <button class="btn btn-outline-secondary" type="button" id="search-scrap">검색</button>
-                    </div>
+	                  <div style="width: 150px;">
+		                  <select class="form-select" aria-label="Default select example" name="searchCol">
+							  <option value="offerTitle" selected="selected">공고명</option>
+							  <option value="companyName">회사명</option>
+						</select>
+	                  </div>
+                      <div class="input-group mb-3" >
+                        <input type="text" name="keyword" class="form-control" aria-label="Recipient's username" aria-describedby="search-scrap">
+                        <button class="btn btn-outline-secondary" type="button" id="search-scrap" onclick="searchScrap();">검색</button>
+                      </div>
                   </div>
                 </div>
                
-               <c:if test="${scrap != null }">
-               <c:forEach var="l" items="${scrap.offer }">
-                <div class="searchList-container">
-                    <div class="company-title"><c:out value="${l.companyName}"/></div>
-                    <div class="offer-title"><c:out value="${l.companyName}"/></div>
-                    <div class="finishDate-container"><c:out value="${l.companyName}"/></div>
-                    <div class="deleteBtn-container"><c:out value="${l.companyName}"/></div>
-                </div>
+               
+              <div class="searchCoatainer">
+              <c:if test="${scrap != null }">
+               <c:forEach var="s" items="${scrap }">
+               
+	                <div class="searchList-container">
+	                	<input type="hidden" value="${s.scrapNo }" name="scrapNo">
+	                    <div class="company-title"><c:out value="${s.offer.companyName}"/></div>
+	                    <div class="offer-title"><c:out value="${s.offer.offerTitle}"/></div>
+	                    <div class="finishDate-container"><c:out value="${s.offer.endDate}"/></div>
+	                    <div class="deleteBtn-container"><button type="button" onclick="deleteScrap(this);">삭제</button></div>
+	                </div>
                 </c:forEach>
                 </c:if>
+               </div>   
           </div>
           
             
           </div>
         </div>
         <div>
-        	<div style="margin-top: 30px;">${pageBar }</div>
+        	<div style="margin-top: 30px;" class="pageBar">${pageBar }</div>
         </div>
       </div>
     </section>
 
 	<script type="text/javascript">
+		function searchScrap(cPage){
+			$.ajax({
+				url:"${path}/member/searchScrap.do",
+				type:"post",
+				data:{searchCol:$("select[name=searchCol]").val(),
+					keyword:$("input[name=keyword]").val(),
+					memberId:"${loginMember.memberId}",
+					cPage:cPage
+				},
+				success:data=>{
+					$(".searchCoatainer").html("");
+					$(".total-count").html("");
+					$(".total-count").html("<p><strong>총"+data["count"]+"건</strong></p>");
+					$(".pageBar").html("");
+					$(".pageBar").html(data["pageBar"]);
+					
+					
+						for(let i=0; i<data["scrap"].length;i++){
+							const searchListContainer = $("<div class='searchList-container'>");
+							const companyTitle = $("<div class='company-title'>"+data["scrap"][i]["offer"]["companyName"]+"</div>");
+							const offerTitle = $("<div class='offer-title'>"+data["scrap"][i]["offer"]["offerTitle"]+"</div>");
+							const finishDateContainer = $("<div class='finishDate-container'>"+data["scrap"][i]["offer"]["endDate"]+"</div>");
+							const deleteBtnContainer = $("<div class='deleteBtn-container'><button type='button' onclick='deleteScrap(this);'>삭제</button>");
+							searchListContainer.append(companyTitle).append(offerTitle).append(finishDateContainer).append(deleteBtnContainer);
+							$(".searchCoatainer").append(searchListContainer);
+						} 
+				}
+				
+			});
+			
+		}	
 		
+		function deleteScrap(e){
+			
+			let scrapNo = $(e).parents('.searchList-container').find("input[name=scrapNo]").val();
+			
+			$.ajax({
+				url:"${path}/member/deleteScrap.do",
+				type:"post",
+				data:{scrapNo:scrapNo},
+				success:data=>{
+					alert("삭제하였습니다.");
+					location.reload();
+				}
+			});
+		}
 		
 	</script>
 

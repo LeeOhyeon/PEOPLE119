@@ -1,6 +1,8 @@
 package com.pp.boot.member.model.vo;
 
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import com.pp.boot.offer.model.vo.Offer;

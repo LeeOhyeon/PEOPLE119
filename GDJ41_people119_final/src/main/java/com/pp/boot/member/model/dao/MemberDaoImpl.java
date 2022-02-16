@@ -3,6 +3,7 @@ package com.pp.boot.member.model.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -72,9 +73,44 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public Scrap selectScrapList(SqlSessionTemplate session, String memberId) {
-		return session.selectOne("member.selectScrapList",memberId);
+	public List<Scrap> selectScrapList(SqlSessionTemplate session, Map<String, Object> param) {
+		int cPage = (Integer)param.get("cPage");
+		int numPerPage =(Integer)param.get("numPerPage");
+		
+		RowBounds rb = new RowBounds((cPage-1)*numPerPage,numPerPage); 
+		
+		return session.selectList("member.selectScrapList",param,rb);
 	}
+
+	@Override
+	public Scrap checkScrap(SqlSessionTemplate session, Map<String, Object> param) {
+		return session.selectOne("member.checkScrap",param);
+	}
+
+	@Override
+	public int selectScrapCount(SqlSessionTemplate session, String memberId) {
+		return session.selectOne("member.selectScrapCount",memberId);
+	}
+
+	@Override
+	public int searchScrapCount(SqlSessionTemplate session, Map<String, Object> param) {
+		return session.selectOne("member.searchScrapCount",param);
+	}
+
+	@Override
+	public List<Scrap> searchScrapList(SqlSessionTemplate session, Map<String, Object> param) {
+		int cPage = (Integer)param.get("cPage");
+		int numPerPage =(Integer)param.get("numPerPage");
+		
+		RowBounds rb = new RowBounds((cPage-1)*numPerPage,numPerPage); 
+		return session.selectList("member.searchScrapList",param,rb);
+	}
+
+	@Override
+	public int deleteScrap(SqlSessionTemplate session, int scrapNo) {
+		return session.delete("member.deleteScrap",scrapNo);
+	}
+	
 	
 	
 	

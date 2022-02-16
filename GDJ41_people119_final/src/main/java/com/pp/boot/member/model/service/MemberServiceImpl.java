@@ -83,8 +83,33 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public Scrap selectScrapList(String memberId) {
-		return dao.selectScrapList(session,memberId);
+	public List<Scrap> selectScrapList(Map<String, Object> param) {
+		return dao.selectScrapList(session,param);
+	}
+
+	@Override
+	public Scrap checkScrap(Map<String, Object> param) {
+		return dao.checkScrap(session,param);
+	}
+
+	@Override
+	public int selectScrapCount(String memberId) {
+		return dao.selectScrapCount(session,memberId);
+	}
+
+	@Override
+	public int searchScrapCount(Map<String, Object> param) {
+		return dao.searchScrapCount(session,param);
+	}
+
+	@Override
+	public List<Scrap> searchScrapList(Map<String, Object> param) {
+		return dao.searchScrapList(session,param);
+	}
+
+	@Override
+	public int deleteScrap(int scrapNo) {
+		return dao.deleteScrap(session,scrapNo);
 	}
 
 	

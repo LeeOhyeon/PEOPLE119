@@ -20,6 +20,11 @@ public interface MemberService {
 	int updateEmail(Map param);
 	int updatePhone(Map param);
 	int insertScrap(Map<String, Object> param);
-	Scrap selectScrapList(String memberId);
+	List<Scrap> selectScrapList(Map<String, Object> param);
+	Scrap checkScrap(Map<String, Object> param);
+	int selectScrapCount(String memberId);
+	int searchScrapCount(Map<String, Object> param);
+	List<Scrap> searchScrapList(Map<String, Object> param);
+	int deleteScrap(int scrapNo);
 	
 }

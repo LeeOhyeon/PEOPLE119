@@ -26,19 +26,34 @@
 	</div>
 	<script type="text/javascript">
 		const insertScrap=()=>{
+			
 			$.ajax({
-				url:"${path }/member/insertScrap.do",
+				url:"${path}/member/checkScrap.do",
 				type:"post",
 				data:{memberId:"${loginMember.memberId}",
-						offerNo:"${offer.offerNo}"	
-				},
+						offerNo:"${offer.offerNo}"},
 				success:data=>{
-					alert("스크랩 완료");					
-				},
-				error:e=>{
-					alert("스크랩실패");
-				}
+						if(data){
+							$.ajax({
+								url:"${path }/member/insertScrap.do",
+								type:"post",
+								data:{memberId:"${loginMember.memberId}",
+										offerNo:"${offer.offerNo}"	
+								},
+								success:data=>{
+									alert("스크랩 완료");					
+								},
+								error:e=>{
+									alert("스크랩실패");
+								}
+							});		
+						}else{
+							alert("이미 스크랩된 공고입니다.");
+						}
+									
+					}
 			});
+			
 		}
 	
 	</script>

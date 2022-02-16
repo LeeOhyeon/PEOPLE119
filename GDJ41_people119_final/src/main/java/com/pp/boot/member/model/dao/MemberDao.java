@@ -22,6 +22,11 @@ public interface MemberDao {
 	int updateEmail(SqlSessionTemplate session, Map param);
 	int updatePhone(SqlSessionTemplate session, Map param);
 	int insertScrap(SqlSessionTemplate session,Map param);
-	Scrap selectScrapList(SqlSessionTemplate session, String memberId);
+	List<Scrap> selectScrapList(SqlSessionTemplate session, Map<String, Object> param);
+	Scrap checkScrap(SqlSessionTemplate session, Map<String, Object> param);
+	int selectScrapCount(SqlSessionTemplate session, String memberId);
+	int searchScrapCount(SqlSessionTemplate session, Map<String, Object> param);
+	List<Scrap> searchScrapList(SqlSessionTemplate session, Map<String, Object> param);
+	int deleteScrap(SqlSessionTemplate session, int scrapNo);
 	
 }

@@ -10,7 +10,9 @@
     justify-content: end;
 }
 .scrap-search{
-    width: 300px;
+    width:400px;
+    display: flex;
+    justify-content: space-around;
 }
 
 .searchList-container{

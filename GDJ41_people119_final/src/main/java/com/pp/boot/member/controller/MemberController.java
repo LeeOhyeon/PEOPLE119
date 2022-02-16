@@ -1,6 +1,7 @@
 package com.pp.boot.member.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -24,6 +25,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pp.boot.common.PageFactoryMember;
+import com.pp.boot.common.PageFactorySearchScrap;
 import com.pp.boot.member.model.service.MemberService;
 import com.pp.boot.member.model.vo.Member;
 import com.pp.boot.member.model.vo.Scrap;
@@ -366,12 +369,20 @@ public class MemberController {
 							
 		//스크랩 화면으로 이동
 		@RequestMapping("/memberScrapList.do")
-		public ModelAndView memberScrapList(@RequestParam String memberId,ModelAndView mv) {
+		public ModelAndView memberScrapList(@RequestParam String memberId, ModelAndView mv,@RequestParam(value = "cPage", defaultValue = "1") int cPage,
+				@RequestParam(value = "numPerPage", defaultValue = "5") int numPerPage) {
 			
-			Scrap scrap = service.selectScrapList(memberId);
+			Map<String, Object> param = new HashMap<>();
+			param.put("memberId", memberId);
+			param.put("cPage", cPage);
+			param.put("numPerPage", numPerPage);
 			
+			List<Scrap> scrap = service.selectScrapList(param);
+			int scrapCount = service.selectScrapCount(memberId);
+			
+			mv.addObject("scrapCount",scrapCount);
 			mv.addObject("scrap",scrap);
-			
+			mv.addObject("pageBar", PageFactoryMember.getPageBar(scrapCount, cPage, numPerPage, 5, "/member/memberScrapList.do?memberId="+memberId+"&&"));
 			log.debug("sList : "+scrap);
 			
 			mv.setViewName("member/memberScrap");
@@ -386,7 +397,55 @@ public class MemberController {
 			int result = service.insertScrap(param);
 			return result;
 		}
+		//공고스크랩 체크
+		@RequestMapping("/checkScrap.do")
+		@ResponseBody
+		public void checkScrap(@RequestParam Map<String, Object> param,HttpServletResponse response) throws IOException {
+			Scrap scrap = service.checkScrap(param);
+			response.setContentType("application/json; charset=utf-8");
+			response.getWriter().print(scrap!=null?false:true);
+		}
 		
+		//공고스크랩 검색
+		@RequestMapping("/searchScrap.do")
+		@ResponseBody
+		public Map<String,Object> searchScrap(
+				@RequestParam String searchCol,
+				@RequestParam String keyword,
+				@RequestParam String memberId,
+				@RequestParam(value="cPage",defaultValue = "1") int cPage,
+				@RequestParam(value="numPerPage" , defaultValue = "5") int numPerPage,
+				HttpServletResponse response) {
+			
+			Map<String,Object> param = new HashMap<>();
+			Map<String,Object> paramPage = new HashMap<>();
+			
+			param.put("keyword", keyword);
+			param.put("searchCol", searchCol);
+			param.put("memberId", memberId);
+			int count = service.searchScrapCount(param);
+			
+			param.put("cPage", cPage);
+			param.put("numPerPage", numPerPage);
+			
+			List<Scrap> scrap = service.searchScrapList(param);
+			
+			String pageBar = PageFactorySearchScrap.getPageBar(count, cPage, numPerPage, 5);
+			
+			paramPage.put("scrap", scrap);
+			paramPage.put("pageBar", pageBar);
+			paramPage.put("count", count);
+			
+			return paramPage;
+		}
 		
+		//공고삭제
+		@RequestMapping("/deleteScrap.do")
+		@ResponseBody
+		public int deleteScrap(@RequestParam int scrapNo,HttpServletResponse response) {
+			response.setContentType("application/json; charset=utf-8");
+			int result = service.deleteScrap(scrapNo);
+			return result;
+		}
 		
 }
