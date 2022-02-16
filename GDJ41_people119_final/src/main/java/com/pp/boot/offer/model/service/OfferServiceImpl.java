@@ -45,7 +45,14 @@ public class OfferServiceImpl implements OfferService {
 	}
 	
 	// 공고 상세보기
+	@Override
 	public Offer selectOffer(int offerNo) {
 		return dao.selectOffer(session, offerNo);
+	}
+	
+	// 회사명 별 공고 개수 가져오기
+	@Override
+	public List<Offer> countOffer() {
+		return dao.countOffer(session);
 	}
 }

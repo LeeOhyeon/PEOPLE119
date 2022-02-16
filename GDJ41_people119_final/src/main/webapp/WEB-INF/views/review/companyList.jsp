@@ -38,7 +38,7 @@
             </div>
           </div>
           <div class="company-review-image">
-            ㅎㅇㅎㅇ
+          
           </div>
         </div>
         <div class="total-review">
@@ -61,8 +61,8 @@
 	              <!-- <span><i class="fas fa-image"></i></span> -->
 	            </div>
 	            <div class="company-name">
-	              <h5><strong><c:out value="${cl.companyName }"/></strong></h5>
-	              <p>현재 채용중 00건 -> 이거 없다 추가해야할듯</p>
+	              <h5><strong><a href="${path }/review/companyReview.do?companyName=${cl.companyName}"><c:out value="${cl.companyName }"/></a></strong></h5>
+	              <p>현재 채용중 <span></span></p>
 	            </div>
 	            <div class="review-info">
 	              노력하지 않고 무언가를 잘 해낼 수 있는 사람이 천재라고 한다면, 저는 절대 천재가 아닙니다.

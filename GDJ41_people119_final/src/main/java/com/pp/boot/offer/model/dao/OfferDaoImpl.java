@@ -2,13 +2,10 @@ package com.pp.boot.offer.model.dao;
 
 import java.util.List;
 
-import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.pp.boot.offer.model.vo.Offer;
-
-import lombok.extern.slf4j.Slf4j;
 
 @Repository
 public class OfferDaoImpl implements OfferDao {
@@ -28,13 +25,21 @@ public class OfferDaoImpl implements OfferDao {
 	}
 	
 	// 공고 등록
+	@Override
 	public int enrollOffer(SqlSessionTemplate session, Offer o) {
 		return session.insert("offer.enrollOffer", o);
 	}
 	
 	// 공고 상세보기
+	@Override
 	public Offer selectOffer(SqlSessionTemplate session, int offerNo) {
 		return session.selectOne("offer.selectOffer", offerNo);
+	}
+	
+	// 회사 명 별 공고 개수 가져오기
+	@Override
+	public List<Offer> countOffer(SqlSessionTemplate session) {
+		return session.selectList("offer.countOffer");
 	}
 	
 }

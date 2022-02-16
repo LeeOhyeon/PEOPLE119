@@ -23,6 +23,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.pp.boot.company.model.service.CompanyService;
 import com.pp.boot.company.model.vo.Company;
+import com.pp.boot.offer.model.service.OfferService;
+import com.pp.boot.offer.model.vo.Offer;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -37,6 +39,9 @@ public class CompanyController {
 	
 	@Autowired
 	private PasswordEncoder encoder;
+	
+	@Autowired
+	private OfferService offerService;
 	
 	@RequestMapping("/companyLoginView.do")
 	public String companyLoginView() {
@@ -167,12 +172,15 @@ public class CompanyController {
 		@RequestMapping("/companyList.do")
 		public String companyList(Model model) {
 			List<Company> list = service.selectCompanyList();
+			List<Offer> offerCounts = offerService.countOffer();
 			
-			for(int i = 0; i < list.size(); i++) {
-				log.debug("{}" + list.get(i).getCompanyId());
-			}
+			
+//			for(int i = 0; i < list.size(); i++) {
+//				log.debug("{}" + list.get(i).getCompanyId());
+//			}
 			
 			model.addAttribute("companyList", list);
+			model.addAttribute("offerCounts", offerCounts);
 			
 			return "review/companyList";
 		}

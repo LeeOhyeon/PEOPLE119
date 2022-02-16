@@ -1,6 +1,7 @@
 package com.pp.boot.review.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,16 @@ public class ReviewServiceImpl implements ReviewService {
 	public List<CompanyReview> selectCompanyReviewList() {
 		return dao.selectCompanyReviewList(session);
 	}
+	
+	// 기업 리뷰 등록
+	@Override
+	public int insertCompanyReview(CompanyReview cr) {
+		return dao.insertCompanyReview(session, cr);
+	}
 
+	// meetingCount
+	@Override
+	public Map countPercent(String companyName) {
+		return dao.countPercent(session, companyName);
+	}
 }
