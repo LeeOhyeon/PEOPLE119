@@ -1,6 +1,7 @@
 package com.pp.boot.member.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -25,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.pp.boot.member.model.service.MemberService;
 import com.pp.boot.member.model.vo.Member;
+import com.pp.boot.member.model.vo.Scrap;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -362,5 +364,29 @@ public class MemberController {
 			return loginMember; 
 		}
 							
+		//스크랩 화면으로 이동
+		@RequestMapping("/memberScrapList.do")
+		public ModelAndView memberScrapList(@RequestParam String memberId,ModelAndView mv) {
+			
+			Scrap scrap = service.selectScrapList(memberId);
+			
+			mv.addObject("scrap",scrap);
+			
+			log.debug("sList : "+scrap);
+			
+			mv.setViewName("member/memberScrap");
+			return mv;
+		}
+		
+		//공고스크랩
+		@RequestMapping("/insertScrap.do")
+		@ResponseBody
+		public int insertScrap(@RequestParam Map<String, Object> param,HttpServletResponse response) {
+			response.setContentType("application/json; charset=utf-8");
+			int result = service.insertScrap(param);
+			return result;
+		}
+		
+		
 		
 }

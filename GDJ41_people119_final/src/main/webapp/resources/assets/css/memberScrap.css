@@ -1,0 +1,37 @@
+.resume-btn {
+    margin-top:50px;
+}
+.total-count {
+    margin-top:40px;
+}
+
+.scrap-searchContainer{
+    display: flex;
+    justify-content: end;
+}
+.scrap-search{
+    width: 300px;
+}
+
+.searchList-container{
+display: flex;
+justify-content: flex-start;
+height: 200px;
+border: 1px solid black;
+}
+.company-title{
+    width: 20%;
+    border: 1px solid black;
+}
+.offer-title{
+    width: 60%;
+    border: 1px solid black;
+}
+.finishDate-container{
+    width: 10%;
+    border: 1px solid black;
+}
+.deleteBtn-container{
+    width: 10%;
+    border: 1px solid black;
+}

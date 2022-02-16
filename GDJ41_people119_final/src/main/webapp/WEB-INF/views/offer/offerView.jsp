@@ -14,8 +14,9 @@
 	<div class="quickmenu">
 		<ul>
 			<li>
-				<a href="${path }/applicant/apply.do?offerNo=${offer.offerNo}&memberId=${loginMember.memberId}">지원하기</a>
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">지원하기</button>
+				<a href="${path }/applicant/apply.do?offerNo=${offer.offerNo}&memberId=${loginMember.memberId}"><button type="button" class="btn btn-primary">지원하기</button></a>
+				<button type="button" class="btn btn-primary" onclick="insertScrap();">스크랩</button>
+				<a href="${path }/"><button type="button" class="btn btn-primary">관심기업</button></a>
 			</li>
 			<li>
 			<!-- <li><a href="#">스크랩하기</a></li> -->
@@ -23,9 +24,27 @@
 			</li>
 		</ul>
 	</div>
+	<script type="text/javascript">
+		const insertScrap=()=>{
+			$.ajax({
+				url:"${path }/member/insertScrap.do",
+				type:"post",
+				data:{memberId:"${loginMember.memberId}",
+						offerNo:"${offer.offerNo}"	
+				},
+				success:data=>{
+					alert("스크랩 완료");					
+				},
+				error:e=>{
+					alert("스크랩실패");
+				}
+			});
+		}
+	
+	</script>
 	
 	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
@@ -43,7 +62,7 @@
 	      </div>
 	    </div>
 	  </div>
-	</div>
+	</div> -->
 	
 	<div class="content">
 		
@@ -55,7 +74,7 @@
 		
 	
 		<p class="hirepostTitle"><c:out value="${offer.offerTitle }"/></p>
-		<img alt="파비콘" src="/resources/upload/company/"><!-- offer의 company의 파비콘이네,,, -->
+		<!-- <img alt="파비콘" src="/resources/upload/company/">offer의 company의 파비콘이네,,, -->
 		<p class="companyName"><c:out value="${offer.companyName }"/></p>
 		<hr>
 		<p class="title">기술스택</p>
@@ -94,7 +113,7 @@
 		</ul>
 		
 		<p class="title">기업 / 서비스 소개</p>
-		<img alt="회사사진" src="/resources/upload/offer/${offer.image }">
+		<%-- <img alt="회사사진" src="/resources/upload/offer/${offer.image }"> --%>
 		<p><c:out value="${offer.offerContent }"/></p>
 		
 		<table>

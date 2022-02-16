@@ -1,8 +1,10 @@
 package com.pp.boot.member.model.service;
 
+import java.util.List;
 import java.util.Map;
 
 import com.pp.boot.member.model.vo.Member;
+import com.pp.boot.member.model.vo.Scrap;
 
 public interface MemberService {
 
@@ -17,5 +19,7 @@ public interface MemberService {
 	int updateAddress(Map param);
 	int updateEmail(Map param);
 	int updatePhone(Map param);
+	int insertScrap(Map<String, Object> param);
+	Scrap selectScrapList(String memberId);
 	
 }

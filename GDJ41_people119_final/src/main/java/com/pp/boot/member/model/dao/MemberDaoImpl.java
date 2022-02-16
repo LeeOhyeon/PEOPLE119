@@ -1,11 +1,13 @@
 package com.pp.boot.member.model.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.pp.boot.member.model.vo.Member;
+import com.pp.boot.member.model.vo.Scrap;
 
 @Repository
 public class MemberDaoImpl implements MemberDao {
@@ -62,6 +64,16 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	public int updatePhone(SqlSessionTemplate session, Map param) {
 		return session.update("member.updatePhone",param);
+	}
+
+	@Override
+	public int insertScrap(SqlSessionTemplate session,Map param) {
+		return session.insert("member.insertScrap",param);
+	}
+
+	@Override
+	public Scrap selectScrapList(SqlSessionTemplate session, String memberId) {
+		return session.selectOne("member.selectScrapList",memberId);
 	}
 	
 	

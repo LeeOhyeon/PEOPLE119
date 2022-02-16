@@ -20,6 +20,7 @@
 		<typeAlias type="com.pp.boot.resume.model.vo.Certificate" alias="certificate"/>
 		<typeAlias type="com.pp.boot.resume.model.vo.Language" alias="lang"/>
 		<typeAlias type="com.pp.boot.resume.model.vo.SelectResume" alias="selectResume"/>
+		<typeAlias type="com.pp.boot.member.model.vo.Scrap" alias="scrap"/>
 	</typeAliases>
 	
 	

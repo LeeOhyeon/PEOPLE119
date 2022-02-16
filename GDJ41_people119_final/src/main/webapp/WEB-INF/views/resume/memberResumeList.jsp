@@ -35,9 +35,9 @@
                   <li class="resume-link"><a href="${path}/resume/memberResumeList.do?memberId=${loginMember.memberId}">이력서 관리</a></li>
                 </ul>
               </li>
-              <li class="link-tab-li"><a href="#"><i class="fas fa-star"></i> 스크랩/관심 기업</a></li>
+               <li class="link-tab-li"><a href="#"><i class="fas fa-star"></i>채용공고 스크랩</a></li>
+              <li class="link-tab-li"><a href="#"><i class="fas fa-star"></i>관심 기업</a></li>
               <li class="link-tab-li"><a href="${path }/applicant/applyList.do?memberId=${loginMember.memberId}"><i class="fas fa-location-arrow"></i> 지원 내역</a></li>
-              <li class="link-tab-li"><a href="#"><i class="far fa-calendar-alt"></i> 면접 현황</a></li>
             </ul>
           </div>
           <div class="update-info-container">
@@ -81,9 +81,9 @@
               </div>
               <div class="check-resume">
                 <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" 
+             <%--      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" 
 					${rList.openYn=='Y'?"checked":"" }>
-                  <label class="form-check-label" for="flexSwitchCheckChecked">이력서공개</label>
+                  <label class="form-check-label" for="flexSwitchCheckChecked">이력서공개</label> --%>
                 </div>
                 <div class="resume-del">
                   <button type="button" class="btn btn-light" style="width:100px"

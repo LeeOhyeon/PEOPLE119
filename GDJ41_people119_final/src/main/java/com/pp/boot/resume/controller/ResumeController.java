@@ -43,7 +43,7 @@ public class ResumeController {
 	// 회원 이력서 목록
 	@RequestMapping("/memberResumeList.do")
 	public ModelAndView memberResumeList(@RequestParam String memberId, ModelAndView mv,@RequestParam(value = "cPage", defaultValue = "1") int cPage,
-		@RequestParam(value = "numPerPage", defaultValue = "5") int numPerPage) {
+		@RequestParam(value = "numPerPage", defaultValue = "10") int numPerPage) {
 
 		
 		Map<String, Object> param = new HashMap<>();
