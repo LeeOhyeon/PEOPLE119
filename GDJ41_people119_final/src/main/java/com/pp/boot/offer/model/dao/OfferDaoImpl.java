@@ -42,4 +42,10 @@ public class OfferDaoImpl implements OfferDao {
 		return session.selectList("offer.countOffer");
 	}
 	
+	// 공고 조회수 올리기
+	@Override
+	public int updateReadCount(SqlSessionTemplate session, int offerNo) {
+		return session.update("offer.updateReadCount", offerNo);
+	}
+	
 }

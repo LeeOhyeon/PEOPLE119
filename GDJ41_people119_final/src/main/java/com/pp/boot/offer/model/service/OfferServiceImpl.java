@@ -55,4 +55,10 @@ public class OfferServiceImpl implements OfferService {
 	public List<Offer> countOffer() {
 		return dao.countOffer(session);
 	}
+	
+	// 공조 조회수 올리기
+	@Override
+	public int updateReadCount(int offerNo) {
+		return dao.updateReadCount(session, offerNo);
+	}
 }

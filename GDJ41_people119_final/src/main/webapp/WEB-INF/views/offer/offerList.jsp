@@ -63,7 +63,8 @@
       
 	<!-- ===== 지금뜨는 채용공고 ===== -->
 	<div>
-		<h1>지금 뜨는 채용공고</h1>
+		<h1 style="display: inline-block; margin-right: 40px;">지금 뜨는 채용공고</h1>
+		<span>* 가장 조회가 많이 된 TOP3 공고를 확인하세요</span>
 	</div>
 	<div id="hotHirepost" class="margin">
 		<!-- TOP1 -->

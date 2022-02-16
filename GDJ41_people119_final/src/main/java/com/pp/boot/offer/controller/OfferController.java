@@ -50,9 +50,13 @@ public class OfferController {
 	// 채용공고 상세보기
 	@RequestMapping("/offerView.do")
 	public String offerView(@RequestParam int offerNo, Model model) {
+		// 공고 조회수 올리기
+		int readCount = service.updateReadCount(offerNo);
+		
+		// 공고 정보 가져오기
 		Offer offer = service.selectOffer(offerNo);
 		
-		String[] tech = offer.getTech().split(",");
+//		String[] tech = offer.getTech().split(",");
 		
 		model.addAttribute("offer", offer);
 		
@@ -69,7 +73,7 @@ public class OfferController {
 	@RequestMapping(value="/enrollOfferEnd.do", method=RequestMethod.POST)
 	public ModelAndView enrollOfferEnd(Offer o, ModelAndView mv, @RequestParam(value="file1", required=false) MultipartFile file1, HttpServletRequest req) {
 		
-		log.debug("{}" + o);
+//		log.debug("{}" + o);
 		
 		// 저장경로 설정
 		String path = req.getServletContext().getRealPath("/resources/upload/offer/");
