@@ -40,7 +40,7 @@
         <p>등록된 이력서의 입사 경력을 불러옵니다. 작성해주신 면접후기는 <strong>익명</strong>으로 등록됩니다.</p>
         <div class="normal-info">
           <h5><strong>기본정보입력</strong></h5>
-          <form action="${path}/interview/interviewEnroll.do" onsubmit="return submitChk();" name="fr">
+          <form action="${path}/interview/interviewEnroll.do" onsubmit="return submitChk();">
             <div class="company-name">
               <div>
                 <p>기업명</p>
@@ -71,7 +71,7 @@
               <div class="carrer-select">
                 <div>
                   <select class="form-select" aria-label="Default select example" name="dept" id="dept" style="width:200px">
-                    <option value="직급선택"selected>직급선택</option>
+                    <option value="직급선택" selected="selected">직급선택</option>
                     <option value="인턴">인턴</option>
                     <option value="사원">사원</option>
                     <option value="대리">대리</option>
@@ -81,7 +81,7 @@
                 </div>
                 <div>
                   <select class="form-select" aria-label="Default select example" style="width:200px" name="career" id="career">
-                    <option selected>연차선택</option>
+                    <option selected="selected">연차선택</option>
                     <option value="신입">신입</option>
                     <option value="1년">1년</option>
                     <option value="2년">2년</option>
@@ -264,37 +264,28 @@
         format: "yyyy-mm-dd",
         language: "kr"
       });
-     
-
       
       function submitChk(){
        	  
-       	  /* const dept=$("#dept").val();
-       	  var career=$("#career").val();
-       	  var datePicker=("#datePicker").val();
-       	  var evaluation=$("input[name='evaluation']").val(); */
-
-       	  console.log($("select[name=dept]:seleted").val());
-       	  if(fr.dept.value == "직급선택") {
-       		  alert("직급을 선택해주세요");
-       		  return false;
-       	  } else{
-       		return true;
-       	  }
-       	  /* if(career=="연차선택") {
-       		  alert("연차를 선택해주세요");
-       		  return false;
-       	  }
-       	  if(datePicker=="") {
-       		  alert("날짜를 선택해주세요");
-       		  return false;
-       	  }
-       	  if(evaluation=="") {
-       		  alert("전반적인 평가를 선택해주세요");
-       		  return false;
-       	  }  */
+    	//직급, 연차, 날짜, 평가
+    	
+    	if($("select[name=dept]").val() =='직급선택'){
+    		alert("직급을 선택하세용");
+    		return false;
+    	}else if($("select[name=career]").val() =='연차선택'){
+    		alert("연차를 선택하세용");
+    		return false;
+    	}else if($("input[name=interviewDate]").val() ==''){
+    		alert("날짜를 선택하세용");
+    		return false;
+    	}else if(!$("input[name=evaluation]").is(':checked')){
+    		alert("전반적평가를 선택하세용");
+    		return false;
+    	}else{
+    		return true;
+    	} 
        	  
-         }
+       }
       
     </script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -46,11 +47,20 @@ public class InterviewController {
 	}
 	
 	 @RequestMapping("/interviewEnroll.do") 
-	 public ModelAndView interviewEnroll(ModelAndView mv,InterviewReview i) {
-		 System.out.println(i);
+	 public String interviewEnroll(InterviewReview i,Model model) {
+		
 		 int result=service.interviewEnroll(i);
-	 
-		 return mv; 
+		 String msg = "";
+		 String loc = "";
+		 if(result>0) {
+			 msg ="등록완료";
+			  loc ="/";	 
+		 }
+		 
+		 model.addAttribute("msg",msg);
+		 model.addAttribute("loc",loc);
+		 
+		 return "interview/interviewList"; 
 	 }
 	 
 	

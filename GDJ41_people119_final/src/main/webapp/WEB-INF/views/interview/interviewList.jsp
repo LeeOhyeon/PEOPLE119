@@ -42,7 +42,7 @@
             </select>
           </div>
           <div class="enrollInterview">
-             <button type="button" class="btn btn-primary" onclick="enroll();" style="width:150px">후기 등록하기</button>
+             <button type="button" class="btn btn-primary" onclick="location.assign('${path}/interview/interviewEnrollView.do?memberId=${loginMember.memberId}');" style="width:150px">후기 등록하기</button>
           </div>
         </div>
         <div class="company-container">
@@ -161,7 +161,7 @@
     </section>
     <script>
       const enroll=()=>{
-    	  location.assign("${path}/interview/interviewEnrollView.do?memberId=${loginMember.memberId}");
+    	  
       }
     </script>
     
