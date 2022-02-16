@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pp.boot.interview.model.dao.InterviewDao;
+import com.pp.boot.interview.model.vo.InterviewReview;
 import com.pp.boot.interview.model.vo.InterviewCareer;
 
 @Service
@@ -24,4 +25,12 @@ public class InterviewServiceImpl implements InterviewService {
 		return list;
 	}
 
+	@Override
+	public int interviewEnroll(InterviewReview i) {
+		// TODO Auto-generated method stub
+		int result=dao.interviewEnroll(session,i);
+		
+		return result;
+	}
+	
 }

@@ -34,15 +34,15 @@
           </div>
         </div>
         <div class="select-box">
-          <div>
+          <div class="select-parse">
             <select class="form-select" aria-label="Default select example" style="width:100px">
               <option value="1">등록순</option>
               <option value="2">조회순</option>
               <option value="3">인기순</option>
             </select>
           </div>
-          <div>
-             <button type="button" class="btn btn-primary" onclick="enroll();" style="width:150px">등록하기</button>
+          <div class="enrollInterview">
+             <button type="button" class="btn btn-primary" onclick="enroll();" style="width:150px">후기 등록하기</button>
           </div>
         </div>
         <div class="company-container">
@@ -161,7 +161,7 @@
     </section>
     <script>
       const enroll=()=>{
-    	  location.assign("${path}/interview/interviewEnroll.do?memberId=${loginMember.memberId}");
+    	  location.assign("${path}/interview/interviewEnrollView.do?memberId=${loginMember.memberId}");
       }
     </script>
     
