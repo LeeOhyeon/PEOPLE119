@@ -45,12 +45,22 @@
               <div>
                 <p>기업명</p>
               </div>
-              <div class="select-box">
-                <select class="form-select"  aria-label="Default select example" name="companyName" style="width:250px">
-              		<c:forEach var="l" items="${list}">
+              <div class="select-box">          
+              		<c:choose>  
+						<c:when test="${empty list}"> 
+							<input type="text" class="form-control" name="companyName" id="companyName" style="width:300px">
+						</c:when> 
+							<c:otherwise>
+							 <select class="form-select"  aria-label="Default select example" name="companyName" style="width:250px">
+								<c:forEach var="l" items="${list}">
+              						<option value="${l.companyName}">${l.companyName}</option>
+              					</c:forEach>
+              				</select> 
+							</c:otherwise> 
+					</c:choose>  	              	            
+              	 	<%-- <c:forEach var="l" items="${list}">
               			<option value="${l.companyName}">${l.companyName}</option>
-              		</c:forEach>
-            	</select>
+              		</c:forEach> --%>
               </div>
             </div>
             <div class="duty">
@@ -134,27 +144,27 @@
               </div>
               <div class="interview-check">
 
-                <input class="form-check-input" type="checkbox" value="직무" id="interviewType1" name="interviewType">
+                <input class="form-check-input" type="checkbox" value="직무/인성면접" id="interviewType1" name="interviewType">
                 <label class="form-check-label" for="flexCheckDefault">
                   직무/인성면접
                 </label>
 
-                <input class="form-check-input" type="checkbox" value="PT" id="interviewType2" name="interviewType">
+                <input class="form-check-input" type="checkbox" value="PT면접" id="interviewType2" name="interviewType">
                 <label class="form-check-label" for="flexCheckDefault">
                   PT면접
                 </label>
 
-                <input class="form-check-input" type="checkbox" value="토론" id="interviewType3" name="interviewType">
+                <input class="form-check-input" type="checkbox" value="토론면접" id="interviewType3" name="interviewType">
                 <label class="form-check-label" for="flexCheckDefault">
                   토론면접
                 </label>
 
-                <input class="form-check-input" type="checkbox" value="실무" id="interviewType4" name="interviewType">
+                <input class="form-check-input" type="checkbox" value="실무과제 및 시험" id="interviewType4" name="interviewType">
                 <label class="form-check-label" for="flexCheckDefault">
                   실무 과제 및 시험
                 </label>
 
-                <input class="form-check-input" type="checkbox" value="인적성" id="interviewType5" name="interviewType">
+                <input class="form-check-input" type="checkbox" value="인적성 검사" id="interviewType5" name="interviewType">
                 <label class="form-check-label" for="flexCheckDefault">
                   인적성 검사
                 </label>
@@ -281,10 +291,32 @@
     	}else if(!$("input[name=evaluation]").is(':checked')){
     		alert("전반적평가를 선택하세용");
     		return false;
-    	}else{
-    		return true;
-    	} 
-       	  
+    	}else if(!$("input[name=difficulty]").is(':checked')){
+    		alert("난이도를 평가해주세용");
+    		return false;
+    	}else if(!$("input[name=interviewType]").is(':checked')) {
+    		alert("면접 및 전형 유형을 선택해주세요");
+    		return false;
+    	}else if(!$("input[name=interviewees]").is(':checked')) {
+    		alert("면접인원을 선택해주세용");
+    		return false;
+    	}else if($("input[name=workType]").val()=='') {
+    		alert("직무직업을 입력해주세용");
+    		return false;
+    	}else if($("textarea[name=interviewProcess]").val()=='') {
+    		alert("면접 진행방식을 입력해주세요");
+    		return false;
+    	}else if($("input[name=interviewQuestion]").val()=='') {
+    		alert("면접질문을 최소 1개 입력해주세요");
+    		return false;
+    	}else if($("textarea[name=interviewTip]").val()=='') {
+    		alert("면접 TIP을 입력해주세요");
+    		return false;
+    	}else if(!$("input[name=passOrNot]").is(':checked')) {
+    		alert("합격 여부를 선택해주세요");
+    		return false;
+    	}
+       	  	
        }
       
     </script>

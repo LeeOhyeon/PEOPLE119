@@ -137,7 +137,10 @@ margin-left:120px;
     justify-content: center;
 }
 .select-box {
-	margin-left:30px;
+	/* margin-left:30px; */
+}
+.select-box select {
+	margin-left:135px;
 }
 .eval input[type="radio"]+span {
 	border-radius: 15px;

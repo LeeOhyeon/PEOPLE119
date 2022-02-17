@@ -5,8 +5,8 @@
     height:auto;
     border-radius:10px;
     margin-top:20px;
+    padding-bottom:20px;
 }
-
 
 .company-info-title {
     
@@ -93,6 +93,7 @@
 .question div{
     margin-right:10px;
 }
-.enrollInterview {
-	margin-left:30px;
+.companyName{
+	cursor:pointer;
 }
+
