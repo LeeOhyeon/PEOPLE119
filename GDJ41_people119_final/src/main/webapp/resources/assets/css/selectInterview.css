@@ -16,18 +16,18 @@ margin-top:30px;
 }
 
 .company-name input[type="text"] {
-margin-left:135px;    
+	margin-left:135px;    
 }
-.duty input[type="text"] {
-margin-left:120px;
+.workType{
+	margin-left:120px;
 }
 .carrer-select {
     display:flex;
     justify-content: center;
     margin-left:80px;
 }
-.carrer-select select {
-    margin-right:20px;
+.carrer-select div {
+    margin-right:10px;
 }
 .interview-date {
     margin-top:30px;
@@ -74,7 +74,7 @@ margin-left:120px;
     margin-top:30px;
 }
 .interviewee-check {
-    margin-left:70px;
+    margin-left:120px;
 }
 .interviewee-check label{
     margin-right:5px;
@@ -82,13 +82,16 @@ margin-left:120px;
 .interview-process {
     display:flex;
     margin-top:30px;
+    width:1296px;
+}
+.wayofinterview{
+	width:10%;
 }
 .mb-3 {
-    margin-left:90px;
+    width:50%;
+    margin-left:55px;
 }
-.mb-3 textarea{
- width:600px;
-}
+
 .question {
     display:flex;
     margin-top:10px;
@@ -110,6 +113,7 @@ margin-left:120px;
 .question-tip {
     margin-top:30px;
     display:flex;
+    width:1296px;
 }
 .question-tip>.mb-3{
     margin-left:100px;
@@ -132,12 +136,12 @@ margin-left:120px;
     height:40px;
 }
 .btn-container {
-    margin-top:50px;
-    display:flex;
-    justify-content: center;
+    margin-top:100px;
+    margin-left:300px;
+    padding-bottom:100px;
 }
 .select-box {
-	/* margin-left:30px; */
+	margin-left:135px
 }
 .select-box select {
 	margin-left:135px;
