@@ -14,10 +14,47 @@ section{
 }
 
 #hirepostList{
-	display: flex;	
 	justify-content: space-around;
 }
 
 div.margin{
 	margin-bottom: 80px;
+}
+
+img.offerImg{
+	width: 429px;
+	height: 200px;
+}
+
+.companyName{
+	color: blue;
+	font-size: 20px;
+	margin-bottom: 5px;
+	margin-left: 3px;
+}
+.offerTitle{
+	font-size: 25px;
+	font-weight: bolder;
+	text-decoration: none;
+	color: black;
+	margin-bottom: 5px;
+}
+.offerTech{
+	font-size: 13px;
+	color: gray;
+	margin-bottom: 5px;
+	margin-left: 3px;
+}
+.offerInfo{
+	font-size: 13px;
+	color: gray;
+	margin-left: 3px;
+}
+
+#hirepost{
+	display:inline-block;
+	width: 430px;
+	margin-bottom: 20px;
+	border: 1px solid lightgray;
+	height: 330px;
 }

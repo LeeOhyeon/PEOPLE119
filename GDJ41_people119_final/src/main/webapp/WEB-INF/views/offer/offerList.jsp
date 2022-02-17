@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>    
 <c:set var="path" value="${pageContext.request.contextPath }"/>
 
 <%-- <c:if test="${not empty loginMember }">
@@ -34,7 +35,7 @@
 <section class="inner-page">
 	<br><br>	
 	<!-- ===== 포지션 탐색 버튼 ===== -->
-	 <div class="margin">
+<!-- 	 <div class="margin">
 	 	<h1>포지션 탐색</h1>
 	 	
 		<button class="btn btn-outline-primary">전체</button>
@@ -58,7 +59,7 @@
 		<button class="btn btn-outline-primary">웹 퍼블리셔</button>
 		<button class="btn btn-outline-primary">VR / AR / 3D</button>
 		<button class="btn btn-outline-primary">기술지원</button>
-	</div>
+	</div> -->
 	<!-- End 포지션 탐색 버튼 -->
       
 	<!-- ===== 지금뜨는 채용공고 ===== -->
@@ -67,64 +68,32 @@
 		<span>* 가장 조회가 많이 된 TOP3 공고를 확인하세요</span>
 	</div>
 	<div id="hotHirepost" class="margin">
-		<!-- TOP1 -->
-		<div id="hirepost">
-			<img alt="회사사진" src="">
-			<p>회사이름</p>
-			<a href="${path }/offer/offerView.do">채용공고 제목</a>
-			<p>기술스택</p>
-			<p>위치 및 경력</p>
-		</div>
-		<!-- TOP2 -->
-		<div id="hirepost">
-			<img alt="회사사진" src="">
-			<p>회사이름</p>
-			<c:out value="${totalData }"/>
-			<a href="#">채용공고 제목</a>
-			<p>기술스택</p>
-			<p>위치 및 경력</p>
-		</div>
-		<!-- TOP3 -->
-		<div id="hirepost">
-			<img alt="회사사진" src="">
-			<p>회사이름</p>
-			<a href="#">채용공고 제목</a>
-			<p>기술스택</p>
-			<p>위치 및 경력</p>
-		</div>
+		<c:forEach var="hl" items="${hotList }">
+			<div id="hirepost">
+				<img class="offerImg" alt="등록이미지가 없습니다." src="/resources/upload/offer/${hl.image }">
+					<p class="companyName"><c:out value="${hl.companyName }"/></p>
+					<p class="offerTitle"><a class="offerTitle" href="${path }/offer/offerView.do?offerNo=${hl.offerNo}"><c:out value="${hl.offerTitle }"/></a></p>
+					<p class="offerTech">${fn:replace(hl.tech, ',', ' · ') }</p>
+					<p class="offerInfo"><c:out value="${hl.location }"/> / <c:out value="${hl.carrer }"/></p>
+			</div>
+		</c:forEach>
 	</div>
 	<!-- ===== End 지금뜨는 채용공고 ===== -->
 
 	<!-- ===== 채용공고 리스트 ===== -->
 	<div class="margin">
-		<!-- 경력 / 지역 / 기술스택 별 select버튼 -->	
-		<div>
-			<select>
-				<option>신입</option>
-				<option>1년</option>
-				<option>2년</option>
-			</select>
-			<select>
-				<option>강남구</option>
-				<option>00구</option>
-				<option>00구</option>
-			</select>
-			<select>
-				<option>Java</option>
-				<option>JavaScript</option>
-				<option>HTML</option>
-			</select>
+		<div style="margin-bottom: 20px;">
+			<h1 style="display: inline-block; margin-right: 40px;">전체 채용공고</h1>
 		</div>
-	
 		<!-- 채용공고 리스트 부분 -->
 		<div id="hirepostList">
 			<c:forEach var="o" items="${list }">
 				<div id="hirepost">
-					<img alt="등록이미지가 없습니다." src="/resources/upload/offer/${o.image }">
-					<p><c:out value="${o.companyName }"/></p>
-					<p><a href="${path }/offer/offerView.do?offerNo=${o.offerNo}"><c:out value="${o.offerTitle }"/></a></p>
-					<p><c:out value="${o.tech }"/></p>
-					<p><c:out value="${o.location }"/> / <c:out value="${o.carrer }"/></p>
+					<img class="offerImg" alt="등록이미지가 없습니다." src="/resources/upload/offer/${o.image }">
+					<p class="companyName"><c:out value="${o.companyName }"/></p>
+					<p class="offerTitle"><a class="offerTitle" href="${path }/offer/offerView.do?offerNo=${o.offerNo}"><c:out value="${o.offerTitle }"/></a></p>
+					<p class="offerTech">${fn:replace(o.tech, ',', ' · ') }</p>
+					<p class="offerInfo"><c:out value="${o.location }"/> / <c:out value="${o.carrer }"/></p>
 				</div>
 			</c:forEach>
 				<!-- <div id="hirepost">
@@ -133,16 +102,8 @@
 					<p>채용공고 제목</p>
 					<p>기술스택</p>
 					<p>위치 및 경력</p>
-				</div>
-				<div id="hirepost">
-					<img alt="회사사진" src="">
-					<p>회사이름</p>
-					<p>채용공고 제목</p>
-					<p>기술스택</p>
-					<p>위치 및 경력</p>
 				</div> -->
 		</div>
-		
 		<!-- 페이징 바 -->
 		<div id="pageBar">
 			${pageBar }

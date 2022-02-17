@@ -48,4 +48,10 @@ public class OfferDaoImpl implements OfferDao {
 		return session.update("offer.updateReadCount", offerNo);
 	}
 	
+	// 조회수 높은 TOP3 공고 가져오기
+	@Override
+	public List<Offer> selectHotOfferList(SqlSessionTemplate session) {
+		return session.selectList("offer.selectHotOfferList");
+	}
+	
 }

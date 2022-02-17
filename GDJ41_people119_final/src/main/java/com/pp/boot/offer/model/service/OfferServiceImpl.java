@@ -61,4 +61,10 @@ public class OfferServiceImpl implements OfferService {
 	public int updateReadCount(int offerNo) {
 		return dao.updateReadCount(session, offerNo);
 	}
+	
+	// 조회수 높은 TOP3 공고 가져오기
+	@Override
+	public List<Offer> selectHotOfferList() {
+		return dao.selectHotOfferList(session);
+	}
 }
