@@ -44,4 +44,9 @@ public class CompanyDaoImpl implements CompanyDao{
 		return session.selectOne("company.countCompany", companyName);
 	}
 	
+	// 회사 이름으로 검색하기
+	@Override
+	public List<Company> selectSearchCompanyList(SqlSessionTemplate session, String search){
+		return session.selectList("company.selectSearchCompanyList", search);
+	}
 }

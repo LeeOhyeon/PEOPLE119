@@ -50,5 +50,12 @@ public class ApplicantController {
 		return "applicant/applyList";
 	}
 	
+	// 지원 삭제
+//	@RequestMapping("/deleteApply.do")
+//	public String deleteApply() {
+//		
+//		return 
+//	}
+	
 	
 }

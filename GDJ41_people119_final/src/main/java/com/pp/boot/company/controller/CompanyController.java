@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
@@ -174,7 +175,6 @@ public class CompanyController {
 			List<Company> list = service.selectCompanyList();
 			List<Offer> offerCounts = offerService.countOffer();
 			
-			
 //			for(int i = 0; i < list.size(); i++) {
 //				log.debug("{}" + list.get(i).getCompanyId());
 //			}
@@ -184,7 +184,20 @@ public class CompanyController {
 			
 			return "review/companyList";
 		}
-	
+		
+		// 회사 이름으로 검색하기
+		@RequestMapping("searchList.do")
+		@ResponseBody
+		public String searchCompanyList(@RequestParam String search, Model model) {
+//			log.debug("{}" + search);
+			
+			List<Company> list = service.selectSearchCompanyList(search);
+//			log.debug("{}" + list);
+			
+			model.addAttribute("searchList", list);
+			
+			return "review/companyList";
+		}
 }
 
 

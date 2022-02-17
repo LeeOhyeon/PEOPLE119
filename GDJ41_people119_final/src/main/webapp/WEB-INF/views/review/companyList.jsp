@@ -30,12 +30,15 @@
             <button type="button" class="btn btn-primary" style="width:150px">전체 기업리뷰</button>
             <h1><strong>기업리뷰</strong></h1>
             <h5>앞으로 근무할 기업은 어떤 모습일까 궁금하시죠?<br>
-              <strong>현직자,퇴직자가 알려주는 생생한 기업리뷰</strong></h5>
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="어떤 기업의 리뷰가 궁금하세요?" aria-label="Recipient's username"
-                aria-describedby="basic-addon2">
-              <span class="input-group-text" id="basic-addon2"><i class="fas fa-search"></i></span>
-            </div>
+            <strong>현직자,퇴직자가 알려주는 생생한 기업리뷰</strong></h5>
+			<form name="searchFrm">
+	            <div class="input-group mb-3">
+	              <input type="text" id="searchCompanyName" class="form-control" placeholder="어떤 기업의 리뷰가 궁금하세요?" aria-label="Recipient's username"
+	                aria-describedby="basic-addon2">
+	              <!-- <span class="input-group-text" id="basic-addon2"><i class="fas fa-search"></i></span> -->
+	              <button class="input-group-text" id="basic-addon2" onclick="getSearchList();"><i class="fas fa-search"></i></button>
+	            </div>
+            </form>
           </div>
           <div class="company-review-image">
           
@@ -83,8 +86,54 @@
         </div>
       </div>
     </section>
+    
+    
     <script>
-
+    	// 회사이름으로 검색하기
+		function getSearchList(){
+			$.ajax({
+				url: "${path}/company/searchList.do",
+				data: {search: $('#searchCompanyName').val()},
+				dataType:"json",
+				success: data=>{
+					// 먼저 초기화 시키고
+					/* $(".total-review-info").empty();
+					
+					if(result.length == 0){
+						
+					} else if(result.length > 0){
+						
+					} */
+				}
+			})
+		}		
     </script>
   </main><!-- End #main -->
  <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

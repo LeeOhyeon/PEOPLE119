@@ -25,4 +25,6 @@ public interface CompanyDao {
 	// 해당 기업의 리뷰 전체 개수 가져오기
 	int countCompany(SqlSessionTemplate session, String companyName);
 	
+	// 회사 이름으로 검색하기
+	List<Company> selectSearchCompanyList(SqlSessionTemplate session, String search);
 }
