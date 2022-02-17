@@ -22,4 +22,10 @@ public interface OfferService {
 	
 	// 회사명 별 공고 개수 가져오기
 	List<Offer> countOffer();
+	
+	// 조회스 올리기
+	int updateReadCount(int offerNo);
+	
+	// 조회수 높은 TOP3 공고 가져오기
+	List<Offer> selectHotOfferList();
 }

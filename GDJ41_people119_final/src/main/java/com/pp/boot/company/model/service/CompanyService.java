@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.pp.boot.company.model.vo.Company;
-import com.pp.boot.review.model.vo.CompanyReview;
+import com.pp.boot.offer.model.vo.Offer;
 
 public interface CompanyService {
 
@@ -22,6 +22,9 @@ public interface CompanyService {
 	
 	// 해당 기업의 리뷰 전체 개수 가져오기
 	int countCompany(String companyName);
+	
+	// 회사 이름으로 검색하기
+	List<Company> selectSearchCompanyList(String search);
 	
 	
 }

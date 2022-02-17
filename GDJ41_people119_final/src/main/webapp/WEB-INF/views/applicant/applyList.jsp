@@ -82,7 +82,7 @@
 		              <h4><strong>알람여부</strong></h4>
 		            </div>
 		            <div class="apply-btn">
-		              <button type="button" class="btn btn-light" style="width:170px">지원취소</button>
+		              <button type="button" class="btn btn-light" style="width:170px" onclick="deleteApply();">지원취소</button>
 		            </div>
 		          </div>
 		        </div>
@@ -90,5 +90,16 @@
         </c:if>
       </div>
     </section>
+    
+    <script>
+    	const deleteApply=()=>{
+    		let reply = confirm("정말 지원을 취소하시겠습니까?");
+    		console.log(reply);
+    		if(reply == true) {
+    			console.log("good");
+    			location.href="${path}/applicant/deleteApply.do";
+    		}
+    	}
+    </script>
     
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
