@@ -35,9 +35,9 @@
                   <li class="resume-link"><a href="${path}/resume/memberResumeList.do?memberId=${loginMember.memberId}">이력서 관리</a></li>
                 </ul>
               </li>
-              <li class="link-tab-li"><a href="#"><i class="fas fa-star"></i> 스크랩/관심 기업</a></li>
+               <li class="link-tab-li"><a href="${path}/member/memberScrapList.do?memberId=${loginMember.memberId}"><i class="fas fa-star"></i>채용공고 스크랩</a></li>
+              <li class="link-tab-li"><a href="${path}/member/memberlikeCompany.do?memberId=${loginMember.memberId}"><i class="fas fa-star"></i>관심 기업</a></li>
               <li class="link-tab-li"><a href="${path }/applicant/applyList.do?memberId=${loginMember.memberId}"><i class="fas fa-location-arrow"></i> 지원 내역</a></li>
-              <li class="link-tab-li"><a href="#"><i class="far fa-calendar-alt"></i> 면접 현황</a></li>
             </ul>
           </div>
           <div class="update-info-container">
@@ -58,7 +58,13 @@
             <div class="resume-info">
               <div class="resume-title">
               	<a href="${path }/resume/resumeDetailView.do?resumeNo=${rList.resumeNo}">  
-                <h3><strong><c:out value="${rList.resumeTitle }"/></strong></h3>
+                <h3><strong><c:out value="${rList.resumeTitle }"/></strong>
+                <div class="resume-del">
+                  <button type="button"style="width:100px; background-color: white; border: none; font-size: 20px"
+                  onclick="if(confirm('정말 삭제하시겠습니까?'))
+                  location.assign('${path}/resume/deleteResume.do?resumeNo=${rList.resumeNo }&&memberId=${rList.memberId }');"
+                  ><i class="fas fa-trash-alt"></i></button>
+                </div></h3>
               	</a>
               </div>
               <div class="resume">
@@ -76,22 +82,12 @@
                   </div>
                   <div>
                     <h5><strong>희망지역 : <c:out value="${rList.workingArea }"/></strong></h5>
+                     
                   </div>
                 </div>
+                
               </div>
-              <div class="check-resume">
-                <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" 
-					${rList.openYn=='Y'?"checked":"" }>
-                  <label class="form-check-label" for="flexSwitchCheckChecked">이력서공개</label>
-                </div>
-                <div class="resume-del">
-                  <button type="button" class="btn btn-light" style="width:100px"
-                  onclick="if(confirm('정말 삭제하시겠습니까?'))
-                  location.assign('${path}/resume/deleteResume.do?resumeNo=${rList.resumeNo }&&memberId=${rList.memberId }');"
-                  >삭제</button>
-                </div>
-              </div>
+             
             </div>
             </c:if>
    		 </c:forEach>

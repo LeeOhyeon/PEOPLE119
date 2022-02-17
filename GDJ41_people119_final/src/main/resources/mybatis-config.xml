@@ -20,6 +20,10 @@
 		<typeAlias type="com.pp.boot.resume.model.vo.Certificate" alias="certificate"/>
 		<typeAlias type="com.pp.boot.resume.model.vo.Language" alias="lang"/>
 		<typeAlias type="com.pp.boot.resume.model.vo.SelectResume" alias="selectResume"/>
+		<typeAlias type="com.pp.boot.member.model.vo.Scrap" alias="scrap"/>
+		<typeAlias type="com.pp.boot.member.model.vo.LikeCompany" alias="likeCompany"/>
+		<typeAlias type="com.pp.boot.interview.model.vo.InterviewCareer" alias="interviewCareer"/>
+		<typeAlias type="com.pp.boot.interview.model.vo.InterviewReview" alias="interviewReview"/>
 	</typeAliases>
 	
 	

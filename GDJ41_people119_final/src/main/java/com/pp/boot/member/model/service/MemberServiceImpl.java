@@ -1,5 +1,6 @@
 package com.pp.boot.member.model.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -7,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pp.boot.member.model.dao.MemberDao;
+import com.pp.boot.member.model.vo.LikeCompany;
 import com.pp.boot.member.model.vo.Member;
+import com.pp.boot.member.model.vo.Scrap;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -75,6 +78,67 @@ public class MemberServiceImpl implements MemberService {
 		return dao.updatePhone(session,param);
 	}
 
+	@Override
+	public int insertScrap(Map<String, Object> param) {
+		return dao.insertScrap(session,param);
+	}
+
+	@Override
+	public List<Scrap> selectScrapList(Map<String, Object> param) {
+		return dao.selectScrapList(session,param);
+	}
+
+	@Override
+	public Scrap checkScrap(Map<String, Object> param) {
+		return dao.checkScrap(session,param);
+	}
+
+	@Override
+	public int selectScrapCount(String memberId) {
+		return dao.selectScrapCount(session,memberId);
+	}
+
+	@Override
+	public int searchScrapCount(Map<String, Object> param) {
+		return dao.searchScrapCount(session,param);
+	}
+
+	@Override
+	public List<Scrap> searchScrapList(Map<String, Object> param) {
+		return dao.searchScrapList(session,param);
+	}
+
+	@Override
+	public int deleteScrap(int scrapNo) {
+		return dao.deleteScrap(session,scrapNo);
+	}
+
+	@Override
+	public List<LikeCompany> selectlikeCompanyList(Map<String, Object> param) {
+		return dao.selectlikeCompanyList(session,param);
+	}
+
+	@Override
+	public int selectlikeCompanyCount(String memberId) {
+		return dao.selectlikeCompanyCount(session,memberId);
+	}
+
+	@Override
+	public int insertLikeCompany(Map<String, Object> param) {
+		return dao.insertLikeCompany(session,param);
+	}
+
+	@Override
+	public LikeCompany checkLikeCompany(Map<String, Object> param) {
+		return dao.checkLikeCompany(session,param);
+	}
+
+	@Override
+	public int deletelikeCompany(int likeCompanyNo) {
+		return dao.deletelikeCompany(session,likeCompanyNo);
+	}
+
+	
 	
 	
 	
