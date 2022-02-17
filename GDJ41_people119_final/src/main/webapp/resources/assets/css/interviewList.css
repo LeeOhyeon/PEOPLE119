@@ -61,6 +61,7 @@
 }
 .date-info{
     margin-right:20px;
+    cursor:pointer;
 }
 .date{
     font-size:12px;

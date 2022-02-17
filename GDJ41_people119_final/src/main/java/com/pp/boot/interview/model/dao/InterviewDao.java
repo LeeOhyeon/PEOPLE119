@@ -19,6 +19,8 @@ public interface InterviewDao {
 
 	int interviewListCount(SqlSessionTemplate session);
 
+	InterviewReview selectInterview(SqlSessionTemplate session, int interviewReviewNo);
+
 	
 
 }

@@ -63,7 +63,7 @@
                 <p>${l.interviewDate} |</p>
               </div>
               <div class="carrer-years">
-                <p>경력 ${l.career}차</p>
+                <p>경력 ${l.career}</p>
               </div>
             </div>
           </div>
@@ -80,6 +80,9 @@
                 <c:if test="${l.evaluation eq '부정적'}">
                   <span style="color:red"><strong>${l.evaluation}</strong></span>
                 </c:if>
+                <c:if test="${l.evaluation eq '보통'}">
+                  <span><strong>${l.evaluation}</strong></span>
+                </c:if>
               </div>
             </div>
             <div class="difficulty">
@@ -93,6 +96,9 @@
                </c:if>
                <c:if test="${l.difficulty eq '쉬움'}">
                	  <span style="color:green"><strong>${l.difficulty}</strong></span>
+               </c:if>
+               <c:if test="${l.difficulty eq '보통'}">
+               		<span><strong>${l.difficulty}</strong></span>
                </c:if>
               </div>
             </div>
@@ -178,7 +184,7 @@
       const detailInfo=(e)=>{
     	  let btn=$(e);
     	  const num=$(btn.parents(".company-container")).attr("id");
-    	  location.assign("${path}/interview/selectInterveiw.do?interviewReviewNo="+num);
+    	  location.assign("${path}/interview/selectInterview.do?interviewReviewNo="+num);
       }
     </script>
     

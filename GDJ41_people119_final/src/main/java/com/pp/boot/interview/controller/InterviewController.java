@@ -39,7 +39,7 @@ public class InterviewController {
 		
 		List<InterviewReview> list=service.interviewList(pageParam);
 		int totalCount=service.interviewListCount();
-		System.out.println(list);
+		
 		
 		mv.addObject("list",list);
 		mv.addObject("pageBar",PageFactory.getPageBar(totalCount, cPage, numPerpage, 5, "interviewList.do"));
@@ -53,7 +53,7 @@ public class InterviewController {
 		
 		List<InterviewCareer> list=service.careerList(memberId);
 		
-		System.out.println(list);
+		
 		mv.addObject("list",list);
 		mv.setViewName("interview/interviewEnroll");
 		return mv;
@@ -78,8 +78,9 @@ public class InterviewController {
 	 @RequestMapping("/selectInterview.do")
 	 public ModelAndView selectInterview(ModelAndView mv, @RequestParam int interviewReviewNo) {
 		 
-		 //InterviewReview ir=service.selectInterview(interviewReviewNo);
-		 
+		 InterviewReview ir=service.selectInterview(interviewReviewNo);
+		
+		 mv.addObject("ir",ir);
 		 mv.setViewName("interview/selectInterview");
 		 return mv;
 	 }

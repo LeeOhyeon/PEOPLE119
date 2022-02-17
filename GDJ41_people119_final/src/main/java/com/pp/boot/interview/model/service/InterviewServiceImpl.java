@@ -46,5 +46,13 @@ public class InterviewServiceImpl implements InterviewService {
 		
 		return totalCount;
 	}
+
+	@Override
+	public InterviewReview selectInterview(int interviewReviewNo) {
+	
+		InterviewReview ir=dao.selectInterview(session,interviewReviewNo);
+		
+		return ir;
+	}
 	
 }

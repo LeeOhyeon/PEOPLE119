@@ -14,5 +14,7 @@ public interface InterviewService {
 
 	List<InterviewReview> interviewList(Map<String, Integer> pageParam);
 
-	int interviewListCount();	
+	int interviewListCount();
+
+	InterviewReview selectInterview(int interviewReviewNo);	
 }

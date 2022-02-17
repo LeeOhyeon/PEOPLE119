@@ -38,5 +38,11 @@ public class InterviewDaoImpl implements InterviewDao {
 		// TODO Auto-generated method stub
 		return session.selectOne("interview.interviewListCount");
 	}
+
+	@Override
+	public InterviewReview selectInterview(SqlSessionTemplate session, int interviewReviewNo) {
+		// TODO Auto-generated method stub
+		return session.selectOne("interview.selectInterview",interviewReviewNo);
+	}
 	
 }
