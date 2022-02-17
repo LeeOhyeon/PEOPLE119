@@ -31,6 +31,8 @@
 }
 .resume-info {
     border-top:1px solid #333;
-    border-bottom:1px solid #333;
+    border:1px solid lightgray;
+    border-radius:15px;
+    margin-bottom:15px;
     padding:30px;
 }

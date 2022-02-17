@@ -28,6 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.pp.boot.common.PageFactoryMember;
 import com.pp.boot.common.PageFactorySearchScrap;
 import com.pp.boot.member.model.service.MemberService;
+import com.pp.boot.member.model.vo.LikeCompany;
 import com.pp.boot.member.model.vo.Member;
 import com.pp.boot.member.model.vo.Scrap;
 
@@ -439,7 +440,7 @@ public class MemberController {
 			return paramPage;
 		}
 		
-		//공고삭제
+		//스크랩 공고삭제
 		@RequestMapping("/deleteScrap.do")
 		@ResponseBody
 		public int deleteScrap(@RequestParam int scrapNo,HttpServletResponse response) {
@@ -448,4 +449,53 @@ public class MemberController {
 			return result;
 		}
 		
+		
+		//관심기업 리스트 
+		@RequestMapping("/memberlikeCompanyList.do")
+		public ModelAndView memberlikeCompanyList(@RequestParam String memberId, ModelAndView mv,@RequestParam(value = "cPage", defaultValue = "1") int cPage,
+				@RequestParam(value = "numPerPage", defaultValue = "8") int numPerPage) {
+			
+			Map<String, Object> param = new HashMap<>();
+			param.put("memberId", memberId);
+			param.put("cPage", cPage);
+			param.put("numPerPage", numPerPage);
+			
+			List<LikeCompany> likeCompany = service.selectlikeCompanyList(param);
+			int likeCompanyCount = service.selectlikeCompanyCount(memberId);
+			
+			
+			mv.addObject("likeCompanyCount",likeCompanyCount);
+			mv.addObject("likeCompany",likeCompany);
+			mv.addObject("pageBar", PageFactoryMember.getPageBar(likeCompanyCount, cPage, numPerPage, 5, "/member/memberlikeCompanyList.do?memberId="+memberId+"&&"));
+			
+			mv.setViewName("member/likeCompany");
+			return mv;
+		}
+		
+		//관심기업 등록
+		@RequestMapping("/insertLikeCompany.do")
+		@ResponseBody
+		public int insertLikeCompany(@RequestParam Map<String, Object> param,HttpServletResponse response) {
+			response.setContentType("application/json; charset=utf-8");
+			int result = service.insertLikeCompany(param);
+			return result;
+		}
+		
+		//관심기업 체크
+		@RequestMapping("/checkLikeCompany.do")
+		@ResponseBody
+		public void checkLikeCompany(@RequestParam Map<String, Object> param,HttpServletResponse response) throws IOException {
+			LikeCompany likeCompany = service.checkLikeCompany(param);
+			response.setContentType("application/json; charset=utf-8");
+			response.getWriter().print(likeCompany!=null?false:true);
+		}
+		
+		//관심기업 삭제
+		@RequestMapping("/deletelikeCompany.do")
+		@ResponseBody
+		public int deletelikeCompany(@RequestParam int likeCompanyNo,HttpServletResponse response) {
+			response.setContentType("application/json; charset=utf-8");
+			int result = service.deletelikeCompany(likeCompanyNo);
+			return result;
+		}
 }

@@ -16,7 +16,7 @@
 			<li>
 				<a href="${path }/applicant/apply.do?offerNo=${offer.offerNo}&memberId=${loginMember.memberId}"><button type="button" class="btn btn-primary">지원하기</button></a>
 				<button type="button" class="btn btn-primary" onclick="insertScrap();">스크랩</button>
-				<a href="${path }/"><button type="button" class="btn btn-primary">관심기업</button></a>
+				<button type="button" class="btn btn-primary" onclick="insertLikeCompany();">관심기업</button>
 			</li>
 			<li>
 			<!-- <li><a href="#">스크랩하기</a></li> -->
@@ -25,6 +25,7 @@
 		</ul>
 	</div>
 	<script type="text/javascript">
+	
 		const insertScrap=()=>{
 			
 			$.ajax({
@@ -56,6 +57,37 @@
 			
 		}
 	
+		//관심기업
+		const insertLikeCompany=()=>{
+			$.ajax({
+				url:"${path}/member/checkLikeCompany.do",
+				type:"post",
+				data:{memberId:"${loginMember.memberId}",
+						companyId:"${offer.companyId}"},
+				success:data=>{
+						if(data){
+							$.ajax({
+								url:"${path }/member/insertLikeCompany.do",
+								type:"post",
+								data:{memberId:"${loginMember.memberId}",
+									companyId:"${offer.companyId}"	
+								},
+								success:data=>{
+									alert("관심기업 등록 완료");					
+								},
+								error:e=>{
+									alert("관심기업 등록 실패");
+								}
+							});		
+						}else{
+							alert("이미 관심기업으로 등록된 기업 입니다.");
+						}
+									
+					}
+			});
+			
+		}
+		
 	</script>
 	
 	<!-- Modal -->

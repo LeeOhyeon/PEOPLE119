@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pp.boot.member.model.dao.MemberDao;
+import com.pp.boot.member.model.vo.LikeCompany;
 import com.pp.boot.member.model.vo.Member;
 import com.pp.boot.member.model.vo.Scrap;
 
@@ -112,6 +113,32 @@ public class MemberServiceImpl implements MemberService {
 		return dao.deleteScrap(session,scrapNo);
 	}
 
+	@Override
+	public List<LikeCompany> selectlikeCompanyList(Map<String, Object> param) {
+		return dao.selectlikeCompanyList(session,param);
+	}
+
+	@Override
+	public int selectlikeCompanyCount(String memberId) {
+		return dao.selectlikeCompanyCount(session,memberId);
+	}
+
+	@Override
+	public int insertLikeCompany(Map<String, Object> param) {
+		return dao.insertLikeCompany(session,param);
+	}
+
+	@Override
+	public LikeCompany checkLikeCompany(Map<String, Object> param) {
+		return dao.checkLikeCompany(session,param);
+	}
+
+	@Override
+	public int deletelikeCompany(int likeCompanyNo) {
+		return dao.deletelikeCompany(session,likeCompanyNo);
+	}
+
+	
 	
 	
 	

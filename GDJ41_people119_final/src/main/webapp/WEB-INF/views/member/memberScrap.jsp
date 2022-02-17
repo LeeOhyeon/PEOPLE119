@@ -52,7 +52,7 @@
               
           <div class="scrap-container">
                 <div class="scrap-searchContainer">
-                 <button type="button" onclick="location.reload();">전체보기</button>
+                 <button type="button" class="btn btn-outline-secondary" style="height:38px;" onclick="location.reload();">전체보기</button>
                   <div class="scrap-search">
 	                  <div style="width: 150px;">
 		                  <select class="form-select" aria-label="Default select example" name="searchCol">
@@ -75,9 +75,22 @@
 	                <div class="searchList-container">
 	                	<input type="hidden" value="${s.scrapNo }" name="scrapNo">
 	                    <div class="company-title"><c:out value="${s.offer.companyName}"/></div>
-	                    <div class="offer-title"><c:out value="${s.offer.offerTitle}"/></div>
-	                    <div class="finishDate-container"><c:out value="${s.offer.endDate}"/></div>
-	                    <div class="deleteBtn-container"><button type="button" onclick="deleteScrap(this);">삭제</button></div>
+	                    <div class="offer-title">
+	                   	  <div><a href="${path }/offer/offerView.do?offerNo=${s.offer.offerNo}"><c:out value="${s.offer.offerTitle}"/></a></div>
+	                   	  <div>
+	                   	  	<span class="offerContent"><c:out value="${s.offer.carrer}"/></span>
+	                   	  	<span class="offerContent"><c:out value="${s.offer.education}"/></span>
+	                   	  	<span class="offerContent"><c:out value="${s.offer.location}"/></span>
+	                   	  	<span class="offerContent"><c:out value="${s.offer.tech}"/></span>
+	                   	  </div>
+	                    </div>
+	                    <div class="finishDate-container">
+	                    <p>공고마감일</p>
+	                    <c:out value="${s.offer.endDate}"/>
+	                    </div>
+						<div class="deleteBtn-container">
+						<button type="button" class="delBtn" onclick="deleteScrap(this);"><i class="fas fa-trash-alt"></i></button>
+						</div>	                    
 	                </div>
                 </c:forEach>
                 </c:if>
@@ -88,7 +101,7 @@
           </div>
         </div>
         <div>
-        	<div style="margin-top: 30px;" class="pageBar">${pageBar }</div>
+        	<div style="margin-top: 30px; text-align: center;" class="pageBar">${pageBar }</div>
         </div>
       </div>
     </section>
@@ -114,9 +127,11 @@
 						for(let i=0; i<data["scrap"].length;i++){
 							const searchListContainer = $("<div class='searchList-container'>");
 							const companyTitle = $("<div class='company-title'>"+data["scrap"][i]["offer"]["companyName"]+"</div>");
+							const companyTitleAfter=$("<div><span class='offerContent'>"+data["scrap"][i]["offer"]["carrer"]+"</span><span class='offerContent'>"+data["scrap"][i]["offer"]["education"]+"</span><span class='offerContent'>"+data["scrap"][i]["offer"]["location"]+"</span><span class='offerContent'>"+data["scrap"][i]["offer"]["tech"]+"</span></div>");
 							const offerTitle = $("<div class='offer-title'>"+data["scrap"][i]["offer"]["offerTitle"]+"</div>");
-							const finishDateContainer = $("<div class='finishDate-container'>"+data["scrap"][i]["offer"]["endDate"]+"</div>");
-							const deleteBtnContainer = $("<div class='deleteBtn-container'><button type='button' onclick='deleteScrap(this);'>삭제</button>");
+							const finishDateContainer = $("<div class='finishDate-container'><p>공고마감일</p>"+data["scrap"][i]["offer"]["endDate"]+"</div>");
+							const deleteBtnContainer = $("<div class='deleteBtn-container'><button type='button' class='delBtn' onclick='deleteScrap(this);'><i class='fas fa-trash-alt'></i></button></div>");
+							offerTitle.append(companyTitleAfter);
 							searchListContainer.append(companyTitle).append(offerTitle).append(finishDateContainer).append(deleteBtnContainer);
 							$(".searchCoatainer").append(searchListContainer);
 						} 

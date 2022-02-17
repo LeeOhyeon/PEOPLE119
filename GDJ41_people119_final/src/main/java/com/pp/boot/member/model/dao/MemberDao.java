@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import com.pp.boot.member.model.vo.LikeCompany;
 import com.pp.boot.member.model.vo.Member;
 import com.pp.boot.member.model.vo.Scrap;
 
@@ -28,5 +29,10 @@ public interface MemberDao {
 	int searchScrapCount(SqlSessionTemplate session, Map<String, Object> param);
 	List<Scrap> searchScrapList(SqlSessionTemplate session, Map<String, Object> param);
 	int deleteScrap(SqlSessionTemplate session, int scrapNo);
+	List<LikeCompany> selectlikeCompanyList(SqlSessionTemplate session, Map<String, Object> param);
+	int selectlikeCompanyCount(SqlSessionTemplate session, String memberId);
+	int insertLikeCompany(SqlSessionTemplate session, Map<String, Object> param);
+	LikeCompany checkLikeCompany(SqlSessionTemplate session, Map<String, Object> param);
+	int deletelikeCompany(SqlSessionTemplate session, int likeCompanyNo);
 	
 }
