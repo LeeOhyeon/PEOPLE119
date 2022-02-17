@@ -25,4 +25,10 @@ public interface OfferDao {
 	// 회사명 별 공고 개수 가져오기
 	List<Offer> countOffer(SqlSessionTemplate session);
 	
+	// 공고 조회수 올리기
+	int updateReadCount(SqlSessionTemplate session, int offerNo);
+	
+	// 조회수 높은 TOP3 공고 가져오기
+	List<Offer> selectHotOfferList(SqlSessionTemplate session);
+	
 }

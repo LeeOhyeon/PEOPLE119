@@ -52,5 +52,11 @@ public class CompanyServiceImpl implements CompanyService {
 		return dao.countCompany(session, companyName);
 	}
 	
+	// 회사 이름으로 검색하기
+	@Override
+	public List<Company> selectSearchCompanyList(String search) {
+		return dao.selectSearchCompanyList(session, search);
+	}
+	
 	
 }
