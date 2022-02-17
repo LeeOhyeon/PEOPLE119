@@ -75,6 +75,13 @@ public class InterviewController {
 		 
 		 return "interview/interviewList"; 
 	 }
-	 
+	 @RequestMapping("/selectInterview.do")
+	 public ModelAndView selectInterview(ModelAndView mv, @RequestParam int interviewReviewNo) {
+		 
+		 //InterviewReview ir=service.selectInterview(interviewReviewNo);
+		 
+		 mv.setViewName("interview/selectInterview");
+		 return mv;
+	 }
 	
 }

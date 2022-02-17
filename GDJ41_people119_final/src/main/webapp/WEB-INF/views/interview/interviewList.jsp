@@ -43,7 +43,7 @@
           </div>
         </div>
         <c:forEach var="l" items="${list}">
-        <div class="company-container">
+        <div class="company-container" id="${l.interviewReviewNo}">
           <div class="enroll-date">
             <div class="date-info">
               <span onclick="toggle(this);"><i class="fas fa-arrow-alt-circle-down"></i></span>
@@ -52,7 +52,7 @@
           <div class="company-info">
             <div class="company-info-title">
               <div>
-                <h3 class="companyName" onclick="detailInfo();">${l.companyName}</h3>
+                <h3 class="companyName" onclick="detailInfo(this);">${l.companyName}</h3>
               </div>
             </div>
             <div class="info">
@@ -173,6 +173,12 @@
         	  let wayOf = $(btn.parents('.company-container')).find('.way-of-interview');
         	  wayOf.toggle();  
     	  }	
+      }
+      
+      const detailInfo=(e)=>{
+    	  let btn=$(e);
+    	  const num=$(btn.parents(".company-container")).attr("id");
+    	  location.assign("${path}/interview/selectInterveiw.do?interviewReviewNo="+num);
       }
     </script>
     
