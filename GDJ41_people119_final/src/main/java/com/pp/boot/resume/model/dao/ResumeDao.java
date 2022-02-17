@@ -41,6 +41,8 @@ public interface ResumeDao {
 	int updateLanguage(SqlSessionTemplate session, Language lang);
 
 	int deletelanguage(SqlSessionTemplate session, int languageTestNo);
+
+	void deleteAllCareer(SqlSessionTemplate session, Career career);
 	
 	
 	

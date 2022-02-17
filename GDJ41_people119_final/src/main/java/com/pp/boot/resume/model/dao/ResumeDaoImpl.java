@@ -107,6 +107,11 @@ public class ResumeDaoImpl implements ResumeDao {
 	public int deletelanguage(SqlSessionTemplate session, int languageTestNo) {
 		return session.delete("resume.deletelanguage",languageTestNo);
 	}
+
+	@Override
+	public void deleteAllCareer(SqlSessionTemplate session, Career career) {		
+		session.delete("resume.deleteAllCareer",career);
+	}
 	
 	
 	

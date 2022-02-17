@@ -148,13 +148,13 @@
                   <tr>
                     <td>입사일</td>
                     <td>
-                      <input type="date" style="width: 100%;" name="joinDate" value='2022-01-01'>
+                      <input type="date" style="width: 100%;" name="joinDate">
                     </td>
                   </tr>
                   <tr>
                     <td>퇴사일</td>
                     <td>
-                      <input type="date" style="width: 100%;" name="regDate" value='2022-12-31'>
+                      <input type="date" style="width: 100%;" name="regDate">
                     </td>
                    
                   </tr>
@@ -261,7 +261,7 @@
                   <tr>
                     <td>연봉</td>
                     <td>
-                      <input class="form-control" type="number" placeholder="만원" aria-label="default input example" name="annualIncome" min="1500" step="100" value="2000">
+                      <input class="form-control" type="number" placeholder="만원" aria-label="default input example" name="annualIncome" min="1500" step="100">
                     </td>
                   
                   </tr>
@@ -305,7 +305,8 @@
                     <td>근무지역<br>(2개 이상)</td>
                     <td colspan="4">
                       <select class="form-select" aria-label="Default select example" style="width: 500px;" name="workingArea">
-                        <option value="강남구" selected="selected">강남구</option>
+                        <option value="">지역선택</option>
+                        <option value="강남구">강남구</option>
                         <option value="강북구">강북구</option>
                         <option value="광진구">광진구</option>
                         <option value="노원구">노원구</option>
@@ -494,6 +495,7 @@
             <p style="font-size: 24px; font-weight: bolder;">보유기술<span style="color:red; font-weight: bold; font-size: 18px;"> (필수/2개이상)</span></p>
             <div class="tech-container">
               <select class="form-select" aria-label="Default select example" style="width: 200px;" name="tech">
+                <option value="">보유기술 선택</option>
                 <option value="JAVA" selected="selected">JAVA</option>
                 <option value="JSP">JSP</option>
                 <option value="Ajax">Ajax</option>
@@ -723,9 +725,13 @@ function DropFile(dropAreaId, fileListId) {
 	   
           let workingAreaArr = [];
                 $("select[name=workingArea]").change(e=>{
-              	  
-              	  if(workingAreaArr.length<8){
+              	let val = $("select[name=workingArea]").val();  
+                	
+                if(val == ""){
+             	     return;
+                }else if(workingAreaArr.length<8){
               		  if(workingAreaArr.length == 0){
+              			  
               			  $(".areaSelect-result-container").css("padding-top","20px");
               			  workingAreaArr.push($("select[name=workingArea]").val());
               			  $(".areaSelect-result").append($("<span class='select-result-span' onclick='deletHopeArea(this);'>").text($("select[name=workingArea]").val()));
@@ -740,11 +746,11 @@ function DropFile(dropAreaId, fileListId) {
               		 
               	  }else{
               		  alert("지역은 8개까지 선택 가능합니다.");
+              		  return;
               	  }
                 });
                 
            function deletHopeArea(e){
-          	 console.log($(e).text());
           	 for(let i=0;i<workingAreaArr.length;i++){
           		 if(workingAreaArr[i] == $(e).text()){
           			 workingAreaArr.splice(i,1);
@@ -759,8 +765,10 @@ function DropFile(dropAreaId, fileListId) {
 		
 		  
          $("select[name=tech]").change(e=>{
-         	  
-         	  if(techArr.length<10){
+        	 let val = $("select[name=tech]").val();  
+        	 if(val == ""){
+        		 return;
+        	 }else if(techArr.length<10){
          		  if(techArr.length == 0){
          			  $(".techSelect-result-container").css("padding-top","20px");
          			 techArr.push($("select[name=tech]").val());
@@ -910,8 +918,7 @@ function DropFile(dropAreaId, fileListId) {
 					 alert("이력서 등록이 완료되었습니다.");
 					 memberResumeList();
 				 },error:e=>{
-					 alert("데이터를 정확히 입력해 주세요.");
-					 console.log("에러발생삐용삐용");
+					 alert("입력하지 않은 값이 없는지 확인해 주세요.");
 				 }
 				 
 			 }); 
@@ -1031,13 +1038,11 @@ function DropFile(dropAreaId, fileListId) {
     				acquiredDate:acquiredDate
     			},
     			success:data=>{
-    				console.log("성공잉");
     				alert("등록 완료");
     				$(btn.parents('.resume-basic-container-certificate')).find('.career_c').html("등록완료");
     				$(btn.parents('.resume-basic-container-certificate')).find('.career_c').css("color","green");
     			},error:data=>{
     				alert("등록 실패! 관리자에게 문의하세요 :(");
-    				console.log("실팽팽이");
     			}
     		});
     	}
@@ -1069,13 +1074,11 @@ function DropFile(dropAreaId, fileListId) {
     				languageAeqDate:languageAeqDate
     			},
     			success:data=>{
-    				console.log("성공잉");
     				alert("등록 완료");
     				$(btn.parents('.resume-basic-container-language')).find('.career_l').html("등록완료");
     				$(btn.parents('.resume-basic-container-language')).find('.career_l').css("color","green");
     			},error:data=>{
     				alert("등록 실패! 관리자에게 문의하세요 :(");
-    				console.log("실팽팽이");
     			}
     			
     		});

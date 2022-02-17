@@ -160,8 +160,9 @@
             </div>
           </div>
           
-		 
-		<c:forEach var="c" items="${r.career }">
+		
+		<c:set var="career1" value="${fn:length(r.career) }"/>
+		<c:forEach var="c" items="${r.career }" varStatus="i">
           <div class="resume-basic-container-career addform_">
             <p style="font-size: 24px; font-weight: bolder;">경력
             	<span style="float:right;" class="deleteAddform" id="deleteCareerAddform" onclick="deleteCareer(this);"><i class="fas fa-times"></i></span>
@@ -169,10 +170,11 @@
             <input type="hidden" name="careerNo" value="${c.careerNo }"/>
             <div class="resume-career-info">
               <div class="select-career">
-               <label for="career1"><input type="radio" id="career1" name="career" value="신입" ${c.career=='신입'?'checked':''}>
+               <c:if test='${i.index == 0 }'><label id="careerLabel1" for="career1"><input type="radio" id="career1" name="career" value="신입" ${c.career=='신입'?'checked':''}>
                <span class="careerTitle_">신입</span></label>
-               <label for="career2"> <input type="radio" id="career2" name="career" value="경력" ${c.career=='경력'?'checked':''}>경력
+               <label id="careerLabel2" for="career2"> <input type="radio" id="career2" name="career" value="경력" ${c.career=='경력'?'checked':''}>경력
               </label>
+              </c:if>
               </div>
               <div class="career-info">
                 <table id= "careerTable">
@@ -187,23 +189,13 @@
                   <tr>
                     <td>입사일</td>
                     <td>
-                      <c:if test="${c.joinDate ne null}">
                       <input type="date" style="width: 100%;" name="joinDate" value='${c.joinDate }'>
-                      </c:if>
-                      <c:if test="${c.joinDate eq null}">
-                      <input type="date" style="width: 100%;" name="joinDate" value='2022-01-01'>
-                      </c:if>
                     </td>
                   </tr>
                   <tr>
                     <td>퇴사일</td>
                     <td>
-                    <c:if test="${c.joinDate ne null}">
                        <input type="date" style="width: 100%;" name="regDate" value='${c.regDate }'>
-                      </c:if>
-                      <c:if test="${c.joinDate eq null}">
-                      <input type="date" style="width: 100%;" name="joinDate" value='2022-01-31'>
-                      </c:if>
                     </td>
                    
                   </tr>
@@ -323,11 +315,11 @@
                 </table>
               </div>
               	<div>
-              		<p style="color:red;text-align: right;">반드시 저장 버튼을 누르셔야 합니다!</p>
+              		<p style="color:red;text-align: right;" class="career_p">반드시 저장 버튼을 누르셔야 합니다!</p>
               	</div>
                 <div class="plusbtn-container">
                 	<div>
-                	<button class="btn btn-outline-secondary plus" type="button" id="careerUpdateBtn" onclick="insertCareerform(this);">수정</button>
+                	<button class="btn btn-outline-secondary plus" type="button" id="careerUpdateBtn" onclick="updateCareerform(this,${i.index});">수정</button>
                 	<button class="btn btn-outline-secondary plus" type="button" id="addCareerformBtn" onclick="addCareerformBtn();">추가 등록</button>
                 	</div>
                 </div>
@@ -357,6 +349,7 @@
                     <td>근무지역</td>
                     <td colspan="4">
                       <select class="form-select" aria-label="Default select example" style="width: 500px;" name="workingArea">
+                        <option value="">지역선택</option>
                         <option value="강남구">강남구</option>
                         <option value="강북구">강북구</option>
                         <option value="광진구">광진구</option>
@@ -472,7 +465,7 @@
                 </tr>
               </table>
               	<div>
-              		<p style="color:red;text-align: right;">반드시 저장 버튼을 누르셔야 합니다!</p>
+              		<p style="color:red;text-align: right;" class="career_c">반드시 저장 버튼을 누르셔야 합니다!</p>
               	</div>
               <div class="plusbtn-container">
                 	<div>
@@ -658,7 +651,7 @@
                 </tr>
               </table>
               	<div>
-              		<p style="color:red;text-align: right;">반드시 저장 버튼을 누르셔야 합니다!</p>
+              		<p style="color:red;text-align: right;" class="career_l">반드시 저장 버튼을 누르셔야 합니다!</p>
               	</div>
                <div class="plusbtn-container">
                 	<div>
@@ -675,7 +668,8 @@
             <p style="font-size: 24px; font-weight: bolder;">보유기술</p>
             <div class="tech-container">
               <select class="form-select" aria-label="Default select example" style="width: 200px;" name="tech">
-                <option value="JAVA" selected="selected">JAVA</option>
+                <option value="">보유기술 선택</option>
+                <option value="JAVA">JAVA</option>
                 <option value="JSP">JSP</option>
                 <option value="Ajax">Ajax</option>
                 <option value="Jquery">Jquery</option>
@@ -961,7 +955,10 @@ function DropFile(dropAreaId, fileListId) {
           let workingAreaArr = [];
                 $("select[name=workingArea]").change(e=>{
                 	$(".areaSelect-result-container2").html("");
-              	  if(workingAreaArr.length<8){
+					let val = $("select[name=workingArea]").val();
+					if(val == ""){
+						return;
+					}else if(workingAreaArr.length<8){
               		  if(workingAreaArr.length == 0){
               			  $(".areaSelect-result-container").css("padding-top","20px");
               			  workingAreaArr.push($("select[name=workingArea]").val());
@@ -997,7 +994,11 @@ function DropFile(dropAreaId, fileListId) {
 		  
          $("select[name=tech]").change(e=>{
          	  $(".techSelect-result-container2").html("");
-         	  if(techArr.length<10){
+         	  let val = $("select[name=tech]").val();
+         	  
+         	  if(val == ""){
+         		  return;
+         	  }else if(techArr.length<10){
          		  if(techArr.length == 0){
          			  $(".techSelect-result-container").css("padding-top","20px");
          			 techArr.push($("select[name=tech]").val());
@@ -1033,12 +1034,16 @@ function DropFile(dropAreaId, fileListId) {
         copy.find(".deleteAddform").attr("onclick","deleteCareerAddform(this)");
         copy.find("input").val("");
         copy.find("#career1").remove();
+        copy.find("#career2").hide();
+        copy.find("#careerLabel2").hide();
         copy.find(".careerTitle_").remove();
         copy.find("#careerUpdateBtn").attr("onclick","insertCareerform(this);");
         copy.find("#careerUpdateBtn").html("등록");
         copy.find("#deleteCareerAddform").show();
         copy.find(".addform_").css("display","block");
-		$($(".addform_").last()).after(copy); 
+		$($(".addform_").last()).after(copy);
+		/* $(".addform_")[i].find("#career1").attr("name","career"+i);
+		$(".addform_")[i].find("#career2").attr("name","career"+i); */
 		
      } 
 	          
@@ -1170,8 +1175,7 @@ function DropFile(dropAreaId, fileListId) {
 				 alert("이력서 수정이 완료되었습니다.");
 				 memberResumeList();
 			 },error:e=>{
-				 alert("데이터를 정확히 입력해 주세요.");
-				 console.log("에러발생삐용삐용");
+				 alert("입력하지 않은 값이 없는지 확인해 주세요.");
 			 }
 			 
 		 }); 
@@ -1210,7 +1214,7 @@ function DropFile(dropAreaId, fileListId) {
     		
     		let btn = $(e);
 			          		
-    		let career = $(btn.parents('.resume-basic-container-career')).find('input[name=career]:checked').val();
+    		let career = "경력";
     		console.log(career);
         	let companyName =$(btn.parents('.resume-basic-container-career')).find('input[name=companyName]').val();
         	let joinDate =$(btn.parents('.resume-basic-container-career')).find('input[name=joinDate]').val(); 
@@ -1241,26 +1245,23 @@ function DropFile(dropAreaId, fileListId) {
     				assignedTask:assignedTask
     			},
     			success:data=>{
-    				console.log("성공잉");
     				alert("등록 완료");
+    				$(btn.parents('.resume-basic-container-career')).find('.career_p').html("등록완료");
+    				$(btn.parents('.resume-basic-container-career')).find('.career_p').css("color","green");
     				location.reload();
     			},error:data=>{
     				alert("등록 실패! 관리자에게 문의하세요 :(");
-    				console.log("실팽팽이");
     			}
     		});
     	}
     	
     	//경력사항 수정
-    	const updateCareerform=(e)=>{
+    	const updateCareerform=(e,i)=>{
     		let btn = $(e);
-			console.log($(btn.parents('.resume-basic-container-career')).find('.select-career').find('input:radio[name=career]:checked').val());
-
-    		if($(btn.parents('.resume-basic-container-career')).find('input:radio[name=career]:checked').val() == '경력'
-    				||$(btn.parents('.resume-basic-container-career')).find('input:radio[name=career]:checked').val() == '신입'){
-    			
+    		
+  	
     			let careerNo = $(btn.parents('.resume-basic-container-career')).find('input[name=careerNo]').val();
-        		let career = $(btn.parents('.resume-basic-container-career')).find('.select-career').find('input:radio[name=career]:checked').val(); 
+        		let career = i==0?$(btn.parents('.resume-basic-container-career')).find('input[name=career]:checked').val() : "경력";        		
             	let companyName =$(btn.parents('.resume-basic-container-career')).find('input[name=companyName]').val();
             	let joinDate =$(btn.parents('.resume-basic-container-career')).find('input[name=joinDate]').val(); 
             	let regDate = $(btn.parents('.resume-basic-container-career')).find('input[name=regDate]').val(); 
@@ -1272,6 +1273,12 @@ function DropFile(dropAreaId, fileListId) {
             	let annualIncome = $(btn.parents('.resume-basic-container-career')).find('input[name=annualIncome]').val();
             	let assignedTask = $(btn.parents('.resume-basic-container-career')).find('input[name=assignedTask]').val();
         		
+            	if(career == "신입"){
+            		let con = confirm("신입으로 수정할 경우 이전 경력이 전부 삭제됩니다. 신입으로 수정하시겠습니까?");           		
+            		if(!con){
+            			return;
+            		}
+            	}
         		$.ajax({
         			url:"${path}/resume/updateCareer.do",
         			type:"post",
@@ -1291,22 +1298,26 @@ function DropFile(dropAreaId, fileListId) {
         				assignedTask:assignedTask
         			},
         			success:data=>{
-        				console.log("성공잉");
         				alert("수정 완료");
+        				$(btn.parents('.resume-basic-container-career')).find('.career_p').html("수정완료");
+        				$(btn.parents('.resume-basic-container-career')).find('.career_p').css("color","green");
         				location.reload();
         			},error:data=>{
         				alert("수정 실패! 관리자에게 문의하세요 :(");
-        				console.log("실팽팽이");
         			}
         		});
-    		}else{
-    			alert("신입/경력 사항을 체크해 주세요!");
-    		}
+    		
     	}
     	
     	//경력사항 삭제
     	const deleteCareer =(e)=>{
     		let btn = $(e);
+            let career = "${career1}";
+            
+            if(career == 1){
+            	alert("경력이 1개일경우 수정을 이용해주세요.");
+            	return;
+            }
     		let careerNo = $(btn.parents('.resume-basic-container-career')).find('input[name=careerNo]').val();
     		
     		$.ajax({
@@ -1318,6 +1329,7 @@ function DropFile(dropAreaId, fileListId) {
     			success:data=>{
     				alert("삭제 성공");
     				$(btn.parents('.resume-basic-container-career')).remove();
+    				location.reload();
     			},error:data=>{
     				alert("삭제 실패! 관리자에게 문의하세요 :(");
     			}
@@ -1351,11 +1363,11 @@ function DropFile(dropAreaId, fileListId) {
     				acquiredDate:acquiredDate
     			},
     			success:data=>{
-    				console.log("성공잉");
     				alert("등록 완료");
+    				$(btn.parents('.resume-basic-container-certificate')).find('.career_c').html("등록완료");
+    				$(btn.parents('.resume-basic-container-certificate')).find('.career_c').css("color","green");
     			},error:data=>{
     				alert("등록 실패! 관리자에게 문의하세요 :(");
-    				console.log("실팽팽이");
     			}
     		});
     	}
@@ -1384,12 +1396,12 @@ function DropFile(dropAreaId, fileListId) {
     				acquiredDate:acquiredDate
     			},
     			success:data=>{
-    				console.log("성공잉");
     				alert("수정 완료");
+    				$(btn.parents('.resume-basic-container-certificate')).find('.career_c').html("수정완료");
+    				$(btn.parents('.resume-basic-container-certificate')).find('.career_c').css("color","green");
     				location.reload();
     			},error:data=>{
     				alert("수정 실패! 관리자에게 문의하세요 :(");
-    				console.log("실팽팽이");
     			}
     		});
     	}
@@ -1445,12 +1457,12 @@ function DropFile(dropAreaId, fileListId) {
     				languageAeqDate:languageAeqDate
     			},
     			success:data=>{
-    				console.log("성공잉");
     				alert("등록 완료");
+    				$(btn.parents('.resume-basic-container-language')).find('.career_l').html("등록완료");
+    				$(btn.parents('.resume-basic-container-language')).find('.career_l').css("color","green");
     				location.reload();
     			},error:data=>{
     				alert("등록 실패! 관리자에게 문의하세요 :(");
-    				console.log("실팽팽이");
     			}
     			
     		});
@@ -1484,6 +1496,8 @@ function DropFile(dropAreaId, fileListId) {
     			},
     			success:data=>{
     				alert("수정 완료");
+    				$(btn.parents('.resume-basic-container-language')).find('.career_l').html("수정완료");
+    				$(btn.parents('.resume-basic-container-language')).find('.career_l').css("color","green");
     				location.reload();
     			},error:data=>{
     				alert("수정 실패! 관리자에게 문의하세요 :(");

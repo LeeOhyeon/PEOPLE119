@@ -161,6 +161,8 @@ public class ResumeController {
 	 return "common/msg";
 	}
 	
+	
+	
 	//이력서 상세보기
 	@RequestMapping("/resumeDetailView.do")
 	public ModelAndView resumeDetailView(@RequestParam int resumeNo,ModelAndView mv) {

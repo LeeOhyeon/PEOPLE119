@@ -22,7 +22,7 @@
 			<div class="d-flex justify-content-between align-items-center">
 				<h2>채용공고</h2>
 				<ol>
-					<li><a href="index.html">Home</a></li>
+					<li><a href="/">Home</a></li>
 					<li>채용공고</li>
 				</ol>
 			</div>
@@ -32,114 +32,83 @@
 	<!-- End Breadcrumbs Section -->
 
 <section class="inner-page">
-	<br><br>	
-	<!-- ===== 포지션 탐색 버튼 ===== -->
-	 <div class="margin">
-	 	<h1>포지션 탐색</h1>
-	 	
-		<button class="btn btn-outline-primary">전체</button>
-		<button class="btn btn-outline-primary">서버/백엔드 개발자</button>
-		<button class="btn btn-outline-primary">프론트엔드 개발자</button>
-		<button class="btn btn-outline-primary">웹 풀스택 개발자</button>
-		<button class="btn btn-outline-primary">안드로이드 개발자</button>
-		<button class="btn btn-outline-primary">IOS 개발자</button>
-		<button class="btn btn-outline-primary">크로스플랫폼 앱 개발자</button>
-		<button class="btn btn-outline-primary">게임 클라이언트 개발자</button>
-		<button class="btn btn-outline-primary">게임 서버 개발자</button>
-		<button class="btn btn-outline-primary">DBA</button>
-		<button class="btn btn-outline-primary">빅데이터 엔지니어</button>
-		<button class="btn btn-outline-primary">인공지능 / 머신러닝</button>
-		<button class="btn btn-outline-primary">devops / 시스템 엔지니어</button>
-		<button class="btn btn-outline-primary">정보보안 담당자</button>
-		<button class="btn btn-outline-primary">QA 엔지니어</button>
-		<button class="btn btn-outline-primary">개발 PM</button>
-		<button class="btn btn-outline-primary">HW / 임베디드</button>
-		<button class="btn btn-outline-primary">SW / 솔루션</button>
-		<button class="btn btn-outline-primary">웹 퍼블리셔</button>
-		<button class="btn btn-outline-primary">VR / AR / 3D</button>
-		<button class="btn btn-outline-primary">기술지원</button>
-	</div>
-	<!-- End 포지션 탐색 버튼 -->
-      
-	<!-- ===== 지금뜨는 채용공고 ===== -->
-	<div>
-		<h1>지금 뜨는 채용공고</h1>
-	</div>
-	<div id="hotHirepost" class="margin">
-		<!-- TOP1 -->
-		<div id="hirepost">
-			<img alt="회사사진" src="">
-			<p>회사이름</p>
-			<a href="${path }/offer/offerView.do">채용공고 제목</a>
-			<p>기술스택</p>
-			<p>위치 및 경력</p>
-		</div>
-		<!-- TOP2 -->
-		<div id="hirepost">
-			<img alt="회사사진" src="">
-			<p>회사이름</p>
-			<c:out value="${totalData }"/>
-			<a href="#">채용공고 제목</a>
-			<p>기술스택</p>
-			<p>위치 및 경력</p>
-		</div>
-		<!-- TOP3 -->
-		<div id="hirepost">
-			<img alt="회사사진" src="">
-			<p>회사이름</p>
-			<a href="#">채용공고 제목</a>
-			<p>기술스택</p>
-			<p>위치 및 경력</p>
-		</div>
-	</div>
-	<!-- ===== End 지금뜨는 채용공고 ===== -->
+	 <section id="services" class="services">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>지금뜨는 채용 공고</h2>
+          <p>새로운 공고가 올라왔습니다!</p>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+               <!-- DB에서 가져오게 -->
+              <!-- <div class="icon"><i class="bx bxl-dribbble"></i></div> -->
+              <div class="" style="width: 250px; height: 150px"><img src="/resources/assets/img/275.jpg" style="width: 250px; height: 150px"></div>
+              <h4 class="title"><a href="">275 Company</a></h4>
+              <p class="description">노력하는 천재 채용중</p>
+              <p class="description">JAVA, JavaScript, Spring Framework</p>
+              <p class="description">마감일 : 2022. 00. 00</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+               <!-- DB에서 가져오게 -->
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4 class="title"><a href="">회사이름</a></h4>
+              <p class="description">뽑는 내용</p>
+              <p class="description">기술스택</p>
+              <p class="description">마감일 : 2022. 00. 00</p> <!-- D-00 으로 표시하는게 더 좋을까? -->
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+               <!-- DB에서 가져오게 -->
+              <div class="icon"><i class="bx bx-tachometer"></i></div>
+              <h4 class="title"><a href="">회사이름</a></h4>
+              <p class="description">뽑는 내용</p>
+              <p class="description">기술스택</p>
+              <p class="description">마감일 : 2022. 00. 00</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+              <!-- DB에서 가져오게 -->
+              <div class="icon"><i class="bx bx-world"></i></div>
+              <h4 class="title"><a href="">회사이름</a></h4>
+              <p class="description">뽑는 내용</p>
+              <p class="description">기술스택</p>
+              <p class="description">마감일 : 2022. 00. 00</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End 마감임박 공고 -->
+
 
 	<!-- ===== 채용공고 리스트 ===== -->
 	<div class="margin">
-		<!-- 경력 / 지역 / 기술스택 별 select버튼 -->	
-		<div>
-			<select>
-				<option>신입</option>
-				<option>1년</option>
-				<option>2년</option>
-			</select>
-			<select>
-				<option>강남구</option>
-				<option>00구</option>
-				<option>00구</option>
-			</select>
-			<select>
-				<option>Java</option>
-				<option>JavaScript</option>
-				<option>HTML</option>
-			</select>
-		</div>
 	
 		<!-- 채용공고 리스트 부분 -->
 		<div id="hirepostList">
 			<c:forEach var="o" items="${list }">
-				<div id="hirepost">
-					<img alt="등록이미지가 없습니다." src="/resources/upload/offer/${o.image }">
-					<p><c:out value="${o.companyName }"/></p>
-					<p><a href="${path }/offer/offerView.do?offerNo=${o.offerNo}"><c:out value="${o.offerTitle }"/></a></p>
-					<p><c:out value="${o.tech }"/></p>
-					<p><c:out value="${o.location }"/> / <c:out value="${o.carrer }"/></p>
+				<div class="hirepost">
+					<img alt="등록이미지가 없습니다." src="/resources/upload/offer/${o.image }" class="offerImg">
+					<input type="hidden" value="${o.offerNo }" name="offerNo"/>
+					<div class="companyName"><c:out value="${o.companyName }"/></div>
+					<div class="offerTitle"><a href="${path }/offer/offerView.do?offerNo=${o.offerNo}"><c:out value="${o.offerTitle }"/></a></div>
+					<div class="tech"><c:out value="${o.tech }"/></div>
+					<div class="location"><c:out value="${o.location }"/> / <c:out value="${o.carrer }"/></div>
+					<div class="scrap"><span class="scrapP" onclick="insertScrap(this);">스크랩</span></div>
 				</div>
 			</c:forEach>
-				<!-- <div id="hirepost">
-					<img alt="회사사진" src="">
-					<p>회사이름</p>
-					<p>채용공고 제목</p>
-					<p>기술스택</p>
-					<p>위치 및 경력</p>
-				</div>
-				<div id="hirepost">
-					<img alt="회사사진" src="">
-					<p>회사이름</p>
-					<p>채용공고 제목</p>
-					<p>기술스택</p>
-					<p>위치 및 경력</p>
-				</div> -->
+				
 		</div>
 		
 		<!-- 페이징 바 -->
@@ -151,5 +120,48 @@
 	<!-- End 채용공고 리스트 -->
     
 </section>
+
+
+	<script type="text/javascript">
+	
+	
+		const insertScrap=(e)=>{
+			let btn = $(e);
+			let offerNo =$(btn.parents('.hirepost')).find('input[name=offerNo]').val();
+			console.log(offerNo);
+			
+			$.ajax({
+				url:"${path}/member/checkScrap.do",
+				type:"post",
+				dataType:"json",
+				data:{memberId:"${loginMember.memberId}",
+						offerNo:offerNo},
+				success:data=>{
+						if(data){
+							$.ajax({
+								url:"${path }/member/insertScrap.do",
+								type:"post",
+								data:{memberId:"${loginMember.memberId}",
+									offerNo:offerNo	
+								},
+								success:data=>{
+									alert("스크랩 완료");
+								},
+								error:e=>{
+									alert("스크랩 실패");
+								}
+							});		
+						}else{
+							alert("이미 스크랩된 공고입니다.");
+						}
+									
+					}
+			});
+			
+		}
+	
+
+	</script>
+	
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

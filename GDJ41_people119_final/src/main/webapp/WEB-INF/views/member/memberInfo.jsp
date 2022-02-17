@@ -30,7 +30,7 @@
         <div class="mypage-container">
           <div class="link-tab">
             <ul class="link-tab-ul">
-              <li class="link-tab-li"><a href="#"><i class="fas fa-home"></i> My Info</a></li>
+              <li class="link-tab-li"><a href="${path }/member/memberInfoView.do?memberId=${loginMember.memberId }"><i class="fas fa-home"></i> My Info</a></li>
               <li><i class="fas fa-pen"></i> 이력서 <span id="resumt-toggle"><i class="fas fa-angle-down"></i></span>
                 <ul>
                   <li class="resume-link"><a href="${path }/resume/insertResumeView.do?memberId=${loginMember.memberId }">이력서 등록</a></li>

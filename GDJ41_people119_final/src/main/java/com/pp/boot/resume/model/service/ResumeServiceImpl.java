@@ -70,7 +70,15 @@ public class ResumeServiceImpl implements ResumeService {
 
 	@Override
 	public int updateCareer(Career career) {
-		return dao.updateCareer(session,career);
+		String car = career.getCareer();
+		if(car.equals("신입")) {
+			dao.deleteAllCareer(session,career);
+			return dao.insertCareer(session,career);
+		}else {
+			return dao.updateCareer(session,career);
+		}
+		
+		
 	}
 
 	@Override

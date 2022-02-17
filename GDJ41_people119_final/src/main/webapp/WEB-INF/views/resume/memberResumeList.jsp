@@ -57,15 +57,15 @@
             <c:if test="${rList.resumeTitle ne null }">
             <div class="resume-info">
               <div class="resume-title">
-              	<a href="${path }/resume/resumeDetailView.do?resumeNo=${rList.resumeNo}">  
-                <h3><strong><c:out value="${rList.resumeTitle }"/></strong>
-                <div class="resume-del">
+              	<h3 style="display: inline-block;"><a href="${path }/resume/resumeDetailView.do?resumeNo=${rList.resumeNo}">  
+                <strong><c:out value="${rList.resumeTitle }"/></strong>
+              	</a></h3>
+              	 <div class="resume-del">
                   <button type="button"style="width:100px; background-color: white; border: none; font-size: 20px"
-                  onclick="if(confirm('정말 삭제하시겠습니까?'))
-                  location.assign('${path}/resume/deleteResume.do?resumeNo=${rList.resumeNo }&&memberId=${rList.memberId }');"
+                  onclick="if(confirm('정말 삭제하시겠습니까?')){
+                  location.assign('${path}/resume/deleteResume.do?resumeNo=${rList.resumeNo }&&memberId=${rList.memberId }')};"
                   ><i class="fas fa-trash-alt"></i></button>
-                </div></h3>
-              	</a>
+                </div>
               </div>
               <div class="resume">
                 <div class="information">
@@ -85,9 +85,9 @@
                      
                   </div>
                 </div>
-                
+               
               </div>
-             
+              
             </div>
             </c:if>
    		 </c:forEach>

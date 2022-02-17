@@ -20,6 +20,7 @@
         <div class="resume-container">
         <c:if test="${resume ne null }">
         <c:forEach var="r" items="${resume}">
+        	<c:set var="resumeNo" value="${r.resumeNo }"/>
           <div class="resume-basic-container">
            <div class="resume-basic-container-title">
             <h3 style="font-size: 40px; font-weight: bolder;">
@@ -92,7 +93,7 @@
 	<c:if test="${r.career ne null}">
 		<c:forEach var="c" items="${r.career }" begin="0" end="0">
 			<c:if test="${c.career eq null }">
-           		<p>등록된 경력사항이 없습니다.</p>
+           		
 			</c:if>
 			<c:if test="${c.career ne '신입' }">
 			<c:if test="${c.career eq '경력' }">
@@ -285,6 +286,8 @@
 					<ul>
 						<li><button type="button" class="btn btn-outline-primary quickmenuBtn" onclick="location.assign('${path }/resume/updateResumeView.do?resumeNo=${resumeNo}');">이력서 수정</button></li>
 						<li><button type="button" class="btn btn-outline-primary quickmenuBtn" onclick="location.assign('${path }/member/memberInfoView.do?memberId=${loginMember.memberId}');">기본정보 수정</button></li>
+						<li><button type="button" class="btn btn-outline-primary quickmenuBtn" onclick="if(confirm('정말 삭제하시겠습니까?')){
+                  location.assign('${path}/resume/deleteResume.do?resumeNo=${resumeNo }&&memberId=${loginMember.memberId }')};">이력서 삭제</button></li>
 					</ul>
 				</div>
 			</div>        
