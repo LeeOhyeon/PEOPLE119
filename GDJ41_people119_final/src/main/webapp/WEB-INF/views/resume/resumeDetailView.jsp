@@ -91,10 +91,11 @@
 	
 	<c:if test="${r.career ne null}">
 		<c:forEach var="c" items="${r.career }" begin="0" end="0">
-			<c:if test="${c.career eq '신입' }">
-				
+			<c:if test="${c.career eq null }">
+           		<p>등록된 경력사항이 없습니다.</p>
 			</c:if>
 			<c:if test="${c.career ne '신입' }">
+			<c:if test="${c.career eq '경력' }">
           <div class="resume-basic-container-career addform_">
             <div class="resume-career-info">
              <p style="font-size: 30px; font-weight: bolder;">경력
@@ -132,7 +133,9 @@
               </div>
             </div>
           </div>
+           </c:if>
           </c:if>
+         
           </c:forEach>
            </c:if>
            

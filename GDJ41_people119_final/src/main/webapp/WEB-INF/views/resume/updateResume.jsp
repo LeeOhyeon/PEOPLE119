@@ -187,13 +187,23 @@
                   <tr>
                     <td>입사일</td>
                     <td>
+                      <c:if test="${c.joinDate ne null}">
                       <input type="date" style="width: 100%;" name="joinDate" value='${c.joinDate }'>
+                      </c:if>
+                      <c:if test="${c.joinDate eq null}">
+                      <input type="date" style="width: 100%;" name="joinDate" value='2022-01-01'>
+                      </c:if>
                     </td>
                   </tr>
                   <tr>
                     <td>퇴사일</td>
                     <td>
-                      <input type="date" style="width: 100%;" name="regDate" value='${c.regDate }'>
+                    <c:if test="${c.joinDate ne null}">
+                       <input type="date" style="width: 100%;" name="regDate" value='${c.regDate }'>
+                      </c:if>
+                      <c:if test="${c.joinDate eq null}">
+                      <input type="date" style="width: 100%;" name="joinDate" value='2022-01-31'>
+                      </c:if>
                     </td>
                    
                   </tr>
@@ -317,7 +327,7 @@
               	</div>
                 <div class="plusbtn-container">
                 	<div>
-                	<button class="btn btn-outline-secondary plus" type="button" id="careerUpdateBtn" onclick="updateCareerform(this);">수정</button>
+                	<button class="btn btn-outline-secondary plus" type="button" id="careerUpdateBtn" onclick="insertCareerform(this);">수정</button>
                 	<button class="btn btn-outline-secondary plus" type="button" id="addCareerformBtn" onclick="addCareerformBtn();">추가 등록</button>
                 	</div>
                 </div>
@@ -765,7 +775,7 @@
 				<div class="quickmenu">
 					<ul>
 						<li><button type="button" class="btn btn-outline-primary quickmenuBtn" onclick="location.assign('${path }/member/memberInfoView.do?memberId=${loginMember.memberId}')">기본정보 수정</button></li>
-						<li><button type="button" class="btn btn-outline-primary quickmenuBtn" onclick="addCareerformBtn();">+경력사항</button></li>
+						
 						<li><button type="button" class="btn btn-outline-primary quickmenuBtn" onclick="copyCertificateDiv();">+자격증</button></li>
 						<li><button type="button" class="btn btn-outline-primary quickmenuBtn" onclick="copyLanguageDiv();">+어학시험</button></li>
 						<li><button type="button" class="btn btn-outline-primary quickmenuBtn" onclick="insertResume();">이력서 저장</button></li>
@@ -1244,12 +1254,13 @@ function DropFile(dropAreaId, fileListId) {
     	//경력사항 수정
     	const updateCareerform=(e)=>{
     		let btn = $(e);
-			console.log(btn.parents('.resume-basic-container-career').find('.select-career').find('input:radio[name=career]:checked').val());
+			console.log($(btn.parents('.resume-basic-container-career')).find('.select-career').find('input:radio[name=career]:checked').val());
 
     		if($(btn.parents('.resume-basic-container-career')).find('input:radio[name=career]:checked').val() == '경력'
     				||$(btn.parents('.resume-basic-container-career')).find('input:radio[name=career]:checked').val() == '신입'){
+    			
     			let careerNo = $(btn.parents('.resume-basic-container-career')).find('input[name=careerNo]').val();
-        		let career = $(btn.parents('.resume-basic-container-career')).find('input[name=career]:checked').val(); 
+        		let career = $(btn.parents('.resume-basic-container-career')).find('.select-career').find('input:radio[name=career]:checked').val(); 
             	let companyName =$(btn.parents('.resume-basic-container-career')).find('input[name=companyName]').val();
             	let joinDate =$(btn.parents('.resume-basic-container-career')).find('input[name=joinDate]').val(); 
             	let regDate = $(btn.parents('.resume-basic-container-career')).find('input[name=regDate]').val(); 
