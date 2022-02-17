@@ -63,10 +63,11 @@
    <!-- End 포지션 탐색 버튼 -->
       
    <!-- ===== 지금뜨는 채용공고 ===== -->
-   <div>
-      <h1 style="display: inline-block; margin-right: 40px;">지금 뜨는 채용공고</h1>
-      <span>* 가장 조회가 많이 된 TOP3 공고를 확인하세요</span>
-   </div>
+    <div class="section-title" data-aos="fade-up">
+          <h2>지금 뜨는 채용공고</h2>
+          <p>* 가장 조회가 많이 된 TOP3 공고를 확인하세요</p>
+    </div>
+   
    <div id="hotHirepost" class="margin">
       <c:forEach var="hl" items="${hotList }">
          <div id="hirepost">
@@ -76,15 +77,17 @@
                <p class="offerTech">${fn:replace(hl.tech, ',', ' · ') }</p>
                <p class="offerInfo"><c:out value="${hl.location }"/> / <c:out value="${hl.carrer }"/></p>
          </div>
+         
       </c:forEach>
    </div>
    <!-- ===== End 지금뜨는 채용공고 ===== -->
 
    <!-- ===== 채용공고 리스트 ===== -->
    <div class="margin">
-      <div style="margin-bottom: 20px;">
-         <h1 style="display: inline-block; margin-right: 40px;">전체 채용공고</h1>
-      </div>
+     
+      <div class="section-title" data-aos="fade-up">
+          <h2>전체 채용공고</h2>
+    </div>
       <!-- 채용공고 리스트 부분 -->
       <div id="hirepostList">
          <c:forEach var="o" items="${list }">

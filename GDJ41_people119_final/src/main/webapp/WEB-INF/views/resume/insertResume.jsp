@@ -103,7 +103,7 @@
 	            			<tr class="university-container">
 	            				<td>학점<span> (필수)</span></td>
 	            				<td>
-	            				<input class="form-control university-input" type="text" name="grades" aria-label="default input example" required="required" placeholder="/4.5">
+	            				<input class="form-control university-input" type="text" name="grades" aria-label="default input example" required="required">
 	            				</td>
 	            			</tr>
 		            			
@@ -578,7 +578,7 @@
               </table>
             </div>
           </div>
-         
+         <button type="button" class="btn btn-outline-primary quickmenuBtn" onclick="insertResume();">이력서 저장</button>
         </div>
         	<div class="quickmenu-container">
 				<div class="quickmenu">
